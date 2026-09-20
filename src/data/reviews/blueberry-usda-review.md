@@ -4,7 +4,7 @@
 - **Data Type:** SR Legacy
 - **Publication Date:** 2019-04-01
 - **Reference Basis:** per 100g
-- **Pipeline Execution:** 2026-09-20T20:01:09.485Z
+- **Pipeline Execution:** 2026-09-20T20:07:12.482Z
 
 ## Key Nutritional Metrics
 - **Calories:** 57 kcal
