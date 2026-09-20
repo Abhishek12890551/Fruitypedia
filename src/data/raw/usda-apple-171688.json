@@ -1,0 +1,773 @@
+{
+  "fdcId": 171688,
+  "description": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
+  "dataType": "SR Legacy",
+  "publicationDate": "4/1/2019",
+  "ndbNumber": 9003,
+  "foodNutrients": [
+    {
+      "number": "951",
+      "name": "Proximates",
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "255",
+      "name": "Water",
+      "amount": 85.56,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "208",
+      "name": "Energy",
+      "amount": 52,
+      "unitName": "kcal",
+      "derivationDescription": "Calculated"
+    },
+    {
+      "number": "268",
+      "name": "Energy",
+      "amount": 218,
+      "unitName": "kJ",
+      "derivationDescription": "Calculated"
+    },
+    {
+      "number": "203",
+      "name": "Protein",
+      "amount": 0.26,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "204",
+      "name": "Total lipid (fat)",
+      "amount": 0.17,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "207",
+      "name": "Ash",
+      "amount": 0.19,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "956",
+      "name": "Carbohydrates",
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "205",
+      "name": "Carbohydrate, by difference",
+      "amount": 13.81,
+      "unitName": "g",
+      "derivationDescription": "Calculated"
+    },
+    {
+      "number": "291",
+      "name": "Fiber, total dietary",
+      "amount": 2.4,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "269",
+      "name": "Total Sugars",
+      "amount": 10.39,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "210",
+      "name": "Sucrose",
+      "amount": 2.07,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "211",
+      "name": "Glucose",
+      "amount": 2.43,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "212",
+      "name": "Fructose",
+      "amount": 5.9,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "213",
+      "name": "Lactose",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "214",
+      "name": "Maltose",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "287",
+      "name": "Galactose",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "209",
+      "name": "Starch",
+      "amount": 0.05,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "300",
+      "name": "Minerals",
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "301",
+      "name": "Calcium, Ca",
+      "amount": 6,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "303",
+      "name": "Iron, Fe",
+      "amount": 0.12,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "304",
+      "name": "Magnesium, Mg",
+      "amount": 5,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "305",
+      "name": "Phosphorus, P",
+      "amount": 11,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "306",
+      "name": "Potassium, K",
+      "amount": 107,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "307",
+      "name": "Sodium, Na",
+      "amount": 1,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "309",
+      "name": "Zinc, Zn",
+      "amount": 0.04,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "312",
+      "name": "Copper, Cu",
+      "amount": 0.027,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "315",
+      "name": "Manganese, Mn",
+      "amount": 0.035,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "317",
+      "name": "Selenium, Se",
+      "amount": 0,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "313",
+      "name": "Fluoride, F",
+      "amount": 3.3,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "952",
+      "name": "Vitamins and Other Components",
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "401",
+      "name": "Vitamin C, total ascorbic acid",
+      "amount": 4.6,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "404",
+      "name": "Thiamin",
+      "amount": 0.017,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "405",
+      "name": "Riboflavin",
+      "amount": 0.026,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "406",
+      "name": "Niacin",
+      "amount": 0.091,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "410",
+      "name": "Pantothenic acid",
+      "amount": 0.061,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "415",
+      "name": "Vitamin B-6",
+      "amount": 0.041,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "417",
+      "name": "Folate, total",
+      "amount": 3,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "431",
+      "name": "Folic acid",
+      "amount": 0,
+      "unitName": "µg",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    },
+    {
+      "number": "432",
+      "name": "Folate, food",
+      "amount": 3,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "435",
+      "name": "Folate, DFE",
+      "amount": 3,
+      "unitName": "µg",
+      "derivationDescription": "Calculated"
+    },
+    {
+      "number": "421",
+      "name": "Choline, total",
+      "amount": 3.4,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "454",
+      "name": "Betaine",
+      "amount": 0.1,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "418",
+      "name": "Vitamin B-12",
+      "amount": 0,
+      "unitName": "µg",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    },
+    {
+      "number": "578",
+      "name": "Vitamin B-12, added",
+      "amount": 0,
+      "unitName": "µg",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    },
+    {
+      "number": "320",
+      "name": "Vitamin A, RAE",
+      "amount": 3,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "319",
+      "name": "Retinol",
+      "amount": 0,
+      "unitName": "µg",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    },
+    {
+      "number": "321",
+      "name": "Carotene, beta",
+      "amount": 27,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "322",
+      "name": "Carotene, alpha",
+      "amount": 0,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "334",
+      "name": "Cryptoxanthin, beta",
+      "amount": 11,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "318",
+      "name": "Vitamin A, IU",
+      "amount": 54,
+      "unitName": "IU",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "337",
+      "name": "Lycopene",
+      "amount": 0,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "338",
+      "name": "Lutein + zeaxanthin",
+      "amount": 29,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "323",
+      "name": "Vitamin E (alpha-tocopherol)",
+      "amount": 0.18,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "573",
+      "name": "Vitamin E, added",
+      "amount": 0,
+      "unitName": "mg",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    },
+    {
+      "number": "341",
+      "name": "Tocopherol, beta",
+      "amount": 0,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "342",
+      "name": "Tocopherol, gamma",
+      "amount": 0,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "343",
+      "name": "Tocopherol, delta",
+      "amount": 0,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "324",
+      "name": "Vitamin D (D2 + D3), International Units",
+      "amount": 0,
+      "unitName": "IU",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    },
+    {
+      "number": "328",
+      "name": "Vitamin D (D2 + D3)",
+      "amount": 0,
+      "unitName": "µg",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    },
+    {
+      "number": "430",
+      "name": "Vitamin K (phylloquinone)",
+      "amount": 2.2,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "429",
+      "name": "Vitamin K (Dihydrophylloquinone)",
+      "amount": 0,
+      "unitName": "µg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "950",
+      "name": "Lipids",
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "606",
+      "name": "Fatty acids, total saturated",
+      "amount": 0.028,
+      "unitName": "g",
+      "derivationDescription": "Calculated"
+    },
+    {
+      "number": "607",
+      "name": "SFA 4:0",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "608",
+      "name": "SFA 6:0",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "609",
+      "name": "SFA 8:0",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "610",
+      "name": "SFA 10:0",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "611",
+      "name": "SFA 12:0",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "612",
+      "name": "SFA 14:0",
+      "amount": 0.001,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "613",
+      "name": "SFA 16:0",
+      "amount": 0.024,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "614",
+      "name": "SFA 18:0",
+      "amount": 0.003,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "645",
+      "name": "Fatty acids, total monounsaturated",
+      "amount": 0.007,
+      "unitName": "g",
+      "derivationDescription": "Calculated"
+    },
+    {
+      "number": "626",
+      "name": "MUFA 16:1",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "617",
+      "name": "MUFA 18:1",
+      "amount": 0.007,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "628",
+      "name": "MUFA 20:1",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "630",
+      "name": "MUFA 22:1",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "646",
+      "name": "Fatty acids, total polyunsaturated",
+      "amount": 0.051,
+      "unitName": "g",
+      "derivationDescription": "Calculated"
+    },
+    {
+      "number": "618",
+      "name": "PUFA 18:2",
+      "amount": 0.043,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "619",
+      "name": "PUFA 18:3",
+      "amount": 0.009,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "627",
+      "name": "PUFA 18:4",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "620",
+      "name": "PUFA 20:4",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "629",
+      "name": "PUFA 20:5 n-3 (EPA)",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "631",
+      "name": "PUFA 22:5 n-3 (DPA)",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "621",
+      "name": "PUFA 22:6 n-3 (DHA)",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "605",
+      "name": "Fatty acids, total trans",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    },
+    {
+      "number": "601",
+      "name": "Cholesterol",
+      "amount": 0,
+      "unitName": "mg",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    },
+    {
+      "number": "636",
+      "name": "Phytosterols",
+      "amount": 12,
+      "unitName": "mg",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "500",
+      "name": "Amino acids",
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "501",
+      "name": "Tryptophan",
+      "amount": 0.001,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "502",
+      "name": "Threonine",
+      "amount": 0.006,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "503",
+      "name": "Isoleucine",
+      "amount": 0.006,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "504",
+      "name": "Leucine",
+      "amount": 0.013,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "505",
+      "name": "Lysine",
+      "amount": 0.012,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "506",
+      "name": "Methionine",
+      "amount": 0.001,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "507",
+      "name": "Cystine",
+      "amount": 0.001,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "508",
+      "name": "Phenylalanine",
+      "amount": 0.006,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "509",
+      "name": "Tyrosine",
+      "amount": 0.001,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "510",
+      "name": "Valine",
+      "amount": 0.012,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "511",
+      "name": "Arginine",
+      "amount": 0.006,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "512",
+      "name": "Histidine",
+      "amount": 0.005,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "513",
+      "name": "Alanine",
+      "amount": 0.011,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "514",
+      "name": "Aspartic acid",
+      "amount": 0.07,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "515",
+      "name": "Glutamic acid",
+      "amount": 0.025,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "516",
+      "name": "Glycine",
+      "amount": 0.009,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "517",
+      "name": "Proline",
+      "amount": 0.006,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "518",
+      "name": "Serine",
+      "amount": 0.01,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "221",
+      "name": "Alcohol, ethyl",
+      "amount": 0,
+      "unitName": "g",
+      "derivationDescription": "Analytical"
+    },
+    {
+      "number": "262",
+      "name": "Caffeine",
+      "amount": 0,
+      "unitName": "mg",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    },
+    {
+      "number": "263",
+      "name": "Theobromine",
+      "amount": 0,
+      "unitName": "mg",
+      "derivationDescription": "Assumed zero (Insignificant amount or not naturally occurring in a food, such as fiber in meat)"
+    }
+  ]
+}

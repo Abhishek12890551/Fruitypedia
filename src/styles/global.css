@@ -1,0 +1,274 @@
+/**
+ * Fruitypedia Global Stylesheet
+ *
+ * Import order:
+ * 1. Tailwind v4 base
+ * 2. Self-hosted fonts via fonts.css
+ * 3. Theme configuration (@theme)
+ * 4. Design tokens (:root)
+ * 5. Layered base styles (@layer base)
+ * 6. Layered custom utilities (@layer utilities)
+ *
+ * @see Fruitypedia_Project_Plan §6, §26 (Viewport-First / Fluid Composition)
+ *
+ * Phase 1.5 changes:
+ * - Replaced fixed container-pad breakpoint swap with single fluid clamp() token
+ * - Added semantic fluid typography tokens for the fruit-page system
+ * - Removed static --text-* scale (unused; all sizing is fluid clamp() in components)
+ * - Removed scroll-behavior: smooth (Lenis owns scroll interpolation globally)
+ * - Documented 60-30-10 visual balance rule in fruit theme token section
+ */
+
+/* ─── Tailwind v4 ─────────────────────────────────────────────────── */
+@import "tailwindcss";
+
+/* ─── Self-Hosted Fonts from /fonts/ ───────────────────────────── */
+@import "./fonts.css";
+
+/* ─── Tailwind v4 Theme Configuration ─────────────────────────────── */
+@theme {
+  /* Font Families */
+  --font-display: "Urbanist", system-ui, sans-serif;
+  --font-script: "Ballet", cursive;
+  --font-editorial: "Cormorant Garamond", "Georgia", serif;
+  --font-ui: "Inter", system-ui, sans-serif;
+
+  /* Border Radius */
+  --radius-sm: 0.5rem;     /* 8px */
+  --radius-md: 0.75rem;    /* 12px */
+  --radius-lg: 1.125rem;   /* 18px */
+  --radius-xl: 1.5rem;     /* 24px */
+}
+
+/* ─── Design Tokens (CSS Custom Properties) ───────────────────────── */
+:root {
+  /* ── Global Colors (Locked Editorial Palette) ── */
+  --color-bg: #080808;
+  --color-surface: #111113;
+  --color-surface-elevated: #161619;
+  --color-surface-data: #161619;
+  --color-text-primary: #f4f3ef;
+  --color-text-secondary: #a8a5a0;
+  --color-text-muted: #6b6965;
+  --color-border: #242427;
+  --color-border-strong: #38383e;
+  --color-accent-global: #c8b88a;
+
+  /* ── Fruit Theme Tokens ──────────────────────────────────────────── */
+  /*
+   * 60–30–10 Visual Balance Rule (§6.3):
+   *   60% → near-black base (#0a0a0b, #141416) — dominant visual field
+   *   30% → fruit atmosphere (--fruit-glow, --fruit-gradient-*) — supporting layer
+   *   10% → --fruit-primary accent — high-attention interactive elements only
+   *
+   * Fruit color NEVER becomes a giant flat background.
+   * It controls radial glows, backdrop depth, badges, and active states.
+   */
+  --fruit-primary: #c8b88a;
+  --fruit-secondary: #d4c9a8;
+  --fruit-glow: rgba(200, 184, 138, 0.15);
+  --fruit-gradient-start: #c8b88a;
+  --fruit-gradient-end: #a89868;
+
+  /* ── Fluid Layout Primitives (§6.5, §26.1) ──────────────────────── */
+  /*
+   * Viewport-First / Fluid Composition.
+   * Page padding scales continuously — no breakpoint-swap hacks.
+   * Container constraints are readable-content guards, not canvas sizes.
+   *
+   * Prohibited: fixed 1440px canvas, hardcoded pixel offsets,
+   * designing desktop-first and shrinking for mobile.
+   */
+  --page-pad: clamp(1.25rem, 3.5vw, 3.5rem);
+  --container-content-max: 75rem;  /* readable content constraint ~1200px */
+  --container-wide-max: 90rem;     /* outer guard for ultra-wide ~1440px  */
+
+  /* ── Semantic Fluid Typography Tokens (§6.4) ─────────────────────── */
+  /*
+   * Fruit-page hierarchy (Golden Master — Blueberry):
+   *   Ballet (nickname) → Urbanist (fruit name) → Cormorant Italic (scientific)
+   *   → Cormorant (description/editorial) → Inter (stats/badges/UI)
+   *
+   * All clamp() values tested at 390px (min) through 1920px+ (max).
+   */
+  --type-fruit-name:      clamp(4.5rem, 8.5vw, 8.5rem);
+  --type-nickname:        clamp(1.875rem, 3.5vw, 2.75rem);
+  --type-scientific:      clamp(1.0625rem, 1.6vw, 1.35rem);
+  --type-section-heading: clamp(1.875rem, 3.5vw, 2.75rem);
+  --type-body-editorial:  clamp(1.0625rem, 1.5vw, 1.25rem);
+  --type-stat-value:      clamp(1.625rem, 2.5vw, 2.25rem);
+
+  /* ── Motion Tokens (§25.3) ──────────────────────────────────────── */
+  --duration-micro: 180ms;
+  --duration-ui: 350ms;
+  --duration-editorial: 800ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ─── Layered Base Styles ─────────────────────────────────────────── */
+@layer base {
+  html {
+    font-family: var(--font-ui);
+    font-size: 100%;
+    line-height: 1.6;
+    color: var(--color-text-primary);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* scroll-behavior: smooth intentionally removed — Lenis owns scroll interpolation globally (§4.2) */
+  }
+
+  body {
+    min-height: 100dvh;
+    overflow-x: hidden;
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+  }
+
+  /* Visible focus ring for keyboard navigation */
+  :focus-visible {
+    outline: 2px solid var(--fruit-primary);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--fruit-primary);
+    color: var(--color-bg);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+  }
+}
+
+/* ─── Accessibility & Utilities ───────────────────────────────────── */
+@layer utilities {
+  /* Skip link for keyboard/screen reader users */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-surface-elevated);
+    color: var(--color-text-primary);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-ui);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: top var(--duration-micro) var(--ease-out);
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /*
+   * Fluid page container (§26.1 Viewport-First / Fluid Composition).
+   *
+   * Uses a single fluid clamp() for inline padding — no static breakpoint swap.
+   * max-width guards prevent excessive stretching on ultra-wide displays only;
+   * it is NOT the primary design canvas.
+   */
+  .container-page {
+    width: 100%;
+    max-width: var(--container-wide-max);
+    margin-inline: auto;
+    padding-inline: var(--page-pad);
+  }
+
+  /* Narrower constraint for readable long-form editorial content */
+  .container-content {
+    width: 100%;
+    max-width: var(--container-content-max);
+    margin-inline: auto;
+    padding-inline: var(--page-pad);
+  }
+
+  /* Font utility aliases */
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-script {
+    font-family: var(--font-script);
+  }
+
+  .font-editorial {
+    font-family: var(--font-editorial);
+  }
+
+  .font-ui {
+    font-family: var(--font-ui);
+  }
+
+  /* Sticky Header & Toolbar Scroll Margin Offset */
+  section[id] {
+    scroll-margin-top: clamp(4.5rem, 6vw, 6.5rem);
+  }
+
+  /* ── 3-Tier Chapter Scale System ── */
+  /* Scale A — Major Chapter: Commanding display title with Cormorant Garamond */
+  .chapter-heading-a {
+    font-family: var(--font-editorial);
+    font-size: clamp(2.75rem, 5.8vw, 5.25rem);
+    font-weight: 300;
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--color-text-primary);
+  }
+
+  /* Scale B — Editorial Chapter: Medium editorial section title */
+  .chapter-heading-b {
+    font-family: var(--font-editorial);
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--color-text-primary);
+  }
+
+  /* Scale C — Utility Chapter: Clean functional header */
+  .chapter-heading-c {
+    font-family: var(--font-ui);
+    font-size: clamp(1.125rem, 1.8vw, 1.5rem);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+  }
+}
+
+/* ─── Reduced Motion ──────────────────────────────────────────────── */
+/*
+ * Lenis, GSAP, and ScrollTrigger all check this media query independently.
+ * The CSS rule here handles any residual CSS transitions/animations.
+ * @see SmoothScrollProvider.tsx for Lenis reduced-motion handling.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

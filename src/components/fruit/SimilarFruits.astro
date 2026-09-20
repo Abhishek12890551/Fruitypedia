@@ -1,0 +1,84 @@
+---
+/**
+ * SimilarFruits.astro
+ *
+ * Recommendation & Discovery Bridge.
+ * Connects the current monograph to companion fruits across botanical lineage,
+ * flavor architecture, and biochemistry using authentic studio photography.
+ *
+ * @see Fruitypedia_Project_Plan §12, §19, Phase 2
+ */
+import type { Fruit } from "@/types";
+import { allFruits } from "@/data";
+import FruitCard from "@/components/FruitCard.astro";
+
+interface Props {
+  fruit: Fruit;
+}
+
+const { fruit } = Astro.props;
+
+// Find published fruits that match similarFruitIds or share the category
+let similarFruits = allFruits.filter(
+  (f) => f.id !== fruit.id && (fruit.similarFruitIds.includes(f.id) || f.taxonomy.categoryId === fruit.taxonomy.categoryId)
+);
+
+// If less than 3, supplement with other published fruits to ensure a rich 3-card discovery showcase
+if (similarFruits.length < 3) {
+  const others = allFruits.filter(
+    (f) => f.id !== fruit.id && !similarFruits.some((s) => s.id === f.id)
+  );
+  similarFruits = [...similarFruits, ...others].slice(0, 3);
+} else {
+  similarFruits = similarFruits.slice(0, 3);
+}
+---
+
+<section id="similar" class="section fruit-similar" aria-labelledby="similar-heading">
+  <div class="container-page">
+    <!-- Scale B Editorial Section Header -->
+    <div class="similar-header mb-12">
+      <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-6">
+        <div>
+          <h2 id="similar-heading" class="chapter-heading-b">
+            Explore similar fruits.
+          </h2>
+          <p class="font-editorial text-zinc-400 text-lg sm:text-xl font-light mt-3 max-w-xl">
+            Linked through shared botanical lineage, flavor architecture, and biochemical affinity.
+          </p>
+        </div>
+
+        <a
+          href={`/compare?a=${fruit.slug}`}
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-zinc-800 bg-zinc-950 hover:bg-zinc-900 text-xs font-ui font-medium text-white transition-all self-start sm:self-auto shadow-sm"
+        >
+          <span>Compare {fruit.name} against cohort</span>
+          <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Published Similar Fruits Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {similarFruits.map((item) => (
+        <FruitCard fruit={item} variant="standard" />
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .fruit-similar {
+    padding-block: clamp(6rem, 10vw, 9.5rem);
+    background: var(--color-background);
+  }
+
+  .similar-title {
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+</style>

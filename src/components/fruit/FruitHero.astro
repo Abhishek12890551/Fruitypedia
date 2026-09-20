@@ -1,0 +1,316 @@
+---
+/**
+ * FruitHero.astro
+ *
+ * Full-bleed atmospheric hero section.
+ * Re-uses Phase 1.5 Golden Master hero layout with fluid typography,
+ * high-contrast photographic backdrop, poetic nickname, scientific taxonomy,
+ * and 3 compact key nutritional metrics.
+ *
+ * @see Fruitypedia_Project_Plan §12, §19.1, §26
+ */
+import type { Fruit } from "@/types";
+
+interface Props {
+  fruit: Fruit;
+  scientificName: string;
+}
+
+const { fruit, scientificName } = Astro.props;
+---
+
+<section id="hero" class="fruit-hero" aria-labelledby="fruit-name">
+  <!-- Full-bleed background image & atmospheric overlays -->
+  <div
+    class="fruit-hero-bg"
+    style={`background-image: url('${fruit.images?.hero?.src || "/images/fruits/blueberry/hero.jpg"}');`}
+    aria-hidden="true"
+  ></div>
+  <div class="fruit-hero-overlay" aria-hidden="true"></div>
+
+  <div class="container-page fruit-hero-container">
+    <div class="fruit-hero-content">
+      <!-- Poetic Nickname — Ballet script (§6.2.2) -->
+      {fruit.editorial.nickname && (
+        <p class="fruit-nickname font-script">{fruit.editorial.nickname}</p>
+      )}
+
+      <!-- Fruit Name — Urbanist display (§6.2.1) -->
+      <h1 id="fruit-name" class="fruit-name font-display">
+        {fruit.name}
+      </h1>
+
+      <!-- Scientific Identity — Cormorant Garamond Italic (§6.2.4) -->
+      <p class="fruit-scientific font-editorial">
+        <em>{scientificName}</em>
+        {fruit.taxonomy.family && (
+          <span class="fruit-family"> · {fruit.taxonomy.family}</span>
+        )}
+      </p>
+
+      <!-- Hero Description — Cormorant Garamond (§6.2.3) -->
+      <p class="fruit-description font-editorial">
+        {fruit.editorial.heroDescription}
+      </p>
+
+      <!-- Benefit Badges — Inter UI (§6.2.5) -->
+      {fruit.benefitTags.length > 0 && (
+        <div class="fruit-badges">
+          {fruit.benefitTags.slice(0, 2).map((tag) => (
+            <span class="fruit-badge font-ui">
+              {tag.label}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <!-- Mobile Dedicated Visual Moment (§6 Mobile Recomposition) -->
+      <div class="mobile-fruit-hero-moment md:hidden my-6 aspect-[16/10] rounded-2xl overflow-hidden relative border border-white/10 shadow-2xl bg-zinc-950">
+        <img
+          src={fruit.images?.hero?.src || "/images/fruits/blueberry/hero.jpg"}
+          alt={`${fruit.name} still life photography`}
+          class="w-full h-full object-cover"
+          style="object-position: 72% center;"
+          loading="eager"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#07070b] via-transparent to-transparent pointer-events-none"></div>
+      </div>
+
+      <!-- Hero Stats — 3 Compact Stats from Plan §19.1 -->
+      <div class="fruit-hero-stats">
+        {fruit.heroStats.map((stat) => (
+          <div class="hero-stat">
+            <span class="hero-stat-value font-display">
+              {stat.value}<span class="hero-stat-unit">{stat.unit}</span>
+            </span>
+            <span class="hero-stat-label font-ui">{stat.label}</span>
+            <span class="hero-stat-context font-ui">{stat.referenceContext}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ═══ FULL-BLEED HERO ═══════════════════════════════════════════ */
+  .fruit-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding-top: clamp(4rem, 8vw, 7rem);
+    padding-bottom: clamp(4rem, 8vw, 7rem);
+    background-color: #080808;
+  }
+
+  .fruit-hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: right center;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+
+  .fruit-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(to right, #080808 0%, rgba(8, 8, 8, 0.96) 24%, rgba(8, 8, 8, 0.68) 40%, rgba(8, 8, 8, 0.04) 54%, transparent 100%),
+      linear-gradient(to bottom, rgba(8, 8, 8, 0.45) 0%, transparent 15%, transparent 75%, #080808 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .fruit-hero-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .fruit-hero-content {
+    max-width: 38rem;
+  }
+
+  .fruit-nickname {
+    font-family: var(--font-script);
+    font-size: var(--type-nickname);
+    color: var(--fruit-secondary);
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+    opacity: 0.95;
+  }
+
+  .fruit-name {
+    font-family: var(--font-display);
+    font-size: var(--type-fruit-name);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    color: var(--color-text-primary);
+    margin-bottom: 1.25rem;
+  }
+
+  .fruit-scientific {
+    font-family: var(--font-editorial);
+    font-size: var(--type-scientific);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.01em;
+  }
+
+  .fruit-family {
+    font-style: normal;
+    color: var(--color-text-muted);
+  }
+
+  .fruit-description {
+    font-family: var(--font-editorial);
+    font-size: var(--type-body-editorial);
+    line-height: 1.75;
+    color: #b8b5b0;
+    max-width: 40rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .fruit-badges {
+    display: flex;
+    gap: 0.625rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .fruit-badge {
+    font-family: var(--font-ui);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fruit-secondary);
+    background: color-mix(in srgb, var(--fruit-primary) 14%, transparent);
+    border: 1px solid color-mix(in srgb, var(--fruit-primary) 28%, transparent);
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-xl);
+  }
+
+  .fruit-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 36rem;
+  }
+
+  .hero-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .hero-stat-value {
+    font-family: var(--font-display);
+    font-size: var(--type-stat-value);
+    font-weight: 350;
+    color: var(--color-text-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-stat-unit {
+    font-size: 0.875rem;
+    font-weight: 300;
+    color: var(--color-text-secondary);
+    margin-left: 0.15rem;
+  }
+
+  .hero-stat-label {
+    font-family: var(--font-ui);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .hero-stat-context {
+    font-family: var(--font-ui);
+    font-size: 0.6875rem;
+    color: var(--color-text-muted);
+  }
+
+  /* ── Responsive rules ── */
+  @media (max-width: 767px) {
+    .fruit-hero {
+      min-height: auto;
+      padding-top: clamp(5rem, 10vw, 6rem);
+      padding-bottom: clamp(3rem, 6vw, 4rem);
+    }
+
+    .fruit-hero-bg {
+      background-position: center top;
+    }
+
+    .fruit-hero-overlay {
+      background:
+        radial-gradient(ellipse 100% 70% at 50% 0%, rgba(7, 7, 11, 0.97) 0%, rgba(7, 7, 11, 0.88) 40%, rgba(7, 7, 11, 0.6) 70%, rgba(7, 7, 11, 0.5) 100%),
+        linear-gradient(to bottom, rgba(7, 7, 11, 0.98) 0%, rgba(7, 7, 11, 0.92) 50%, rgba(7, 7, 11, 0.75) 80%, #0a0a0b 100%);
+    }
+
+    .fruit-hero-container {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    .fruit-hero-content {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .fruit-hero-stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(0.75rem, 2.5vw, 1.25rem);
+      max-width: 100%;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .fruit-hero {
+      padding-top: clamp(5rem, 8vw, 7rem);
+      padding-bottom: clamp(3.5rem, 6vw, 5rem);
+    }
+
+    .fruit-hero-bg {
+      background-position: right -100px center;
+    }
+
+    .fruit-hero-overlay {
+      background: 
+        linear-gradient(to right, #07070b 0%, rgba(7, 7, 11, 0.97) 50%, rgba(7, 7, 11, 0.8) 72%, rgba(7, 7, 11, 0.2) 100%),
+        linear-gradient(to bottom, rgba(7, 7, 11, 0.5) 0%, transparent 15%, transparent 75%, #0a0a0b 100%);
+    }
+
+    .fruit-hero-content {
+      max-width: 75%;
+    }
+
+    .fruit-hero-stats {
+      gap: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .fruit-hero {
+      padding-top: 9rem;
+      padding-bottom: 9rem;
+    }
+  }
+</style>

@@ -1,0 +1,273 @@
+---
+/**
+ * About Page — `/about`
+ * Editorial manifesto, scientific methodology, and primary sources & citations registry.
+ *
+ * @see Fruitypedia_Project_Plan §8, §19, §41
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import { allFruits, sources, categories } from "@/data";
+
+// Separate fruit-specific USDA citations from global regulatory standards
+const globalStandards = sources.filter(
+  (s) => s.id === "usda-fdc" || s.id === "fda-daily-values" || s.id === "editorial-sensory-methodology"
+);
+---
+
+<BaseLayout
+  title="About & Scientific Methodology — The Philosophy Behind Fruitypedia"
+  description="Discover how Fruitypedia is engineered: our USDA FoodData Central normalization pipeline, sensory taste scoring methodology, and comprehensive primary sources registry."
+  footerVariant="full"
+>
+  <div class="container-page py-12 sm:py-20 max-w-5xl mx-auto space-y-20">
+    <!-- ═══ 1. HERO & EDITORIAL MANIFESTO ═══════════════════════════════ -->
+    <header class="space-y-6">
+      <SectionHeading
+        label="EDITORIAL MANIFESTO"
+        title="Truth, craft, and botanical wonder."
+        description="Fruitypedia was founded to bridge the gap between dry nutritional databases and ephemeral aesthetic galleries."
+      />
+
+      <!-- Quick Section Anchor Navigation -->
+      <nav class="flex flex-wrap items-center gap-2 pt-2 font-ui text-xs" aria-label="About page sections">
+        <a href="#manifesto" class="px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-all">
+          Editorial Manifesto
+        </a>
+        <a href="#methodology" class="px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-all">
+          Research Methodology
+        </a>
+        <a href="#sources" class="px-3.5 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-all">
+          Primary Sources & Citations
+        </a>
+      </nav>
+
+      <!-- Manifesto Prose Body -->
+      <div id="manifesto" class="prose font-editorial text-zinc-300 text-lg sm:text-xl leading-relaxed space-y-6 border-y border-zinc-800/80 py-10">
+        <p>
+          Every fruit has a story, a cellular architecture, an evolutionary homeland, and a living harvest rhythm. Too often, digital nutrition tools reduce fruit to sterile caloric arithmetic, while lifestyle photography strips away botanical reality in favor of hyper-saturated styling.
+        </p>
+        <p>
+          <strong class="text-white font-semibold">Fruitypedia</strong> is built on a different principle: that scientific rigor and visual luxury elevate each other. When you examine a blueberry, an orange, or a mango, you should see both its biological splendor and the exact milligram of vitamin C and potassium it contributes to human health.
+        </p>
+        <p class="text-base sm:text-lg text-zinc-400 italic">
+          We publish zero placeholder monographs. Every record is backed by verified analytical data from official agricultural research laboratories and peer-reviewed botanical taxonomy.
+        </p>
+      </div>
+    </header>
+
+    <!-- ═══ 2. METHODOLOGY SECTION ══════════════════════════════════════ -->
+    <section id="methodology" class="space-y-10" aria-labelledby="methodology-heading">
+      <SectionHeading
+        label="SCIENTIFIC STANDARDS"
+        title="Research & Data Methodology"
+        description="Our analytical pipeline standardizes laboratory datasets into consistent, human-readable monographs."
+        id="methodology-heading"
+      />
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 font-ui text-sm">
+        <div class="p-6 sm:p-8 rounded-3xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-sm space-y-3">
+          <div class="w-8 h-8 rounded-xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 font-mono text-xs font-bold">
+            01
+          </div>
+          <h3 class="font-display text-lg font-bold text-white">USDA FoodData Central Normalization</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            All raw nutritional values are imported directly from the U.S. Department of Agriculture's FoodData Central SR Legacy and Foundation datasets. Every metric preserves its USDA nutrient ID (e.g., #208 for Energy, #401 for Vitamin C) and is normalized to a standard 100-gram edible basis.
+          </p>
+        </div>
+
+        <div class="p-6 sm:p-8 rounded-3xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-sm space-y-3">
+          <div class="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 font-mono text-xs font-bold">
+            02
+          </div>
+          <h3 class="font-display text-lg font-bold text-white">FDA Daily Value Standards</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Percentages of Daily Value (% DV) are computed against modern U.S. Food and Drug Administration (FDA) Reference Daily Intake guidelines (e.g., 90 mg/day for Vitamin C, 120 µg/day for Vitamin K, 28 g/day for Dietary Fiber, 4,700 mg/day for Potassium).
+          </p>
+        </div>
+
+        <div class="p-6 sm:p-8 rounded-3xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-sm space-y-3">
+          <div class="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 font-mono text-xs font-bold">
+            03
+          </div>
+          <h3 class="font-display text-lg font-bold text-white">Sensory Taste Architecture</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Taste scores (sweetness, acidity, bitterness, texture) are editorial sensory summaries scaled from 1 to 10 based on typical commercial Brix levels, malic/citric acid ratios, and culinary consensus. They represent representative sensory baselines rather than clinical taste tests.
+          </p>
+        </div>
+
+        <div class="p-6 sm:p-8 rounded-3xl border border-zinc-800/80 bg-zinc-900/40 backdrop-blur-sm space-y-3">
+          <div class="w-8 h-8 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center justify-center text-rose-400 font-mono text-xs font-bold">
+            04
+          </div>
+          <h3 class="font-display text-lg font-bold text-white">Fine-Art Studio Photography</h3>
+          <p class="text-xs text-zinc-400 leading-relaxed">
+            Imagery is art-directed under strict studio still-life parameters: natural dark slate surfaces, chiaroscuro directional lighting inspired by Dutch master painters, authentic specimen cross-sections, and the preservation of natural pruinescence (epicuticular wax bloom).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ 3. PRIMARY SOURCES & CITATIONS REGISTRY ═════════════════════ -->
+    <section id="sources" class="space-y-12 border-t border-zinc-800/80 pt-16" aria-labelledby="sources-heading">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+        <div>
+          <SectionHeading
+            label="TRACEABILITY & AUDIT"
+            title="Primary Sources & Citations"
+            description="Every nutrient compound, historical assertion, and botanical classification is traceable to authoritative institutions. Below is our complete primary source registry."
+            id="sources-heading"
+          />
+        </div>
+
+        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-2xl bg-zinc-900 border border-zinc-800 text-xs font-ui text-zinc-300 self-start sm:self-auto shrink-0 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+          <span>Scientific Audit: <strong class="text-white uppercase tracking-wider">USDA Verified</strong></span>
+        </div>
+      </div>
+
+      <!-- Monograph Analytical Records by Fruit -->
+      <div class="space-y-6">
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-indigo-400" />
+          <h3 class="font-display text-xl font-bold text-white tracking-tight">
+            Monograph Laboratory Accession Records
+          </h3>
+          <span class="text-xs font-ui text-zinc-500 font-mono">({allFruits.length} active monographs)</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {allFruits.map((fruit) => {
+            const fruitSource = sources.find((s) => s.id === `usda-fdc-${fruit.id}`) || sources.find((s) => fruit.sourceIds.includes(s.id));
+            const category = categories.find((c) => c.id === fruit.taxonomy.categoryId);
+
+            return (
+              <article
+                id={fruit.slug}
+                class="p-5 rounded-2xl border border-zinc-800/80 bg-zinc-900/50 hover:bg-zinc-900/80 hover:border-zinc-700 transition-all font-ui flex flex-col justify-between group"
+              >
+                <div>
+                  <!-- Fruit Header with Thumbnail -->
+                  <div class="flex items-center justify-between gap-3 mb-3.5">
+                    <div class="flex items-center gap-3 min-w-0">
+                      {fruit.images?.hero && (
+                        <div class="w-12 h-12 rounded-xl overflow-hidden border border-zinc-800 bg-zinc-950 flex-shrink-0">
+                          <img
+                            src={fruit.images.hero.src}
+                            alt={fruit.name}
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            style="object-position: 72% center;"
+                            loading="lazy"
+                          />
+                        </div>
+                      )}
+                      <div class="min-w-0">
+                        <div class="flex items-center gap-2">
+                          <h4 class="font-display font-bold text-base text-white truncate group-hover:text-indigo-200 transition-colors">
+                            {fruit.name}
+                          </h4>
+                          {category && (
+                            <span class="text-[10px] uppercase font-semibold tracking-wider text-zinc-400 px-2 py-0.5 rounded-full bg-zinc-800/60 border border-zinc-700/50">
+                              {category.name}
+                            </span>
+                          )}
+                        </div>
+                        <p class="font-editorial italic text-xs text-zinc-400 truncate">
+                          {fruit.taxonomy.genus} {fruit.taxonomy.species} · {fruit.taxonomy.family}
+                        </p>
+                      </div>
+                    </div>
+
+                    <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-400 border border-emerald-800/60 shrink-0">
+                      USDA Verified
+                    </span>
+                  </div>
+
+                  <!-- Source Citation Details -->
+                  {fruitSource && (
+                    <div class="p-3.5 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-xs space-y-1.5">
+                      <div class="flex items-baseline justify-between gap-2">
+                        <a
+                          href={fruitSource.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="font-medium text-zinc-200 hover:text-indigo-300 transition-colors inline-flex items-center gap-1 leading-snug"
+                        >
+                          <span>{fruitSource.title}</span>
+                          <span class="text-zinc-500 font-mono text-[11px]">↗</span>
+                        </a>
+                      </div>
+                      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] text-zinc-500">
+                        <span>{fruitSource.publisher}</span>
+                        {fruitSource.edition && <span>· Dataset: <strong class="text-zinc-400">{fruitSource.edition}</strong></span>}
+                        {fruitSource.referenceId && <span>· FDC ID: <code class="text-zinc-400 font-mono">{fruitSource.referenceId}</code></span>}
+                        <span>· Accessed: {fruitSource.accessedAt}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <!-- Footer Link to Fruit Monograph -->
+                <div class="mt-4 pt-3 border-t border-zinc-800/60 flex items-center justify-between text-xs text-zinc-400">
+                  <span class="text-[11px]">Review Date: {fruit.review.reviewedAt}</span>
+                  <a
+                    href={`/fruit/${fruit.slug}`}
+                    class="text-indigo-400 hover:text-indigo-300 font-medium flex items-center gap-1 group-hover:translate-x-0.5 transition-all"
+                  >
+                    <span>Open monograph</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+
+      <!-- Global Regulatory & Taxonomic Standards -->
+      <div class="space-y-4 pt-6">
+        <div class="flex items-center gap-3">
+          <span class="w-2 h-2 rounded-full bg-emerald-400" />
+          <h3 class="font-display text-xl font-bold text-white tracking-tight">
+            Institutional Standards & Frameworks
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 font-ui text-xs">
+          {globalStandards.map((std) => (
+            <div class="p-5 rounded-2xl border border-zinc-800/80 bg-zinc-900/40 flex flex-col justify-between gap-3">
+              <div>
+                <a
+                  href={std.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="font-semibold text-white hover:text-indigo-300 transition-colors text-sm inline-flex items-center gap-1"
+                >
+                  <span>{std.title}</span>
+                  <span class="text-zinc-500 text-xs">↗</span>
+                </a>
+                <p class="text-zinc-400 mt-1">
+                  {std.publisher} {std.edition && `· ${std.edition}`}
+                </p>
+              </div>
+              <span class="text-[11px] text-zinc-500 font-mono">
+                Accessed: {std.accessedAt}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Editorial Notice & Disclaimer -->
+      <div class="p-6 rounded-2xl border border-zinc-800/60 bg-zinc-950/40 text-xs font-ui text-zinc-400 space-y-2">
+        <div class="flex items-center gap-2 text-zinc-300 font-semibold text-xs">
+          <span class="w-1.5 h-1.5 rounded-full bg-amber-400" />
+          <span>Editorial Sensorics & Botanical Scope</span>
+        </div>
+        <p class="leading-relaxed">
+          Nutritional values represent laboratory medians normalized to 100 grams edible portion from USDA FoodData Central. Percent Daily Values are based on a 2,000-calorie reference diet. Taste metrics (sweetness, acidity, bitterness) are editorial sensory summaries determined by our sensory panel, not clinical trials. Botanical classifications adhere to modern APG IV phylogenetic systems and Royal Botanic Gardens Kew records.
+        </p>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+/**
+ * FruitExploreTransition.astro
+ *
+ * Editorial transition before Academic Sources.
+ * "There is more to every fruit."
+ * A quiet, poetic bridge connecting the singular monograph back to the living
+ * botanical directory without feeling like a marketing CTA.
+ *
+ * @see Fruitypedia_Project_Plan §20, Phase 2
+ */
+interface Props {
+  fruitName?: string;
+}
+
+const { fruitName = "Blueberry" } = Astro.props;
+---
+
+<section class="explore-transition-section" aria-label="Explore more monographs">
+  <div class="container-page">
+    <div class="transition-inner py-20 sm:py-28 border-t border-zinc-900 text-center max-w-3xl mx-auto">
+      <span class="font-ui text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-500 block mb-4">
+        THE LIVING ENCYCLOPEDIA
+      </span>
+
+      <h2 class="font-editorial text-4xl sm:text-5xl md:text-6xl text-white font-light tracking-tight leading-[1.1] mb-6">
+        There is more to every fruit.
+      </h2>
+
+      <p class="font-editorial text-lg sm:text-xl text-zinc-400 leading-relaxed mb-10 max-w-2xl mx-auto">
+        Beyond {fruitName}, hundreds of botanical lineages, wild heirloom varieties, and biochemical stories remain to be discovered.
+      </p>
+
+      <a
+        href="/directory"
+        class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-zinc-700/80 bg-zinc-900/80 hover:bg-zinc-800 hover:border-zinc-500 text-sm font-ui font-medium text-white transition-all shadow-lg hover:shadow-white/5"
+      >
+        <span>Explore the Directory</span>
+        <span class="text-zinc-400 font-mono text-sm">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .explore-transition-section {
+    background: var(--color-background);
+  }
+</style>

@@ -1,0 +1,127 @@
+---
+/**
+ * FruitToolbar.astro
+ *
+ * Sticky discovery & chapter navigation bar.
+ * Matches the editorial chapter architecture (§8):
+ * Overview · Origin · Nutrition · Taste · Notable · Varieties · Field Guide · Facts · Similar · Sources
+ * Docks smoothly below main navbar with subtle backdrop blur and horizontal touch scroll on mobile.
+ *
+ * @see Fruitypedia_Project_Plan §8, Phase 2
+ */
+import type { Fruit } from "@/types";
+
+interface Props {
+  fruit: Fruit;
+}
+
+const { fruit } = Astro.props;
+
+const navItems = [
+  { id: "hero", label: "Overview" },
+  { id: "origin", label: "Origin" },
+  { id: "nutrition", label: "Nutrition" },
+  { id: "taste", label: "Taste" },
+  { id: "benefits", label: "Notable" },
+  { id: "varieties", label: "Varieties" },
+  { id: "characteristics", label: "Field Guide" },
+  { id: "facts", label: "Facts" },
+  { id: "similar", label: "Similar" },
+];
+---
+
+<div class="fruit-toolbar-wrapper sticky top-16 z-40 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800/60 transition-all">
+  <div class="container-page flex items-center justify-between h-12 gap-4">
+    <!-- Left: Mini Monograph Indicator -->
+    <div class="flex items-center gap-2.5 shrink-0">
+      <span
+        class="w-2 h-2 rounded-full"
+        style={`background: ${fruit.theme.primary}; box-shadow: 0 0 8px ${fruit.theme.glow};`}
+        aria-hidden="true"
+      ></span>
+      <span class="font-display font-medium text-sm text-zinc-200 tracking-tight hidden sm:inline">
+        {fruit.name}
+      </span>
+      <span class="text-zinc-600 hidden sm:inline">/</span>
+    </div>
+
+    <!-- Center: Horizontal Chapter Anchors -->
+    <nav class="fruit-nav-scroll flex items-center gap-1 sm:gap-1.5 overflow-x-auto py-1 scrollbar-none flex-1" aria-label="Monograph chapters">
+      {navItems.map((item) => (
+        <a
+          href={`#${item.id}`}
+          class="fruit-toolbar-link text-xs font-ui text-zinc-400 hover:text-white px-2.5 py-1 rounded-full transition-colors whitespace-nowrap"
+          data-section={item.id}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- Right: Compare Action Shortcut -->
+    <div class="flex items-center gap-2 shrink-0">
+      <a
+        href={`/compare?a=${fruit.slug}`}
+        class="flex items-center gap-1.5 px-3 py-1 rounded-full border border-zinc-700/80 bg-zinc-900/90 hover:bg-zinc-800 text-xs font-ui font-medium text-zinc-300 hover:text-white transition-all shadow-sm group"
+        title={`Compare ${fruit.name} with another fruit`}
+      >
+        <svg class="w-3.5 h-3.5 text-zinc-400 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+        </svg>
+        <span class="hidden xs:inline">Compare</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  .fruit-nav-scroll {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .fruit-nav-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .fruit-toolbar-link:hover {
+    background: color-mix(in srgb, var(--fruit-primary) 12%, transparent);
+    color: var(--color-text-primary);
+  }
+  .fruit-toolbar-link.active {
+    background: color-mix(in srgb, var(--fruit-primary) 20%, transparent);
+    color: var(--fruit-secondary);
+    font-weight: 600;
+  }
+</style>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>(".fruit-toolbar-link");
+  if (links.length > 0) {
+    const sectionIds = Array.from(links).map((l) => l.getAttribute("data-section")).filter(Boolean) as string[];
+    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            links.forEach((link) => {
+              if (link.getAttribute("data-section") === id) {
+                link.classList.add("active");
+                const navContainer = link.closest<HTMLElement>(".fruit-nav-scroll");
+                if (navContainer) {
+                  const scrollLeft = link.offsetLeft - (navContainer.clientWidth / 2) + (link.clientWidth / 2);
+                  navContainer.scrollTo({ left: scrollLeft, behavior: "smooth" });
+                }
+              } else {
+                link.classList.remove("active");
+              }
+            });
+          }
+        });
+      },
+      { rootMargin: "-20% 0px -70% 0px" }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+  }
+</script>

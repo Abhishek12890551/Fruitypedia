@@ -1,0 +1,291 @@
+---
+/**
+ * FruitIntro.astro
+ *
+ * Serene editorial monograph introduction.
+ * Features a bold typographic thesis statement, rich prose narrative,
+ * and a quiet, minimalist botanical taxonomy panel.
+ *
+ * @see Fruitypedia_Project_Plan §12, §19, Phase 2
+ */
+import type { Fruit, Category } from "@/types";
+
+interface Props {
+  fruit: Fruit;
+  category?: Category;
+}
+
+const { fruit, category } = Astro.props;
+
+// Editorial thesis statements per fruit
+const INTRO_STATEMENTS: Record<
+  string,
+  { line1: string; line2: string; line3: string; body: string }
+> = {
+  blueberry: {
+    line1: "Small fruit.",
+    line2: "Deep color.",
+    line3: "Complex character.",
+    body: "Native to the acidic bogs and misty pine barrens of North America, the blueberry represents a rare botanical archetype: an unadulterated wild fruit domesticated within the last century that retains its primal genomic resilience. Beyond its culinary ubiquity, its intense pigment reflects one of nature's highest concentrations of bioavailable anthocyanins.",
+  },
+  strawberry: {
+    line1: "Scarlet flesh.",
+    line2: "Exterior seeds.",
+    line3: "Unrivaled aroma.",
+    body: "Born from an extraordinary eighteenth-century transatlantic hybridization, the strawberry represents a rare botanical marvel: an aggregate accessory fruit whose true fruits are miniature achenes studded across a succulent floral receptacle. Its intoxicating aroma, driven by dozens of volatile esters and furaneols, makes it an enduring icon of temperate horticulture.",
+  },
+  orange: {
+    line1: "Sunlit hesperidium.",
+    line2: "Radial carpels.",
+    line3: "Citric vitality.",
+    body: "Arising thousands of years ago in the subtropical valleys of Southeast Asia from the ancient union of pummelo and mandarin, the sweet orange represents the zenith of citrus evolution. Protected within an oil-dense aromatic flavedo, its jewel-like juice vesicles store pure crystalline sunshine, delivering world-defining ascorbic acid density and brisk citric sweetness.",
+  },
+  mango: {
+    line1: "Saffron flesh.",
+    line2: "Tropical crown.",
+    line3: "Ancient nobility.",
+    body: "Cultivated for over four thousand years across the fertile river valleys of the Indian subcontinent, the mango reigns as the undisputed sovereign of tropical fruits. Revered in ancient Sanskrit texts as 'amra', its lush, saffron-hued pulp yields a heady symphony of floral monoterpenes and honeyed sweetness, backed by potent concentrations of protective carotenoids and the unique therapeutic xanthone mangiferin.",
+  },
+};
+
+const introMeta = INTRO_STATEMENTS[fruit.id] || {
+  line1: "Ancient lineage.",
+  line2: "Pure nutrition.",
+  line3: "Natural complexity.",
+  body: `${fruit.name} is a celebrated specimen within the ${fruit.taxonomy.family} family, combining exceptional micronutrient density with rich cultural provenance.`,
+};
+---
+
+<section id="intro" class="section fruit-intro" aria-labelledby="intro-heading">
+  <div class="container-page">
+    <!-- Scale A Major Chapter Header -->
+    <div class="mb-14 lg:mb-20">
+      <h2 id="intro-heading" class="sr-only">About {fruit.name}</h2>
+      <p class="chapter-heading-a editorial-statement">
+        {introMeta.line1}<br class="hidden sm:inline" />
+        {introMeta.line2}<br class="hidden sm:inline" />
+        <span class="text-zinc-400 italic">{introMeta.line3}</span>
+      </p>
+    </div>
+
+    <!-- Editorial 2-Column Split -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      <!-- Main Narrative Column (Level 1 — No Container) -->
+      <div class="lg:col-span-8 space-y-6">
+        <p class="lead-prose font-editorial">
+          {fruit.editorial.heroDescription}
+        </p>
+
+        <p class="body-prose font-editorial">
+          {introMeta.body}
+        </p>
+
+        {category && (
+          <div class="intro-lineage font-ui">
+            <span class="text-zinc-400">Botanical lineage:</span>
+            <span class="text-zinc-200 font-medium">{fruit.taxonomy.family}</span>
+            <span class="text-zinc-400">·</span>
+            <a href={`/directory?category=${category.id}`} class="lineage-link">
+              {category.name} family
+            </a>
+          </div>
+        )}
+
+        {fruit.taxonomy.botanicalNotes && fruit.taxonomy.botanicalNotes.length > 0 && (
+          <div class="botanical-insights pt-4 border-t border-zinc-800/60">
+            {fruit.taxonomy.botanicalNotes.map((note) => (
+              <p class="botanical-insight-item font-editorial">
+                <span class="ornament font-serif">❧</span>
+                <span>{note}</span>
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <!-- Right Column: Quiet Taxonomy Sidebar (Level 2 — Subtle Surface) -->
+      <aside class="lg:col-span-4 taxonomy-aside" aria-label="Botanical Taxonomy">
+        <div class="taxonomy-header font-ui">
+          <span>SCIENTIFIC IDENTITY</span>
+          <span class="taxonomy-dot" aria-hidden="true">●</span>
+        </div>
+
+        <dl class="taxonomy-list font-ui">
+          <div class="taxonomy-row">
+            <dt>Family</dt>
+            <dd>{fruit.taxonomy.family}</dd>
+          </div>
+          {fruit.taxonomy.genus && (
+            <div class="taxonomy-row">
+              <dt>Genus</dt>
+              <dd class="italic font-editorial text-sm">{fruit.taxonomy.genus}</dd>
+            </div>
+          )}
+          {fruit.taxonomy.species && (
+            <div class="taxonomy-row">
+              <dt>Species</dt>
+              <dd class="italic font-editorial text-sm">{fruit.taxonomy.species}</dd>
+            </div>
+          )}
+          {category && (
+            <div class="taxonomy-row">
+              <dt>Category</dt>
+              <dd>{category.name}</dd>
+            </div>
+          )}
+          <div class="taxonomy-row">
+            <dt>Native Origin</dt>
+            <dd>{fruit.origin.region}</dd>
+          </div>
+          {fruit.season.length > 0 && fruit.season[0].label && (
+            <div class="taxonomy-row season-row">
+              <dt>Peak Harvest</dt>
+              <dd>{fruit.season[0].label}</dd>
+            </div>
+          )}
+        </dl>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fruit-intro {
+    padding-block: clamp(6rem, 10vw, 9.5rem);
+    background-color: var(--color-background);
+  }
+
+  .section-label {
+    font-family: var(--font-ui);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    color: var(--color-text-muted);
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  .editorial-statement {
+    font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+    font-weight: 300;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+    color: var(--color-text-primary);
+    max-width: 58rem;
+  }
+
+  .lead-prose {
+    font-size: clamp(1.1875rem, 1.8vw, 1.375rem);
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+  }
+
+  .body-prose {
+    font-size: 1.0625rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+  }
+
+  .intro-lineage {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    padding-block: 0.85rem;
+  }
+
+  .lineage-link {
+    color: var(--fruit-primary);
+    text-decoration: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--fruit-primary) 35%, transparent);
+    transition: border-color var(--duration-micro) var(--ease-out);
+  }
+
+  .lineage-link:hover {
+    border-bottom-color: var(--fruit-primary);
+  }
+
+  .botanical-insights {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .botanical-insight-item {
+    display: flex;
+    gap: 0.65rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--color-text-muted);
+    font-style: italic;
+  }
+
+  .ornament {
+    color: var(--fruit-secondary);
+    font-style: normal;
+    flex-shrink: 0;
+  }
+
+  /* Quiet Taxonomy Aside (Level 2) */
+  .taxonomy-aside {
+    padding-left: clamp(0rem, 2vw, 2.5rem);
+    border-left: 1px solid var(--color-border);
+  }
+
+  .taxonomy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 1.25rem;
+  }
+
+  .taxonomy-dot {
+    color: var(--fruit-primary);
+    font-size: 0.5rem;
+  }
+
+  .taxonomy-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .taxonomy-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .taxonomy-row dt {
+    color: var(--color-text-muted);
+  }
+
+  .taxonomy-row dd {
+    color: var(--color-text-primary);
+    font-weight: 500;
+    text-align: right;
+  }
+
+  .season-row {
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--color-border);
+  }
+
+  @media (max-width: 1023px) {
+    .taxonomy-aside {
+      padding-left: 0;
+      border-left: none;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-border);
+    }
+  }
+</style>

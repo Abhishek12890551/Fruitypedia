@@ -1,0 +1,255 @@
+---
+/**
+ * FruitTaste.astro
+ *
+ * Sensory taste architecture (0–10 scale).
+ * Editorial rhythm: Left column large statement ("Sweet first. Tart at the edge.")
+ * and sommelier critique -> Right column 4 minimalist editorial sensory scales
+ * (Sweet, Tart, Juicy, Aromatic) with subtle sensory descriptors below.
+ *
+ * @see Fruitypedia_Project_Plan §14, §19.5, Phase 2
+ */
+import type { Fruit } from "@/types";
+
+interface Props {
+  fruit: Fruit;
+}
+
+const { fruit } = Astro.props;
+
+// Editorial sensory continua
+const sensoryScales = [
+  {
+    label: "Sweet",
+    score: fruit.tasteProfile.sweetness.value ?? 6,
+    left: "Crisp & Subdued",
+    right: "Richly Honeyed",
+  },
+  {
+    label: "Tart",
+    score: fruit.tasteProfile.acidity.value ?? 4,
+    left: "Mild & Soft",
+    right: "Briskly Citric",
+  },
+  {
+    label: "Juicy",
+    score: fruit.id === "peach" ? 9 : fruit.id === "banana" ? 3 : fruit.id === "mango" ? 9 : fruit.id === "strawberry" ? 9 : 8,
+    left: "Dense & Fleshy",
+    right: "Fluid & Bursting",
+  },
+  {
+    label: "Aromatic",
+    score: fruit.id === "peach" ? 8 : fruit.id === "banana" ? 8 : fruit.id === "mango" ? 9 : fruit.id === "strawberry" ? 9 : 7,
+    left: "Subtle & Clean",
+    right: "Muscat & Floral",
+  },
+];
+
+const TASTE_METAS: Record<
+  string,
+  { lead: string; accent: string; descriptors: string[] }
+> = {
+  blueberry: {
+    lead: "Sweet first.",
+    accent: "Tart at the edge.",
+    descriptors: ["Fresh", "Juicy", "Tart", "Floral", "Earthy", "Velvet Skin"],
+  },
+  strawberry: {
+    lead: "Fragrant first.",
+    accent: "Bright & briskly sweet.",
+    descriptors: [
+      "Aromatic",
+      "Juicy",
+      "Honeyed",
+      "Wild Floral",
+      "Ruby Acid",
+      "Tender Seed",
+    ],
+  },
+  orange: {
+    lead: "Citric first.",
+    accent: "Bursting with nectar.",
+    descriptors: [
+      "Zesty Limonene",
+      "Juicy",
+      "Sweet Sunshine",
+      "Bright Acid",
+      "Tangy Pith",
+      "Fresh Vesicle",
+    ],
+  },
+  mango: {
+    lead: "Honeyed first.",
+    accent: "Lush tropical warmth.",
+    descriptors: [
+      "Floral Terpene",
+      "Buttery Velvet",
+      "Tropical Saffron",
+      "Rich Nectar",
+      "Mild Acidity",
+      "Aromatic Resin",
+    ],
+  },
+  banana: {
+    lead: "Creamy first.",
+    accent: "Custardy & comforting.",
+    descriptors: [
+      "Velvety Fleshy",
+      "Custard Sweet",
+      "Isoamyl Ester",
+      "Warm Vanilla",
+      "Prebiotic Pectin",
+      "Gentle Honey",
+    ],
+  },
+  peach: {
+    lead: "Summer nectar.",
+    accent: "Melting & floral.",
+    descriptors: [
+      "Lactonic Peach",
+      "Summer Nectar",
+      "Velvet Skin",
+      "Rose Floral",
+      "Delicate Acid",
+      "Corrugated Stone",
+    ],
+  },
+};
+
+const tasteMeta = TASTE_METAS[fruit.id] || {
+  lead: `${fruit.name} balance.`,
+  accent: "Pure sensory profile.",
+  descriptors: ["Fresh", "Aromatic", "Sweet", "Juicy", "Crisp"],
+};
+---
+
+<section id="taste" class="section fruit-taste" aria-labelledby="taste-heading">
+  <div class="container-page">
+    <!-- Scale A Major Chapter Header -->
+    <div class="taste-header mb-14 lg:mb-20">
+      <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+        <h2 id="taste-heading" class="chapter-heading-a">
+          How {fruit.name}<br />
+          tastes.
+        </h2>
+        <span class="taste-method font-ui text-xs text-zinc-500">
+          Editorial Sensory Evaluation · Calibrated Tasting Rubric
+        </span>
+      </div>
+    </div>
+
+    <!-- Editorial Two-Column Composition -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+      <!-- Left Column: Commanding Statement + Sommelier Critique -->
+      <div class="lg:col-span-6 space-y-8">
+        <div class="taste-headline font-editorial text-white leading-[0.98]">
+          {tasteMeta.lead}<br />
+          <span class="taste-accent italic">{tasteMeta.accent}</span>
+        </div>
+
+        <p class="font-editorial text-2xl sm:text-3xl text-zinc-300 font-light leading-relaxed italic">
+          “{fruit.tasteProfile.notes}”
+        </p>
+
+        <div class="pt-2 flex items-center gap-3">
+          <span
+            class="w-1.5 h-1.5 rounded-full"
+            style={`background-color: ${fruit.theme.primary};`}
+          ></span>
+          <span class="font-ui text-xs text-zinc-400 tracking-wide uppercase">
+            Tasting Panel Rubric §19.5
+          </span>
+        </div>
+      </div>
+
+      <!-- Right Column: Minimalist Sensory Scales -->
+      <div class="lg:col-span-6 space-y-8 lg:pt-2">
+        <div class="space-y-7">
+          {sensoryScales.map((scale) => (
+            <div class="sensory-scale-row">
+              <div class="flex justify-between items-baseline mb-2">
+                <span class="font-ui text-xs font-semibold uppercase tracking-wider text-zinc-200">
+                  {scale.label}
+                </span>
+                <span class="font-display text-sm text-zinc-400 tabular-nums">
+                  {scale.score} <span class="text-[10px] text-zinc-600 font-ui">/ 10</span>
+                </span>
+              </div>
+
+              <!-- Continuum Track with Luminous Tailing Line & Bead Indicator -->
+              <div class="relative py-2">
+                <div class="scale-track w-full h-[3px] bg-zinc-800/90 relative rounded-full overflow-visible">
+                  <!-- Luminous tailing line trailing from 0 to current score -->
+                  <div
+                    class="scale-trail absolute top-0 left-0 h-full rounded-full"
+                    style={`width: ${scale.score * 10}%; background: linear-gradient(90deg, ${fruit.theme.primary}33 0%, ${fruit.theme.primary}99 60%, ${fruit.theme.secondary} 100%);`}
+                  ></div>
+                  <!-- Soft bloom glow behind the tailing line -->
+                  <div
+                    class="scale-glow absolute top-0 left-0 h-full rounded-full blur-[3px]"
+                    style={`width: ${scale.score * 10}%; background: ${fruit.theme.primary}44;`}
+                  ></div>
+                  <!-- Bead Indicator at the tip of the tailing line -->
+                  <div
+                    class="scale-indicator absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white transition-transform duration-300 shadow-md"
+                    style={`left: calc(${scale.score * 10}% - 7px); border: 2px solid ${fruit.theme.secondary}; box-shadow: 0 0 12px ${fruit.theme.primary}cc;`}
+                  ></div>
+                </div>
+
+                <div class="flex justify-between text-[10px] font-ui text-zinc-500 uppercase tracking-wider mt-2.5">
+                  <span>{scale.left}</span>
+                  <span>{scale.right}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Subtle Sensory Descriptors Strip -->
+        <div class="descriptors-wrapper pt-6 border-t border-zinc-900">
+          <span class="font-ui text-[10px] uppercase tracking-widest text-zinc-500 block mb-3">
+            Dominant Sensory Notes
+          </span>
+          <div class="flex flex-wrap gap-2">
+            {tasteMeta.descriptors.map((desc) => (
+              <span class="descriptor-pill font-ui text-xs text-zinc-300">
+                {desc}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fruit-taste {
+    padding-block: clamp(6rem, 10vw, 9.5rem);
+    background: var(--color-background);
+  }
+
+  .taste-headline {
+    font-size: clamp(2.75rem, 5vw, 4.5rem);
+    letter-spacing: -0.03em;
+    font-weight: 300;
+  }
+
+  .taste-accent {
+    color: var(--fruit-secondary);
+  }
+
+  .descriptor-pill {
+    padding: 0.35rem 0.85rem;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all var(--duration-micro) var(--ease-out);
+  }
+
+  .descriptor-pill:hover {
+    border-color: var(--fruit-secondary);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+</style>

@@ -1,0 +1,366 @@
+---
+/**
+ * Directory Page — `/directory`
+ * Scalable interactive catalog with category filtering, instant search, and multi-metric sorting.
+ *
+ * @see Fruitypedia_Project_Plan §10, §36 (Phase 3)
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import FruitCard from "@/components/FruitCard.astro";
+import { allFruits, categories, getProductionFruitCount } from "@/data";
+
+const fruitCount = getProductionFruitCount();
+---
+
+<BaseLayout
+  title="Directory — Curated Catalog of Fruits"
+  description="Explore the complete Fruitypedia catalog. Filter by family, sort by nutrient metrics, and investigate peer-reviewed botanical profiles."
+>
+  <div class="container-page py-12 sm:py-20">
+    <SectionHeading
+      label="CURATED CATALOG"
+      title="The Fruit Directory"
+      description="Every fruit in this catalog is backed by real nutritional biochemistry and botanical taxonomy. Filter by family, search attributes, or sort by nutrients."
+    />
+
+    <!-- Filter, Search & Sort Toolbar -->
+    <div class="space-y-4 py-6 border-y border-zinc-800/80 mb-10">
+      <!-- Category Pills -->
+      <div class="flex flex-wrap items-center gap-2 font-ui text-xs">
+        <button
+          type="button"
+          data-category-filter="all"
+          class="category-btn px-3.5 py-1.5 rounded-lg bg-white text-zinc-950 font-semibold shadow-sm transition-all cursor-pointer"
+        >
+          All Families ({fruitCount})
+        </button>
+        {categories.map((cat) => (
+          <button
+            type="button"
+            data-category-filter={cat.id}
+            class="category-btn px-3.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all cursor-pointer"
+          >
+            {cat.name}
+          </button>
+        ))}
+      </div>
+
+      <!-- Controls Row: Search Input + Sort Dropdown + Modal Trigger -->
+      <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2">
+        <div class="flex items-center gap-3 flex-1 max-w-md">
+          <!-- Live Text Filter -->
+          <div class="relative flex-1">
+            <svg
+              class="w-4 h-4 text-zinc-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            <input
+              id="directory-search-input"
+              type="text"
+              placeholder="Filter by name or taxonomy..."
+              class="w-full bg-zinc-900/90 border border-zinc-800 rounded-xl pl-9 pr-8 py-2 text-xs font-ui text-white placeholder-zinc-500 outline-none focus:border-zinc-600 transition-colors"
+            />
+            <button
+              id="clear-search-btn"
+              type="button"
+              class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-white text-xs p-1"
+              aria-label="Clear filter"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <!-- Sort Selector -->
+          <div class="flex items-center gap-2 font-ui text-xs text-zinc-400">
+            <label for="directory-sort" class="hidden sm:inline">Sort by:</label>
+            <select
+              id="directory-sort"
+              class="bg-zinc-900 border border-zinc-800 rounded-xl px-3 py-2 text-xs font-ui text-zinc-300 outline-none focus:border-zinc-700 cursor-pointer"
+            >
+              <option value="default">Default Catalog</option>
+              <option value="name-asc">Name (A → Z)</option>
+              <option value="name-desc">Name (Z → A)</option>
+              <option value="calories-asc">Calories (Low to High)</option>
+              <option value="calories-desc">Calories (High to Low)</option>
+              <option value="vitaminc-desc">Vitamin C (Highest First)</option>
+              <option value="sugars-asc">Sugars (Lowest First)</option>
+              <option value="potassium-desc">Potassium (Highest First)</option>
+            </select>
+          </div>
+
+          <!-- Deep Command Palette Trigger -->
+          <button
+            type="button"
+            onclick="window.dispatchEvent(new CustomEvent('open-search'))"
+            class="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-xs font-ui text-zinc-400 hover:text-white hover:border-zinc-700 transition-all cursor-pointer flex-shrink-0"
+          >
+            <span>Deep Search</span>
+            <kbd class="text-[10px] px-1 py-0.5 bg-zinc-800 rounded border border-zinc-700 font-mono text-zinc-400">⌘K</kbd>
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Count Display -->
+      <div class="flex items-center justify-between text-xs font-ui text-zinc-500 pt-1">
+        <span id="directory-counter">
+          Showing {fruitCount} of {fruitCount} production monographs
+        </span>
+        <span id="active-filter-indicator" class="text-zinc-400 hidden"></span>
+      </div>
+    </div>
+
+    <!-- Fruit Grid -->
+    <div id="fruit-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-opacity duration-200">
+      {allFruits.map((fruit) => (
+        <FruitCard fruit={fruit} variant="standard" />
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div
+      id="directory-empty-state"
+      class="hidden py-16 text-center space-y-4 rounded-3xl border border-zinc-800/80 bg-zinc-950/40 p-8 my-8"
+    >
+      <div class="w-12 h-12 mx-auto rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 text-xl">
+        🔍
+      </div>
+      <div>
+        <h4 class="font-display text-lg font-semibold text-white">No fruits match your criteria</h4>
+        <p class="text-xs text-zinc-400 mt-1 max-w-sm mx-auto">
+          No monograph in the catalog currently satisfies this filter combination. Try resetting the family or search query.
+        </p>
+      </div>
+      <div>
+        <button
+          id="reset-all-filters-btn"
+          type="button"
+          class="px-4 py-2 rounded-xl bg-white text-zinc-950 font-ui text-xs font-semibold hover:bg-zinc-200 transition-all shadow-md cursor-pointer"
+        >
+          Reset All Filters
+        </button>
+      </div>
+    </div>
+
+    <!-- Scalable Catalog Note -->
+    <div class="mt-16 p-8 rounded-2xl border border-zinc-800/80 bg-zinc-950/40 text-center max-w-2xl mx-auto font-ui">
+      <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 mb-2" />
+      <h3 class="text-white font-display text-lg font-semibold">
+        Transparent Editorial Standard
+      </h3>
+      <p class="text-xs text-zinc-400 mt-1 leading-relaxed">
+        Fruitypedia only publishes monographs backed by verified USDA FoodData Central analytical records and reviewed botanical taxonomy. The launch catalog of 8 core production fruits is fully normalized, verified, and cross-referenced.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  function initDirectory() {
+    const grid = document.getElementById("fruit-grid");
+    if (!grid) return;
+
+    const cards = Array.from(grid.querySelectorAll<HTMLElement>("[data-fruit-card]"));
+    const totalCount = cards.length;
+    const categoryButtons = Array.from(document.querySelectorAll<HTMLButtonElement>(".category-btn"));
+    const searchInput = document.getElementById("directory-search-input") as HTMLInputElement | null;
+    const clearSearchBtn = document.getElementById("clear-search-btn");
+    const sortSelect = document.getElementById("directory-sort") as HTMLSelectElement | null;
+    const counterEl = document.getElementById("directory-counter");
+    const emptyState = document.getElementById("directory-empty-state");
+    const resetFiltersBtn = document.getElementById("reset-all-filters-btn");
+    const filterIndicator = document.getElementById("active-filter-indicator");
+
+    let currentCategory = "all";
+    let currentSearch = "";
+    let currentSort = "default";
+
+    // Read initial category from URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get("category");
+    if (initialCategory) {
+      currentCategory = initialCategory;
+    }
+
+    function updateCategoryUI() {
+      categoryButtons.forEach((btn) => {
+        const cat = btn.getAttribute("data-category-filter");
+        if (cat === currentCategory) {
+          btn.className =
+            "category-btn px-3.5 py-1.5 rounded-lg bg-white text-zinc-950 font-semibold shadow-sm transition-all cursor-pointer";
+        } else {
+          btn.className =
+            "category-btn px-3.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all cursor-pointer";
+        }
+      });
+    }
+
+    function applyFiltersAndSort() {
+      if (!grid) return;
+
+      let visibleCards = cards.filter((card) => {
+        // Category check
+        const cardCategory = card.getAttribute("data-category");
+        const categoryMatch = currentCategory === "all" || cardCategory === currentCategory;
+
+        // Search check
+        const cardName = card.getAttribute("data-name") || "";
+        const searchMatch = !currentSearch || cardName.includes(currentSearch);
+
+        return categoryMatch && searchMatch;
+      });
+
+      // Sort visible cards
+      visibleCards.sort((a, b) => {
+        if (currentSort === "name-asc") {
+          return (a.getAttribute("data-name") || "").localeCompare(b.getAttribute("data-name") || "");
+        }
+        if (currentSort === "name-desc") {
+          return (b.getAttribute("data-name") || "").localeCompare(a.getAttribute("data-name") || "");
+        }
+        if (currentSort === "calories-asc") {
+          return parseFloat(a.getAttribute("data-calories") || "0") - parseFloat(b.getAttribute("data-calories") || "0");
+        }
+        if (currentSort === "calories-desc") {
+          return parseFloat(b.getAttribute("data-calories") || "0") - parseFloat(a.getAttribute("data-calories") || "0");
+        }
+        if (currentSort === "vitaminc-desc") {
+          return parseFloat(b.getAttribute("data-vitamin-c") || "0") - parseFloat(a.getAttribute("data-vitamin-c") || "0");
+        }
+        if (currentSort === "sugars-asc") {
+          return parseFloat(a.getAttribute("data-sugars") || "0") - parseFloat(b.getAttribute("data-sugars") || "0");
+        }
+        if (currentSort === "potassium-desc") {
+          return parseFloat(b.getAttribute("data-potassium") || "0") - parseFloat(a.getAttribute("data-potassium") || "0");
+        }
+        return 0; // default order
+      });
+
+      // Re-order DOM elements inside grid
+      visibleCards.forEach((card) => {
+        card.style.display = "";
+        grid.appendChild(card);
+      });
+
+      // Hide non-matching cards
+      cards.forEach((card) => {
+        if (!visibleCards.includes(card)) {
+          card.style.display = "none";
+        }
+      });
+
+      // Update counter & empty state
+      if (counterEl) {
+        counterEl.textContent = `Showing ${visibleCards.length} of ${totalCount} production monographs`;
+      }
+
+      if (emptyState) {
+        if (visibleCards.length === 0) {
+          emptyState.classList.remove("hidden");
+          grid.classList.add("hidden");
+        } else {
+          emptyState.classList.add("hidden");
+          grid.classList.remove("hidden");
+        }
+      }
+
+      if (filterIndicator) {
+        if (currentCategory !== "all" || currentSearch) {
+          filterIndicator.classList.remove("hidden");
+          filterIndicator.textContent = `Filtered: ${currentCategory !== "all" ? currentCategory : ""} ${currentSearch ? `"${currentSearch}"` : ""}`.trim();
+        } else {
+          filterIndicator.classList.add("hidden");
+        }
+      }
+
+      if (clearSearchBtn) {
+        if (currentSearch) {
+          clearSearchBtn.classList.remove("hidden");
+        } else {
+          clearSearchBtn.classList.add("hidden");
+        }
+      }
+    }
+
+    // Category button clicks
+    categoryButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const cat = btn.getAttribute("data-category-filter") || "all";
+        currentCategory = cat;
+        updateCategoryUI();
+
+        // Update URL query parameter without reload
+        const newUrl = new URL(window.location.href);
+        if (cat === "all") {
+          newUrl.searchParams.delete("category");
+        } else {
+          newUrl.searchParams.set("category", cat);
+        }
+        window.history.pushState({}, "", newUrl.toString());
+
+        applyFiltersAndSort();
+      });
+    });
+
+    // In-page search input
+    if (searchInput) {
+      searchInput.addEventListener("input", () => {
+        currentSearch = searchInput.value.toLowerCase().trim();
+        applyFiltersAndSort();
+      });
+    }
+
+    if (clearSearchBtn && searchInput) {
+      clearSearchBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        currentSearch = "";
+        applyFiltersAndSort();
+        searchInput.focus();
+      });
+    }
+
+    // Sort dropdown change
+    if (sortSelect) {
+      sortSelect.addEventListener("change", () => {
+        currentSort = sortSelect.value;
+        applyFiltersAndSort();
+      });
+    }
+
+    // Reset button
+    if (resetFiltersBtn) {
+      resetFiltersBtn.addEventListener("click", () => {
+        currentCategory = "all";
+        currentSearch = "";
+        currentSort = "default";
+        if (searchInput) searchInput.value = "";
+        if (sortSelect) sortSelect.value = "default";
+        updateCategoryUI();
+
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.delete("category");
+        window.history.pushState({}, "", newUrl.toString());
+
+        applyFiltersAndSort();
+      });
+    }
+
+    // Initialize UI
+    updateCategoryUI();
+    applyFiltersAndSort();
+  }
+
+  // Run on initial load and after Astro page transitions
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDirectory);
+  } else {
+    initDirectory();
+  }
+  document.addEventListener("astro:page-load", initDirectory);
+</script>

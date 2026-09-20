@@ -1,0 +1,179 @@
+---
+/**
+ * Category Landing Page — `/category/[category]`
+ * Dedicated family exploration with graceful scaling behavior.
+ *
+ * @see Fruitypedia_Project_Plan §10, §11, §36 (Phase 3)
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import FruitCard from "@/components/FruitCard.astro";
+import { allFruits, categories } from "@/data";
+import type { Category } from "@/types";
+
+export function getStaticPaths() {
+  return categories.map((cat) => ({
+    params: { category: cat.id },
+    props: { category: cat },
+  }));
+}
+
+interface Props {
+  category: Category;
+}
+
+const { category } = Astro.props;
+const matchingFruits = allFruits.filter(
+  (f) => f.taxonomy.categoryId === category.id
+);
+const fruitCount = matchingFruits.length;
+const otherCategories = categories.filter((c) => c.id !== category.id);
+---
+
+<BaseLayout
+  title={`${category.name} — Botanical Family Exploration`}
+  description={category.description}
+>
+  <div class="container-page py-12 sm:py-20">
+    <!-- Breadcrumbs -->
+    <nav class="flex items-center gap-2 text-xs font-ui text-zinc-500 mb-8" aria-label="Breadcrumb">
+      <a href="/" class="hover:text-zinc-300 transition-colors">Home</a>
+      <span>/</span>
+      <a href="/directory" class="hover:text-zinc-300 transition-colors">Directory</a>
+      <span>/</span>
+      <span class="text-white font-medium">{category.name}</span>
+    </nav>
+
+    <!-- Category Header & Atmosphere -->
+    <div
+      class="relative overflow-hidden rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900 via-zinc-900/80 to-zinc-950 p-8 sm:p-14 shadow-2xl backdrop-blur-md mb-14"
+      style={`box-shadow: 0 25px 50px -15px ${category.theme.primary}22;`}
+    >
+      <div
+        class="absolute -right-24 -bottom-24 w-96 h-96 rounded-full opacity-20 blur-3xl pointer-events-none"
+        style={`background-color: ${category.theme.primary};`}
+        aria-hidden="true"
+      />
+
+      <div class="relative z-10 max-w-3xl space-y-5">
+        <div class="flex items-center gap-3">
+          <span
+            class="px-3 py-1 rounded-full text-xs font-semibold font-ui uppercase tracking-wider"
+            style={`background-color: ${category.theme.primary}22; color: ${category.theme.primary}; border: 1px solid ${category.theme.primary}44;`}
+          >
+            Fruit Family
+          </span>
+          <span class="text-xs font-ui text-zinc-500">
+            {fruitCount} verified monograph{fruitCount === 1 ? "" : "s"}
+          </span>
+        </div>
+
+        <h1 class="font-display text-4xl sm:text-6xl font-bold text-white tracking-tight">
+          {category.name}
+        </h1>
+
+        <p class="font-editorial text-lg sm:text-xl text-zinc-300 leading-relaxed">
+          {category.description}
+        </p>
+
+        <!-- Quick Summary Stats -->
+        <div class="flex flex-wrap items-center gap-6 pt-4 border-t border-zinc-800/80 font-ui text-xs text-zinc-400">
+          <div>
+            <span class="text-white font-display text-lg font-bold block">
+              {fruitCount}
+            </span>
+            <span>Production Fruits</span>
+          </div>
+          <div class="h-8 w-px bg-zinc-800" />
+          <div>
+            <span class="text-emerald-400 font-display text-lg font-bold block">
+              USDA FDC
+            </span>
+            <span>Laboratory Basis</span>
+          </div>
+          <div class="h-8 w-px bg-zinc-800" />
+          <div>
+            <a
+              href={`/directory?category=${category.id}`}
+              class="inline-flex items-center gap-1.5 text-indigo-400 hover:text-indigo-300 font-medium transition-colors pt-2"
+            >
+              <span>View filtered directory</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section Heading -->
+    <div class="mb-8">
+      <SectionHeading
+        label="FAMILY MONOGRAPHS"
+        title={`Verified ${category.name}`}
+        description={`Explore peer-reviewed monographs in the ${category.name} family with complete nutritional chemistry and historical diaspora.`}
+      />
+    </div>
+
+    <!-- Matching Fruits Grid -->
+    {matchingFruits.length > 0 ? (
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {matchingFruits.map((fruit) => (
+          <FruitCard fruit={fruit} variant="standard" />
+        ))}
+      </div>
+    ) : (
+      <div class="py-16 text-center rounded-2xl border border-zinc-800/80 bg-zinc-950/40 p-8">
+        <p class="text-zinc-400 font-ui text-sm">
+          Monographs for this family are currently undergoing analytical review.
+        </p>
+        <a
+          href="/directory"
+          class="mt-4 inline-block px-4 py-2 rounded-xl bg-white text-zinc-950 font-ui text-xs font-semibold"
+        >
+          Return to Directory
+        </a>
+      </div>
+    )}
+
+    <!-- Graceful Scaling Notice (Project Plan §10/§11) -->
+    <div class="mt-14 p-6 rounded-2xl border border-zinc-800/80 bg-zinc-950/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-ui text-xs">
+      <div class="space-y-1">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-indigo-400" />
+          <strong class="text-white font-semibold">Editorial Scale Policy</strong>
+        </div>
+        <p class="text-zinc-400">
+          Fruitypedia expands categories only with verified laboratory data. All 8 core launch fruits are fully active.
+        </p>
+      </div>
+      <a
+        href={`/directory?category=${category.id}`}
+        class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors flex-shrink-0 self-start sm:self-auto text-center"
+      >
+        Filter Directory by {category.name} →
+      </a>
+    </div>
+
+    <!-- Other Categories Discovery Dock -->
+    <div class="mt-20 pt-12 border-t border-zinc-800/80">
+      <div class="mb-6">
+        <h3 class="font-display text-xl font-bold text-white">Explore other fruit families</h3>
+        <p class="text-xs text-zinc-400 font-ui mt-1">Navigate across the botanical spectrum.</p>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 font-ui text-xs">
+        {otherCategories.map((c) => (
+          <a
+            href={`/category/${c.id}`}
+            class="p-4 rounded-xl border border-zinc-800 bg-zinc-900/40 hover:bg-zinc-800/60 hover:border-zinc-700 transition-all flex flex-col justify-between gap-2"
+          >
+            <span class="w-2.5 h-2.5 rounded-full" style={`background-color: ${c.theme.primary};`} />
+            <div>
+              <span class="font-semibold text-white block">{c.name}</span>
+              <span class="text-[11px] text-zinc-500 line-clamp-1">{c.description}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

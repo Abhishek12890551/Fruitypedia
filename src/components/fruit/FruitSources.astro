@@ -1,0 +1,92 @@
+---
+/**
+ * FruitSources.astro
+ *
+ * Traceable citations, primary source references, and methodology provenance.
+ * Editorial rhythm: Minimalist academic citation list with verified audit provenance.
+ *
+ * @see Fruitypedia_Project_Plan §12, §14, §19, Phase 2
+ */
+import type { Fruit, Source } from "@/types";
+
+interface Props {
+  fruit: Fruit;
+  sources: Source[];
+}
+
+const { fruit, sources } = Astro.props;
+---
+
+<section id="sources" class="section fruit-sources" aria-labelledby="sources-heading">
+  <div class="container-page">
+    <!-- Scale C Utility Section Header -->
+    <div class="sources-header mb-12">
+      <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+        <div>
+          <h2 id="sources-heading" class="chapter-heading-c">
+            Primary sources & citations
+          </h2>
+          <p class="font-editorial text-zinc-400 text-base font-light mt-2 max-w-xl">
+            Every nutrient compound, historical assertion, and botanical classification is traceable to authoritative institutions.
+          </p>
+        </div>
+
+        <div class="provenance-audit flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-zinc-950 border border-zinc-800/60 text-xs font-ui text-zinc-400 self-start md:self-auto">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>Scientific Status: <strong class="text-zinc-200 uppercase tracking-wider">{fruit.review.status}</strong></span>
+          {fruit.review.reviewedAt && (
+            <span class="text-zinc-500">· {fruit.review.reviewedAt}</span>
+          )}
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiet Academic Citations List (Border-separated, no card containers) -->
+    <div class="sources-list divide-y divide-zinc-900 border-y border-zinc-900 mb-8">
+      {sources.map((source) => (
+        <div class="source-entry py-4 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 group">
+          <div class="flex items-baseline gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-zinc-700 transition-colors shrink-0" style={`--dot-hover: ${fruit.theme.primary};`}></span>
+            <a
+              href={source.url}
+              class="source-title font-ui text-sm text-zinc-200 hover:text-white transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {source.title} <span class="text-zinc-500 font-mono text-xs">↗</span>
+            </a>
+          </div>
+
+          <div class="flex items-center gap-4 text-xs font-ui text-zinc-500 pl-5 sm:pl-0">
+            <span>{source.publisher}</span>
+            {source.edition && <span>({source.edition})</span>}
+            <span>Accessed {source.accessedAt}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs font-ui text-zinc-500">
+      <p>
+        Taste metrics are editorial sensory evaluations by our tasting panel, not laboratory assays.
+      </p>
+      <a href="/about#methodology" class="hover:underline" style={`color: ${fruit.theme.secondary};`}>
+        Read Scientific Methodology Guide →
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .fruit-sources {
+    padding-block: clamp(4.5rem, 8vw, 7.5rem);
+    background: var(--color-background);
+  }
+
+  .sources-title {
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+</style>

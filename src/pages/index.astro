@@ -1,0 +1,825 @@
+---
+/**
+ * Fruitypedia — Homepage
+ * Cinematic editorial discovery experience.
+ *
+ * Section order strictly adhering to the Fruitypedia plan:
+ * 1. Hero (approved Phase 1 baseline)
+ * 2. Editorial ticker
+ * 3. Category discovery (Category dock)
+ * 4. Fruit of the Day (FeatureCard bridge)
+ * 5. Featured fruits (Mixed FruitCard variants for editorial rhythm)
+ * 6. Explore Further / knowledge modules (KnowledgeCard modules)
+ * 7. Seasonal preview (Compact harvest bridge)
+ * 8. Editorial closing (Quiet literary statement)
+ *
+ * @see Fruitypedia_Project_Plan §9
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import FruitCard from "@/components/FruitCard.astro";
+import CategoryDock from "@/components/CategoryDock.astro";
+import { FruitOfTheDayCard } from "@/components/FruitOfTheDayCard";
+import KnowledgeCard from "@/components/KnowledgeCard.astro";
+import { allFruits, getProductionFruitCount } from "@/data";
+
+const fruitCount = getProductionFruitCount();
+const featuredFruit = allFruits[0]; // Blueberry Golden Master
+---
+
+<BaseLayout
+  title="Fruitypedia — The Visual Fruit Encyclopedia"
+  description="Discover origin, taste, nutrition, benefits, seasons, and the details behind the fruits you eat. A visual encyclopedia of fruit."
+>
+  <!-- ═══ 1. HERO SECTION — Full-bleed background image, editorial overlay ═══ -->
+  <!--
+    The image moves to a full-bleed background layer — same treatment as the
+    Blueberry fruit page hero. Multi-layered directional gradients keep the
+    text safe while letting the still-life composition breathe through.
+    60-30-10: near-black base (60%), fruit-still-life atmosphere (30%),
+    accent indigo glow (10%).
+  -->
+  <!-- ═══ 1. HERO SECTION — Full-bleed background image, editorial overlay ═══ -->
+  <!--
+    Museum-grade fine-art editorial still-life.
+    Multi-layered directional gradients keep text perfectly safe on dark stone
+    while letting the fruit composition shine in jewel tones on the right.
+    60-30-10: deep obsidian base (60%), vibrant fruit still life (30%), indigo/amber accents (10%).
+  -->
+  <!-- ═══ 1. HERO SECTION — Full-bleed background image, editorial overlay ═══ -->
+  <!--
+    Museum-grade fine-art editorial still-life.
+    Minimalist wet slate composition with pitch-black backdrop.
+    Restrained, compact vertical spacing.
+  -->
+  <section class="hero-section" aria-label="Fruitypedia introduction">
+    <!-- Full-bleed background image -->
+    <div
+      class="hero-bg"
+      style="background-image: url('/images/home-hero.jpg');"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Directional gradient overlay -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <!-- Content layer -->
+    <div class="container-page hero-container">
+      <div class="hero-content">
+        <!-- Compact Editorial Eyebrow (EDITION 2026 removed) -->
+        <p class="hero-supertitle font-ui">
+          <span class="hero-supertitle-dot" aria-hidden="true"></span>
+          <span>THE VISUAL FRUIT ENCYCLOPEDIA</span>
+        </p>
+
+        <!-- Balanced, Sculptural Headline -->
+        <h1 class="hero-title font-display">
+          <span class="hero-title-line">Every fruit</span>
+          <span class="hero-title-line hero-title-line--accent">
+            has a <em class="hero-title-em font-editorial">story.</em>
+          </span>
+        </h1>
+
+        <!-- High-gravitas Editorial Description -->
+        <p class="hero-description font-editorial">
+          A living compendium of botanical heritage — exploring origin diaspora, laboratory nutritional chemistry, sensory flavor architecture, and seasonal harvest rhythms.
+        </p>
+
+        <!-- Search-First Interaction Bar -->
+        <div class="hero-search-wrap">
+          <button
+            type="button"
+            id="hero-search-btn"
+            onclick="window.dispatchEvent(new CustomEvent('open-search'))"
+            class="hero-search font-ui group"
+            aria-label="Open search dialog"
+          >
+            <span class="hero-search-inner">
+              <svg class="hero-search-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <span class="hero-search-placeholder">Search a fruit, nutrient, category or origin...</span>
+            </span>
+            <kbd class="hero-search-kbd font-ui">⌘K</kbd>
+          </button>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="hero-actions">
+          <a href="/directory" class="hero-btn-primary font-ui group">
+            <span>Explore the Directory</span>
+            <span class="hero-btn-arrow group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+          </a>
+          <a href="/compare" class="hero-btn-secondary font-ui">
+            <span>Compare Fruits</span>
+          </a>
+        </div>
+
+        <!-- Credibility & Foundation Metric Strip -->
+        <div class="hero-meta">
+          <div class="hero-meta-item">
+            <span class="hero-meta-val font-display">100%</span>
+            <span class="hero-meta-lbl font-ui">USDA Lab Provenance</span>
+          </div>
+          <div class="hero-meta-sep" aria-hidden="true"></div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-val font-display">6</span>
+            <span class="hero-meta-lbl font-ui">Botanical Families</span>
+          </div>
+          <div class="hero-meta-sep" aria-hidden="true"></div>
+          <div class="hero-meta-item">
+            <span class="hero-meta-val font-display">360°</span>
+            <span class="hero-meta-lbl font-ui">Sensory Radar</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Museum gallery plate credit -->
+    <div class="hero-credit font-ui" aria-hidden="true">
+      <span class="hero-credit-tag">PLATE 01</span>
+      <span class="hero-credit-sep">·</span>
+      <span>FICUS CARICA & VACCINIUM</span>
+    </div>
+  </section>
+
+  <!-- ═══ 2. EDITORIAL TICKER ═════════════════════════════════════════ -->
+  <div class="ticker-wrapper border-y border-zinc-800/80 bg-zinc-950/70 py-3.5 overflow-hidden select-none" aria-hidden="true">
+    <div class="ticker-track flex whitespace-nowrap gap-8 animate-ticker">
+      <span class="font-ui text-xs font-semibold tracking-[0.25em] text-zinc-400 uppercase">
+        EVERY FRUIT HAS A STORY &nbsp;·&nbsp; EVERY FRUIT HAS A STRUCTURE &nbsp;·&nbsp; EVERY FRUIT HAS A SEASON &nbsp;·&nbsp; EVERY FRUIT HAS A PLACE &nbsp;·&nbsp;
+        EVERY FRUIT HAS A STORY &nbsp;·&nbsp; EVERY FRUIT HAS A STRUCTURE &nbsp;·&nbsp; EVERY FRUIT HAS A SEASON &nbsp;·&nbsp; EVERY FRUIT HAS A PLACE &nbsp;·&nbsp;
+      </span>
+      <span class="font-ui text-xs font-semibold tracking-[0.25em] text-zinc-400 uppercase">
+        EVERY FRUIT HAS A STORY &nbsp;·&nbsp; EVERY FRUIT HAS A STRUCTURE &nbsp;·&nbsp; EVERY FRUIT HAS A SEASON &nbsp;·&nbsp; EVERY FRUIT HAS A PLACE &nbsp;·&nbsp;
+        EVERY FRUIT HAS A STORY &nbsp;·&nbsp; EVERY FRUIT HAS A STRUCTURE &nbsp;·&nbsp; EVERY FRUIT HAS A SEASON &nbsp;·&nbsp; EVERY FRUIT HAS A PLACE &nbsp;·&nbsp;
+      </span>
+    </div>
+  </div>
+
+  <!-- ═══ 3. CATEGORY DISCOVERY (CATEGORY DOCK) ═══════════════════════ -->
+  <section class="py-24 bg-zinc-950/30" aria-labelledby="families-heading">
+    <div class="container-page">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+        <SectionHeading
+          label="BOTANICAL DISCOVERY"
+          title="Six families of fruit"
+          description="Navigate the encyclopedia through evolutionary fruit families, from temperate berries to exotic equatorial drupes."
+          id="families-heading"
+        />
+        <a href="/directory" class="text-xs font-ui uppercase tracking-widest text-zinc-400 hover:text-white pb-2 md:pb-12 flex items-center gap-1.5 transition-colors group">
+          <span>Explore all families in directory</span>
+          <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <CategoryDock />
+    </div>
+  </section>
+
+  <!-- ═══ 4. FRUIT OF THE DAY ════════════════════════════════════════ -->
+  <section class="py-24 border-t border-zinc-800/60 bg-zinc-950/50" aria-labelledby="fotd-heading">
+    <div class="container-page">
+      <div class="mb-10">
+        <SectionHeading
+          label="DAILY RESOLUTION"
+          title="Fruit of the day"
+          description="Every 24 hours, the encyclopedia highlights a botanical monograph determined client-side from the current UTC calendar date."
+          id="fotd-heading"
+        />
+      </div>
+
+      <FruitOfTheDayCard client:visible fruits={allFruits} />
+    </div>
+  </section>
+
+  <!-- ═══ 5. FEATURED FRUITS (MIXED VARIANTS FOR EDITORIAL RHYTHM) ═══ -->
+  <section class="py-24 border-t border-zinc-800/60" aria-labelledby="featured-heading">
+    <div class="container-page">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+        <SectionHeading
+          label="CURATED SPOTLIGHT"
+          title="Monograph of distinction"
+          description="Examine our peer-reviewed botanical monograph featuring complete USDA nutritional provenance, sensory metrics, and origin diaspora."
+          id="featured-heading"
+        />
+        <a href={`/fruit/${featuredFruit.slug}`} class="text-xs font-ui uppercase tracking-widest text-zinc-400 hover:text-white pb-2 md:pb-12 flex items-center gap-1.5 transition-colors group">
+          <span>Open Blueberry master</span>
+          <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- Mixed Variant Layout: Primary Featured Monograph + Supplementary Catalog Rhythm -->
+      <div class="space-y-6">
+        <FruitCard fruit={featuredFruit} variant="featured" />
+
+        <!-- Verified Monographs Showcase Banner -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+          <div class="p-5 rounded-2xl border border-zinc-800/80 bg-zinc-900/30 flex items-center justify-between">
+            <div class="flex items-center gap-3.5">
+              <span class="w-3 h-3 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+              <div>
+                <h4 class="font-display font-semibold text-sm text-white">Watermelon</h4>
+                <p class="font-editorial italic text-xs text-zinc-400">Citrullus lanatus · Cucurbitaceae</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] font-ui px-2.5 py-0.5 rounded-full bg-zinc-800 text-emerald-400 border border-zinc-700">
+                USDA Verified
+              </span>
+              <a href="/fruit/watermelon" class="text-xs font-ui text-indigo-400 hover:text-indigo-300 transition-colors">
+                Explore →
+              </a>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-2xl border border-zinc-800/80 bg-zinc-900/30 flex items-center justify-between">
+            <div class="flex items-center gap-3.5">
+              <span class="w-3 h-3 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(225,29,72,0.5)]" />
+              <div>
+                <h4 class="font-display font-semibold text-sm text-white">Apple</h4>
+                <p class="font-editorial italic text-xs text-zinc-400">Malus domestica · Rosaceae</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-[10px] font-ui px-2.5 py-0.5 rounded-full bg-zinc-800 text-rose-400 border border-zinc-700">
+                USDA Verified
+              </span>
+              <a href="/fruit/apple" class="text-xs font-ui text-indigo-400 hover:text-indigo-300 transition-colors">
+                Explore →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 6. EXPLORE FURTHER / KNOWLEDGE MODULES ══════════════════════ -->
+  <section class="py-24 border-t border-zinc-800/60 bg-zinc-950/30" aria-labelledby="knowledge-heading">
+    <div class="container-page">
+      <div class="mb-12">
+        <SectionHeading
+          label="EXPLORE FURTHER"
+          title="Learn by interest"
+          description="Investigate the three foundational pillars of fruit inquiry: laboratory nutritional chemistry, biogeographic origins, and sensory flavor architecture."
+          id="knowledge-heading"
+        />
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <KnowledgeCard
+          category="LABORATORY DATA"
+          title="Nutrition Observatory"
+          description="Every vitamin, mineral, and macronutrient metric is normalized from USDA FoodData Central and benchmarked against FDA Reference Daily Intakes."
+          href="/about#methodology"
+          badge="USDA Verified"
+          accentColor="#4A5FE0"
+        />
+
+        <KnowledgeCard
+          category="GEOGRAPHY & BIOMES"
+          title="Botanical World Atlas"
+          description="Trace fruits to their native prehistoric biomes and follow their historical diaspora to modern global cultivation centers on an interactive map."
+          href="/explore"
+          badge="Interactive Atlas"
+          accentColor="#2ECC71"
+        />
+
+        <KnowledgeCard
+          category="SENSORY SCIENCE"
+          title="Taste Profile & Flavor"
+          description="Understand the delicate equilibrium of fructose, organic acids, astringent tannins, and volatile aromatics that define subjective flavor."
+          href="/compare"
+          badge="Analytical Model"
+          accentColor="#F5A623"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 7. SEASONAL PREVIEW ═════════════════════════════════════════ -->
+  <section class="py-24 border-t border-zinc-800/60" aria-labelledby="seasons-heading">
+    <div class="container-page">
+      <div class="rounded-3xl border border-zinc-800 bg-gradient-to-br from-zinc-900 via-zinc-900/70 to-zinc-950 p-8 sm:p-12 shadow-2xl backdrop-blur-md">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div class="max-w-xl space-y-3">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-amber-400" />
+              <p class="font-ui text-xs font-semibold uppercase tracking-widest text-zinc-400">
+                BOTANICAL HARVEST CALENDAR
+              </p>
+            </div>
+            <h2 id="seasons-heading" class="font-editorial text-3xl sm:text-4xl font-normal text-white">
+              Follow the living rhythms of the harvest
+            </h2>
+            <p class="font-editorial text-zinc-400 text-base leading-relaxed">
+              Fruits are seasonal phenomena. Availability is not universal: when temperate berries conclude in the Northern Hemisphere, sub-tropical and Southern harvests are beginning.
+            </p>
+
+            <!-- Current Month Snapshot -->
+            <div class="pt-3 flex flex-wrap items-center gap-3 font-ui text-xs">
+              <span class="px-3 py-1 rounded-lg bg-zinc-800/80 border border-zinc-700/60 text-zinc-300">
+                Current Cycle: <strong class="text-white font-semibold">Late Summer / Autumn</strong>
+              </span>
+              <span class="text-zinc-500">·</span>
+              <span class="text-emerald-400 font-medium">Northern Peak: Blueberry, Fig, Plum</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 flex-shrink-0">
+            <a
+              href="/seasons"
+              class="px-6 py-3.5 rounded-xl font-ui text-sm font-semibold text-zinc-950 bg-white hover:bg-zinc-200 transition-all shadow-md flex items-center justify-center gap-2"
+            >
+              <span>View 12-Month Calendar</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 8. EDITORIAL CLOSING ════════════════════════════════════════ -->
+  <section class="py-28 text-center border-t border-zinc-800/60 bg-zinc-950/40" aria-labelledby="closing-heading">
+    <div class="container-page max-w-2xl mx-auto space-y-6">
+      <p class="font-script text-2xl sm:text-3xl text-zinc-400">
+        la curiosité végétale
+      </p>
+      <h2 id="closing-heading" class="font-editorial text-4xl sm:text-5xl font-normal text-white tracking-tight">
+        There is more to every fruit.
+      </h2>
+      <p class="font-editorial text-lg text-zinc-400 leading-relaxed max-w-xl mx-auto">
+        Step into our curated directory to explore the complete catalog of botanical profiles, laboratory nutrition facts, and cultivation histories.
+      </p>
+      <div class="pt-4">
+        <a
+          href="/directory"
+          class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl font-ui text-sm font-semibold text-zinc-950 bg-white hover:bg-zinc-200 transition-all shadow-lg hover:scale-[1.02]"
+        >
+          <span>Explore the Directory</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* ═══ HOMEPAGE HERO — Full-bleed image, editorial overlays ═══════════════ */
+
+  /*
+   * Same structural approach as the Blueberry fruit-page hero (§12):
+   * 1. Full-bleed background image (position optimised for still-life composition)
+   * 2. Multi-layer directional gradient overlays (text-safe centre/left, image breathes right)
+   * 3. Content on top with fluid typography and viewport-first layout
+   *
+   * 60–30–10 balance:
+   *   60% — near-black (#07070b base)
+   *   30% — still-life atmosphere bleeding through overlays
+   *   10% — indigo accent glow + interactive highlights
+   */
+  /* ═══ HOMEPAGE HERO — Full-bleed image, editorial overlays ═══════════════ */
+  /* ═══ HOMEPAGE HERO — Full-bleed image, editorial overlays ═══════════════ */
+  .hero-section {
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background-color: #07070b;
+  }
+
+  /* Full-bleed background image — perfectly positioned for still-life composition */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: right 60%;
+    background-repeat: no-repeat;
+    z-index: 0;
+  }
+
+  /* Directional gradient overlay:
+     - Left edge: soft slate gradient for pristine text readability
+     - Right edge: completely transparent for the glowing fig, blackberries, leaves
+     - Top/bottom: gentle fade to preserve header and footer flow
+  */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      /* Soft slate fade on left text zone */
+      linear-gradient(to right,
+        rgba(7, 7, 11, 0.96) 0%,
+        rgba(7, 7, 11, 0.9) 30%,
+        rgba(7, 7, 11, 0.55) 50%,
+        rgba(7, 7, 11, 0.1) 70%,
+        transparent 82%
+      ),
+      /* Top & bottom vignettes */
+      linear-gradient(to bottom,
+        rgba(7, 7, 11, 0.9) 0%,
+        rgba(7, 7, 11, 0.3) 14%,
+        transparent 28%,
+        transparent 72%,
+        rgba(7, 7, 11, 0.98) 100%
+      ),
+      /* Radial ambient indigo glow */
+      radial-gradient(ellipse 65% 55% at 20% 45%, rgba(99, 102, 241, 0.07) 0%, transparent 70%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Spacious content column */
+  .hero-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-top: clamp(6rem, 10vw, 9rem);
+    padding-bottom: clamp(4.5rem, 7vw, 7rem);
+  }
+
+  /* Text block */
+  .hero-content {
+    max-width: 48rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Editorial Supertitle */
+  .hero-supertitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #a1a1aa;
+    margin-bottom: 1.25rem;
+  }
+
+  .hero-supertitle-dot {
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 50%;
+    background-color: #818cf8;
+    box-shadow: 0 0 8px #818cf8;
+  }
+
+  /* Sculptural Main Headline — Urbanist 300, grand scale */
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    font-size: clamp(2.75rem, 6.2vw, 6rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    color: #f4f4f6;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title-line {
+    display: block;
+  }
+
+  .hero-title-line--accent {
+    color: #f4f4f6;
+  }
+
+  /* Editorial italic "story." — Cormorant Garamond */
+  .hero-title-em {
+    font-style: italic;
+    font-weight: 400;
+    color: #e0e7ff;
+    text-shadow: 0 0 32px rgba(199, 210, 254, 0.28);
+  }
+
+  /* High-gravitas Editorial Description */
+  .hero-description {
+    font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+    line-height: 1.75;
+    color: #a1a1aa;
+    max-width: 36rem;
+    margin-bottom: 2.25rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  /* Search bar wrapper */
+  .hero-search-wrap {
+    width: 100%;
+    max-width: 33rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-search {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9375rem 1.25rem;
+    background: linear-gradient(135deg, rgba(24, 24, 28, 0.8) 0%, rgba(15, 15, 18, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 1rem;
+    cursor: pointer;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    transition: all var(--duration-micro) var(--ease-out);
+    text-align: left;
+    box-shadow: 0 16px 36px -8px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .hero-search:hover {
+    background: linear-gradient(135deg, rgba(32, 32, 38, 0.88) 0%, rgba(20, 20, 26, 0.95) 100%);
+    border-color: rgba(99, 102, 241, 0.45);
+    box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.7), 0 0 24px -4px rgba(99, 102, 241, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transform: translateY(-1px);
+  }
+
+  .hero-search-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.8125rem;
+    font-size: 0.9375rem;
+    color: #71717a;
+    transition: color var(--duration-micro) var(--ease-out);
+  }
+
+  .hero-search:hover .hero-search-placeholder {
+    color: #e4e4e7;
+  }
+
+  .hero-search-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    color: #818cf8;
+    flex-shrink: 0;
+  }
+
+  .hero-search-kbd {
+    display: none;
+    font-size: 0.6875rem;
+    font-weight: 500;
+    font-family: var(--font-ui);
+    padding: 0.25rem 0.5rem;
+    background: rgba(39, 39, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.375rem;
+    color: #a1a1aa;
+    letter-spacing: 0.04em;
+  }
+
+  @media (min-width: 640px) {
+    .hero-search-kbd {
+      display: inline-block;
+    }
+  }
+
+  /* Action buttons */
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.875rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.625rem;
+    border-radius: 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #09090b;
+    background: #f4f4f5;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    transition: all var(--duration-micro) var(--ease-out);
+  }
+
+  .hero-btn-primary:hover {
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+  }
+
+  .hero-btn-arrow {
+    display: inline-block;
+    font-size: 0.9375rem;
+    line-height: 1;
+  }
+
+  .hero-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 1.625rem;
+    border-radius: 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #d4d4d8;
+    background: rgba(24, 24, 27, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    text-decoration: none;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all var(--duration-micro) var(--ease-out);
+  }
+
+  .hero-btn-secondary:hover {
+    color: #ffffff;
+    background: rgba(39, 39, 42, 0.75);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+  }
+
+  /* Credibility & Foundation Metric Strip */
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 0.75rem 1.125rem;
+    background: rgba(18, 18, 22, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0.875rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .hero-meta-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+  }
+
+  .hero-meta-val {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #f4f4f5;
+    letter-spacing: -0.01em;
+  }
+
+  .hero-meta-lbl {
+    font-size: 0.6875rem;
+    color: #a1a1aa;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .hero-meta-sep {
+    width: 1px;
+    height: 1rem;
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Museum gallery plate credit — bottom right */
+  .hero-credit {
+    position: absolute;
+    bottom: 1.5rem;
+    right: var(--page-pad);
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(212, 212, 216, 0.7);
+    background: rgba(9, 9, 11, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 0.35rem 0.875rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-credit-tag {
+    color: #c7d2fe;
+    font-weight: 700;
+  }
+
+  .hero-credit-sep {
+    color: #52525b;
+  }
+
+  /* ═══ RESPONSIVE ═══════════════════════════════════════════════════════ */
+
+  /* Mobile (≤767px): centred composition, image anchored top-right */
+  @media (max-width: 767px) {
+    .hero-section {
+      min-height: 100svh;
+      align-items: flex-end;
+    }
+
+    /* Anchor image so fig and leaves crown upper screen */
+    .hero-bg {
+      background-position: 85% 15%;
+    }
+
+    /* Gradient overlay: transparent at top so fruits are vibrant, deep obsidian from mid to bottom */
+    .hero-overlay {
+      background:
+        linear-gradient(to bottom,
+          rgba(7, 7, 11, 0.4) 0%,
+          rgba(7, 7, 11, 0.15) 20%,
+          rgba(7, 7, 11, 0.75) 45%,
+          rgba(7, 7, 11, 0.97) 65%,
+          #07070b 100%
+        );
+    }
+
+    .hero-container {
+      align-items: flex-end;
+      padding-bottom: clamp(2.5rem, 6vw, 3.5rem);
+      padding-top: clamp(5rem, 10vw, 6.5rem);
+    }
+
+    .hero-content {
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .hero-description {
+      color: #d4d4d8;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero-search-wrap {
+      max-width: 100%;
+    }
+
+    .hero-actions {
+      width: 100%;
+      gap: 0.75rem;
+    }
+
+    .hero-btn-primary,
+    .hero-btn-secondary {
+      flex: 1 1 auto;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .hero-meta {
+      width: 100%;
+      gap: 0.75rem;
+      justify-content: space-between;
+    }
+  }
+
+  /* Tablet (768–1023px) */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .hero-bg {
+      background-position: right center;
+    }
+  }
+
+  /* Wide (1920px+) */
+  @media (min-width: 1920px) {
+    .hero-section {
+      min-height: 85vh;
+    }
+
+    .hero-bg {
+      background-position: 85% center;
+    }
+  }
+
+  /* ═══ TICKER ═══════════════════════════════════════════════════════════ */
+  @keyframes ticker-scroll {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .animate-ticker {
+    display: flex;
+    width: max-content;
+    animation: ticker-scroll 45s linear infinite;
+  }
+
+  .animate-ticker:hover {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-ticker {
+      animation: none !important;
+      transform: none !important;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+      white-space: normal;
+    }
+  }
+</style>

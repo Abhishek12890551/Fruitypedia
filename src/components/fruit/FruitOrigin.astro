@@ -1,0 +1,138 @@
+---
+/**
+ * FruitOrigin.astro
+ *
+ * Biogeographic atlas narrative and interactive SVG world projection.
+ * Editorial rhythm: Geographic thesis headline -> Historical prose -> Expansive map island.
+ *
+ * @see Fruitypedia_Project_Plan §12, §19, Phase 2
+ */
+import type { Fruit } from "@/types";
+import { OriginMap } from "@/components/OriginMap";
+
+interface Props {
+  fruit: Fruit;
+}
+
+const SOIL_TYPES: Record<string, string> = {
+  blueberry: "Acidic Podzols & Peaty Sands (pH 4.2–5.2)",
+  strawberry: "Loamy, Well-Drained Soils (pH 5.5–6.5)",
+  orange: "Fertile Subtropical Alluvium (pH 6.0–7.0)",
+  mango: "Deep, Well-Drained Alluvial Loam (pH 5.5–7.5)",
+  banana: "Rich, Deep Well-Drained Volcanic Alluvium (pH 5.5–6.5)",
+  peach: "Deep, Well-Drained Sandy Loam to Gravelly Silt (pH 6.0–6.8)",
+  watermelon: "Warm, Well-Drained Sandy Loam to Alluvium (pH 6.0–6.8)",
+  apple: "Deep, Fertile Well-Drained Loam with Clay Subsoil (pH 6.0–7.0)",
+};
+
+const { fruit } = Astro.props;
+---
+
+<section id="origin" class="section fruit-origin" aria-labelledby="origin-heading">
+  <div class="container-page">
+    <!-- Scale A Major Chapter Header -->
+    <div class="origin-header mb-14 lg:mb-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-end">
+        <div class="lg:col-span-7">
+          <h2 id="origin-heading" class="chapter-heading-a">
+            Where {fruit.name}<br />
+            comes from.
+          </h2>
+          <p class="origin-provenance font-editorial text-2xl sm:text-3xl lg:text-4xl text-zinc-300 font-light italic mt-3">
+            {fruit.origin.region}
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 pb-2">
+          <p class="origin-prose font-editorial text-lg sm:text-xl text-zinc-300 font-light leading-relaxed">
+            {fruit.origin.description}
+          </p>
+          <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-ui text-zinc-400">
+            {fruit.origin.coordinates && (
+              <span class="inline-flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full" style={`background-color: ${fruit.theme.primary};`}></span>
+                <span class="tracking-wider">{Math.abs(fruit.origin.coordinates[0])}° {fruit.origin.coordinates[0] >= 0 ? "N" : "S"} · {Math.abs(fruit.origin.coordinates[1])}° {fruit.origin.coordinates[1] >= 0 ? "E" : "W"}</span>
+              </span>
+            )}
+            <span class="text-zinc-600">·</span>
+            <span>{SOIL_TYPES[fruit.id] || "Well-Drained Fertile Loam (pH 6.0–7.0)"}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expansive Interactive Origin Map Island -->
+    <div class="origin-map-wrapper">
+      <OriginMap
+        client:only="react"
+        originCoordinates={fruit.origin.coordinates}
+        originRegion={fruit.origin.region}
+        grownRegions={fruit.origin.grownTodayRegions}
+        themeColor={fruit.theme.primary}
+      />
+    </div>
+
+    <!-- Quiet Modern Cultivation Footnote -->
+    {fruit.origin.grownTodayRegions && fruit.origin.grownTodayRegions.length > 0 && (
+      <div class="origin-cultivation-footer mt-6 pt-5 border-t border-zinc-900 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <span class="font-ui text-xs font-semibold tracking-wider uppercase text-zinc-500">
+          Commercial Harvesting Hubs
+        </span>
+        <div class="flex flex-wrap items-center gap-2">
+          {fruit.origin.grownTodayRegions.map((region) => (
+            <span class="cultivation-pill font-ui text-xs text-zinc-300">
+              {region}
+            </span>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .fruit-origin {
+    padding-block: clamp(6rem, 10vw, 9.5rem);
+    background: var(--color-background);
+    position: relative;
+  }
+
+  .origin-title {
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .origin-accent {
+    color: var(--fruit-secondary);
+    font-style: italic;
+  }
+
+  .origin-prose {
+    font-size: clamp(1.05rem, 1.4vw, 1.18rem);
+    line-height: 1.75;
+  }
+
+  .origin-map-wrapper {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: #08080c;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0 16px 40px -12px rgba(0, 0, 0, 0.6);
+  }
+
+  .cultivation-pill {
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all var(--duration-micro) var(--ease-out);
+  }
+
+  .cultivation-pill:hover {
+    border-color: var(--fruit-secondary);
+    color: #fff;
+    background: rgba(255, 255, 255, 0.06);
+  }
+</style>

@@ -1,0 +1,114 @@
+---
+/**
+ * FruitMacroBreak.astro
+ *
+ * Full-bleed photographic intermission and macro visual study.
+ * Provides generous breathing room and editorial rhythm between
+ * data-dense biochemistry and sensory taste evaluation.
+ *
+ * @see Fruitypedia_Project_Plan Phase 2 Editorial Redesign
+ */
+interface Props {
+  imageSrc?: string;
+  alt?: string;
+  captionTitle?: string;
+  captionText?: string;
+}
+
+const {
+  imageSrc = "/images/fruits/blueberry/macro-crop.jpg",
+  alt = "Macro close-up of fresh blueberries with waxy bloom",
+  captionTitle = "Pruinescence · The Epicuticular Wax Layer",
+  captionText = "Microscopic crystalline wax platelets scatter ambient light into a powdery indigo sheen, creating a natural hydrophobic shield that prevents moisture evaporation.",
+} = Astro.props;
+---
+
+<section class="macro-break-section" aria-label="Visual botanical macro study">
+  <div class="macro-break-container">
+    <div class="macro-image-wrapper">
+      <img
+        src={imageSrc}
+        alt={alt}
+        class="macro-break-image"
+        loading="lazy"
+        decoding="async"
+      />
+      <div class="macro-overlay-gradient"></div>
+    </div>
+
+    <div class="container-page macro-caption-container">
+      <div class="macro-caption-card">
+        <span class="font-ui text-xs font-bold tracking-[0.22em] uppercase block mb-1.5" style="color: var(--fruit-secondary, #818cf8);">
+          {captionTitle}
+        </span>
+        <p class="font-editorial text-base sm:text-lg text-zinc-200 leading-relaxed max-w-2xl">
+          {captionText}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .macro-break-section {
+    position: relative;
+    width: 100%;
+    margin-block: clamp(5rem, 9vw, 9.5rem);
+    overflow: hidden;
+  }
+
+  .macro-break-container {
+    position: relative;
+    width: 100%;
+    height: clamp(560px, 82vh, 960px);
+  }
+
+  .macro-image-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .macro-break-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: brightness(0.92) contrast(1.08);
+  }
+
+  .macro-overlay-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      #080808 0%,
+      rgba(8, 8, 8, 0.25) 20%,
+      rgba(8, 8, 8, 0.04) 50%,
+      rgba(8, 8, 8, 0.35) 80%,
+      #080808 100%
+    );
+    pointer-events: none;
+  }
+
+  .macro-caption-container {
+    position: absolute;
+    bottom: clamp(2rem, 5vw, 4rem);
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  .macro-caption-card {
+    background: rgba(8, 8, 12, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: var(--radius-xl, 1rem);
+    padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2.25rem);
+    display: inline-block;
+    max-width: 720px;
+    box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.7);
+  }
+</style>

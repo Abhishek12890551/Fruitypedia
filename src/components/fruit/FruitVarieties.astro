@@ -1,0 +1,364 @@
+---
+/**
+ * FruitVarieties.astro
+ *
+ * Botanical cultivars, species, and commercial varieties.
+ * Editorial rhythm: Balanced 3-column botanical cultivar exhibition pairing studio still-life
+ * photography, Latin taxonomy, horticultural spec strips, and field narratives.
+ *
+ * @see Fruitypedia_Project_Plan §12, §19, Phase 2
+ */
+import type { Fruit } from "@/types";
+
+interface Props {
+  fruit: Fruit;
+}
+
+const { fruit } = Astro.props;
+const hasVarieties = Boolean(fruit.varieties && fruit.varieties.length > 0);
+
+// Botanical metadata & studio photography for known cultivars
+const cultivarMetadata: Record<
+  string,
+  {
+    image: string;
+    tag: string;
+    cane: string;
+    caliber: string;
+    profile: string;
+    latin: string;
+  }
+> = {
+  // Blueberry cultivars
+  highbush: {
+    image: "/images/fruits/blueberry/cultivars/highbush.jpg",
+    tag: "Commercial Standard",
+    cane: "2.0 – 3.0 m Shrub",
+    caliber: "12 – 16 mm",
+    profile: "Mild & Sweet",
+    latin: "Vaccinium corymbosum",
+  },
+  lowbush: {
+    image: "/images/fruits/blueberry/cultivars/lowbush.jpg",
+    tag: "Wild Alpine Barrens",
+    cane: "0.2 – 0.4 m Runner",
+    caliber: "5 – 8 mm",
+    profile: "Intense & Tangy",
+    latin: "Vaccinium angustifolium",
+  },
+  rabbiteye: {
+    image: "/images/fruits/blueberry/cultivars/rabbiteye.jpg",
+    tag: "Subtropical Resilient",
+    cane: "3.0 – 5.0 m Bush",
+    caliber: "10 – 14 mm",
+    profile: "Aromatic & Firm",
+    latin: "Vaccinium virgatum",
+  },
+  // Strawberry cultivars
+  albion: {
+    image: "/images/fruits/strawberry/cultivars/albion.jpg",
+    tag: "Commercial Standard",
+    cane: "Day-Neutral Herb",
+    caliber: "28 – 35 mm",
+    profile: "Sweet & Firm",
+    latin: "Fragaria × ananassa 'Albion'",
+  },
+  chandler: {
+    image: "/images/fruits/strawberry/cultivars/chandler.jpg",
+    tag: "June-Bearing Heirloom",
+    cane: "Vigorous Crown",
+    caliber: "30 – 40 mm",
+    profile: "Juicy & Aromatic",
+    latin: "Fragaria × ananassa 'Chandler'",
+  },
+  "mara des bois": {
+    image: "/images/fruits/strawberry/cultivars/mara-des-bois.jpg",
+    tag: "French Gourmet Cross",
+    cane: "Alpine Hybrid",
+    caliber: "18 – 25 mm",
+    profile: "Woodland Perfume",
+    latin: "Fragaria × ananassa 'Mara des Bois'",
+  },
+  // Orange cultivars
+  valencia: {
+    image: "/images/fruits/orange/cultivars/valencia.jpg",
+    tag: "Global Juicing Standard",
+    cane: "Round-Topped Tree",
+    caliber: "70 – 80 mm",
+    profile: "High Juice & Acid Harmony",
+    latin: "Citrus × sinensis 'Valencia'",
+  },
+  navel: {
+    image: "/images/fruits/orange/cultivars/navel.jpg",
+    tag: "Premier Table Specimen",
+    cane: "Compact Evergreen Tree",
+    caliber: "75 – 90 mm",
+    profile: "Seedless & Honeyed",
+    latin: "Citrus × sinensis 'Washington Navel'",
+  },
+  moro: {
+    image: "/images/fruits/orange/cultivars/moro.jpg",
+    tag: "Anthocyanin Blood Orange",
+    cane: "Sicilian Orchard Tree",
+    caliber: "60 – 75 mm",
+    profile: "Berry-Citrus & Tart",
+    latin: "Citrus × sinensis 'Moro'",
+  },
+  // Mango cultivars
+  alphonso: {
+    image: "/images/fruits/mango/cultivars/alphonso.jpg",
+    tag: "King of Indian Mangos",
+    cane: "Subtropical Canopy Tree",
+    caliber: "200 – 300g Mass",
+    profile: "Rich Saffron & Saffron Aroma",
+    latin: "Mangifera indica 'Alphonso'",
+  },
+  ataulfo: {
+    image: "/images/fruits/mango/cultivars/ataulfo.jpg",
+    tag: "Mexican Honey Cultivar",
+    cane: "Tropical Orchard Tree",
+    caliber: "150 – 220g Mass",
+    profile: "Silky, Non-Fibrous & Honeyed",
+    latin: "Mangifera indica 'Ataulfo'",
+  },
+  kesar: {
+    image: "/images/fruits/mango/cultivars/kesar.jpg",
+    tag: "Queen of Gujarat",
+    cane: "Gir Foothill Orchard",
+    caliber: "180 – 250g Mass",
+    profile: "Intense Saffron & High Brix",
+    latin: "Mangifera indica 'Kesar'",
+  },
+  // Banana cultivars
+  cavendish: {
+    image: "/images/fruits/banana/cultivars/cavendish.jpg",
+    tag: "Global Commercial Benchmark",
+    cane: "2.5 – 3.0 m Pseudostem",
+    caliber: "18 – 22 cm Crescent",
+    profile: "Creamy & Dependable",
+    latin: "Musa acuminata 'Cavendish'",
+  },
+  "red dacca": {
+    image: "/images/fruits/banana/cultivars/red-dacca.jpg",
+    tag: "Maroon Heirloom Treasure",
+    cane: "4.0 – 6.0 m Vigorous Herb",
+    caliber: "12 – 16 cm Plump",
+    profile: "Sweet Raspberry Nuance",
+    latin: "Musa acuminata 'Red Dacca'",
+  },
+  "lady finger": {
+    image: "/images/fruits/banana/cultivars/lady-finger.jpg",
+    tag: "Petite Sugar Gourmet",
+    cane: "3.0 – 4.0 m Slender Stalk",
+    caliber: "10 – 12 cm Slender",
+    profile: "Dense Honey Sweetness",
+    latin: "Musa acuminata 'Lady Finger'",
+  },
+  // Peach cultivars
+  elberta: {
+    image: "/images/fruits/peach/cultivars/elberta.jpg",
+    tag: "Historic Freestone Classic",
+    cane: "3.5 – 5.0 m Deciduous Tree",
+    caliber: "70 – 85 mm Round",
+    profile: "Rich Yellow & Crimson Pit",
+    latin: "Prunus persica 'Elberta'",
+  },
+  "white lady": {
+    image: "/images/fruits/peach/cultivars/white-lady.jpg",
+    tag: "Sub-Acid White Gourmet",
+    cane: "3.0 – 4.5 m Spreading Canopy",
+    caliber: "65 – 80 mm Porcelain",
+    profile: "Floral Honey & Velvety",
+    latin: "Prunus persica 'White Lady'",
+  },
+  redhaven: {
+    image: "/images/fruits/peach/cultivars/redhaven.jpg",
+    tag: "Global Commercial Benchmark",
+    cane: "3.5 – 5.0 m Vigorous Tree",
+    caliber: "70 – 80 mm Scarlet",
+    profile: "Juicy Sweet & Firm Flesh",
+    latin: "Prunus persica 'Redhaven'",
+  },
+  // Watermelon cultivars
+  "crimson sweet": {
+    image: "/images/fruits/watermelon/cultivars/crimson-sweet.jpg",
+    tag: "Heirloom Standard",
+    cane: "Trailing Prostrate Vine",
+    caliber: "9 – 14 kg Oblong",
+    profile: "High Brix & Crisp",
+    latin: "Citrullus lanatus 'Crimson Sweet'",
+  },
+  "sugar baby": {
+    image: "/images/fruits/watermelon/cultivars/sugar-baby.jpg",
+    tag: "Icebox Gourmet",
+    cane: "Compact Garden Vine",
+    caliber: "3 – 5 kg Round",
+    profile: "Dense Sugar & Tender",
+    latin: "Citrullus lanatus 'Sugar Baby'",
+  },
+  "moon and stars": {
+    image: "/images/fruits/watermelon/cultivars/moon-and-stars.jpg",
+    tag: "Celestial Heirloom 1920s",
+    cane: "Vigorous Foliage Vine",
+    caliber: "10 – 18 kg Speckled",
+    profile: "Sweet Pink Pulp",
+    latin: "Citrullus lanatus 'Moon and Stars'",
+  },
+  // Apple cultivars
+  honeycrisp: {
+    image: "/images/fruits/apple/cultivars/honeycrisp.jpg",
+    tag: "Explosive Crunch Benchmark",
+    cane: "Deciduous Orchard Tree",
+    caliber: "75 – 88 mm Scarlet",
+    profile: "Crisp Sweet-Tart Balance",
+    latin: "Malus domestica 'Honeycrisp'",
+  },
+  cox: {
+    image: "/images/fruits/apple/cultivars/cox-orange-pippin.jpg",
+    tag: "Historic English Heirloom 1825",
+    cane: "Spreading Orchard Tree",
+    caliber: "65 – 75 mm Russeted",
+    profile: "Complex Aromatic Honey",
+    latin: "Malus domestica 'Cox\\'s Orange Pippin'",
+  },
+  "black diamond": {
+    image: "/images/fruits/apple/cultivars/black-diamond.jpg",
+    tag: "Tibetan Alpine Diamond",
+    cane: "High-Altitude Orchard Tree",
+    caliber: "70 – 82 mm Violet-Black",
+    profile: "Crisp Ivory & Sweet",
+    latin: "Malus domestica 'Black Diamond'",
+  },
+};
+
+const VARIETIES_SUBTITLES: Record<string, string> = {
+  blueberry:
+    "From wild northern alpine mats to 3-meter commercial orchard canes.",
+  strawberry:
+    "From high-yield commercial day-neutral berries to fragrant alpine heirloom crosses.",
+  orange:
+    "From sun-drenched Mediterranean juicing staples to dramatic anthocyanin-rich blood oranges.",
+  mango:
+    "From legendary Konkan Alphonso to silky Mexican honey Ataulfo and fragrant Gir Kesar heirlooms.",
+  banana:
+    "From ubiquitous commercial Cavendish to ruby-skinned Red Dacca and delicate honeyed Lady Finger sugar bananas.",
+  peach:
+    "From historic Georgia heirloom Elbertas to exquisite sub-acid White Lady porcelains and resilient Redhavens.",
+  watermelon:
+    "From classic striped Crimson Sweet field giants to dark icebox Sugar Babies and celestial Moon and Stars heirlooms.",
+  apple:
+    "From cell-rupturing Honeycrisp table benchmarks to complex 19th-century Cox's Orange Pippins and high-altitude Tibetan Black Diamonds.",
+};
+---
+
+{hasVarieties && (
+  <section id="varieties" class="section fruit-varieties" aria-labelledby="varieties-heading">
+    <div class="container-page">
+      <!-- Scale A Major Chapter Header -->
+      <div class="varieties-header mb-12 lg:mb-16">
+        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4 pb-6 border-b border-zinc-900">
+          <div>
+            <h2 id="varieties-heading" class="chapter-heading-a">
+              Types of {fruit.name}.
+            </h2>
+            <p class="font-editorial text-zinc-400 text-xl sm:text-2xl font-light mt-3 max-w-2xl">
+              {VARIETIES_SUBTITLES[fruit.id] ||
+                `Major cultivated species and botanical varieties of ${fruit.name}.`}
+            </p>
+          </div>
+          <span class="font-ui text-xs text-zinc-500 tracking-wider uppercase">
+            Genus {fruit.taxonomy.genus} · Family {fruit.taxonomy.family}
+          </span>
+        </div>
+      </div>
+
+      <!-- Balanced 3-Column Botanical Cultivar Exhibition -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {fruit.varieties.map((variety, idx) => {
+          const matchKey = Object.keys(cultivarMetadata).find((k) =>
+            variety.name.toLowerCase().includes(k)
+          );
+          const meta = matchKey ? cultivarMetadata[matchKey] : undefined;
+          const cleanName = variety.name.replace(/\s*\([^)]*\)/g, "").trim();
+          const latinName = meta?.latin || (variety.name.match(/\(([^)]+)\)/)?.[1] ?? "");
+          const num = String(idx + 1).padStart(2, "0");
+
+          return (
+            <article class="cultivar-card group flex flex-col justify-between">
+              <div>
+                <!-- Botanical Specimen Image -->
+                <div class="relative aspect-[16/11] rounded-2xl overflow-hidden bg-zinc-950 border border-zinc-900 mb-6">
+                  <img
+                    src={meta?.image || "/images/fruits/blueberry/cultivars/highbush.jpg"}
+                    alt={`Specimen ${num}: ${variety.name}`}
+                    class="cultivar-image w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
+                  
+                  <!-- Tag Badge -->
+                  <span class="absolute bottom-3.5 left-3.5 font-ui text-[10px] font-semibold tracking-wider uppercase text-zinc-200 bg-black/75 backdrop-blur-md px-3 py-1 rounded-full border border-white/10">
+                    {meta?.tag || "Cultivar Specimen"}
+                  </span>
+                  
+                  <span class="absolute top-3.5 right-3.5 font-ui text-[11px] font-mono text-zinc-400 bg-black/60 backdrop-blur-md px-2 py-0.5 rounded border border-white/5">
+                    §{num}
+                  </span>
+                </div>
+
+                <!-- Nomenclature -->
+                <div class="mb-4">
+                  <div class="flex items-baseline gap-2 mb-1.5">
+                    <span class="font-ui text-xs font-mono font-medium" style={`color: ${fruit.theme.secondary};`}>{num}</span>
+                    {latinName && (
+                      <span class="font-editorial italic text-sm text-zinc-400">
+                        {latinName}
+                      </span>
+                    )}
+                  </div>
+                  <h3 class="font-editorial text-3xl text-white font-normal transition-colors">
+                    {cleanName}
+                  </h3>
+                </div>
+
+                <!-- Horticultural Diagnostic Strip -->
+                <div class="grid grid-cols-3 gap-2 py-3 px-3 rounded-xl bg-zinc-900/40 border border-zinc-900/80 mb-4 text-center">
+                  <div>
+                    <span class="block font-ui text-[9px] uppercase tracking-wider text-zinc-500 mb-0.5">Habit</span>
+                    <span class="font-ui text-xs text-zinc-300 font-medium">{meta?.cane || "Shrub"}</span>
+                  </div>
+                  <div class="border-x border-zinc-800/60 px-1">
+                    <span class="block font-ui text-[9px] uppercase tracking-wider text-zinc-500 mb-0.5">Caliber</span>
+                    <span class="font-ui text-xs text-zinc-300 font-medium">{meta?.caliber || "Standard"}</span>
+                  </div>
+                  <div>
+                    <span class="block font-ui text-[9px] uppercase tracking-wider text-zinc-500 mb-0.5">Profile</span>
+                    <span class="font-ui text-xs text-zinc-300 font-medium">{meta?.profile || "Sweet"}</span>
+                  </div>
+                </div>
+
+                <!-- Editorial Prose -->
+                <p class="font-editorial text-base text-zinc-300 font-light leading-relaxed">
+                  {variety.description}
+                </p>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .fruit-varieties {
+    padding-block: clamp(6rem, 10vw, 9.5rem);
+    background: var(--color-background);
+  }
+
+  .cultivar-image {
+    filter: brightness(0.92) contrast(1.05);
+  }
+</style>
+

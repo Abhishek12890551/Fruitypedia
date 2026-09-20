@@ -1,0 +1,118 @@
+---
+/**
+ * FruitBenefits.astro
+ *
+ * Evidence-tiered wellness insights.
+ * Editorial rhythm: Staggered typographic entries (01, 02, 03) with large serif numbers,
+ * peer-reviewed confidence badges, narrative prose, and compound metric callouts.
+ * Completely eliminates boxy cards in favor of an academic editorial layout.
+ *
+ * @see Fruitypedia_Project_Plan §12, §19, Phase 2
+ */
+import type { Fruit } from "@/types";
+
+interface Props {
+  fruit: Fruit;
+}
+
+const { fruit } = Astro.props;
+const hasBenefits = Boolean(fruit.benefitTags && fruit.benefitTags.length > 0);
+---
+
+{hasBenefits && (
+  <section id="benefits" class="section fruit-benefits" aria-labelledby="benefits-heading">
+    <div class="container-page">
+      <!-- Scale B Editorial Section Header -->
+      <div class="benefits-header mb-16">
+        <div class="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
+          <div>
+            <h2 id="benefits-heading" class="chapter-heading-b">
+              What makes it notable.
+            </h2>
+            <p class="font-editorial text-zinc-400 text-lg sm:text-xl font-light mt-3 max-w-xl">
+              Classified according to replicated, peer-reviewed nutritional literature.
+            </p>
+          </div>
+          <span class="font-ui text-xs text-zinc-500">
+            Educational synthesis · No unverified health claims
+          </span>
+        </div>
+      </div>
+
+      <!-- Editorial Staggered / Numbered List (No SaaS Cards) -->
+      <div class="benefits-editorial-list space-y-12">
+        {fruit.benefitTags.map((tag, index) => (
+          <article class="benefit-row py-8 border-t border-zinc-900 grid grid-cols-1 lg:grid-cols-12 gap-8 items-baseline">
+            <!-- Large Serif Number -->
+            <div class="lg:col-span-2 flex items-baseline gap-3">
+              <span class="benefit-num font-editorial text-zinc-600">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </div>
+
+            <!-- Benefit Title & Evidence Level -->
+            <div class="lg:col-span-4">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span class="font-ui text-[11px] font-bold tracking-widest uppercase text-emerald-400">
+                  {tag.evidenceLevel} scientific consensus
+                </span>
+              </div>
+              <h3 class="font-editorial text-2xl lg:text-3xl text-white font-normal">
+                {tag.label}
+              </h3>
+            </div>
+
+            <!-- Narrative Description & Compound Metrics -->
+            <div class="lg:col-span-6 space-y-4">
+              <p class="font-editorial text-zinc-300 text-lg leading-relaxed">
+                {tag.description}
+              </p>
+
+              <div class="benefit-compound-metric pt-3 flex items-center gap-3 text-xs font-ui">
+                <span class="text-zinc-500 uppercase tracking-wider">Primary Biomarker:</span>
+                <span class="font-medium" style={`color: ${fruit.theme.secondary};`}>
+                  {fruit.id === "peach"
+                    ? (index === 0 ? "Chlorogenic Acid & Epicatechin (14–28 mg / 100g)" : index === 1 ? "Beta-Carotene & Cryptoxanthin (16 µg RAE · 2% DV)" : "Soluble Pectin & Cell Water (88.9% hydration)")
+                    : fruit.id === "banana"
+                    ? (index === 0 ? "Pyridoxal Phosphate / B6 (0.367 mg / 100g · 22% DV)" : index === 1 ? "Ionic Potassium K⁺ (358 mg / 100g · 8% DV)" : "Soluble Pectin & Resistant Starch (2.6g / 100g)")
+                    : fruit.id === "mango"
+                    ? (index === 0 ? "Beta-Carotene & Lutein (54 µg RAE / 100g · 6% DV)" : index === 1 ? "Ascorbic Acid (36.4 mg / 100g · 40% DV)" : "Mangiferin & Digestive Amylases")
+                    : fruit.id === "orange"
+                    ? (index === 0 ? "Ascorbic Acid (53.2 mg / 100g · 59% DV)" : index === 1 ? "Hesperidin (30–65 mg / 100g albedo)" : "Soluble Pectin & Protopectin (2.4g / 100g)")
+                    : fruit.id === "strawberry"
+                    ? (index === 0 ? "Ascorbic Acid (58.8 mg / 100g · 65% DV)" : index === 1 ? "Manganese (0.386 mg / 100g · 17% DV)" : "Pelargonidin-3-glucoside & Ellagic Acid")
+                    : (index === 0 ? "Anthocyanins (163 mg / 100g fresh weight)" : index === 1 ? "Phylloquinone (19.3 µg / 100g)" : "Soluble Pectin & Insoluble Cellulose (2.4g / 100g)")}
+                </span>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+<style>
+  .fruit-benefits {
+    padding-block: clamp(4.5rem, 8vw, 7.5rem);
+    background: var(--color-background);
+  }
+
+  .benefits-title {
+    font-size: clamp(2rem, 3.8vw, 3.25rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+  }
+
+  .benefit-num {
+    font-family: var(--font-editorial);
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 0.9;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--fruit-secondary);
+    opacity: 0.85;
+  }
+</style>

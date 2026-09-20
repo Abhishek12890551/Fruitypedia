@@ -1,0 +1,46 @@
+---
+/**
+ * PullQuote.astro
+ *
+ * Reusable editorial pull-quote component.
+ * High-contrast Cormorant Garamond typography, generous surrounding negative space,
+ * zero card containers. Used 2–3 times across a monograph to break data flow
+ * and reinforce narrative storytelling.
+ *
+ * @see Fruitypedia_Project_Plan §10
+ */
+interface Props {
+  quote: string;
+  attribution?: string;
+  align?: "center" | "left";
+}
+
+const { quote, attribution, align = "center" } = Astro.props;
+---
+
+<div class={`editorial-pullquote-wrapper py-16 sm:py-24 ${align === "center" ? "text-center" : "text-left"}`}>
+  <div class="container-page">
+    <blockquote class="max-w-4xl mx-auto px-4">
+      <p class="pullquote-text font-editorial text-zinc-100 font-light italic leading-[1.35]">
+        “{quote}”
+      </p>
+      {attribution && (
+        <cite class="block mt-5 font-ui text-[11px] tracking-[0.2em] uppercase text-zinc-500 not-italic">
+          — {attribution}
+        </cite>
+      )}
+    </blockquote>
+  </div>
+</div>
+
+<style>
+  .editorial-pullquote-wrapper {
+    position: relative;
+    background: transparent;
+  }
+
+  .pullquote-text {
+    font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+    letter-spacing: -0.015em;
+  }
+</style>
