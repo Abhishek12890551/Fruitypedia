@@ -1,0 +1,30 @@
+---
+/**
+ * Health Benefits Directory Page — `/benefits`
+ * Evidence-tiered wellness phenomena, systemic biological cohorts,
+ * biochemical biomarker callouts, and academic citations.
+ *
+ * @see Fruitypedia_Project_Plan §4C
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import BenefitsExplorer from "@/components/BenefitsExplorer";
+import { allFruits } from "@/data";
+---
+
+<BaseLayout
+  title="Health Benefits & Functional Profiles | Fruitypedia"
+  description="Explore peer-reviewed wellness phenomena, bioactive phytochemical biomarkers, and evidence-tiered systemic cohorts across all 8 production fruits."
+>
+  <div class="container-page py-12 sm:py-20">
+    <SectionHeading
+      label="FUNCTIONAL BIOLOGY & EVIDENCE TIERS"
+      title="Health Benefits Directory"
+      description="Peer-reviewed physiological phenomena, bioactive plant biomarkers, and clinical consensus tiers categorized across major biological systems with zero unverified medical claims."
+    />
+
+    <div class="mt-8 sm:mt-12">
+      <BenefitsExplorer client:load allFruits={allFruits} />
+    </div>
+  </div>
+</BaseLayout>

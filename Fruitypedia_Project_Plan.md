@@ -1,6 +1,6 @@
-# Fruitypedia — Project Plan V13
+# Fruitypedia — Project Plan V14
 
-> **V13 update:** Current status:
+> **V14 update:** Current status:
 >
 > - **Phase 0 — Foundation + Feasibility Spike: COMPLETED**
 > - **Phase 1 — Global Fruitypedia Landing Page: COMPLETED**
@@ -10,15 +10,16 @@
 > - **Phase 3 — Directory / Categories / Search / Public V1 & Design Polish: COMPLETED**
 > - **Phase 4A — Compare Module: COMPLETED**
 > - **Phase 4B — Nutrition Explorer: COMPLETED**
-> - **Phase 4C — Health Benefits & Functional Profile Directory: NEXT**
+> - **Phase 4C — Health Benefits & Functional Profile Directory: COMPLETED**
+> - **Phase 4D — Interactive Harvest Seasons & Phenology Calendar: NEXT**
 >
-> This update records the completion of **Phase 4B (Macro & Micronutrient Observatory — `/nutrition`)**:
-> 1. **Comparative Nutrient Leaderboard (`src/components/NutritionExplorer.tsx`)**: Ranks all 8 production fruits across 12 analytical macro and micronutrients with relative visual bars and highest/lowest toggles.
-> 2. **FDA 21 CFR 101.54 Daily Value Benchmarking**: Automated Daily Value categorization (`High Source ≥20% DV`, `Good Source 10–19% DV`, `Low ≤5% DV`).
-> 3. **Goal-Based Nutrient Targeter ("Find Fruits by Dietary Target")**: Interactive preset filtering for Immunity & Vitamin C, High Dietary Fiber, Low Caloric Density, Maximum Hydration, and Low Natural Sugars.
-> 4. **Sortable Cross-Catalog Laboratory Matrix Table**: Complete desktop and mobile matrix covering all 8 fruits and 12 biochemical metrics with bidirectional multi-column sorting and direct monograph links.
-> 5. **Site-Wide Navigation & Accessibility**: Dedicated `/nutrition` route, added to desktop navigation bar, mobile menu drawer, and both footer variants.
-> 6. **Quality Gate**: 42/42 Vitest tests passing, 0 Astro check errors across 66 files, visually verified in browser.
+> This update records the completion of **Phase 4C (Health Benefits Directory — `/benefits`)**:
+> 1. **Systemic Cohort Taxonomy (`src/components/BenefitsExplorer.tsx`)**: Classifies all 24 peer-reviewed wellness phenomena across all 8 production fruits into 7 biological cohorts (*All Systems, Cardiovascular, Immune & Defense, Gut & Digestion, Metabolism & Energy, Hydration & Recovery, Bone & Tissue*).
+> 2. **Scientific Confidence Badges**: Replicated consensus tiering (`Established Scientific Consensus`, `Emerging Clinical Evidence`) with explicit FDA 21 CFR 101.14 educational compliance and zero unverified medical claims.
+> 3. **Biomarker Callouts & Mechanism Narratives**: Staggered academic entries highlighting exact botanical biomarkers (e.g. *Anthocyanins 163 mg / 100g*, *L-Citrulline*, *Ascorbic Acid 58.8 mg / 100g · 65% DV*), narrative physiological mechanisms, and direct deep-links to fruit monograph `#benefits`.
+> 4. **Live Phytochemical Search & Filtering**: Instant search across fruits, biomarkers, and biological phenomena, plus evidence confidence level controls.
+> 5. **Site-Wide Navigation**: Dedicated `/benefits` route, added to desktop navigation bar, mobile menu drawer, and both footer variants.
+> 6. **Quality Gate**: 47/47 Vitest tests passing across 7 suites, 0 Astro check errors across 69 files, verified in browser.
 
 ## 1. Executive Summary
 
