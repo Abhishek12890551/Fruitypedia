@@ -16,58 +16,65 @@ Every monograph is normalized directly from peer-reviewed scientific literature,
 ## 🌟 Key Exploration Modules
 
 ### 🍇 1. Individual Botanical Monographs (`/fruit/[slug]`)
+
 - **Fine-Art Editorial Presentation**: Staggered layout with authentic macro photography, botanical taxonomy, and family lineage.
 - **USDA Laboratory Nutrition Deck**: 25+ verified nutrients per 100g raw edible portion, with interactive serving size scaler (100g, 1 cup, whole fruit).
 - **Sensory Taste Profile**: Calibrated 10-point sweetness, acidity, and bitterness meters with sommelier-grade tasting notes.
-- **Evidence-Tiered Wellness Insights**: Scientific consensus tiering (`Established`, `Emerging`) with exact compound biomarkers (e.g. *Anthocyanins 163 mg / 100g*, *L-Citrulline*).
+- **Evidence-Tiered Wellness Insights**: Scientific consensus tiering (`Established`, `Emerging`) with exact compound biomarkers (e.g. _Anthocyanins 163 mg / 100g_, _L-Citrulline_).
 - **Cultivar Diversity Guide**: Physical characteristics, culinary utility, and ripening markers for heritage and commercial varieties.
 
 ### 🔬 2. Side-by-Side Analytical Laboratory (`/compare`)
-- **Dual-Slot Fruit Selector**: Responsive visual selector with dynamic ambient theme glow and quick-cohort presets (*Berry Duel*, *Citrus vs Tropical*, *Orchard Classics*).
+
+- **Dual-Slot Fruit Selector**: Responsive visual selector with dynamic ambient theme glow and quick-cohort presets (_Berry Duel_, _Citrus vs Tropical_, _Orchard Classics_).
 - **Executive Differentials**: Automatic calculation of key nutritional advantages (calories, Vitamin C potency, dietary fiber).
 - **Nutritional Delta Visualizer**: Comparative proportional dual bars for 12 macro and micronutrients with visual leader badges.
 - **Sensory & Harvest Contrast**: Direct sensory meters and 12-month harvest overlap matrix.
 - **URL Synchronization**: Shareable deep-links via `?a={slug}&b={slug}` with 1-click clipboard copying.
 
 ### 📊 3. Macro & Micronutrient Observatory (`/nutrition`)
+
 - **Dynamic Leaderboards**: Interactive ranking across 12 nutrients with relative percentage bars.
 - **FDA Daily Value Benchmarking**: Automated categorization compliant with **FDA 21 CFR 101.54** (`High Source ≥20% DV`, `Good Source 10–19% DV`, `Low ≤5% DV`).
-- **Goal-Based Targeter**: Instant dietary presets (*Immunity & Vitamin C*, *High Fiber*, *Low Calorie*, *Maximum Hydration*, *Low Sugar*).
+- **Goal-Based Targeter**: Instant dietary presets (_Immunity & Vitamin C_, _High Fiber_, _Low Calorie_, _Maximum Hydration_, _Low Sugar_).
 - **Cross-Catalog Matrix Table**: Comprehensive, sortable laboratory table comparing all fruits simultaneously.
 
 ### 🩺 4. Health Benefits Directory (`/benefits`)
+
 - **7 Biological System Cohorts**: Cardiovascular, Immune Defense, Gut Microbiome & Digestion, Metabolic Balance, Cellular Hydration, and Bone & Connective Tissue.
 - **Strict Anti-Hype Standard**: Full compliance with **FDA 21 CFR 101.14** educational standards — strictly grounded in replicated biochemical literature with zero speculative "superfood" or "miracle" claims.
 - **Live Biomarker Search**: Instant real-time search across fruits, biological mechanisms, and phytochemicals.
 
 ### 🗓️ 5. Harvest Seasons & Phenology Calendar (`/seasons`)
+
 - **Real-Time Month Detection**: Detects user's current month with a live pulsating status indicator.
 - **12-Month Selector Strip**: Visual month chips displaying active and peak fruit counts.
 - **Master Phenology Grid**: Cross-catalog matrix mapping Peak Harvest, Active Harvest, and Dormancy across all fruits.
 - **Hemispheric Inversion**: Toggle between Northern and Southern (+6 months) cultivation cycles to explore counter-seasonal import windows.
 
 ### 🌍 6. Botanical World Atlas (`/explore`)
+
 - **Interactive TopoJSON Cartography**: SVG world map visualizing native evolutionary cradles and modern cultivation hubs.
-- **Continental Biomes**: Filter by speciation biomes (*Tian Shan Silk Road*, *Yangtze Valley*, *Indo-Malayan Archipelago*, *Boreal Heath*, *Nile Basin*).
-- **Historical Diaspora Dossiers**: Ancient trade corridors, domestication epochs, and ancestral wild progenitors (*Malus sieversii*, *Musa acuminata*, *Fragaria chiloensis*).
+- **Continental Biomes**: Filter by speciation biomes (_Tian Shan Silk Road_, _Yangtze Valley_, _Indo-Malayan Archipelago_, _Boreal Heath_, _Nile Basin_).
+- **Historical Diaspora Dossiers**: Ancient trade corridors, domestication epochs, and ancestral wild progenitors (_Malus sieversii_, _Musa acuminata_, _Fragaria chiloensis_).
 
 ### ⚡ 7. Command Palette Quick Search (`⌘K`)
+
 - **Instant Client-Side Search**: Powered by Fuse.js with fuzzy matching across common names, scientific species, botanical families, taste attributes, and nutrients.
 
 ---
 
 ## 🛠️ Technology Stack
 
-| Layer | Technologies |
-| :--- | :--- |
-| **Framework** | [Astro 5](https://astro.build) (Islands Architecture, SSR/SSG hybrid) |
-| **UI Components** | [React 19](https://react.dev) (Hydrated Client Islands: `client:load`, `client:idle`) |
-| **Styling & Design** | [Tailwind CSS](https://tailwindcss.com) + Custom Vanilla CSS Variables |
-| **Typography** | Self-hosted Google Fonts (*Urbanist*, *Ballet*, *Cormorant Garamond*, *Inter*) |
-| **Cartography** | [React Simple Maps](https://www.react-simple-maps.io) + TopoJSON World Atlas |
-| **Smooth Motion** | [Lenis](https://lenis.darkroom.engineering) (With `prefers-reduced-motion` detection) |
-| **Data Validation** | [Zod](https://zod.dev) (Strict runtime schema enforcement for all monographs) |
-| **Testing** | [Vitest](https://vitest.dev) (56 automated unit and data integrity tests) |
+| Layer                | Technologies                                                                          |
+| :------------------- | :------------------------------------------------------------------------------------ |
+| **Framework**        | [Astro 5](https://astro.build) (Islands Architecture, SSR/SSG hybrid)                 |
+| **UI Components**    | [React 19](https://react.dev) (Hydrated Client Islands: `client:load`, `client:idle`) |
+| **Styling & Design** | [Tailwind CSS](https://tailwindcss.com) + Custom Vanilla CSS Variables                |
+| **Typography**       | Self-hosted Google Fonts (_Urbanist_, _Ballet_, _Cormorant Garamond_, _Inter_)        |
+| **Cartography**      | [React Simple Maps](https://www.react-simple-maps.io) + TopoJSON World Atlas          |
+| **Smooth Motion**    | [Lenis](https://lenis.darkroom.engineering) (With `prefers-reduced-motion` detection) |
+| **Data Validation**  | [Zod](https://zod.dev) (Strict runtime schema enforcement for all monographs)         |
+| **Testing**          | [Vitest](https://vitest.dev) (56 automated unit and data integrity tests)             |
 
 ---
 
@@ -105,18 +112,21 @@ fruitypedia/
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js `v18.17.0` or higher
 - npm `v9.0.0` or higher
 
 ### Installation
 
 1. **Clone the repository**:
+
    ```bash
    git clone https://github.com/Abhishek12890551/Fruitypedia.git
    cd Fruitypedia
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
