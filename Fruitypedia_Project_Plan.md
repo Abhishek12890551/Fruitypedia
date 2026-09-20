@@ -1,6 +1,6 @@
-# Fruitypedia — Project Plan V11
+# Fruitypedia — Project Plan V12
 
-> **V11 update:** Current status:
+> **V12 update:** Current status:
 >
 > - **Phase 0 — Foundation + Feasibility Spike: COMPLETED**
 > - **Phase 1 — Global Fruitypedia Landing Page: COMPLETED**
@@ -8,15 +8,16 @@
 > - **Phase 2 — Fruit Engine + Gold-Standard Blueberry: COMPLETED**
 > - **Phase 2.5 — Multi-Fruit Stress Test + Content Scaling Pilot: COMPLETED**
 > - **Phase 3 — Directory / Categories / Search / Public V1 & Design Polish: COMPLETED**
-> - **Phase 4 — Analytical & Discovery Suite (4A: Compare): NEXT**
+> - **Phase 4A — Compare Module: COMPLETED**
+> - **Phase 4B — Nutrition Explorer: NEXT**
 >
-> This update records the completion of Phase 3 and subsequent editorial polish:
->
-> 1. **Image Art Direction & Full Bleed**: Converted hero/featured cards to true full-bleed right layout and adjusted standard card image alignment (`object-position: 72% center`) to counterbalance asymmetrical photography whitespace.
-> 2. **Footer Architecture**: Deployed a minimal ambient footer as default across standard routes while isolating the full 5-column institutional footer exclusively to `/about`.
-> 3. **Centralized Academic Provenance**: Relocated repetitive per-fruit citation blocks into a master academic citation directory on `/about`, replaced on fruit monographs with an Academic Provenance Stamp linking directly to `/about#{slug}`.
-> 4. **Discovery & Recommendation Integrity**: Purged unpublished mock companion cards (Raspberry) from the Explore section on fruit pages, replacing it with a robust 3-card grid of verified, published monographs.
-> 5. **Ready for Phase 4A**: Next immediate milestone is the **Compare Module** (`/compare`).
+> This update records the completion of **Phase 4A (Analytical Compare Module — `/compare`)**:
+> 1. **Two-Fruit Selector Island (`src/components/FruitCompare.tsx`)**: Responsive dual-slot visual selector with dynamic ambient glow, animated fruit swap button, and quick cohort discovery presets (Berry Duel, Citrus vs Tropical, Orchard Classics, etc.).
+> 2. **Executive Analytical Differentials**: Automatically calculates key advantages in caloric density, Vitamin C potency, and digestive fiber ratios.
+> 3. **Nutritional Delta Visualizer**: Comparative proportional dual bars for 12 macro and micronutrients with visual leader badges and percentage differentials.
+> 4. **Sensory & Seasonal Contrast**: 10-point sweetness/acidity meters, editorial tasting note comparisons, botanical classification table, and 12-month harvest calendar overlap.
+> 5. **URL Synchronization & Shareability**: Instant two-way synchronization with `?a={slug}&b={slug}` and one-click clipboard sharing.
+> 6. **Quality Gate**: 36/36 Vitest tests passing, 0 Astro check errors across 63 files, verified in browser.
 
 ## 1. Executive Summary
 
@@ -2312,25 +2313,21 @@ Phase 3 completion satisfies the **public V1 launch milestone**. Ready for desig
 
 ---
 
-## Phase 4 — Analytical & Discovery Suite (ACTIVE / NEXT)
+## Phase 4 — Analytical & Discovery Suite
 
 The earlier Phase 4 was too large. It is split into five independently gated workstreams.
 
-### 4A — Compare
+### 4A — Compare — COMPLETED
 
-**4–7 days / 20–35 hours**
+**Status: COMPLETED**
+- **Two-Fruit Selector Island (`src/components/FruitCompare.tsx`)**: Responsive dual-slot visual selector with dynamic ambient theme glow, animated fruit swap button, and quick cohort discovery presets (Berry Duel, Citrus vs Tropical, Orchard Classics, etc.).
+- **Executive Analytical Differentials**: Automatically calculates key advantages in caloric density, Vitamin C potency, and digestive fiber ratios.
+- **Nutritional Delta Visualizer**: Comparative proportional dual bars for 12 macro and micronutrients with visual leader badges and percentage differentials.
+- **Sensory & Seasonal Contrast**: 10-point sweetness/acidity meters, editorial tasting note comparisons, botanical classification table, and 12-month harvest calendar overlap.
+- **URL Synchronization & Shareability**: Instant two-way synchronization with `?a={slug}&b={slug}` and one-click clipboard sharing.
+- **Test Suite**: 5/5 unit tests in `src/tests/compare.test.ts` (36/36 tests passing total).
 
-Build:
-
-- two-fruit selector;
-- comparison summary;
-- nutrition bars;
-- taste comparison;
-- season/origin comparison;
-- URL state;
-- shareable comparison links.
-
-### 4B — Nutrition
+### 4B — Nutrition Explorer (NEXT)
 
 **4–7 days / 20–35 hours**
 
