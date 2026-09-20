@@ -1,65 +1,29 @@
 ---
 /**
  * World Atlas & Origins Page — `/explore`
- * Geographic provenance and global fruit diaspora.
+ * Geographic provenance, continental evolutionary biomes, and global fruit diaspora.
  *
- * @see Fruitypedia_Project_Plan §4D
+ * @see Fruitypedia_Project_Plan §4E
  */
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import SectionHeading from "@/components/SectionHeading.astro";
-import { OriginMap } from "@/components/OriginMap";
+import WorldAtlasExplorer from "@/components/WorldAtlasExplorer";
 import { allFruits } from "@/data";
-
-const blueberry = allFruits[0];
 ---
 
 <BaseLayout
-  title="World Atlas — Geographic Origins & Diaspora"
-  description="Trace the native evolutionary origins of fruit species across continents and witness their historical diaspora to modern cultivation centers."
+  title="Botanical World Atlas — Geographic Provenance & Global Diaspora | Fruitypedia"
+  description="Trace the evolutionary cradles, ancient trade migration corridors, and modern cultivation hubs across our complete botanical library."
 >
   <div class="container-page py-12 sm:py-20">
     <SectionHeading
-      label="GEOGRAPHIC PROVENANCE"
+      label="GEOGRAPHIC PROVENANCE & DIASPORA"
       title="The Botanical World Atlas"
-      description="Where does fruit come from? Trace the native evolutionary origin of species across continents and examine modern agricultural distribution."
+      description="Where does fruit come from? Trace the native evolutionary origin of species across continents, explore ancient trade corridors, and examine modern agricultural distribution."
     />
 
-    <!-- Interactive Map Island -->
-    <div class="mb-12">
-      <OriginMap
-        client:visible
-        originCoordinates={blueberry.origin.coordinates}
-        originRegion={blueberry.origin.region}
-        grownRegions={blueberry.origin.grownTodayRegions}
-        themeColor={blueberry.theme.primary}
-      />
-    </div>
-
-    <!-- Continental Biome Breakdown -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-ui">
-      <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900/40">
-        <span class="text-xs font-semibold uppercase tracking-widest text-indigo-400">North America</span>
-        <h4 class="font-display text-xl font-bold text-white mt-1">Boreal & Temperate Heath</h4>
-        <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
-          Native home of acidic soil ericaceous berries: <a href="/fruit/blueberry" class="text-white underline underline-offset-4">Vaccinium corymbosum (Blueberry)</a>, cranberries, and concord grapes.
-        </p>
-      </div>
-
-      <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900/40">
-        <span class="text-xs font-semibold uppercase tracking-widest text-amber-400">Southeast Asia</span>
-        <h4 class="font-display text-xl font-bold text-white mt-1">Tropical Rainforest Canopy</h4>
-        <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
-          The evolutionary birthplace of citrus ancestors, mangoes (<span class="italic font-editorial">Mangifera indica</span>), bananas, and durian.
-        </p>
-      </div>
-
-      <div class="p-6 rounded-2xl border border-zinc-800 bg-zinc-900/40">
-        <span class="text-xs font-semibold uppercase tracking-widest text-emerald-400">Central & South America</span>
-        <h4 class="font-display text-xl font-bold text-white mt-1">Neotropical River Basins</h4>
-        <p class="text-xs text-zinc-400 mt-2 leading-relaxed">
-          Origin of pineapples, papayas, avocados, cacao, and the wild ancestors of modern strawberries.
-        </p>
-      </div>
+    <div class="mt-8 sm:mt-12">
+      <WorldAtlasExplorer client:load allFruits={allFruits} />
     </div>
   </div>
 </BaseLayout>

@@ -1,6 +1,6 @@
-# Fruitypedia — Project Plan V15
+# Fruitypedia — Project Plan V16
 
-> **V15 update:** Current status:
+> **V16 update:** Current status:
 >
 > - **Phase 0 — Foundation + Feasibility Spike: COMPLETED**
 > - **Phase 1 — Global Fruitypedia Landing Page: COMPLETED**
@@ -12,17 +12,17 @@
 > - **Phase 4B — Nutrition Explorer: COMPLETED**
 > - **Phase 4C — Health Benefits & Functional Profile Directory: COMPLETED**
 > - **Phase 4D — Interactive Harvest Seasons & Phenology Calendar: COMPLETED**
-> - **Phase 4E — Botanical World Atlas & Geographic Diaspora Explorer: NEXT**
+> - **Phase 4E — Botanical World Atlas & Geographic Diaspora Explorer: COMPLETED**
+> - **Phase 5 — Production Hardening, Lighthouse 100 Audit & Catalog Expansion: NEXT**
 >
-> This update records the completion of **Phase 4D (Harvest Seasons Calendar — `/seasons`)**:
+> This update records the completion of **Phase 4E (Botanical World Atlas — `/explore`)**:
 >
-> 1. **Interactive Client Component (`src/components/SeasonsCalendar.tsx`)**: Replaced the static single-fruit preview with an interactive calendar spanning all 8 production fruits.
-> 2. **Real-Time Month Detection & Live Status**: Automatically detects the current calendar month with a pulse indicator and one-click "Jump to Today" shortcut.
-> 3. **Interactive 12-Month Selector Strip**: Visual month chips (Jan–Dec) displaying active and peak fruit counts for each month.
-> 4. **Monthly Spotlight Deck**: Rich cards highlighting fruits peaking or harvesting during the selected month with Brix accumulation and flavor development summaries.
-> 5. **Cross-Catalog Phenological Master Matrix**: Full 12-month grid mapping Peak, Active Harvest, and Dormancy across all 8 fruits with brand color fills and direct monograph links.
-> 6. **Hemispheric Inversion Toggle**: Switches between Northern and Southern (+6 months) cultivation cycles to illustrate counter-seasonal global availability.
-> 7. **Quality Gate**: 53/53 Vitest tests passing across 8 suites, 0 Astro check errors across 71 files, verified in browser.
+> 1. **Interactive Multi-Fruit Selector (`src/components/WorldAtlasExplorer.tsx`)**: Replaced the static single-fruit preview with dynamic real-time switching across all 8 production fruits, driving the SVG `OriginMap` with native coordinates and commercial cultivation hubs.
+> 2. **Continental Biome & Provenance Filter**: Grouped evolutionary birthplaces into 7 regional biomes (*Central Asia / Tian Shan, East Asia / Yangtze Valley, South Asia, Southeast Asia, North America, South America, Northeast Africa / Sahel*).
+> 3. **Historical Diaspora Dossiers**: In-depth academic narratives tracing ancient trade corridors (Silk Road, Columbian Exchange, Austronesian sea voyages, Nile caravans) and wild progenitor species.
+> 4. **Modern Production Hubs**: Displays top commercial producing nations per monograph.
+> 5. **Cross-Catalog Provenance Matrix**: Full comparative data table linking every fruit's coordinates, native origin, and cultivation hubs.
+> 6. **Quality Gate**: 56/56 Vitest tests passing across 9 suites, 0 Astro check errors across 73 files, verified in browser.
 
 ## 1. Executive Summary
 
