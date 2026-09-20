@@ -11,6 +11,7 @@ const NAV_LINKS: NavLink[] = [
   { href: "/directory", label: "Directory" },
   { href: "/explore", label: "World Atlas" },
   { href: "/compare", label: "Compare" },
+  { href: "/nutrition", label: "Nutrition Explorer" },
   { href: "/seasons", label: "Seasons" },
   { href: "/about", label: "About & Methodology" },
 ];

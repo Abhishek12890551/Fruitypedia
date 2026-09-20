@@ -1,6 +1,6 @@
-# Fruitypedia — Project Plan V12
+# Fruitypedia — Project Plan V13
 
-> **V12 update:** Current status:
+> **V13 update:** Current status:
 >
 > - **Phase 0 — Foundation + Feasibility Spike: COMPLETED**
 > - **Phase 1 — Global Fruitypedia Landing Page: COMPLETED**
@@ -9,15 +9,16 @@
 > - **Phase 2.5 — Multi-Fruit Stress Test + Content Scaling Pilot: COMPLETED**
 > - **Phase 3 — Directory / Categories / Search / Public V1 & Design Polish: COMPLETED**
 > - **Phase 4A — Compare Module: COMPLETED**
-> - **Phase 4B — Nutrition Explorer: NEXT**
+> - **Phase 4B — Nutrition Explorer: COMPLETED**
+> - **Phase 4C — Health Benefits & Functional Profile Directory: NEXT**
 >
-> This update records the completion of **Phase 4A (Analytical Compare Module — `/compare`)**:
-> 1. **Two-Fruit Selector Island (`src/components/FruitCompare.tsx`)**: Responsive dual-slot visual selector with dynamic ambient glow, animated fruit swap button, and quick cohort discovery presets (Berry Duel, Citrus vs Tropical, Orchard Classics, etc.).
-> 2. **Executive Analytical Differentials**: Automatically calculates key advantages in caloric density, Vitamin C potency, and digestive fiber ratios.
-> 3. **Nutritional Delta Visualizer**: Comparative proportional dual bars for 12 macro and micronutrients with visual leader badges and percentage differentials.
-> 4. **Sensory & Seasonal Contrast**: 10-point sweetness/acidity meters, editorial tasting note comparisons, botanical classification table, and 12-month harvest calendar overlap.
-> 5. **URL Synchronization & Shareability**: Instant two-way synchronization with `?a={slug}&b={slug}` and one-click clipboard sharing.
-> 6. **Quality Gate**: 36/36 Vitest tests passing, 0 Astro check errors across 63 files, verified in browser.
+> This update records the completion of **Phase 4B (Macro & Micronutrient Observatory — `/nutrition`)**:
+> 1. **Comparative Nutrient Leaderboard (`src/components/NutritionExplorer.tsx`)**: Ranks all 8 production fruits across 12 analytical macro and micronutrients with relative visual bars and highest/lowest toggles.
+> 2. **FDA 21 CFR 101.54 Daily Value Benchmarking**: Automated Daily Value categorization (`High Source ≥20% DV`, `Good Source 10–19% DV`, `Low ≤5% DV`).
+> 3. **Goal-Based Nutrient Targeter ("Find Fruits by Dietary Target")**: Interactive preset filtering for Immunity & Vitamin C, High Dietary Fiber, Low Caloric Density, Maximum Hydration, and Low Natural Sugars.
+> 4. **Sortable Cross-Catalog Laboratory Matrix Table**: Complete desktop and mobile matrix covering all 8 fruits and 12 biochemical metrics with bidirectional multi-column sorting and direct monograph links.
+> 5. **Site-Wide Navigation & Accessibility**: Dedicated `/nutrition` route, added to desktop navigation bar, mobile menu drawer, and both footer variants.
+> 6. **Quality Gate**: 42/42 Vitest tests passing, 0 Astro check errors across 66 files, visually verified in browser.
 
 ## 1. Executive Summary
 

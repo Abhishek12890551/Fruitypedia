@@ -1,0 +1,30 @@
+---
+/**
+ * Nutrition Explorer Page — `/nutrition`
+ * Macro & micronutrient analytics, FDA Daily Value benchmarks,
+ * dietary goal targeter, and full cross-catalog laboratory matrix.
+ *
+ * @see Fruitypedia_Project_Plan §4B
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import NutritionExplorer from "@/components/NutritionExplorer";
+import { allFruits } from "@/data";
+---
+
+<BaseLayout
+  title="Nutrient Observatory & Cross-Catalog Matrix | Fruitypedia"
+  description="Explore peer-reviewed nutritional metrics, FDA Daily Value rankings, sugar-to-fiber ratios, and dietary targets across our complete botanical library."
+>
+  <div class="container-page py-12 sm:py-20">
+    <SectionHeading
+      label="MACRO & MICRONUTRIENT OBSERVATORY"
+      title="Nutritional Metrics & Daily Values"
+      description="Interactive cross-catalog laboratory metrics, FDA 21 CFR 101.54 Daily Value classifications, dietary goal filtering, and standardized USDA FoodData Central chemical compositions."
+    />
+
+    <div class="mt-8 sm:mt-12">
+      <NutritionExplorer client:load allFruits={allFruits} />
+    </div>
+  </div>
+</BaseLayout>
