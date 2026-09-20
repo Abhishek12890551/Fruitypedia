@@ -1,6 +1,6 @@
-# Fruitypedia — Project Plan V14
+# Fruitypedia — Project Plan V15
 
-> **V14 update:** Current status:
+> **V15 update:** Current status:
 >
 > - **Phase 0 — Foundation + Feasibility Spike: COMPLETED**
 > - **Phase 1 — Global Fruitypedia Landing Page: COMPLETED**
@@ -11,15 +11,18 @@
 > - **Phase 4A — Compare Module: COMPLETED**
 > - **Phase 4B — Nutrition Explorer: COMPLETED**
 > - **Phase 4C — Health Benefits & Functional Profile Directory: COMPLETED**
-> - **Phase 4D — Interactive Harvest Seasons & Phenology Calendar: NEXT**
+> - **Phase 4D — Interactive Harvest Seasons & Phenology Calendar: COMPLETED**
+> - **Phase 4E — Botanical World Atlas & Geographic Diaspora Explorer: NEXT**
 >
-> This update records the completion of **Phase 4C (Health Benefits Directory — `/benefits`)**:
-> 1. **Systemic Cohort Taxonomy (`src/components/BenefitsExplorer.tsx`)**: Classifies all 24 peer-reviewed wellness phenomena across all 8 production fruits into 7 biological cohorts (*All Systems, Cardiovascular, Immune & Defense, Gut & Digestion, Metabolism & Energy, Hydration & Recovery, Bone & Tissue*).
-> 2. **Scientific Confidence Badges**: Replicated consensus tiering (`Established Scientific Consensus`, `Emerging Clinical Evidence`) with explicit FDA 21 CFR 101.14 educational compliance and zero unverified medical claims.
-> 3. **Biomarker Callouts & Mechanism Narratives**: Staggered academic entries highlighting exact botanical biomarkers (e.g. *Anthocyanins 163 mg / 100g*, *L-Citrulline*, *Ascorbic Acid 58.8 mg / 100g · 65% DV*), narrative physiological mechanisms, and direct deep-links to fruit monograph `#benefits`.
-> 4. **Live Phytochemical Search & Filtering**: Instant search across fruits, biomarkers, and biological phenomena, plus evidence confidence level controls.
-> 5. **Site-Wide Navigation**: Dedicated `/benefits` route, added to desktop navigation bar, mobile menu drawer, and both footer variants.
-> 6. **Quality Gate**: 47/47 Vitest tests passing across 7 suites, 0 Astro check errors across 69 files, verified in browser.
+> This update records the completion of **Phase 4D (Harvest Seasons Calendar — `/seasons`)**:
+>
+> 1. **Interactive Client Component (`src/components/SeasonsCalendar.tsx`)**: Replaced the static single-fruit preview with an interactive calendar spanning all 8 production fruits.
+> 2. **Real-Time Month Detection & Live Status**: Automatically detects the current calendar month with a pulse indicator and one-click "Jump to Today" shortcut.
+> 3. **Interactive 12-Month Selector Strip**: Visual month chips (Jan–Dec) displaying active and peak fruit counts for each month.
+> 4. **Monthly Spotlight Deck**: Rich cards highlighting fruits peaking or harvesting during the selected month with Brix accumulation and flavor development summaries.
+> 5. **Cross-Catalog Phenological Master Matrix**: Full 12-month grid mapping Peak, Active Harvest, and Dormancy across all 8 fruits with brand color fills and direct monograph links.
+> 6. **Hemispheric Inversion Toggle**: Switches between Northern and Southern (+6 months) cultivation cycles to illustrate counter-seasonal global availability.
+> 7. **Quality Gate**: 53/53 Vitest tests passing across 8 suites, 0 Astro check errors across 71 files, verified in browser.
 
 ## 1. Executive Summary
 
@@ -2322,6 +2325,7 @@ The earlier Phase 4 was too large. It is split into five independently gated wor
 ### 4A — Compare — COMPLETED
 
 **Status: COMPLETED**
+
 - **Two-Fruit Selector Island (`src/components/FruitCompare.tsx`)**: Responsive dual-slot visual selector with dynamic ambient theme glow, animated fruit swap button, and quick cohort discovery presets (Berry Duel, Citrus vs Tropical, Orchard Classics, etc.).
 - **Executive Analytical Differentials**: Automatically calculates key advantages in caloric density, Vitamin C potency, and digestive fiber ratios.
 - **Nutritional Delta Visualizer**: Comparative proportional dual bars for 12 macro and micronutrients with visual leader badges and percentage differentials.
