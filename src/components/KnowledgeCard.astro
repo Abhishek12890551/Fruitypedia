@@ -14,13 +14,13 @@ const {
   description,
   href,
   badge = "Explore",
-  accentColor = "#c8b88a",
+  accentColor = "var(--fruit-glow, #a5b4fc)",
 } = Astro.props;
 ---
 
 <a
   href={href}
-  class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 sm:p-7 backdrop-blur-sm transition-all duration-300 hover:border-zinc-700 hover:bg-zinc-900/70 hover:-translate-y-1"
+  class="group relative flex flex-col justify-between overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-zinc-900/40 p-6 sm:p-7 backdrop-blur-sm transition-all duration-300 hover:border-[var(--border-emphasis)] hover:bg-zinc-900/70 hover:shadow-xl hover:-translate-y-1"
 >
   <div
     class="absolute -right-12 -top-12 h-32 w-32 rounded-full opacity-10 blur-2xl transition-opacity duration-300 group-hover:opacity-25 pointer-events-none"
@@ -29,19 +29,19 @@ const {
   />
 
   <div>
-    <div class="flex items-center justify-between gap-2 mb-3">
-      <span class="text-[11px] font-ui font-semibold uppercase tracking-widest text-zinc-500">
+    <div class="flex items-center justify-between gap-2 mb-3.5">
+      <span class="text-[10px] font-ui font-semibold uppercase tracking-[0.2em] text-zinc-500">
         {category}
       </span>
       <span
-        class="text-[10px] px-2 py-0.5 rounded-full font-ui font-medium"
-        style={`background-color: ${accentColor}22; color: ${accentColor}; border: 1px solid ${accentColor}44;`}
+        class="text-[10px] px-2 py-0.5 rounded-[var(--radius-sm)] font-ui font-medium tracking-wide debossed-plate"
+        style={`color: ${accentColor}; border: 1px solid ${accentColor}44;`}
       >
         {badge}
       </span>
     </div>
 
-    <h3 class="font-editorial text-2xl font-normal text-white group-hover:text-zinc-200 transition-colors">
+    <h3 class="font-editorial text-2xl sm:text-[1.65rem] font-normal text-white group-hover:text-zinc-100 transition-colors leading-snug">
       {title}
     </h3>
 
@@ -50,8 +50,11 @@ const {
     </p>
   </div>
 
-  <div class="mt-6 flex items-center gap-1.5 font-ui text-xs font-semibold text-white group-hover:translate-x-1 transition-transform">
-    <span>Read topic</span>
-    <span aria-hidden="true">→</span>
+  <div class="mt-6 pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between font-ui text-xs text-zinc-500">
+    <span class="text-zinc-500">Archival Module</span>
+    <span class="text-white font-medium group-hover:translate-x-1 transition-transform flex items-center gap-1">
+      <span>Read topic</span>
+      <span aria-hidden="true">→</span>
+    </span>
   </div>
 </a>

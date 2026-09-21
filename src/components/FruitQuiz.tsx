@@ -369,14 +369,27 @@ export const FruitQuiz: React.FC<FruitQuizProps> = ({ allFruits = [] }) => {
                   type="button"
                   onClick={() => handleSelectOption(idx)}
                   disabled={isAnswered}
-                  className={`w-full text-left p-4 rounded-xl border transition-all flex items-start gap-3.5 cursor-pointer disabled:cursor-default ${btnStyle}`}
+                  className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between gap-3.5 cursor-pointer disabled:cursor-default ${btnStyle}`}
                 >
-                  <span
-                    className={`w-6 h-6 shrink-0 rounded-full border flex items-center justify-center text-xs font-mono transition-colors ${markerStyle}`}
-                  >
-                    {String.fromCharCode(65 + idx)}
-                  </span>
-                  <span className="font-ui text-sm sm:text-base leading-relaxed">{option}</span>
+                  <div className="flex items-start gap-3.5 flex-1">
+                    <span
+                      className={`w-6 h-6 shrink-0 rounded-full border flex items-center justify-center text-xs font-mono transition-colors ${markerStyle}`}
+                    >
+                      {String.fromCharCode(65 + idx)}
+                    </span>
+                    <span className="font-ui text-sm sm:text-base leading-relaxed">{option}</span>
+                  </div>
+
+                  {/* Tactile Botanical Wax Seal Verification Stamp */}
+                  {isAnswered && idx === currentQuestion.correctIndex && (
+                    <span className="shrink-0 flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-500/20 border border-emerald-500/50 text-[10px] font-mono uppercase tracking-wider text-emerald-300 animate-wax-seal shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                      <svg className="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                      </svg>
+                      <span className="hidden sm:inline">BOTANICAL FACTUM</span>
+                      <span className="sm:hidden">VERIFIED</span>
+                    </span>
+                  )}
                 </button>
               );
             })}

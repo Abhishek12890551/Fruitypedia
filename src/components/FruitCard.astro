@@ -21,11 +21,13 @@ const fiber = fruit.nutrition.nutrients.fiber?.amount ?? 0;
 {variant === "featured" ? (
   <a
     href={`/fruit/${fruit.slug}`}
-    class="group relative block overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/60 backdrop-blur-md transition-all duration-300 hover:border-zinc-700 hover:shadow-2xl"
-    style={`--fruit-primary: ${primaryColor}; --fruit-glow: ${glowColor};`}
+    data-tilt-card="true"
+    class="group relative block overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900/60 backdrop-blur-md transition-[border-color,box-shadow] duration-300 hover:border-zinc-700 hover:shadow-2xl will-change-transform"
+    style={`--fruit-primary: ${primaryColor}; --fruit-glow: ${glowColor}; transform-style: preserve-3d;`}
   >
     <div
-      class="absolute -right-20 -top-20 h-72 w-72 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-40 pointer-events-none"
+      data-tilt-glow="true"
+      class="absolute -right-20 -top-20 h-72 w-72 rounded-full opacity-20 blur-3xl transition-opacity duration-500 group-hover:opacity-40 pointer-events-none will-change-transform"
       style={`background-color: ${primaryColor};`}
       aria-hidden="true"
     />
@@ -97,7 +99,8 @@ const fiber = fruit.nutrition.nutrients.fiber?.amount ?? 0;
           <img
             src={fruit.images.hero.src}
             alt={fruit.images.hero.alt}
-            class="w-full h-full object-cover object-right group-hover:scale-105 transition-transform duration-700"
+            data-tilt-img="true"
+            class="w-full h-full object-cover object-right group-hover:scale-105 transition-transform duration-700 will-change-transform"
             loading="lazy"
           />
           <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-zinc-900 via-zinc-900/40 to-transparent pointer-events-none" />
@@ -129,7 +132,7 @@ const fiber = fruit.nutrition.nutrients.fiber?.amount ?? 0;
   /* Standard Card */
   <a
     href={`/fruit/${fruit.slug}`}
-    class="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/50 p-5 backdrop-blur-sm transition-all duration-300 hover:border-zinc-700 hover:shadow-xl hover:-translate-y-1"
+    class="group relative flex flex-col justify-between overflow-hidden rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-zinc-900/40 p-5 backdrop-blur-sm transition-all duration-300 hover:border-[var(--border-emphasis)] hover:bg-zinc-900/70 hover:shadow-xl hover:-translate-y-1"
     style={`--fruit-primary: ${primaryColor}; --fruit-glow: ${glowColor};`}
     data-fruit-card
     data-id={fruit.id}
@@ -148,9 +151,14 @@ const fiber = fruit.nutrition.nutrients.fiber?.amount ?? 0;
       aria-hidden="true"
     />
 
+    <!-- Archival Folio Watermark in card corner -->
+    <div class="absolute top-3.5 right-4 font-mono text-[9px] tracking-widest text-zinc-600 opacity-60 pointer-events-none select-none uppercase">
+      {fruit.taxonomy.family.slice(0, 4)}·{fruit.id.padStart(2, '0')}
+    </div>
+
     <div>
       {fruit.images?.hero && (
-        <div class="relative mb-4 overflow-hidden rounded-xl border border-zinc-800/60 bg-zinc-950 aspect-[4/3]">
+        <div class="relative mb-4 overflow-hidden rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-950 aspect-[4/3]">
           <img
             src={fruit.images.hero.src}
             alt={fruit.images.hero.alt}
@@ -164,8 +172,8 @@ const fiber = fruit.nutrition.nutrients.fiber?.amount ?? 0;
       <div class="flex items-center justify-between gap-2 mb-2">
         {category && (
           <span
-            class="px-2 py-0.5 rounded-full text-[10px] font-ui font-semibold uppercase tracking-wider"
-            style={`background-color: ${primaryColor}22; color: ${primaryColor};`}
+            class="px-2 py-0.5 rounded-[var(--radius-sm)] text-[10px] font-ui font-semibold uppercase tracking-wider"
+            style={`background-color: ${primaryColor}22; color: ${primaryColor}; border: 1px solid ${primaryColor}44;`}
           >
             {category.name}
           </span>
@@ -188,9 +196,131 @@ const fiber = fruit.nutrition.nutrients.fiber?.amount ?? 0;
       </p>
     </div>
 
-    <div class="mt-4 pt-3 border-t border-zinc-800/60 flex items-center justify-between font-ui text-xs text-zinc-500">
-      <span>{fruit.nutrition.calories.amount} kcal</span>
-      <span class="text-white group-hover:translate-x-1 transition-transform">View profile →</span>
+    <div class="mt-4 pt-3 border-t border-[var(--border-subtle)] flex items-center justify-between font-ui text-xs text-zinc-500">
+      <span class="debossed-plate px-2 py-0.5 rounded-[var(--radius-sm)] font-mono text-[11px] text-zinc-300">
+        {fruit.nutrition.calories.amount} kcal
+      </span>
+      <span class="text-white font-medium group-hover:translate-x-1 transition-transform flex items-center gap-1">
+        <span>View monograph</span>
+        <span aria-hidden="true">→</span>
+      </span>
     </div>
   </a>
 )}
+
+<script>
+  function initCardTilt() {
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    if (prefersReduced || isTouch) return;
+
+    const cards = document.querySelectorAll<HTMLElement>('[data-tilt-card="true"]');
+
+    cards.forEach((card) => {
+      if (card.getAttribute("data-tilt-init")) return;
+      card.setAttribute("data-tilt-init", "true");
+
+      const img = card.querySelector<HTMLElement>('[data-tilt-img="true"]');
+      const glow = card.querySelector<HTMLElement>('[data-tilt-glow="true"]');
+
+      let bounds: DOMRect | null = null;
+      let targetRotX = 0;
+      let targetRotY = 0;
+      let currentRotX = 0;
+      let currentRotY = 0;
+      let targetPanX = 0;
+      let targetPanY = 0;
+      let currentPanX = 0;
+      let currentPanY = 0;
+      let isHovered = false;
+      let rafId: number | null = null;
+
+      function render() {
+        if (!isHovered) {
+          // Spring back to center
+          currentRotX += (0 - currentRotX) * 0.1;
+          currentRotY += (0 - currentRotY) * 0.1;
+          currentPanX += (0 - currentPanX) * 0.1;
+          currentPanY += (0 - currentPanY) * 0.1;
+
+          if (
+            Math.abs(currentRotX) < 0.01 &&
+            Math.abs(currentRotY) < 0.01 &&
+            Math.abs(currentPanX) < 0.01 &&
+            Math.abs(currentPanY) < 0.01
+          ) {
+            card.style.transform = "none";
+            if (img) img.style.transform = "none";
+            rafId = null;
+            return;
+          }
+        } else {
+          currentRotX += (targetRotX - currentRotX) * 0.12;
+          currentRotY += (targetRotY - currentRotY) * 0.12;
+          currentPanX += (targetPanX - currentPanX) * 0.12;
+          currentPanY += (targetPanY - currentPanY) * 0.12;
+        }
+
+        card.style.transform = `perspective(1000px) rotateX(${currentRotX.toFixed(2)}deg) rotateY(${currentRotY.toFixed(2)}deg)`;
+        if (img) {
+          img.style.transform = `scale(1.05) translate3d(${currentPanX.toFixed(1)}px, ${currentPanY.toFixed(1)}px, 0)`;
+        }
+
+        rafId = requestAnimationFrame(render);
+      }
+
+      function handleMouseMove(e: MouseEvent) {
+        if (!bounds) bounds = card.getBoundingClientRect();
+        const x = e.clientX - bounds.left;
+        const y = e.clientY - bounds.top;
+        const centerX = bounds.width / 2;
+        const centerY = bounds.height / 2;
+
+        const maxTilt = 2.8; // degrees
+        targetRotX = -((y - centerY) / centerY) * maxTilt;
+        targetRotY = ((x - centerX) / centerX) * maxTilt;
+
+        const maxPan = 10; // px
+        targetPanX = -((x - centerX) / centerX) * maxPan;
+        targetPanY = -((y - centerY) / centerY) * maxPan;
+
+        if (glow) {
+          glow.style.transform = `translate3d(${-targetPanX * 2}px, ${-targetPanY * 2}px, 0)`;
+        }
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(render);
+        }
+      }
+
+      function handleMouseEnter() {
+        bounds = card.getBoundingClientRect();
+        isHovered = true;
+        if (!rafId) {
+          rafId = requestAnimationFrame(render);
+        }
+      }
+
+      function handleMouseLeave() {
+        bounds = null;
+        isHovered = false;
+        targetRotX = 0;
+        targetRotY = 0;
+        targetPanX = 0;
+        targetPanY = 0;
+        if (glow) glow.style.transform = "none";
+      }
+
+      card.addEventListener("mouseenter", handleMouseEnter);
+      card.addEventListener("mousemove", handleMouseMove);
+      card.addEventListener("mouseleave", handleMouseLeave);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initCardTilt);
+  } else {
+    initCardTilt();
+  }
+  document.addEventListener("astro:page-load", initCardTilt);
+</script>

@@ -5,23 +5,100 @@ interface Props {
   description?: string;
   centered?: boolean;
   id?: string;
+  folio?: string;
+  variant?: "editorial" | "display";
 }
 
-const { label, title, description, centered = false, id } = Astro.props;
+const {
+  label,
+  title,
+  description,
+  centered = false,
+  id,
+  folio,
+  variant = "editorial",
+} = Astro.props;
 ---
 
-<div class={`section-heading-block ${centered ? "text-center mx-auto" : ""} mb-10 max-w-3xl`}>
-  {label && (
-    <p class="section-label font-ui text-xs font-semibold tracking-widest text-zinc-400 uppercase mb-2">
-      {label}
-    </p>
+<div class={`section-heading-block ${centered ? "text-center mx-auto" : ""} mb-10 sm:mb-12 max-w-3xl`}>
+  <!-- Archival Folio / Label Eyebrow -->
+  {(label || folio) && (
+    <div class={`flex items-center gap-2.5 mb-3 font-ui text-[11px] font-semibold tracking-[0.22em] uppercase text-zinc-400 ${centered ? "justify-center" : ""}`}>
+      {folio && (
+        <span class="px-2 py-0.5 rounded debossed-plate font-mono text-[10px] text-zinc-400 tracking-wider">
+          {folio}
+        </span>
+      )}
+      {folio && label && <span class="text-zinc-600">·</span>}
+      {label && <span>{label}</span>}
+    </div>
   )}
-  <h2 id={id} class="section-title font-editorial text-3xl sm:text-4xl md:text-5xl font-normal tracking-tight text-zinc-100">
-    {title}
+
+  <!-- Title (Editorial Cormorant or Display Urbanist with Kinetic Line Mask) -->
+  <h2
+    id={id}
+    class={`section-title text-3xl sm:text-4xl md:text-5xl tracking-tight text-zinc-100 ${
+      variant === "display" ? "font-display font-bold" : "font-editorial font-normal"
+    }`}
+  >
+    <span class="block overflow-hidden py-1 -my-1">
+      <span class="kinetic-title-inner block will-change-transform">
+        {title}
+      </span>
+    </span>
   </h2>
+
+  <!-- Editorial Subtext -->
   {description && (
-    <p class="section-description font-editorial text-base sm:text-lg text-zinc-400 mt-3 leading-relaxed">
+    <p class="section-description font-editorial text-base sm:text-lg text-zinc-300/90 mt-3.5 leading-relaxed">
       {description}
     </p>
   )}
 </div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { prefersReducedMotion } from "@/utils/motionTokens";
+
+  if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  function initKineticTitles() {
+    const titles = document.querySelectorAll<HTMLElement>(".kinetic-title-inner:not([data-kinetic-init])");
+    if (prefersReducedMotion()) {
+      titles.forEach((el) => {
+        el.setAttribute("data-kinetic-init", "true");
+        gsap.set(el, { yPercent: 0, opacity: 1 });
+      });
+      return;
+    }
+
+    titles.forEach((el) => {
+      el.setAttribute("data-kinetic-init", "true");
+      gsap.set(el, { yPercent: 105, opacity: 0 });
+
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 92%",
+        once: true,
+        onEnter: () => {
+          gsap.to(el, {
+            yPercent: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power3.out",
+          });
+        },
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initKineticTitles);
+  } else {
+    initKineticTitles();
+  }
+  document.addEventListener("astro:page-load", initKineticTitles);
+</script>

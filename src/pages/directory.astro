@@ -20,18 +20,19 @@ const fruitCount = getProductionFruitCount();
   <div class="container-page py-12 sm:py-20">
     <SectionHeading
       label="CURATED CATALOG"
+      folio="ARCHIVE // 01"
       title="The Fruit Directory"
       description="Every fruit in this catalog is backed by real nutritional biochemistry and botanical taxonomy. Filter by family, search attributes, or sort by nutrients."
     />
 
     <!-- Filter, Search & Sort Toolbar -->
-    <div class="space-y-4 py-6 border-y border-zinc-800/80 mb-10">
+    <div class="space-y-4 py-6 border-y border-[var(--border-subtle)] mb-10">
       <!-- Category Pills -->
       <div class="flex flex-wrap items-center gap-2 font-ui text-xs">
         <button
           type="button"
           data-category-filter="all"
-          class="category-btn px-3.5 py-1.5 rounded-lg bg-white text-zinc-950 font-semibold shadow-sm transition-all cursor-pointer"
+          class="category-btn px-3.5 py-1.5 rounded-[var(--radius-sm)] bg-white text-zinc-950 font-semibold shadow-sm transition-all cursor-pointer"
         >
           All Families ({fruitCount})
         </button>
@@ -39,7 +40,7 @@ const fruitCount = getProductionFruitCount();
           type="button"
           data-category-filter="favorites"
           id="favorites-filter-btn"
-          class="category-btn px-3.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-rose-400 hover:border-rose-500/40 transition-all cursor-pointer flex items-center gap-1.5"
+          class="category-btn px-3.5 py-1.5 rounded-[var(--radius-sm)] bg-zinc-900/60 border border-[var(--border-subtle)] text-zinc-400 hover:text-rose-400 hover:border-rose-500/40 transition-all cursor-pointer flex items-center gap-1.5"
         >
           <svg class="w-3.5 h-3.5 text-rose-500" fill="currentColor" viewBox="0 0 24 24">
             <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -50,7 +51,7 @@ const fruitCount = getProductionFruitCount();
           <button
             type="button"
             data-category-filter={cat.id}
-            class="category-btn px-3.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition-all cursor-pointer"
+            class="category-btn px-3.5 py-1.5 rounded-[var(--radius-sm)] bg-zinc-900/60 border border-[var(--border-subtle)] text-zinc-400 hover:text-white hover:border-[var(--border-emphasis)] transition-all cursor-pointer"
           >
             {cat.name}
           </button>
@@ -235,6 +236,18 @@ const fruitCount = getProductionFruitCount();
     function applyFiltersAndSort() {
       if (!grid) return;
 
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // 1. FLIP: Record FIRST bounding rects of currently visible cards
+      const firstPositions = new Map<HTMLElement, DOMRect>();
+      if (!prefersReduced) {
+        cards.forEach((card) => {
+          if (card.style.display !== "none") {
+            firstPositions.set(card, card.getBoundingClientRect());
+          }
+        });
+      }
+
       const favSlugs = getFavoriteSlugs();
 
       let visibleCards = cards.filter((card) => {
@@ -283,7 +296,7 @@ const fruitCount = getProductionFruitCount();
         return 0; // default order
       });
 
-      // Re-order DOM elements inside grid
+      // 2. FLIP: Apply DOM changes
       visibleCards.forEach((card) => {
         card.style.display = "";
         grid.appendChild(card);
@@ -295,6 +308,44 @@ const fruitCount = getProductionFruitCount();
           card.style.display = "none";
         }
       });
+
+      // 3. FLIP: INVERT & PLAY smooth physical trajectory
+      if (!prefersReduced) {
+        visibleCards.forEach((card) => {
+          const firstRect = firstPositions.get(card);
+          const lastRect = card.getBoundingClientRect();
+
+          if (firstRect) {
+            const deltaX = firstRect.left - lastRect.left;
+            const deltaY = firstRect.top - lastRect.top;
+
+            if (deltaX !== 0 || deltaY !== 0) {
+              card.animate(
+                [
+                  { transform: `translate(${deltaX}px, ${deltaY}px)` },
+                  { transform: "translate(0, 0)" },
+                ],
+                {
+                  duration: 420,
+                  easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+                }
+              );
+            }
+          } else {
+            // Newly appearing card: gentle fade & subtle upward glide
+            card.animate(
+              [
+                { opacity: 0, transform: "scale(0.96) translateY(12px)" },
+                { opacity: 1, transform: "scale(1) translateY(0)" },
+              ],
+              {
+                duration: 380,
+                easing: "cubic-bezier(0.16, 1, 0.3, 1)",
+              }
+            );
+          }
+        });
+      }
 
       // Update counter & empty state
       if (counterEl) {

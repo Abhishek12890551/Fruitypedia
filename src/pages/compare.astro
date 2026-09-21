@@ -1,7 +1,8 @@
 ---
 /**
  * Compare Page — `/compare`
- * Analytical comparison laboratory.
+ * Side-by-side analytical laboratory comparing laboratory nutrition metrics,
+ * sugar ratios, caloric density, sensory profiles, and harvest seasons.
  *
  * @see Fruitypedia_Project_Plan §4A
  */
@@ -21,20 +22,52 @@ const initialB = paramB || "blueberry";
   title="Compare Fruits — Side-by-Side Analytical Laboratory | Fruitypedia"
   description="Compare fruit nutrition, sugar density, antioxidant levels, botanical families, and sensory profiles side by side."
 >
-  <div class="container-page py-12 sm:py-20">
-    <SectionHeading
-      label="ANALYTICAL LABORATORY"
-      title="Side-by-Side Fruit Comparison"
-      description="Select any two production monographs to compare laboratory nutrition metrics, sugar ratios, caloric density, sensory profiles, and harvest seasons."
-    />
+  <!-- Bi-Chromatic Ambient Background Laboratory Wash -->
+  <div class="relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-1/2 h-[500px] pointer-events-none opacity-25 blur-[140px] bg-gradient-to-br from-rose-500/30 to-transparent" aria-hidden="true"></div>
+    <div class="absolute top-0 right-0 w-1/2 h-[500px] pointer-events-none opacity-25 blur-[140px] bg-gradient-to-bl from-indigo-500/30 to-transparent" aria-hidden="true"></div>
 
-    <div class="mt-8 sm:mt-12">
-      <FruitCompare
-        client:load
-        allFruits={allFruits}
-        initialFruitASlug={initialA}
-        initialFruitBSlug={initialB}
+    <div class="container-page py-12 sm:py-20 relative z-10">
+      <SectionHeading
+        label="ANALYTICAL LABORATORY"
+        folio="LABORATORY // 03"
+        title="Side-by-Side Fruit Comparison"
+        description="Select any two production monographs to compare standardized USDA FoodData Central laboratory metrics, sugar-to-fiber ratios, caloric density, and sensory flavor architecture."
       />
+
+      <!-- Archival Laboratory Specimen Header Strip -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 font-ui">
+        <div class="p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-400 shadow-[0_0_8px_rgba(251,113,133,0.8)]"></span>
+            <div>
+              <span class="font-mono text-[10px] tracking-widest text-zinc-400 uppercase">SPECIMEN ALPHA // PRIMARY</span>
+              <h4 class="font-display font-semibold text-white text-sm sm:text-base">Biochemical Reference Monograph</h4>
+            </div>
+          </div>
+          <span class="font-mono text-[11px] text-zinc-500 hidden sm:inline">100G RAW EDIBLE PORTION</span>
+        </div>
+
+        <div class="p-4 sm:p-5 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="w-2.5 h-2.5 rounded-full bg-indigo-400 shadow-[0_0_8px_rgba(129,140,248,0.8)]"></span>
+            <div>
+              <span class="font-mono text-[10px] tracking-widest text-zinc-400 uppercase">SPECIMEN BETA // COMPARATIVE</span>
+              <h4 class="font-display font-semibold text-white text-sm sm:text-base">Comparative Nutritional Counterpart</h4>
+            </div>
+          </div>
+          <span class="font-mono text-[11px] text-zinc-500 hidden sm:inline">DELTA CALIBRATION</span>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <FruitCompare
+          client:load
+          allFruits={allFruits}
+          initialFruitASlug={initialA}
+          initialFruitBSlug={initialB}
+        />
+      </div>
     </div>
   </div>
 </BaseLayout>

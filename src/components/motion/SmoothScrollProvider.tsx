@@ -79,11 +79,35 @@ export function SmoothScrollProvider(): null {
     ScrollTrigger.addEventListener("refresh", () => lenis.resize());
     ScrollTrigger.refresh();
 
+    // Astro ClientRouter (View Transitions) Lifecycle Management
+    const onAfterSwap = () => {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          lenis.scrollTo(target as HTMLElement, { immediate: true });
+        }
+      } else {
+        lenis.scrollTo(0, { immediate: true });
+      }
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      ScrollTrigger.refresh();
+    };
+
+    const onPageLoad = () => {
+      lenis.resize();
+      ScrollTrigger.refresh();
+    };
+
+    document.addEventListener("astro:after-swap", onAfterSwap);
+    document.addEventListener("astro:page-load", onPageLoad);
+
     return () => {
       // Full cleanup on unmount (page navigation / hot reload)
       gsap.ticker.remove(onTick);
       lenis.off("scroll", ScrollTrigger.update);
       ScrollTrigger.removeEventListener("refresh", () => lenis.resize());
+      document.removeEventListener("astro:after-swap", onAfterSwap);
+      document.removeEventListener("astro:page-load", onPageLoad);
       lenis.destroy();
     };
   }, []);

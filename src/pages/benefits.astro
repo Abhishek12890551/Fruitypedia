@@ -16,15 +16,58 @@ import { allFruits } from "@/data";
   title="Health Benefits & Functional Profiles | Fruitypedia"
   description="Explore peer-reviewed wellness phenomena, bioactive phytochemical biomarkers, and evidence-tiered systemic cohorts across all 8 production fruits."
 >
-  <div class="container-page py-12 sm:py-20">
-    <SectionHeading
-      label="FUNCTIONAL BIOLOGY & EVIDENCE TIERS"
-      title="Health Benefits Directory"
-      description="Peer-reviewed physiological phenomena, bioactive plant biomarkers, and clinical consensus tiers categorized across major biological systems with zero unverified medical claims."
-    />
+  <!-- Ambient Atmospheric Biochemical Glow -->
+  <div class="relative overflow-hidden">
+    <div class="absolute top-0 right-1/4 w-[500px] h-[500px] pointer-events-none opacity-15 blur-[160px] bg-rose-500/20" aria-hidden="true"></div>
+    <div class="absolute top-48 left-10 w-[500px] h-[500px] pointer-events-none opacity-15 blur-[160px] bg-indigo-500/20" aria-hidden="true"></div>
 
-    <div class="mt-8 sm:mt-12">
-      <BenefitsExplorer client:load allFruits={allFruits} />
+    <div class="container-page py-12 sm:py-20 relative z-10">
+      <SectionHeading
+        label="FUNCTIONAL BIOLOGY & EVIDENCE TIERS"
+        folio="BIOCHEMISTRY // 05"
+        title="Health Benefits Directory"
+        description="Peer-reviewed physiological phenomena, bioactive plant biomarkers, and clinical consensus tiers categorized across major biological systems with zero unverified medical claims."
+      />
+
+      <!-- Phytochemical Spotlight Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 font-ui text-xs">
+        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
+          <span class="font-mono text-[10px] tracking-widest text-indigo-400 uppercase">PHYTO // C15H11O6+</span>
+          <h4 class="font-display font-semibold text-white text-sm">Anthocyanins</h4>
+          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Vascular endothelial integrity & blood-brain barrier permeability support.</p>
+        </div>
+
+        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
+          <span class="font-mono text-[10px] tracking-widest text-rose-400 uppercase">POLYPHENOL</span>
+          <h4 class="font-display font-semibold text-white text-sm">Ellagitannins</h4>
+          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Microbiome metabolized urolithins driving cellular mitochondrial mitophagy.</p>
+        </div>
+
+        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
+          <span class="font-mono text-[10px] tracking-widest text-amber-400 uppercase">FLAVANONE</span>
+          <h4 class="font-display font-semibold text-white text-sm">Hesperidin</h4>
+          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Microvascular tone regulation and systemic capillary fragility attenuation.</p>
+        </div>
+
+        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
+          <span class="font-mono text-[10px] tracking-widest text-emerald-400 uppercase">CAROTENOID // C40H56</span>
+          <h4 class="font-display font-semibold text-white text-sm">Lycopene & Lutein</h4>
+          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Lipophilic antioxidant quenching singlet molecular oxygen in lipid membranes.</p>
+        </div>
+      </div>
+
+      <!-- Evidence Tier Standard Banner -->
+      <div class="p-3.5 mb-8 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-950/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-[11px] text-zinc-400">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>EVIDENCE STANDARD: COCHRANE & PUBMED SYSTEMATIC REVIEWS</span>
+        </div>
+        <span class="text-zinc-500">STRICT NO-UNVERIFIED-SUPPLEMENT PLEDGE</span>
+      </div>
+
+      <div class="mt-2">
+        <BenefitsExplorer client:load allFruits={allFruits} />
+      </div>
     </div>
   </div>
 </BaseLayout>

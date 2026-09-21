@@ -14,7 +14,9 @@ import { MobileNav } from "@/components/MobileNav";
 import { SmoothScrollProvider } from "@/components/motion/SmoothScrollProvider";
 import { FavoritesDrawer, FavoritesNavButton } from "@/components/FavoritesDrawer";
 import { SurpriseFruitButton } from "@/components/SurpriseFruitButton";
+import MagneticWrapper from "@/components/motion/MagneticWrapper";
 import { allFruits, categories } from "@/data";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -84,11 +86,35 @@ const themeStyle = themeVars
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <meta name="theme-color" content="#09090b" />
+
+    <!-- Astro View Transitions (Editorial Curtain Dissolve) -->
+    <ClientRouter />
   </head>
   <body style={themeStyle}>
+    <!-- Hardware-accelerated SVG noise grain layer for fine archival paper tactile quality -->
+    <div class="archival-grain" aria-hidden="true"></div>
+
+    <!-- Hairline reading progress rail -->
+    <div
+      id="reading-progress-bar"
+      class="fixed top-0 left-0 h-[2px] z-[60] w-0 transition-[width] duration-75 pointer-events-none"
+      style="background: linear-gradient(90deg, var(--fruit-primary, #6366f1), var(--fruit-glow, #a5b4fc));"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Archival Folio Registration Markers -->
+    <div class="fixed bottom-3 left-4 hidden lg:flex items-center gap-2 folio-crosshair opacity-30 z-30 pointer-events-none select-none" aria-hidden="true">
+      <span>+</span>
+      <span class="text-[9px] tracking-[0.25em] uppercase">VOL. I // 2026</span>
+    </div>
+    <div class="fixed bottom-3 right-4 hidden lg:flex items-center gap-2 folio-crosshair opacity-30 z-30 pointer-events-none select-none" aria-hidden="true">
+      <span class="text-[9px] tracking-[0.25em] uppercase">BOTANICAL HERBARIUM</span>
+      <span>+</span>
+    </div>
+
     <!-- Global Lenis smooth scroll (§4.2). client:load = active before first scroll. -->
     <!-- Automatically skips initialization when prefers-reduced-motion: reduce is set. -->
-    <SmoothScrollProvider client:load />
+    <SmoothScrollProvider client:load transition:persist />
 
     <!-- Skip link for accessibility -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -117,26 +143,32 @@ const themeStyle = themeVars
 
         <!-- Search, Surprise, Favorites & Mobile Nav (Right) -->
         <div class="navbar-right flex items-center justify-end gap-1.5 sm:gap-2.5 w-auto md:w-56">
-          <!-- Surprise Me Random Monograph Action -->
-          <SurpriseFruitButton client:load fruits={allFruits} />
+          <!-- Surprise Me Random Monograph Action with Magnetic Pull -->
+          <MagneticWrapper client:load strength={0.25} radius={35}>
+            <SurpriseFruitButton client:load fruits={allFruits} />
+          </MagneticWrapper>
 
-          <!-- Saved Favorites Drawer Trigger -->
-          <FavoritesNavButton client:load />
+          <!-- Saved Favorites Drawer Trigger with Magnetic Pull -->
+          <MagneticWrapper client:load strength={0.25} radius={35}>
+            <FavoritesNavButton client:load />
+          </MagneticWrapper>
 
-          <!-- Search trigger button -->
-          <button
-            type="button"
-            id="search-open-btn"
-            onclick="window.dispatchEvent(new CustomEvent('open-search'))"
-            class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900/80 text-xs font-ui text-zinc-400 hover:text-white hover:border-zinc-700 transition-all cursor-pointer"
-            aria-label="Search fruits and categories"
-          >
-            <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <span class="inline">Search</span>
-            <kbd class="hidden sm:inline-block text-[10px] px-1.5 py-0.5 bg-zinc-800 rounded border border-zinc-700 font-mono text-zinc-400">⌘K</kbd>
-          </button>
+          <!-- Search trigger button with Magnetic Pull -->
+          <MagneticWrapper client:load strength={0.25} radius={35}>
+            <button
+              type="button"
+              id="search-open-btn"
+              onclick="window.dispatchEvent(new CustomEvent('open-search'))"
+              class="flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900/80 text-xs font-ui text-zinc-400 hover:text-white hover:border-zinc-700 transition-all cursor-pointer"
+              aria-label="Search fruits and categories"
+            >
+              <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <span class="inline">Search</span>
+              <kbd class="hidden sm:inline-block text-[10px] px-1.5 py-0.5 bg-zinc-800 rounded border border-zinc-700 font-mono text-zinc-400">⌘K</kbd>
+            </button>
+          </MagneticWrapper>
 
           <!-- Mobile navigation drawer island -->
           <MobileNav client:idle />
@@ -298,9 +330,39 @@ const themeStyle = themeVars
     )}
 
     <!-- Global Command Palette Search Island -->
-    <SearchDialog client:idle fruits={allFruits} categories={categories} />
+    <SearchDialog client:idle transition:persist fruits={allFruits} categories={categories} />
 
     <!-- Global Favorites Slide-over Drawer Island -->
-    <FavoritesDrawer client:load allFruits={allFruits} />
+    <FavoritesDrawer client:load transition:persist allFruits={allFruits} />
+
+    <!-- Reading Progress Tracker Script -->
+    <script>
+      function initReadingProgress() {
+        const bar = document.getElementById("reading-progress-bar");
+        if (!bar) return;
+        const progressEl = bar as HTMLElement;
+
+        function updateProgress() {
+          const scrollY = window.scrollY;
+          const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+          if (docHeight <= 0) {
+            progressEl.style.width = "0%";
+            return;
+          }
+          const progress = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+          progressEl.style.width = `${progress}%`;
+        }
+
+        window.addEventListener("scroll", updateProgress, { passive: true });
+        updateProgress();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initReadingProgress);
+      } else {
+        initReadingProgress();
+      }
+      document.addEventListener("astro:page-load", initReadingProgress);
+    </script>
   </body>
 </html>

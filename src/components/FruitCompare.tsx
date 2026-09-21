@@ -643,54 +643,54 @@ export const FruitCompare: React.FC<FruitCompareProps> = ({
             return (
               <div
                 key={metric.id}
-                className="rounded-2xl border border-zinc-800/70 bg-zinc-900/40 p-4 sm:p-5 backdrop-blur-sm transition-all hover:border-zinc-700"
+                className="rounded-[var(--radius-lg)] border border-[var(--border-subtle)] bg-zinc-900/40 p-4 sm:p-5 backdrop-blur-sm transition-all hover:border-[var(--border-emphasis)] hover:bg-zinc-900/60"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3.5">
                   <div className="flex items-center gap-2">
-                    <span className="font-ui text-sm font-semibold text-white">
+                    <span className="font-ui text-sm font-semibold text-white tracking-tight">
                       {metric.label}
                     </span>
-                    <span className="text-[11px] font-ui text-zinc-500">
-                      ({metric.unit} / 100g)
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500">
+                      [{metric.unit} / 100g]
                     </span>
                   </div>
 
-                  {/* Delta tag */}
+                  {/* Delta tag with debossed plate */}
                   <div className="self-start sm:self-auto">
                     {isTie ? (
-                      <span className="font-ui text-xs px-2.5 py-0.5 rounded-full bg-zinc-800 text-zinc-400">
-                        Equal ({valA} {metric.unit})
+                      <span className="debossed-plate font-mono text-[11px] px-2.5 py-0.5 rounded-[var(--radius-sm)] text-zinc-400">
+                        Equilibrium ({valA} {metric.unit})
                       </span>
                     ) : (
                       <span
-                        className="font-ui text-xs font-medium px-2.5 py-0.5 rounded-full inline-flex items-center gap-1.5"
+                        className="debossed-plate font-mono text-[11px] font-medium px-2.5 py-0.5 rounded-[var(--radius-sm)] inline-flex items-center gap-1.5"
                         style={{
-                          backgroundColor: `${leader.theme.primary}18`,
                           color: leader.theme.primary,
-                          border: `1px solid ${leader.theme.primary}33`,
+                          borderColor: `${leader.theme.primary}44`,
                         }}
                       >
+                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: leader.theme.primary }} />
                         <span>{leader.name} +{diff >= 1 ? diff.toFixed(1) : diff.toFixed(2)} {metric.unit}</span>
                         {percentDiff !== undefined && (
-                          <span className="text-[10px] opacity-80">(+{percentDiff}%)</span>
+                          <span className="opacity-80 tabular-nums">(+{percentDiff}%)</span>
                         )}
                       </span>
                     )}
                   </div>
                 </div>
 
-                {/* Dual Proportional Comparison Bars */}
-                <div className="space-y-2.5 font-ui text-xs">
+                {/* Dual Proportional Precision Gauge Bars */}
+                <div className="space-y-3 font-ui text-xs">
                   {/* Fruit A Bar */}
                   <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-zinc-300 font-medium">{fruitA.name}</span>
-                      <span className="text-white font-bold">
+                    <div className="flex justify-between items-center mb-1 font-mono">
+                      <span className="text-zinc-300 font-medium font-ui">{fruitA.name}</span>
+                      <span className="text-white font-bold tabular-nums">
                         {valA} {metric.unit}
                         {dvA !== undefined && <span className="text-zinc-500 font-normal ml-1">({dvA}% DV)</span>}
                       </span>
                     </div>
-                    <div className="h-2.5 w-full rounded-full bg-zinc-950 overflow-hidden border border-zinc-800/60">
+                    <div className="h-2 w-full rounded-full bg-zinc-950 overflow-hidden border border-[var(--border-subtle)]">
                       <div
                         className="h-full rounded-full transition-all duration-700 ease-out"
                         style={{
@@ -703,14 +703,14 @@ export const FruitCompare: React.FC<FruitCompareProps> = ({
 
                   {/* Fruit B Bar */}
                   <div>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-zinc-300 font-medium">{fruitB.name}</span>
-                      <span className="text-white font-bold">
+                    <div className="flex justify-between items-center mb-1 font-mono">
+                      <span className="text-zinc-300 font-medium font-ui">{fruitB.name}</span>
+                      <span className="text-white font-bold tabular-nums">
                         {valB} {metric.unit}
                         {dvB !== undefined && <span className="text-zinc-500 font-normal ml-1">({dvB}% DV)</span>}
                       </span>
                     </div>
-                    <div className="h-2.5 w-full rounded-full bg-zinc-950 overflow-hidden border border-zinc-800/60">
+                    <div className="h-2 w-full rounded-full bg-zinc-950 overflow-hidden border border-[var(--border-subtle)]">
                       <div
                         className="h-full rounded-full transition-all duration-700 ease-out"
                         style={{

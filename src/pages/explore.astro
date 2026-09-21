@@ -15,15 +15,60 @@ import { allFruits } from "@/data";
   title="Botanical World Atlas — Geographic Provenance & Global Diaspora | Fruitypedia"
   description="Trace the evolutionary cradles, ancient trade migration corridors, and modern cultivation hubs across our complete botanical library."
 >
-  <div class="container-page py-12 sm:py-20">
-    <SectionHeading
-      label="GEOGRAPHIC PROVENANCE & DIASPORA"
-      title="The Botanical World Atlas"
-      description="Where does fruit come from? Trace the native evolutionary origin of species across continents, explore ancient trade corridors, and examine modern agricultural distribution."
-    />
+  <!-- Atmospheric Cartographic Earth Wash -->
+  <div class="relative overflow-hidden">
+    <div class="absolute top-0 right-10 w-[500px] h-[500px] pointer-events-none opacity-15 blur-[160px] bg-amber-600/20" aria-hidden="true"></div>
+    <div class="absolute top-32 left-10 w-[500px] h-[500px] pointer-events-none opacity-15 blur-[160px] bg-emerald-600/20" aria-hidden="true"></div>
 
-    <div class="mt-8 sm:mt-12">
-      <WorldAtlasExplorer client:load allFruits={allFruits} />
+    <div class="container-page py-12 sm:py-20 relative z-10">
+      <SectionHeading
+        label="GEOGRAPHIC PROVENANCE & DIASPORA"
+        folio="CARTOGRAPHY // 02"
+        title="The Botanical World Atlas"
+        description="Where does fruit come from? Trace the native evolutionary origin of species across continents, explore ancient trade corridors, and examine modern agricultural distribution."
+      />
+
+      <!-- Cartographic Parallel Coordinates & Navigation Strip -->
+      <div class="p-3.5 mb-8 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-950/60 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] sm:text-[11px] text-zinc-400">
+        <div class="flex items-center gap-4">
+          <span class="inline-flex items-center gap-1.5 text-amber-400 font-semibold">
+            <span>✦</span>
+            <span>EQUIRECTANGULAR PROJECTION</span>
+          </span>
+          <span class="hidden md:inline text-zinc-600">|</span>
+          <span class="hidden md:inline text-zinc-400">TROPIC OF CANCER: 23.43° N</span>
+          <span class="hidden md:inline text-zinc-600">|</span>
+          <span class="hidden md:inline text-zinc-400">EQUATORIAL BELT: 0.00°</span>
+          <span class="hidden md:inline text-zinc-600">|</span>
+          <span class="hidden md:inline text-zinc-400">TROPIC OF CAPRICORN: 23.43° S</span>
+        </div>
+        <span class="text-zinc-500 uppercase tracking-wider">PRIMARY EVOLUTIONARY CRADLES</span>
+      </div>
+
+      <!-- Historical Trade Migration Corridor Deck -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-10 font-ui text-xs">
+        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
+          <span class="font-mono text-[10px] tracking-widest text-amber-400 uppercase">CORRIDOR I</span>
+          <h4 class="font-display font-semibold text-white text-sm">The Citrus Silk Road</h4>
+          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Himalayan foothills and Yangtze river basin westward via trade routes into the Mediterranean.</p>
+        </div>
+
+        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
+          <span class="font-mono text-[10px] tracking-widest text-emerald-400 uppercase">CORRIDOR II</span>
+          <h4 class="font-display font-semibold text-white text-sm">Tian Shan Wild Apple</h4>
+          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Ancestral <em>Malus sieversii</em> forests along Kazakh mountain ranges hybridized westward.</p>
+        </div>
+
+        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
+          <span class="font-mono text-[10px] tracking-widest text-indigo-400 uppercase">CORRIDOR III</span>
+          <h4 class="font-display font-semibold text-white text-sm">Boreal Peatland Diaspora</h4>
+          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Glacial acid soil adaptations of North American wild <em>Vaccinium</em> species.</p>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <WorldAtlasExplorer client:load allFruits={allFruits} />
+      </div>
     </div>
   </div>
 </BaseLayout>
