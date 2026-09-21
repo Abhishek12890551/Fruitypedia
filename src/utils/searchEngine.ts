@@ -76,7 +76,7 @@ export function searchCatalog(
     let matchType: FruitSearchResult["matchType"] = "general";
     let matchReason = "";
     let badgeText = "";
-    let badgeColor = f.theme.primary;
+    const badgeColor = f.theme.primary;
 
     // 1. Exact or prefix name match
     if (nameLower === clean) {

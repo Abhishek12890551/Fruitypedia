@@ -6,7 +6,6 @@ interface MagneticWrapperProps {
   strength?: number; // 0.1 to 0.5 (multiplier for pointer pull)
   radius?: number; // proximity radius in px
   className?: string;
-  as?: React.ElementType;
 }
 
 /**
@@ -21,9 +20,8 @@ export default function MagneticWrapper({
   strength = 0.28,
   radius = 50,
   className = "",
-  as: Component = "div",
 }: MagneticWrapperProps) {
-  const containerRef = useRef<HTMLElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -83,14 +81,12 @@ export default function MagneticWrapper({
     };
   }, [strength, radius]);
 
-  const Tag = Component as any;
-
   return (
-    <Tag
+    <div
       ref={containerRef}
       className={`inline-block will-change-transform ${className}`}
     >
       {children}
-    </Tag>
+    </div>
   );
 }
