@@ -33,93 +33,22 @@ const sensoryScales = [
   },
   {
     label: "Juicy",
-    score: fruit.id === "peach" ? 9 : fruit.id === "banana" ? 3 : fruit.id === "mango" ? 9 : fruit.id === "strawberry" ? 9 : 8,
+    score: fruit.tasteProfile.juiciness?.value ?? 8,
     left: "Dense & Fleshy",
     right: "Fluid & Bursting",
   },
   {
     label: "Aromatic",
-    score: fruit.id === "peach" ? 8 : fruit.id === "banana" ? 8 : fruit.id === "mango" ? 9 : fruit.id === "strawberry" ? 9 : 7,
+    score: fruit.tasteProfile.aromatic?.value ?? 7,
     left: "Subtle & Clean",
     right: "Muscat & Floral",
   },
 ];
 
-const TASTE_METAS: Record<
-  string,
-  { lead: string; accent: string; descriptors: string[] }
-> = {
-  blueberry: {
-    lead: "Sweet first.",
-    accent: "Tart at the edge.",
-    descriptors: ["Fresh", "Juicy", "Tart", "Floral", "Earthy", "Velvet Skin"],
-  },
-  strawberry: {
-    lead: "Fragrant first.",
-    accent: "Bright & briskly sweet.",
-    descriptors: [
-      "Aromatic",
-      "Juicy",
-      "Honeyed",
-      "Wild Floral",
-      "Ruby Acid",
-      "Tender Seed",
-    ],
-  },
-  orange: {
-    lead: "Citric first.",
-    accent: "Bursting with nectar.",
-    descriptors: [
-      "Zesty Limonene",
-      "Juicy",
-      "Sweet Sunshine",
-      "Bright Acid",
-      "Tangy Pith",
-      "Fresh Vesicle",
-    ],
-  },
-  mango: {
-    lead: "Honeyed first.",
-    accent: "Lush tropical warmth.",
-    descriptors: [
-      "Floral Terpene",
-      "Buttery Velvet",
-      "Tropical Saffron",
-      "Rich Nectar",
-      "Mild Acidity",
-      "Aromatic Resin",
-    ],
-  },
-  banana: {
-    lead: "Creamy first.",
-    accent: "Custardy & comforting.",
-    descriptors: [
-      "Velvety Fleshy",
-      "Custard Sweet",
-      "Isoamyl Ester",
-      "Warm Vanilla",
-      "Prebiotic Pectin",
-      "Gentle Honey",
-    ],
-  },
-  peach: {
-    lead: "Summer nectar.",
-    accent: "Melting & floral.",
-    descriptors: [
-      "Lactonic Peach",
-      "Summer Nectar",
-      "Velvet Skin",
-      "Rose Floral",
-      "Delicate Acid",
-      "Corrugated Stone",
-    ],
-  },
-};
-
-const tasteMeta = TASTE_METAS[fruit.id] || {
-  lead: `${fruit.name} balance.`,
-  accent: "Pure sensory profile.",
-  descriptors: ["Fresh", "Aromatic", "Sweet", "Juicy", "Crisp"],
+const tasteMeta = {
+  lead: fruit.tasteProfile.lead || `${fruit.name} balance.`,
+  accent: fruit.tasteProfile.accent || "Pure sensory profile.",
+  descriptors: fruit.tasteProfile.descriptors || ["Fresh", "Aromatic", "Sweet", "Juicy", "Crisp"],
 };
 ---
 

@@ -23,6 +23,18 @@ export const strawberry: Fruit = {
     tagline: "Fragrant ruby. Intricate botanical architecture.",
     heroDescription:
       "Botanically unique as an aggregate accessory fruit, the strawberry carries its true botanical fruits—hundreds of delicate achenes—on its glossy scarlet receptacle. Celebrated for its explosive aromatic esters and potent vitamin C concentration, it is one of the world's most beloved temperate fruits.",
+    pullQuotes: [
+      {
+        quote: "The strawberry carries its truth on the outside—an intricate constellation of hundreds of individual achenes adorning a scarlet heart.",
+        attribution: "Horticultural Taxonomy Compendium",
+      },
+      {
+        quote: "More than 350 volatile aromatic esters weave together to create the unmistakable woodland perfume of Fragaria.",
+        attribution: "Volatile Biochemistry Annals",
+      },
+    ],
+    nutritionDescription:
+      "Over 90% pure structured cellular water, carrying soluble sugars, ascorbic acid, and suspended anthocyanin pigments.",
   },
 
   taxonomy: {
@@ -54,6 +66,16 @@ export const strawberry: Fruit = {
       reviewed: true,
     },
     gallery: [],
+    macroBreak: {
+      src: "/images/fruits/strawberry/macro-break.jpg",
+      alt: "Extreme macro of ripe strawberry skin and golden achenes",
+      role: "gallery",
+      generatedBy: "ai",
+      reviewed: true,
+      captionTitle: "Achene Constellation · The Aggregate Receptacle",
+      captionText:
+        "Each tiny seed-like speck is an independent botanical achene, nestled within the swollen, glistening cells of the red floral receptacle.",
+    },
   },
 
   origin: {
@@ -250,6 +272,30 @@ export const strawberry: Fruit = {
         sourceReferenceIds: ["307"],
       },
     },
+    waterContentPercent: 90.9,
+    micronutrientSignatures: [
+      {
+        name: "Vitamin C (Ascorbic Acid)",
+        amount: 58.8,
+        unit: "mg",
+        dailyValuePercent: 65,
+        description: "Potent cellular antioxidant catalyzing collagen synthesis and immune defense",
+      },
+      {
+        name: "Manganese",
+        amount: 0.386,
+        unit: "mg",
+        dailyValuePercent: 17,
+        description: "Essential cofactor for mitochondrial superoxide dismutase (SOD2)",
+      },
+      {
+        name: "Folate (Vitamin B9)",
+        amount: 24,
+        unit: "µg",
+        dailyValuePercent: 6,
+        description: "Key methyl-donor vitamin supporting nucleic acid synthesis and cellular division",
+      },
+    ],
   },
 
   tasteProfile: {
@@ -268,6 +314,26 @@ export const strawberry: Fruit = {
       basis: "editorial-sensory",
       methodologyId: "editorial-sensory-methodology",
     },
+    juiciness: {
+      value: 9,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    aromatic: {
+      value: 9,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    lead: "Fragrant first.",
+    accent: "Bright & briskly sweet.",
+    descriptors: [
+      "Aromatic",
+      "Juicy",
+      "Honeyed",
+      "Wild Floral",
+      "Ruby Acid",
+      "Tender Seed",
+    ],
     notes:
       "Lively, bright balance of rich natural fructose and brisk malic acidity, underscored by intense floral esters and subtle hints of green woodiness from the achene seeds.",
   },

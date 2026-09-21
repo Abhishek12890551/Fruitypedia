@@ -17,7 +17,7 @@
  * @see Fruitypedia_Project_Plan §12, §19, §20, §26
  */
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import { allFruits, getFruitBySlug, categories } from "@/data";
+import { allFruits, getFruitBySlug, categories, getSourcesByIds } from "@/data";
 
 // Modular Fruit Engine Components
 import FruitToolbar from "@/components/fruit/FruitToolbar.astro";
@@ -31,6 +31,7 @@ import FruitBenefits from "@/components/fruit/FruitBenefits.astro";
 import FruitVarieties from "@/components/fruit/FruitVarieties.astro";
 import FruitCharacteristics from "@/components/fruit/FruitCharacteristics.astro";
 import FruitFacts from "@/components/fruit/FruitFacts.astro";
+import FruitSources from "@/components/fruit/FruitSources.astro";
 import SimilarFruits from "@/components/fruit/SimilarFruits.astro";
 import FruitExploreTransition from "@/components/fruit/FruitExploreTransition.astro";
 import PullQuote from "@/components/fruit/PullQuote.astro";
@@ -52,6 +53,7 @@ const category = categories.find((c) => c.id === fruit.taxonomy.categoryId);
 const scientificName = [fruit.taxonomy.genus, fruit.taxonomy.species]
   .filter(Boolean)
   .join(" ");
+const fruitSources = getSourcesByIds(fruit.sourceIds);
 
 // Build fruit theme CSS variables
 const themeVars: Record<string, string> = {
@@ -137,6 +139,7 @@ const jsonLd = {
 <BaseLayout
   title={`${fruit.name} — Nutrition, Origin, Taste & Benefits`}
   description={fruit.editorial.heroDescription}
+  ogImage={fruit.images?.hero?.src}
   themeVars={themeVars}
 >
   <!-- JSON-LD Structured Data -->
@@ -152,38 +155,12 @@ const jsonLd = {
   <FruitIntro fruit={fruit} category={category} />
 
   <!-- Narrative Pull Quote 1 -->
-  <PullQuote
-    quote={fruit.id === "peach"
-      ? "Beneath downy velvet lies dripping summer sunshine—a sacred drupe whose corrugations have encoded myths of immortality from the ancient Yangtze to Roman orchards."
-      : fruit.id === "banana"
-      ? "Born from a colossal spiral inflorescence, the banana is a marvel of vegetative parthenocarpy—sustaining equatorial civilizations across seven millennia."
-      : fruit.id === "mango"
-      ? "In Sanskrit poetry, the mango blossom was the dart of Kama—a fruit whose intoxicating perfumed nectar has anchored Asian culture for four millennia."
-      : fruit.id === "orange"
-      ? "Within the pebbled flavedo of the hesperidium, nature engineered thousands of microscopic oil glands holding the pure aromatic essence of d-limonene."
-      : fruit.id === "strawberry"
-      ? "The strawberry carries its truth on the outside—an intricate constellation of hundreds of individual achenes adorning a scarlet heart."
-      : fruit.id === "watermelon"
-      ? "Born of ancient arid riverbeds, the watermelon is humanity's living amphora—a crystalline pepo whose emerald shell seals ninety-one percent structured cellular dew."
-      : fruit.id === "apple"
-      ? "From the wild forests of the Tian Shan to the hearths of antiquity, the apple is the sacred pome of memory—cradling the star of five carpels within crisp, malic-sculpted flesh."
-      : "Blueberries are small, but their botanical journey spans continents, ice ages, and millennia of wild selection."}
-    attribution={fruit.id === "peach"
-      ? "Silk Road Pomological Chronicles"
-      : fruit.id === "banana"
-      ? "Austronesian Ethnobotanical Chronicles"
-      : fruit.id === "mango"
-      ? "Classical Sanskrit Horticultural Corpus"
-      : fruit.id === "orange"
-      ? "Citrus Botanical Monograph Series"
-      : fruit.id === "strawberry"
-      ? "Horticultural Taxonomy Compendium"
-      : fruit.id === "watermelon"
-      ? "Pharaonic Botanical Chronicles"
-      : fruit.id === "apple"
-      ? "Silk Road Pomological Compendium"
-      : "Botanical Monograph Archives"}
-  />
+  {fruit.editorial.pullQuotes?.[0] && (
+    <PullQuote
+      quote={fruit.editorial.pullQuotes[0].quote}
+      attribution={fruit.editorial.pullQuotes[0].attribution}
+    />
+  )}
 
   <!-- 03. Origin & Biogeography (Where fruit comes from) -->
   <FruitOrigin fruit={fruit} />
@@ -192,68 +169,14 @@ const jsonLd = {
   <FruitNutrition fruit={fruit} />
 
   <!-- 05. Full-Bleed Photographic Visual Break -->
-  <FruitMacroBreak
-    imageSrc={fruit.id === "peach"
-      ? "/images/fruits/peach/macro-break.jpg"
-      : fruit.id === "banana"
-      ? "/images/fruits/banana/macro-break.jpg"
-      : fruit.id === "mango"
-      ? "/images/fruits/mango/macro-break.jpg"
-      : fruit.id === "orange"
-      ? "/images/fruits/orange/macro-break.jpg"
-      : fruit.id === "strawberry"
-      ? "/images/fruits/strawberry/macro-break.jpg"
-      : fruit.id === "watermelon"
-      ? "/images/fruits/watermelon/macro-break.jpg"
-      : fruit.id === "apple"
-      ? "/images/fruits/apple/macro-break.jpg"
-      : "/images/fruits/blueberry/macro-crop.jpg"}
-    alt={fruit.id === "peach"
-      ? "Extreme macro of sliced ripe peach showing fine epidermal trichomes, glistening nectar cells, and corrugated pit"
-      : fruit.id === "banana"
-      ? "Extreme macro of sliced ripe banana cross-section displaying glistening starch parenchyma and tri-radial locule ovules"
-      : fruit.id === "mango"
-      ? "Extreme macro of succulent mango golden pulp showing crystalline nectar drops and parenchymal structure"
-      : fruit.id === "orange"
-      ? "Extreme macro of glistening citrus juice vesicles bursting with liquid amber nectar"
-      : fruit.id === "strawberry"
-      ? "Extreme macro of ripe strawberry skin and golden achenes"
-      : fruit.id === "watermelon"
-      ? "Extreme macro of glistening watermelon pulp displaying crystalline sugar vacuoles and cellular moisture"
-      : fruit.id === "apple"
-      ? "Extreme macro of sliced apple showing crisp parenchymal cells and anthocyanin-flushed peel"
-      : "Macro close-up of fresh blueberries with waxy bloom"}
-    captionTitle={fruit.id === "peach"
-      ? "Pubescent Epidermis · The Corrugated Endocarp"
-      : fruit.id === "banana"
-      ? "Starch Parenchyma · The Tri-Radial Locule"
-      : fruit.id === "mango"
-      ? "Succulent Pulp · Saffron Parenchyma Mesh"
-      : fruit.id === "orange"
-      ? "Juice Vesicles · The Multicellular Pulp Clavellae"
-      : fruit.id === "strawberry"
-      ? "Achene Constellation · The Aggregate Receptacle"
-      : fruit.id === "watermelon"
-      ? "Cellular Vacuoles · The Crystalline Parenchyma"
-      : fruit.id === "apple"
-      ? "Hypanthium Matrix · The Pectin Cellular Lattice"
-      : "Pruinescence · The Epicuticular Wax Layer"}
-    captionText={fruit.id === "peach"
-      ? "Unicellular epidermal trichomes form a protective velvet canopy over tensioned parenchymal cells laden with aromatic gamma-decalactones and structured cell sap."
-      : fruit.id === "banana"
-      ? "Microscopic parenchymal cells densely saturated with gelatinized starch granules and hydrolyzing fruit sugars, converging around the ancestral tri-carpellate sterile ovules."
-      : fruit.id === "mango"
-      ? "Microscopic parenchymal cells densely loaded with golden carotenoid chromoplasts and nectar-rich vacuoles, yielding an exquisitely unctuous texture free of coarse fiber."
-      : fruit.id === "orange"
-      ? "Each translucent droplet is an individual multicellular juice vesicle growing from the inward carpel wall, packing cellular water, citric acid, and dissolved sucrose under tension."
-      : fruit.id === "strawberry"
-      ? "Each tiny seed-like speck is an independent botanical achene, nestled within the swollen, glistening cells of the red floral receptacle."
-      : fruit.id === "watermelon"
-      ? "Each glistening red vesicle is a giant parenchymal cell packed under turgor pressure with dissolved fructose, lycopene chromoplasts, and ninety-one percent structured biological water."
-      : fruit.id === "apple"
-      ? "Dense parenchymal tissue bound by a delicate pectin matrix, locking in natural malic acids and crisp atmospheric air pockets that give the apple its signature buoyant crunch."
-      : "Microscopic crystalline wax platelets scatter ambient light into a powdery indigo sheen, creating a natural hydrophobic shield that prevents moisture evaporation."}
-  />
+  {fruit.images.macroBreak && (
+    <FruitMacroBreak
+      imageSrc={fruit.images.macroBreak.src}
+      alt={fruit.images.macroBreak.alt}
+      captionTitle={fruit.images.macroBreak.captionTitle}
+      captionText={fruit.images.macroBreak.captionText}
+    />
+  )}
 
   <!-- 06. Taste Profile & Sensory Architecture -->
   <FruitTaste fruit={fruit} />
@@ -268,41 +191,18 @@ const jsonLd = {
   <FruitCharacteristics fruit={fruit} />
 
   <!-- Narrative Pull Quote 2 -->
-  <PullQuote
-    quote={fruit.id === "peach"
-      ? "A fruit of exquisite balance: porcelain sweetness cradled in velvety down, anchored by the ancient sculpture of a single lignified stone."
-      : fruit.id === "banana"
-      ? "A golden crescent of concentrated potassium, shielded by a leathery mantle of vascular threads and sweet volatile esters."
-      : fruit.id === "mango"
-      ? "Velvety saffron pulp wrapped around a solitary fibrous heart—a golden distillation of tropical sunshine and ancient pedigree."
-      : fruit.id === "orange"
-      ? "Liquid sunlight suspended in segmented crystal—sweetness balanced by brisk citric clarity."
-      : fruit.id === "strawberry"
-      ? "More than 350 volatile aromatic esters weave together to create the unmistakable woodland perfume of Fragaria."
-      : fruit.id === "watermelon"
-      ? "A desert miracle: nature's sweetest water captured inside an armored jade rind, offering cool salvation under the fiercest sun."
-      : fruit.id === "apple"
-      ? "Every apple tree carries an unrepeatable genetic destiny—millions of wild variations distilled into a single crisp, honeyed bite."
-      : "Nature rarely paints in blue; in the blueberry, it mastered the art through microscopic light scattering."}
-    attribution={fruit.id === "peach"
-      ? "Classical Taoist Pomological Annals"
-      : fruit.id === "banana"
-      ? "Tropical Pomological Monograph Series"
-      : fruit.id === "mango"
-      ? "Indo-Gangetic Pomological Annals"
-      : fruit.id === "orange"
-      ? "Mediterranean Pomology Gazette"
-      : fruit.id === "strawberry"
-      ? "Volatile Biochemistry Annals"
-      : fruit.id === "watermelon"
-      ? "Sudano-Sahelian Ethnobotanical Annals"
-      : fruit.id === "apple"
-      ? "Central Asian Arboricultural Corpus"
-      : "Optical Biochemistry Journal"}
-  />
+  {fruit.editorial.pullQuotes?.[1] && (
+    <PullQuote
+      quote={fruit.editorial.pullQuotes[1].quote}
+      attribution={fruit.editorial.pullQuotes[1].attribution}
+    />
+  )}
 
   <!-- 10. Botanical Curiosities (Things you might not know) -->
   <FruitFacts fruit={fruit} />
+
+  <!-- 10.5 Primary Sources & Citations -->
+  <FruitSources fruit={fruit} sources={fruitSources} />
 
   <!-- 11. Botanical Bridges (Explore similar fruits) -->
   <SimilarFruits fruit={fruit} />

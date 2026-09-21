@@ -23,6 +23,18 @@ export const blueberry: Fruit = {
     tagline: "Tiny fruit. Extraordinary depth.",
     heroDescription:
       "One of nature's most nutrient-dense fruits, the blueberry packs antioxidants, vitamins, and fiber into a pearl-sized package. Native to North America and cultivated for centuries, it remains one of the most studied berries in nutritional science.",
+    pullQuotes: [
+      {
+        quote: "Blueberries are small, but their botanical journey spans continents, ice ages, and millennia of wild selection.",
+        attribution: "Botanical Monograph Archives",
+      },
+      {
+        quote: "Nature rarely paints in blue; in the blueberry, it mastered the art through microscopic light scattering.",
+        attribution: "Optical Biochemistry Journal",
+      },
+    ],
+    nutritionDescription:
+      "Over 84% pure structured cellular water, carrying soluble sugars, organic acids, and suspended pectin.",
   },
 
   taxonomy: {
@@ -54,6 +66,16 @@ export const blueberry: Fruit = {
       reviewed: true,
     },
     gallery: [],
+    macroBreak: {
+      src: "/images/fruits/blueberry/macro-crop.jpg",
+      alt: "Macro close-up of fresh blueberries with waxy bloom",
+      role: "gallery",
+      generatedBy: "ai",
+      reviewed: true,
+      captionTitle: "Pruinescence · The Epicuticular Wax Layer",
+      captionText:
+        "Microscopic crystalline wax platelets scatter ambient light into a powdery indigo sheen, creating a natural hydrophobic shield that prevents moisture evaporation.",
+    },
   },
 
   origin: {
@@ -253,6 +275,30 @@ export const blueberry: Fruit = {
         sourceReferenceIds: ["307"],
       },
     },
+    waterContentPercent: 84.2,
+    micronutrientSignatures: [
+      {
+        name: "Manganese",
+        amount: 0.336,
+        unit: "mg",
+        dailyValuePercent: 15,
+        description: "Essential cofactor for superoxide dismutase (antioxidant enzyme)",
+      },
+      {
+        name: "Vitamin K1 (Phylloquinone)",
+        amount: 19.3,
+        unit: "µg",
+        dailyValuePercent: 16,
+        description: "Supports osteocalcin carboxylation and normal coagulation cascades",
+      },
+      {
+        name: "Vitamin C (Ascorbic Acid)",
+        amount: 9.7,
+        unit: "mg",
+        dailyValuePercent: 11,
+        description: "Synergistic free-radical scavenger preserving endothelial elasticity",
+      },
+    ],
   },
 
   tasteProfile: {
@@ -271,6 +317,19 @@ export const blueberry: Fruit = {
       basis: "editorial-sensory",
       methodologyId: "editorial-sensory-methodology",
     },
+    juiciness: {
+      value: 8,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    aromatic: {
+      value: 7,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    lead: "Sweet first.",
+    accent: "Tart at the edge.",
+    descriptors: ["Fresh", "Juicy", "Tart", "Floral", "Earthy", "Velvet Skin"],
     notes:
       "Moderately sweet with a gentle, balanced acidity. The flavor deepens as the berry ripens, developing a complex sweetness with subtle floral undertones. Wild blueberries tend to be more intensely flavored than cultivated varieties.",
   },

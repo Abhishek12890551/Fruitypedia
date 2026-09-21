@@ -23,6 +23,18 @@ export const apple: Fruit = {
     tagline: "Crisp pome architecture. Ancient wild fruit of the Tian Shan.",
     heroDescription:
       "Descending from ancestral wild fruit forests flanking the Tian Shan mountains of Central Asia, the apple is humanity's most storied temperate fruit. Beneath its anthocyanin-blushed skin lies crisp, cellular-dense ivory flesh formed from a specialized botanical floral tube (hypanthium), delivering slow-release dietary pectin fiber, antioxidant quercetin polyphenols, and balanced malic acid sweetness.",
+    pullQuotes: [
+      {
+        quote: "From the wild forests of the Tian Shan to the hearths of antiquity, the apple is the sacred pome of memory—cradling the star of five carpels within crisp, malic-sculpted flesh.",
+        attribution: "Silk Road Pomological Compendium",
+      },
+      {
+        quote: "Every apple tree carries an unrepeatable genetic destiny—millions of wild variations distilled into a single crisp, honeyed bite.",
+        attribution: "Central Asian Arboricultural Corpus",
+      },
+    ],
+    nutritionDescription:
+      "Nearly 86% pure structured cell sap, carrying dissolved malic acid, crisp atmospheric air pockets, and insoluble pectin fibers.",
   },
 
   taxonomy: {
@@ -54,6 +66,16 @@ export const apple: Fruit = {
       reviewed: true,
     },
     gallery: [],
+    macroBreak: {
+      src: "/images/fruits/apple/macro-break.jpg",
+      alt: "Extreme macro of sliced apple showing crisp parenchymal cells and anthocyanin-flushed peel",
+      role: "gallery",
+      generatedBy: "ai",
+      reviewed: true,
+      captionTitle: "Hypanthium Matrix · The Pectin Cellular Lattice",
+      captionText:
+        "Dense parenchymal tissue bound by a delicate pectin matrix, locking in natural malic acids and crisp atmospheric air pockets that give the apple its signature buoyant crunch.",
+    },
   },
 
   origin: {
@@ -275,6 +297,30 @@ export const apple: Fruit = {
         sourceReferenceIds: ["430"],
       },
     },
+    waterContentPercent: 85.6,
+    micronutrientSignatures: [
+      {
+        name: "Vitamin C (Ascorbic Acid)",
+        amount: 4.6,
+        unit: "mg",
+        dailyValuePercent: 5,
+        description: "Antioxidant cofactor supporting bioflavonoid synergy and cellular defense",
+      },
+      {
+        name: "Copper",
+        amount: 0.027,
+        unit: "mg",
+        dailyValuePercent: 3,
+        description: "Cofactor for superoxide dismutase assisting cellular oxidative resilience",
+      },
+      {
+        name: "Potassium",
+        amount: 107,
+        unit: "mg",
+        dailyValuePercent: 2,
+        description: "Cellular electrolyte regulating vascular relaxation and fluid pressure balance",
+      },
+    ],
   },
 
   tasteProfile: {
@@ -293,6 +339,26 @@ export const apple: Fruit = {
       basis: "editorial-sensory",
       methodologyId: "editorial-sensory-methodology",
     },
+    juiciness: {
+      value: 8,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    aromatic: {
+      value: 7,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    lead: "Crisp snap first.",
+    accent: "Bright malic sweetness.",
+    descriptors: [
+      "Crisp Snap",
+      "Malic Tart",
+      "Floral Honey",
+      "Buoyant Flesh",
+      "Autumn Orchard",
+      "Tender Peel",
+    ],
     notes:
       "Crisp, snappy fracture and balanced sweet-tart complexity. Pronounced natural malic acid backbone harmonized with clean honeyed sucrose and floral-ester aromatics, terminating in a clean, lightly tannic skin finish.",
   },

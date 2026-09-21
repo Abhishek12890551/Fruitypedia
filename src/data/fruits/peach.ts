@@ -23,6 +23,18 @@ export const peach: Fruit = {
     tagline: "Velvet drupe. Ancient symbol of vitality and longevity.",
     heroDescription:
       "Celebrated across East Asian philosophy and global horticulture for over four millennia as an emblem of vitality, the peach is a quintessential botanical drupe. Beneath its velvety, sun-blushed pubescent exocarp lies a succulent, nectar-dense mesocarp wrapped around a deeply corrugated woody stone, delivering delicate carotenoids, natural polyphenols, and balanced organic acids.",
+    pullQuotes: [
+      {
+        quote: "Beneath downy velvet lies dripping summer sunshine—a sacred drupe whose corrugations have encoded myths of immortality from the ancient Yangtze to Roman orchards.",
+        attribution: "Silk Road Pomological Chronicles",
+      },
+      {
+        quote: "A fruit of exquisite balance: porcelain sweetness cradled in velvety down, anchored by the ancient sculpture of a single lignified stone.",
+        attribution: "Classical Taoist Pomological Annals",
+      },
+    ],
+    nutritionDescription:
+      "Nearly 89% pure structured stone-fruit cell water, delivering dissolved summer nectar, bioavailable carotenoids, and soothing soluble pectin.",
   },
 
   taxonomy: {
@@ -54,6 +66,16 @@ export const peach: Fruit = {
       reviewed: true,
     },
     gallery: [],
+    macroBreak: {
+      src: "/images/fruits/peach/macro-break.jpg",
+      alt: "Extreme macro of sliced ripe peach showing fine epidermal trichomes, glistening nectar cells, and corrugated pit",
+      role: "gallery",
+      generatedBy: "ai",
+      reviewed: true,
+      captionTitle: "Pubescent Epidermis · The Corrugated Endocarp",
+      captionText:
+        "Unicellular epidermal trichomes form a protective velvet canopy over tensioned parenchymal cells laden with aromatic gamma-decalactones and structured cell sap.",
+    },
   },
 
   origin: {
@@ -269,6 +291,30 @@ export const peach: Fruit = {
         sourceReferenceIds: ["307"],
       },
     },
+    waterContentPercent: 88.9,
+    micronutrientSignatures: [
+      {
+        name: "Copper",
+        amount: 0.068,
+        unit: "mg",
+        dailyValuePercent: 8,
+        description: "Essential trace mineral cofactor for cytochrome c oxidase and superoxide dismutase",
+      },
+      {
+        name: "Vitamin C (Ascorbic Acid)",
+        amount: 6.6,
+        unit: "mg",
+        dailyValuePercent: 7,
+        description: "Water-soluble antioxidant neutralizing free radicals and supporting collagen cross-linking",
+      },
+      {
+        name: "Vitamin E (alpha-tocopherol)",
+        amount: 0.73,
+        unit: "mg",
+        dailyValuePercent: 5,
+        description: "Fat-soluble antioxidant protecting cellular membrane lipids from peroxidative stress",
+      },
+    ],
   },
 
   tasteProfile: {
@@ -287,6 +333,26 @@ export const peach: Fruit = {
       basis: "editorial-sensory",
       methodologyId: "editorial-sensory-methodology",
     },
+    juiciness: {
+      value: 9,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    aromatic: {
+      value: 8,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    lead: "Summer nectar.",
+    accent: "Melting & floral.",
+    descriptors: [
+      "Lactonic Peach",
+      "Summer Nectar",
+      "Velvet Skin",
+      "Rose Floral",
+      "Delicate Acid",
+      "Corrugated Stone",
+    ],
     notes:
       "Sumptuous, dripping summer nectar. Velvety honeyed sweetness balanced by gentle malic acidity, delicate floral rose-blossom aromatics, and rich warm lactonic peach notes (gamma-decalactone).",
   },

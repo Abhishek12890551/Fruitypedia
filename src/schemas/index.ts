@@ -31,6 +31,14 @@ export const NutrientValueSchema = z.object({
   sourceReferenceIds: z.array(z.string()).optional(),
 });
 
+export const MicronutrientSignatureSchema = z.object({
+  name: z.string().min(1),
+  amount: z.number(),
+  unit: z.string().min(1),
+  dailyValuePercent: z.number().min(0).max(10000),
+  description: z.string().min(1),
+});
+
 export const ReferenceBasisSchema = z.enum(["per100g", "perServing", "other"]);
 
 export const NutritionSchema = z.object({
@@ -38,6 +46,8 @@ export const NutritionSchema = z.object({
   servingSize: z.string().min(1),
   calories: NutrientValueSchema,
   nutrients: z.record(z.string(), NutrientValueSchema),
+  waterContentPercent: z.number().min(0).max(100).optional(),
+  micronutrientSignatures: z.array(MicronutrientSignatureSchema).optional(),
 });
 
 // ─── Theme ───────────────────────────────────────────────────────────
@@ -120,6 +130,10 @@ export const FruitImagesSchema = z.object({
   hero: FruitImageSchema,
   gallery: z.array(FruitImageSchema),
   crossSection: FruitImageSchema.optional(),
+  macroBreak: FruitImageSchema.extend({
+    captionTitle: z.string().min(1),
+    captionText: z.string().min(1),
+  }).optional(),
 });
 
 // ─── Taste ───────────────────────────────────────────────────────────
@@ -134,6 +148,11 @@ export const TasteProfileSchema = z.object({
   sweetness: TasteScoreSchema,
   acidity: TasteScoreSchema,
   bitterness: TasteScoreSchema.optional(),
+  juiciness: TasteScoreSchema.optional(),
+  aromatic: TasteScoreSchema.optional(),
+  lead: z.string().optional(),
+  accent: z.string().optional(),
+  descriptors: z.array(z.string()).optional(),
   notes: z.string().min(1),
 });
 
@@ -203,6 +222,15 @@ export const FruitSchema = z.object({
     nickname: z.string().optional(),
     tagline: z.string().optional(),
     heroDescription: z.string().min(1),
+    pullQuotes: z
+      .array(
+        z.object({
+          quote: z.string().min(1),
+          attribution: z.string().min(1),
+        })
+      )
+      .optional(),
+    nutritionDescription: z.string().optional(),
   }),
 
   taxonomy: z.object({

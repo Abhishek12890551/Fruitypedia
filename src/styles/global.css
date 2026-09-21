@@ -34,10 +34,11 @@
   --font-ui: "Inter", system-ui, sans-serif;
 
   /* Border Radius */
-  --radius-sm: 0.5rem;     /* 8px */
-  --radius-md: 0.75rem;    /* 12px */
-  --radius-lg: 1.125rem;   /* 18px */
-  --radius-xl: 1.5rem;     /* 24px */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
 }
 
 /* ─── Design Tokens (CSS Custom Properties) ───────────────────────── */
@@ -112,16 +113,10 @@
   --motion-distance-small: 16px;
   --motion-distance-editorial: 32px;
 
-  /* ── Unified Border & Radius Tokens (Sprint 1) ───────────────────── */
+  /* ── Unified Border Tokens ───────────────────────────────────────── */
   --border-subtle: rgba(255, 255, 255, 0.07);
   --border-standard: rgba(255, 255, 255, 0.12);
   --border-emphasis: rgba(255, 255, 255, 0.22);
-
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --radius-full: 9999px;
 }
 
 /* ─── Layered Base Styles ─────────────────────────────────────────── */

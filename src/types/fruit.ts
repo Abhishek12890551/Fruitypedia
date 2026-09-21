@@ -115,6 +115,11 @@ export interface FruitImages {
   hero: FruitImage;
   gallery: FruitImage[];
   crossSection?: FruitImage;
+  /** Full-bleed macro photography break image. */
+  macroBreak?: FruitImage & {
+    captionTitle: string;
+    captionText: string;
+  };
 }
 
 // ─── Taste ───────────────────────────────────────────────────────────
@@ -144,6 +149,16 @@ export interface TasteProfile {
   sweetness: TasteScore;
   acidity: TasteScore;
   bitterness?: TasteScore;
+  /** Juiciness score (0-10). */
+  juiciness?: TasteScore;
+  /** Aromatic intensity score (0-10). */
+  aromatic?: TasteScore;
+  /** Lead sensory statement. */
+  lead?: string;
+  /** Accent sensory statement. */
+  accent?: string;
+  /** Sensory descriptor tags. */
+  descriptors?: string[];
   /** Free-text tasting notes. */
   notes: string;
 }
@@ -227,6 +242,10 @@ export interface Fruit {
     tagline?: string;
     /** Primary hero description paragraph. */
     heroDescription: string;
+    /** Editorial pull quotes displayed between sections. */
+    pullQuotes?: Array<{ quote: string; attribution: string }>;
+    /** Poetic nutrition description for the caloric anchor section. */
+    nutritionDescription?: string;
   };
 
   taxonomy: {

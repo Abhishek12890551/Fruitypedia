@@ -23,6 +23,18 @@ export const orange: Fruit = {
     tagline: "Sunlit hesperidium. Liquid aromatic gold.",
     heroDescription:
       "A monumental citrus hybrid of pomelo and mandarin that transformed ancient botanical trade and modern orchards alike. Packed within an aromatic flavedo bursting with essential limonene, its radial carpels house thousands of glistening, sun-drenched juice vesicles delivering vibrant ascorbic acid and balanced citric sweetness.",
+    pullQuotes: [
+      {
+        quote: "Within the pebbled flavedo of the hesperidium, nature engineered thousands of microscopic oil glands holding the pure aromatic essence of d-limonene.",
+        attribution: "Citrus Botanical Monograph Series",
+      },
+      {
+        quote: "Liquid sunlight suspended in segmented crystal—sweetness balanced by brisk citric clarity.",
+        attribution: "Mediterranean Pomology Gazette",
+      },
+    ],
+    nutritionDescription:
+      "Over 86% pure structured citrus cell sap, rich in dissolved ascorbic acid, bioflavonoids, and natural fruit sugars.",
   },
 
   taxonomy: {
@@ -54,6 +66,16 @@ export const orange: Fruit = {
       reviewed: true,
     },
     gallery: [],
+    macroBreak: {
+      src: "/images/fruits/orange/macro-break.jpg",
+      alt: "Extreme macro of glistening citrus juice vesicles bursting with liquid amber nectar",
+      role: "gallery",
+      generatedBy: "ai",
+      reviewed: true,
+      captionTitle: "Juice Vesicles · The Multicellular Pulp Clavellae",
+      captionText:
+        "Each translucent droplet is an individual multicellular juice vesicle growing from the inward carpel wall, packing cellular water, citric acid, and dissolved sucrose under tension.",
+    },
   },
 
   origin: {
@@ -195,6 +217,30 @@ export const orange: Fruit = {
         sourceReferenceIds: ["415"],
       },
     },
+    waterContentPercent: 86.8,
+    micronutrientSignatures: [
+      {
+        name: "Vitamin C (Ascorbic Acid)",
+        amount: 53.2,
+        unit: "mg",
+        dailyValuePercent: 59,
+        description: "Potent free-radical scavenger catalyzing collagen formation and immune competence",
+      },
+      {
+        name: "Thiamin (Vitamin B1)",
+        amount: 0.087,
+        unit: "mg",
+        dailyValuePercent: 7,
+        description: "Critical coenzyme in cellular carbohydrate metabolism and ATP generation",
+      },
+      {
+        name: "Folate (Vitamin B9)",
+        amount: 30,
+        unit: "µg",
+        dailyValuePercent: 8,
+        description: "Essential cofactor in nucleic acid replication and red blood cell production",
+      },
+    ],
   },
 
   tasteProfile: {
@@ -213,6 +259,26 @@ export const orange: Fruit = {
       basis: "editorial-sensory",
       methodologyId: "editorial-sensory-methodology",
     },
+    juiciness: {
+      value: 9,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    aromatic: {
+      value: 9,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    lead: "Citric first.",
+    accent: "Bursting with nectar.",
+    descriptors: [
+      "Zesty Limonene",
+      "Juicy",
+      "Sweet Sunshine",
+      "Bright Acid",
+      "Tangy Pith",
+      "Fresh Vesicle",
+    ],
     notes:
       "Bright, invigorating citrus dynamism. A burst of brisk citric and malic acidity instantly smoothed by honeyed fructose and sustained by essential limonene oils.",
   },

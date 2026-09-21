@@ -23,6 +23,18 @@ export const watermelon: Fruit = {
     tagline: "Crystalline hydration. Ancient African pepo of desert survival.",
     heroDescription:
       "Cultivated across North and Northeast Africa for over four thousand years as nature's ultimate living reservoir, the watermelon is a botanical marvel of the gourd family. Enclosed within a durable emerald-striped rind, its crisp, sugar-dusted crimson pulp contains over ninety-one percent structured water, abundant antioxidant lycopene, and the unique cardiovascular amino acid L-citrulline.",
+    pullQuotes: [
+      {
+        quote: "Born of ancient arid riverbeds, the watermelon is humanity's living amphora—a crystalline pepo whose emerald shell seals ninety-one percent structured cellular dew.",
+        attribution: "Pharaonic Botanical Chronicles",
+      },
+      {
+        quote: "A desert miracle: nature's sweetest water captured inside an armored jade rind, offering cool salvation under the fiercest sun.",
+        attribution: "Sudano-Sahelian Ethnobotanical Annals",
+      },
+    ],
+    nutritionDescription:
+      "Over 91% pure structured cellular water, carrying dissolved lycopene, l-citrulline, and hydrating electrolytes.",
   },
 
   taxonomy: {
@@ -54,6 +66,16 @@ export const watermelon: Fruit = {
       reviewed: true,
     },
     gallery: [],
+    macroBreak: {
+      src: "/images/fruits/watermelon/macro-break.jpg",
+      alt: "Extreme macro of glistening watermelon pulp displaying crystalline sugar vacuoles and cellular moisture",
+      role: "gallery",
+      generatedBy: "ai",
+      reviewed: true,
+      captionTitle: "Cellular Vacuoles · The Crystalline Parenchyma",
+      captionText:
+        "Each glistening red vesicle is a giant parenchymal cell packed under turgor pressure with dissolved fructose, lycopene chromoplasts, and ninety-one percent structured biological water.",
+    },
   },
 
   origin: {
@@ -275,6 +297,30 @@ export const watermelon: Fruit = {
         sourceReferenceIds: ["430"],
       },
     },
+    waterContentPercent: 91.5,
+    micronutrientSignatures: [
+      {
+        name: "Vitamin C (Ascorbic Acid)",
+        amount: 8.1,
+        unit: "mg",
+        dailyValuePercent: 9,
+        description: "Potent cellular antioxidant supporting collagen integrity and immune competence",
+      },
+      {
+        name: "Copper",
+        amount: 0.042,
+        unit: "mg",
+        dailyValuePercent: 5,
+        description: "Essential trace mineral facilitating cytochrome c oxidase function and red cell metabolism",
+      },
+      {
+        name: "Potassium",
+        amount: 112,
+        unit: "mg",
+        dailyValuePercent: 2,
+        description: "Vital electrolyte maintaining optimal intracellular hydration and cellular osmotic equilibrium",
+      },
+    ],
   },
 
   tasteProfile: {
@@ -293,6 +339,26 @@ export const watermelon: Fruit = {
       basis: "editorial-sensory",
       methodologyId: "editorial-sensory-methodology",
     },
+    juiciness: {
+      value: 10,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    aromatic: {
+      value: 6,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    lead: "Crisp water first.",
+    accent: "Cooling & crystalline.",
+    descriptors: [
+      "Hydrating",
+      "Crisp Cell",
+      "Honey Dew",
+      "Melon Floral",
+      "Subtle Sweet",
+      "Refreshing",
+    ],
     notes:
       "Crisp, effervescently refreshing, and hyper-hydrating sensory experience. Initial burst of light natural floral sweetness (predominantly clean fructose) followed by subtle grassy-cucumber undertones from the rind border, completely devoid of astringency or sharp acidity.",
   },

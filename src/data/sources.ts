@@ -109,6 +109,12 @@ export function getSourceById(id: string): Source | undefined {
   return sources.find((s) => s.id === id);
 }
 
+/** Look up multiple sources by their IDs in order, omitting undefined entries. */
+export function getSourcesByIds(ids: string[]): Source[] {
+  const map = new Map(sources.map((s) => [s.id, s]));
+  return ids.map((id) => map.get(id)).filter((s): s is Source => Boolean(s));
+}
+
 /** Validate that all referenced source IDs exist in the registry. */
 export function validateSourceIds(ids: string[]): { valid: boolean; missing: string[] } {
   const known = new Set(sources.map((s) => s.id));

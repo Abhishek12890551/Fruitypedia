@@ -23,6 +23,18 @@ export const banana: Fruit = {
     tagline: "Parthenocarpic berry. High-potassium tropical staple.",
     heroDescription:
       "Venerated across tropical civilizations for over seven millennia, the banana is botanically an elongated, seedless berry born from the world's largest flowering perennial herb. Encased within an easily peeled golden exocarp lies a dense, creamy mesocarp exceptionally rich in bioavailable potassium, vitamin B6, and prebiotic pectin.",
+    pullQuotes: [
+      {
+        quote: "Born from a colossal spiral inflorescence, the banana is a marvel of vegetative parthenocarpy—sustaining equatorial civilizations across seven millennia.",
+        attribution: "Austronesian Ethnobotanical Chronicles",
+      },
+      {
+        quote: "A golden crescent of concentrated potassium, shielded by a leathery mantle of vascular threads and sweet volatile esters.",
+        attribution: "Tropical Pomological Monograph Series",
+      },
+    ],
+    nutritionDescription:
+      "Close to 75% pure structured cellular water, cradling dense reserves of soluble starch, prebiotic pectin, and bioavailable potassium.",
   },
 
   taxonomy: {
@@ -54,6 +66,16 @@ export const banana: Fruit = {
       reviewed: true,
     },
     gallery: [],
+    macroBreak: {
+      src: "/images/fruits/banana/macro-break.jpg",
+      alt: "Extreme macro of sliced ripe banana cross-section displaying glistening starch parenchyma and tri-radial locule ovules",
+      role: "gallery",
+      generatedBy: "ai",
+      reviewed: true,
+      captionTitle: "Starch Parenchyma · The Tri-Radial Locule",
+      captionText:
+        "Microscopic parenchymal cells densely saturated with gelatinized starch granules and hydrolyzing fruit sugars, converging around the ancestral tri-carpellate sterile ovules.",
+    },
   },
 
   origin: {
@@ -268,6 +290,30 @@ export const banana: Fruit = {
         sourceReferenceIds: ["430"],
       },
     },
+    waterContentPercent: 74.9,
+    micronutrientSignatures: [
+      {
+        name: "Vitamin B6 (Pyridoxine)",
+        amount: 0.367,
+        unit: "mg",
+        dailyValuePercent: 22,
+        description: "Essential coenzyme in amino acid metabolism, cognitive neurotransmitter synthesis, and hemoglobin formation",
+      },
+      {
+        name: "Manganese",
+        amount: 0.270,
+        unit: "mg",
+        dailyValuePercent: 12,
+        description: "Mitochondrial cofactor for superoxide dismutase (SOD2) and proteoglycan synthesis",
+      },
+      {
+        name: "Potassium",
+        amount: 358,
+        unit: "mg",
+        dailyValuePercent: 8,
+        description: "Crucial intracellular electrolyte regulating cardiomyocyte membrane potential and vascular tone",
+      },
+    ],
   },
 
   tasteProfile: {
@@ -286,6 +332,26 @@ export const banana: Fruit = {
       basis: "editorial-sensory",
       methodologyId: "editorial-sensory-methodology",
     },
+    juiciness: {
+      value: 3,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    aromatic: {
+      value: 8,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    lead: "Creamy first.",
+    accent: "Custardy & comforting.",
+    descriptors: [
+      "Velvety Fleshy",
+      "Custard Sweet",
+      "Isoamyl Ester",
+      "Warm Vanilla",
+      "Prebiotic Pectin",
+      "Gentle Honey",
+    ],
     notes:
       "Creamy, dense, and comforting sensory architecture. Dominated by ripe isoamyl acetate esters delivering warm tropical floral aromatics, custardy vanilla undertones, and velvety smooth mouthfeel with virtually imperceptible acidity.",
   },

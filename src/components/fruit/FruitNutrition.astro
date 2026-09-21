@@ -35,7 +35,7 @@ const nutrients = fruit.nutrition.nutrients;
           </p>
         </div>
         <p class="nutrition-basis font-ui text-xs text-zinc-500 pb-2">
-          USDA FoodData Central (#{fruit.nutrition.calories.sourceReferenceIds?.[0] || (fruit.id === "strawberry" ? "167762" : "171711")}) · Calibrated per {fruit.nutrition.servingSize} edible portion
+          USDA FoodData Central (#{fruit.nutrition.calories.sourceReferenceIds?.[0] || "171711"}) · Calibrated per {fruit.nutrition.servingSize} edible portion
         </p>
       </div>
     </div>
@@ -56,34 +56,28 @@ const nutrients = fruit.nutrition.nutrients;
               <span class="font-ui text-[11px] uppercase tracking-widest text-zinc-500">per 100g</span>
             </div>
           </div>
-          <p class="font-editorial text-zinc-300 mt-4 leading-relaxed">
-            {fruit.id === "peach"
-              ? "Nearly 89% pure structured stone-fruit cell water, delivering dissolved summer nectar, bioavailable carotenoids, and soothing soluble pectin."
-              : fruit.id === "banana"
-              ? "Close to 75% pure structured cellular water, cradling dense reserves of soluble starch, prebiotic pectin, and bioavailable potassium."
-              : fruit.id === "mango"
-              ? "Over 83% pure structured tropical cell sap, carrying dissolved fruit sugars, beta-carotene, and protective ascorbic acid."
-              : fruit.id === "orange"
-              ? "Over 86% pure structured citrus cell sap, rich in dissolved ascorbic acid, bioflavonoids, and natural fruit sugars."
-              : fruit.id === "strawberry"
-              ? "Over 90% pure structured cellular water, carrying soluble sugars, ascorbic acid, and suspended anthocyanin pigments."
-              : "Over 84% pure structured cellular water, carrying soluble sugars, organic acids, and suspended pectin."}
-          </p>
+          {fruit.editorial.nutritionDescription && (
+            <p class="font-editorial text-zinc-300 mt-4 leading-relaxed">
+              {fruit.editorial.nutritionDescription}
+            </p>
+          )}
         </div>
 
-        <div class="water-ratio mt-6 pt-5 border-t border-zinc-900">
-          <div class="flex justify-between text-xs font-ui mb-1.5">
-            <span class="text-zinc-400">Cellular Hydration Ratio</span>
-            <span class="text-white font-medium">{fruit.id === "peach" ? "88.9%" : fruit.id === "banana" ? "74.9%" : fruit.id === "mango" ? "83.5%" : fruit.id === "orange" ? "86.8%" : fruit.id === "strawberry" ? "90.9%" : fruit.id === "watermelon" ? "91.5%" : fruit.id === "apple" ? "85.6%" : "84.2%"}</span>
+        {fruit.nutrition.waterContentPercent !== undefined && (
+          <div class="water-ratio mt-6 pt-5 border-t border-zinc-900">
+            <div class="flex justify-between text-xs font-ui mb-1.5">
+              <span class="text-zinc-400">Cellular Hydration Ratio</span>
+              <span class="text-white font-medium">{fruit.nutrition.waterContentPercent}%</span>
+            </div>
+            <div class="w-full h-1 bg-zinc-900 rounded-full overflow-hidden">
+              <div
+                class="h-full rounded-full"
+                data-target-width={`${fruit.nutrition.waterContentPercent}%`}
+                style={`width: ${fruit.nutrition.waterContentPercent}%; background-color: ${fruit.theme.primary}; opacity: 0.85;`}
+              ></div>
+            </div>
           </div>
-          <div class="w-full h-1 bg-zinc-900 rounded-full overflow-hidden">
-            <div
-              class="h-full rounded-full"
-              data-target-width={fruit.id === "peach" ? "88.9%" : fruit.id === "banana" ? "74.9%" : fruit.id === "mango" ? "83.5%" : fruit.id === "orange" ? "86.8%" : fruit.id === "strawberry" ? "90.9%" : fruit.id === "watermelon" ? "91.5%" : fruit.id === "apple" ? "85.6%" : "84.2%"}
-              style={`width: ${fruit.id === "peach" ? "88.9%" : fruit.id === "banana" ? "74.9%" : fruit.id === "mango" ? "83.5%" : fruit.id === "orange" ? "86.8%" : fruit.id === "strawberry" ? "90.9%" : fruit.id === "watermelon" ? "91.5%" : fruit.id === "apple" ? "85.6%" : "84.2%"}; background-color: ${fruit.theme.primary}; opacity: 0.85;`}
-            ></div>
-          </div>
-        </div>
+        )}
       </div>
 
       <!-- Key Micronutrient Signatures (Typographic Spectrum) -->
@@ -93,359 +87,24 @@ const nutrients = fruit.nutrition.nutrients;
         </h3>
 
         <div class="micronutrient-bars space-y-5">
-          {fruit.id === "peach" ? (
-            <>
-              <!-- Copper (Top DV% for Peach) -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Copper</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    0.068 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>8% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="8%" style={`width: 8%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential trace mineral cofactor for cytochrome c oxidase and superoxide dismutase</p>
+          {fruit.nutrition.micronutrientSignatures?.map((sig) => (
+            <div class="micro-row">
+              <div class="flex justify-between items-baseline mb-1 text-sm">
+                <span class="font-editorial text-zinc-200 text-lg">{sig.name}</span>
+                <span class="font-ui text-xs text-zinc-400">
+                  {sig.amount} {sig.unit} · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>{sig.dailyValuePercent}% DV</strong>
+                </span>
               </div>
-
-              <!-- Vitamin C -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Vitamin C (Ascorbic Acid)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    6.6 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>7% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="7%" style={`width: 7%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Water-soluble antioxidant neutralizing free radicals and supporting collagen cross-linking</p>
+              <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
+                <div
+                  class="h-full rounded-full"
+                  data-target-width={`${Math.min(sig.dailyValuePercent, 100)}%`}
+                  style={`width: ${Math.min(sig.dailyValuePercent, 100)}%; background-color: ${fruit.theme.primary};`}
+                ></div>
               </div>
-
-              <!-- Vitamin E -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Vitamin E (alpha-tocopherol)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    0.73 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>5% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="5%" style={`width: 5%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Fat-soluble antioxidant protecting cellular membrane lipids from peroxidative stress</p>
-              </div>
-            </>
-          ) : fruit.id === "banana" ? (
-            <>
-              <!-- Vitamin B6 (Hero for Banana) -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Vitamin B6 (Pyridoxine)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    0.367 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>22% DV (High)</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="22%" style={`width: 22%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential coenzyme in amino acid metabolism, cognitive neurotransmitter synthesis, and hemoglobin formation</p>
-              </div>
-
-              <!-- Manganese -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Manganese</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    0.270 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>12% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="12%" style={`width: 12%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Mitochondrial cofactor for superoxide dismutase (SOD2) and proteoglycan synthesis</p>
-              </div>
-
-              <!-- Potassium -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Potassium</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    358 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>8% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="8%" style={`width: 8%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Crucial intracellular electrolyte regulating cardiomyocyte membrane potential and vascular tone</p>
-              </div>
-            </>
-          ) : fruit.id === "mango" ? (
-            <>
-              <!-- Vitamin C (Hero for Mango) -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Vitamin C (Ascorbic Acid)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    36.4 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>40% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="40%" style={`width: 40%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Potent cellular antioxidant supporting collagen integrity and macrophage defense</p>
-              </div>
-
-              <!-- Copper -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Copper</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    0.111 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>12% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="12%" style={`width: 12%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential cofactor for cytochrome c oxidase in cellular energy and iron metabolism</p>
-              </div>
-
-              <!-- Folate (Vitamin B9) -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Folate (Vitamin B9)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    43 µg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>11% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="11%" style={`width: 11%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Key methyl-donor cofactor required for cellular DNA replication and synthesis</p>
-              </div>
-            </>
-          ) : fruit.id === "orange" ? (
-            <>
-              <!-- Vitamin C (Hero for Orange) -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Vitamin C (Ascorbic Acid)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    53.2 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>59% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="59%" style={`width: 59%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Potent free-radical scavenger catalyzing collagen formation and immune competence</p>
-              </div>
-
-              <!-- Thiamin (Vitamin B1) -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Thiamin (Vitamin B1)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    0.087 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>7% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="7%" style={`width: 7%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Critical coenzyme in cellular carbohydrate metabolism and ATP generation</p>
-              </div>
-
-              <!-- Folate (Vitamin B9) -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Folate (Vitamin B9)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    30 µg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>8% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="8%" style={`width: 8%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential cofactor in nucleic acid replication and red blood cell production</p>
-              </div>
-            </>
-          ) : fruit.id === "strawberry" ? (
-            <>
-              <!-- Vitamin C (Hero for Strawberry) -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Vitamin C (Ascorbic Acid)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    58.8 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>65% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="65%" style={`width: 65%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Potent cellular antioxidant catalyzing collagen synthesis and immune defense</p>
-              </div>
-
-              <!-- Manganese -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Manganese</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    0.386 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>17% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="17%" style={`width: 17%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential cofactor for mitochondrial superoxide dismutase (SOD2)</p>
-              </div>
-
-              <!-- Folate -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Folate (Vitamin B9)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    24 µg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>6% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="6%" style={`width: 6%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Key methyl-donor vitamin supporting nucleic acid synthesis and cellular division</p>
-              </div>
-            </>
-          ) : fruit.id === "watermelon" ? (
-            <>
-              <!-- Vitamin C (Hero for Watermelon) -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Vitamin C (Ascorbic Acid)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    8.1 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>9% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="9%" style={`width: 9%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Potent cellular antioxidant supporting collagen integrity and immune competence</p>
-              </div>
-
-              <!-- Copper -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Copper</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    0.042 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>5% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="5%" style={`width: 5%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential trace mineral facilitating cytochrome c oxidase function and red cell metabolism</p>
-              </div>
-
-              <!-- Potassium -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Potassium</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    112 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>2% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="2%" style={`width: 2%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Vital electrolyte maintaining optimal intracellular hydration and cellular osmotic equilibrium</p>
-              </div>
-            </>
-          ) : fruit.id === "apple" ? (
-            <>
-              <!-- Vitamin C -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Vitamin C (Ascorbic Acid)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    4.6 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>5% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="5%" style={`width: 5%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Antioxidant cofactor supporting bioflavonoid synergy and cellular defense</p>
-              </div>
-
-              <!-- Copper -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Copper</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    0.027 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>3% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="3%" style={`width: 3%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Cofactor for superoxide dismutase assisting cellular oxidative resilience</p>
-              </div>
-
-              <!-- Potassium -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Potassium</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    107 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>2% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="2%" style={`width: 2%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Cellular electrolyte regulating vascular relaxation and fluid pressure balance</p>
-              </div>
-            </>
-          ) : (
-            <>
-              <!-- Manganese (Hero for Blueberry) -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Manganese</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    0.336 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>15% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="15%" style={`width: 15%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential cofactor for superoxide dismutase (antioxidant enzyme)</p>
-              </div>
-
-              <!-- Vitamin K -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Vitamin K1 (Phylloquinone)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    19.3 µg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>16% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="16%" style={`width: 16%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Supports osteocalcin carboxylation and normal coagulation cascades</p>
-              </div>
-
-              <!-- Vitamin C -->
-              <div class="micro-row">
-                <div class="flex justify-between items-baseline mb-1 text-sm">
-                  <span class="font-editorial text-zinc-200 text-lg">Vitamin C (Ascorbic Acid)</span>
-                  <span class="font-ui text-xs text-zinc-400">
-                    9.7 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>11% DV</strong>
-                  </span>
-                </div>
-                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" data-target-width="11%" style={`width: 11%; background-color: ${fruit.theme.primary};`}></div>
-                </div>
-                <p class="text-[11px] font-ui text-zinc-500 mt-1">Synergistic free-radical scavenger preserving endothelial elasticity</p>
-              </div>
-            </>
-          )}
+              <p class="text-[11px] font-ui text-zinc-500 mt-1">{sig.description}</p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

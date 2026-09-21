@@ -9,6 +9,7 @@ export type {
   NutrientValue,
   ReferenceBasis,
   Nutrition,
+  MicronutrientSignature,
 } from "./nutrition";
 
 export type {

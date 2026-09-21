@@ -18,6 +18,14 @@ export interface NutrientValue {
   sourceReferenceIds?: string[];
 }
 
+export interface MicronutrientSignature {
+  name: string;
+  amount: number;
+  unit: string;
+  dailyValuePercent: number;
+  description: string;
+}
+
 export type ReferenceBasis = "per100g" | "perServing" | "other";
 
 export interface Nutrition {
@@ -29,4 +37,8 @@ export interface Nutrition {
   calories: NutrientValue;
   /** All other nutrients keyed by a normalized nutrient ID. */
   nutrients: Record<string, NutrientValue>;
+  /** Water content as a percentage (e.g., 84.2). */
+  waterContentPercent?: number;
+  /** Key micronutrient signatures for editorial display. */
+  micronutrientSignatures?: MicronutrientSignature[];
 }

@@ -23,6 +23,18 @@ export const mango: Fruit = {
     tagline: "Golden drupe. Ancient tropical majesty.",
     heroDescription:
       "Venerated for over four millennia across South Asia as the sacred sovereign of fruits, the mango is a magnificent botanical drupe. Beneath its smooth, sun-blushed exocarp lies a succulent, saffron-gold mesocarp dripping with aromatic nectar, delivering extraordinary beta-carotene provitamin A and vibrant ascorbic acid.",
+    pullQuotes: [
+      {
+        quote: "In Sanskrit poetry, the mango blossom was the dart of Kama—a fruit whose intoxicating perfumed nectar has anchored Asian culture for four millennia.",
+        attribution: "Classical Sanskrit Horticultural Corpus",
+      },
+      {
+        quote: "Velvety saffron pulp wrapped around a solitary fibrous heart—a golden distillation of tropical sunshine and ancient pedigree.",
+        attribution: "Indo-Gangetic Pomological Annals",
+      },
+    ],
+    nutritionDescription:
+      "Over 83% pure structured tropical cell sap, carrying dissolved fruit sugars, beta-carotene, and protective ascorbic acid.",
   },
 
   taxonomy: {
@@ -54,6 +66,16 @@ export const mango: Fruit = {
       reviewed: true,
     },
     gallery: [],
+    macroBreak: {
+      src: "/images/fruits/mango/macro-break.jpg",
+      alt: "Extreme macro of succulent mango golden pulp showing crystalline nectar drops and parenchymal structure",
+      role: "gallery",
+      generatedBy: "ai",
+      reviewed: true,
+      captionTitle: "Succulent Pulp · Saffron Parenchyma Mesh",
+      captionText:
+        "Microscopic parenchymal cells densely loaded with golden carotenoid chromoplasts and nectar-rich vacuoles, yielding an exquisitely unctuous texture free of coarse fiber.",
+    },
   },
 
   origin: {
@@ -189,6 +211,30 @@ export const mango: Fruit = {
         sourceReferenceIds: ["312"],
       },
     },
+    waterContentPercent: 83.5,
+    micronutrientSignatures: [
+      {
+        name: "Vitamin C (Ascorbic Acid)",
+        amount: 36.4,
+        unit: "mg",
+        dailyValuePercent: 40,
+        description: "Potent cellular antioxidant supporting collagen integrity and macrophage defense",
+      },
+      {
+        name: "Copper",
+        amount: 0.111,
+        unit: "mg",
+        dailyValuePercent: 12,
+        description: "Essential cofactor for cytochrome c oxidase in cellular energy and iron metabolism",
+      },
+      {
+        name: "Folate (Vitamin B9)",
+        amount: 43,
+        unit: "µg",
+        dailyValuePercent: 11,
+        description: "Key methyl-donor cofactor required for cellular DNA replication and synthesis",
+      },
+    ],
   },
 
   tasteProfile: {
@@ -207,6 +253,26 @@ export const mango: Fruit = {
       basis: "editorial-sensory",
       methodologyId: "editorial-sensory-methodology",
     },
+    juiciness: {
+      value: 9,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    aromatic: {
+      value: 9,
+      basis: "editorial-sensory",
+      methodologyId: "editorial-sensory-methodology",
+    },
+    lead: "Honeyed first.",
+    accent: "Lush tropical warmth.",
+    descriptors: [
+      "Floral Terpene",
+      "Buttery Velvet",
+      "Tropical Saffron",
+      "Rich Nectar",
+      "Mild Acidity",
+      "Aromatic Resin",
+    ],
     notes:
       "Sumptuous tropical luxury. Intensely sweet, floral, and honeyed profile accented by gentle resinous pine nuances, ripe peach undertones, and velvety rich mouthfeel.",
   },

@@ -12,7 +12,7 @@ import { peach } from "./fruits/peach";
 import { watermelon } from "./fruits/watermelon";
 import { apple } from "./fruits/apple";
 import { categories } from "./categories";
-import { sources, getSourceById, validateSourceIds } from "./sources";
+import { sources, getSourceById, getSourcesByIds, validateSourceIds } from "./sources";
 import type { Fruit, Category, Source } from "@/types";
 
 /** All production fruits in the catalog. */
@@ -47,5 +47,5 @@ export function getProductionFruitCount(): number {
   return allFruits.filter((f) => f.review.status !== "draft").length;
 }
 
-export { categories, sources, getSourceById, validateSourceIds };
+export { categories, sources, getSourceById, getSourcesByIds, validateSourceIds };
 export type { Fruit, Category, Source };
