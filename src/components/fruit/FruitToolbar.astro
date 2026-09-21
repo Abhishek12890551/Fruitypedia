@@ -107,80 +107,99 @@ const navItems = [
 </style>
 
 <script>
-  const links = document.querySelectorAll<HTMLAnchorElement>(".fruit-toolbar-link");
-  if (links.length > 0) {
-    const sectionIds = Array.from(links).map((l) => l.getAttribute("data-section")).filter(Boolean) as string[];
-    const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+  let toolbarObserver: IntersectionObserver | null = null;
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            links.forEach((link) => {
-              if (link.getAttribute("data-section") === id) {
-                link.classList.add("active");
-                const navContainer = link.closest<HTMLElement>(".fruit-nav-scroll");
-                if (navContainer) {
-                  const scrollLeft = link.offsetLeft - (navContainer.clientWidth / 2) + (link.clientWidth / 2);
-                  navContainer.scrollTo({ left: scrollLeft, behavior: "smooth" });
+  function initFruitToolbar() {
+    const links = document.querySelectorAll<HTMLAnchorElement>(".fruit-toolbar-link");
+    if (links.length > 0) {
+      const sectionIds = Array.from(links).map((l) => l.getAttribute("data-section")).filter(Boolean) as string[];
+      const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
+
+      if (toolbarObserver) {
+        toolbarObserver.disconnect();
+        toolbarObserver = null;
+      }
+
+      toolbarObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const id = entry.target.id;
+              links.forEach((link) => {
+                if (link.getAttribute("data-section") === id) {
+                  link.classList.add("active");
+                  const navContainer = link.closest<HTMLElement>(".fruit-nav-scroll");
+                  if (navContainer) {
+                    const scrollLeft = link.offsetLeft - (navContainer.clientWidth / 2) + (link.clientWidth / 2);
+                    navContainer.scrollTo({ left: scrollLeft, behavior: "smooth" });
+                  }
+                } else {
+                  link.classList.remove("active");
                 }
-              } else {
-                link.classList.remove("active");
+              });
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -70% 0px" }
+      );
+
+      sections.forEach((sec) => toolbarObserver?.observe(sec));
+    }
+
+    // Favorite button reactive syncing
+    const favBtn = document.getElementById("toolbar-fav-btn") as HTMLButtonElement | null;
+    if (favBtn) {
+      const slug = favBtn.getAttribute("data-slug");
+      const favText = favBtn.querySelector(".toolbar-fav-text") as HTMLElement | null;
+      const favIcon = favBtn.querySelector(".toolbar-fav-icon") as SVGElement | null;
+
+      const checkFavoriteState = () => {
+        try {
+          const stored = localStorage.getItem("fruitypedia_favorites");
+          if (stored) {
+            const arr = JSON.parse(stored);
+            if (Array.isArray(arr) && slug && arr.includes(slug)) {
+              if (favText) favText.textContent = "Saved";
+              if (favIcon) {
+                favIcon.setAttribute("fill", "currentColor");
+                favBtn.classList.add("text-rose-400", "border-rose-500/40");
+                favBtn.classList.remove("text-zinc-300");
               }
-            });
+              return;
+            }
+          }
+        } catch {
+          // Ignore
+        }
+        if (favText) favText.textContent = "Save";
+        if (favIcon) {
+          favIcon.setAttribute("fill", "none");
+          favBtn.classList.remove("text-rose-400", "border-rose-500/40");
+          favBtn.classList.add("text-zinc-300");
+        }
+      };
+
+      checkFavoriteState();
+
+      if (!favBtn.hasAttribute("data-listener-bound")) {
+        favBtn.setAttribute("data-listener-bound", "true");
+        favBtn.addEventListener("click", () => {
+          if (slug) {
+            window.dispatchEvent(new CustomEvent("toggle-favorite", { detail: { slug } }));
           }
         });
-      },
-      { rootMargin: "-20% 0px -70% 0px" }
-    );
 
-    sections.forEach((sec) => observer.observe(sec));
+        window.addEventListener("favorites-updated", () => {
+          checkFavoriteState();
+        });
+      }
+    }
   }
 
-  // Favorite button reactive syncing
-  const favBtn = document.getElementById("toolbar-fav-btn") as HTMLButtonElement | null;
-  if (favBtn) {
-    const slug = favBtn.getAttribute("data-slug");
-    const favText = favBtn.querySelector(".toolbar-fav-text") as HTMLElement | null;
-    const favIcon = favBtn.querySelector(".toolbar-fav-icon") as SVGElement | null;
-
-    const checkFavoriteState = () => {
-      try {
-        const stored = localStorage.getItem("fruitypedia_favorites");
-        if (stored) {
-          const arr = JSON.parse(stored);
-          if (Array.isArray(arr) && slug && arr.includes(slug)) {
-            if (favText) favText.textContent = "Saved";
-            if (favIcon) {
-              favIcon.setAttribute("fill", "currentColor");
-              favBtn.classList.add("text-rose-400", "border-rose-500/40");
-              favBtn.classList.remove("text-zinc-300");
-            }
-            return;
-          }
-        }
-      } catch {
-        // Ignore
-      }
-      if (favText) favText.textContent = "Save";
-      if (favIcon) {
-        favIcon.setAttribute("fill", "none");
-        favBtn.classList.remove("text-rose-400", "border-rose-500/40");
-        favBtn.classList.add("text-zinc-300");
-      }
-    };
-
-    checkFavoriteState();
-
-    favBtn.addEventListener("click", () => {
-      if (slug) {
-        window.dispatchEvent(new CustomEvent("toggle-favorite", { detail: { slug } }));
-      }
-    });
-
-    window.addEventListener("favorites-updated", () => {
-      checkFavoriteState();
-    });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFruitToolbar);
+  } else {
+    initFruitToolbar();
   }
+  document.addEventListener("astro:page-load", initFruitToolbar);
 </script>

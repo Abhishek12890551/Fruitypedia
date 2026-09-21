@@ -74,10 +74,14 @@ const nutrients = fruit.nutrition.nutrients;
         <div class="water-ratio mt-6 pt-5 border-t border-zinc-900">
           <div class="flex justify-between text-xs font-ui mb-1.5">
             <span class="text-zinc-400">Cellular Hydration Ratio</span>
-            <span class="text-white font-medium">{fruit.id === "peach" ? "88.9%" : fruit.id === "banana" ? "74.9%" : fruit.id === "mango" ? "83.5%" : fruit.id === "orange" ? "86.8%" : fruit.id === "strawberry" ? "90.9%" : "84.2%"}</span>
+            <span class="text-white font-medium">{fruit.id === "peach" ? "88.9%" : fruit.id === "banana" ? "74.9%" : fruit.id === "mango" ? "83.5%" : fruit.id === "orange" ? "86.8%" : fruit.id === "strawberry" ? "90.9%" : fruit.id === "watermelon" ? "91.5%" : fruit.id === "apple" ? "85.6%" : "84.2%"}</span>
           </div>
           <div class="w-full h-1 bg-zinc-900 rounded-full overflow-hidden">
-            <div class="h-full rounded-full" style={`width: ${fruit.id === "peach" ? "88.9%" : fruit.id === "banana" ? "74.9%" : fruit.id === "mango" ? "83.5%" : fruit.id === "orange" ? "86.8%" : fruit.id === "strawberry" ? "90.9%" : "84.2%"}; background-color: ${fruit.theme.primary}; opacity: 0.85;`}></div>
+            <div
+              class="h-full rounded-full"
+              data-target-width={fruit.id === "peach" ? "88.9%" : fruit.id === "banana" ? "74.9%" : fruit.id === "mango" ? "83.5%" : fruit.id === "orange" ? "86.8%" : fruit.id === "strawberry" ? "90.9%" : fruit.id === "watermelon" ? "91.5%" : fruit.id === "apple" ? "85.6%" : "84.2%"}
+              style={`width: ${fruit.id === "peach" ? "88.9%" : fruit.id === "banana" ? "74.9%" : fruit.id === "mango" ? "83.5%" : fruit.id === "orange" ? "86.8%" : fruit.id === "strawberry" ? "90.9%" : fruit.id === "watermelon" ? "91.5%" : fruit.id === "apple" ? "85.6%" : "84.2%"}; background-color: ${fruit.theme.primary}; opacity: 0.85;`}
+            ></div>
           </div>
         </div>
       </div>
@@ -100,7 +104,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 8%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="8%" style={`width: 8%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential trace mineral cofactor for cytochrome c oxidase and superoxide dismutase</p>
               </div>
@@ -114,7 +118,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 7%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="7%" style={`width: 7%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Water-soluble antioxidant neutralizing free radicals and supporting collagen cross-linking</p>
               </div>
@@ -128,7 +132,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 5%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="5%" style={`width: 5%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Fat-soluble antioxidant protecting cellular membrane lipids from peroxidative stress</p>
               </div>
@@ -144,7 +148,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 22%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="22%" style={`width: 22%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential coenzyme in amino acid metabolism, cognitive neurotransmitter synthesis, and hemoglobin formation</p>
               </div>
@@ -158,7 +162,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 12%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="12%" style={`width: 12%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Mitochondrial cofactor for superoxide dismutase (SOD2) and proteoglycan synthesis</p>
               </div>
@@ -172,7 +176,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 8%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="8%" style={`width: 8%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Crucial intracellular electrolyte regulating cardiomyocyte membrane potential and vascular tone</p>
               </div>
@@ -188,7 +192,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 40%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="40%" style={`width: 40%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Potent cellular antioxidant supporting collagen integrity and macrophage defense</p>
               </div>
@@ -202,7 +206,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 12%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="12%" style={`width: 12%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential cofactor for cytochrome c oxidase in cellular energy and iron metabolism</p>
               </div>
@@ -216,7 +220,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 11%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="11%" style={`width: 11%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Key methyl-donor cofactor required for cellular DNA replication and synthesis</p>
               </div>
@@ -232,7 +236,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 59%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="59%" style={`width: 59%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Potent free-radical scavenger catalyzing collagen formation and immune competence</p>
               </div>
@@ -246,7 +250,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 7%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="7%" style={`width: 7%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Critical coenzyme in cellular carbohydrate metabolism and ATP generation</p>
               </div>
@@ -260,7 +264,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 8%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="8%" style={`width: 8%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential cofactor in nucleic acid replication and red blood cell production</p>
               </div>
@@ -276,7 +280,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 65%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="65%" style={`width: 65%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Potent cellular antioxidant catalyzing collagen synthesis and immune defense</p>
               </div>
@@ -290,7 +294,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 17%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="17%" style={`width: 17%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential cofactor for mitochondrial superoxide dismutase (SOD2)</p>
               </div>
@@ -304,14 +308,102 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 6%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="6%" style={`width: 6%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Key methyl-donor vitamin supporting nucleic acid synthesis and cellular division</p>
               </div>
             </>
+          ) : fruit.id === "watermelon" ? (
+            <>
+              <!-- Vitamin C (Hero for Watermelon) -->
+              <div class="micro-row">
+                <div class="flex justify-between items-baseline mb-1 text-sm">
+                  <span class="font-editorial text-zinc-200 text-lg">Vitamin C (Ascorbic Acid)</span>
+                  <span class="font-ui text-xs text-zinc-400">
+                    8.1 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>9% DV</strong>
+                  </span>
+                </div>
+                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
+                  <div class="h-full rounded-full" data-target-width="9%" style={`width: 9%; background-color: ${fruit.theme.primary};`}></div>
+                </div>
+                <p class="text-[11px] font-ui text-zinc-500 mt-1">Potent cellular antioxidant supporting collagen integrity and immune competence</p>
+              </div>
+
+              <!-- Copper -->
+              <div class="micro-row">
+                <div class="flex justify-between items-baseline mb-1 text-sm">
+                  <span class="font-editorial text-zinc-200 text-lg">Copper</span>
+                  <span class="font-ui text-xs text-zinc-400">
+                    0.042 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>5% DV</strong>
+                  </span>
+                </div>
+                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
+                  <div class="h-full rounded-full" data-target-width="5%" style={`width: 5%; background-color: ${fruit.theme.primary};`}></div>
+                </div>
+                <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential trace mineral facilitating cytochrome c oxidase function and red cell metabolism</p>
+              </div>
+
+              <!-- Potassium -->
+              <div class="micro-row">
+                <div class="flex justify-between items-baseline mb-1 text-sm">
+                  <span class="font-editorial text-zinc-200 text-lg">Potassium</span>
+                  <span class="font-ui text-xs text-zinc-400">
+                    112 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>2% DV</strong>
+                  </span>
+                </div>
+                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
+                  <div class="h-full rounded-full" data-target-width="2%" style={`width: 2%; background-color: ${fruit.theme.primary};`}></div>
+                </div>
+                <p class="text-[11px] font-ui text-zinc-500 mt-1">Vital electrolyte maintaining optimal intracellular hydration and cellular osmotic equilibrium</p>
+              </div>
+            </>
+          ) : fruit.id === "apple" ? (
+            <>
+              <!-- Vitamin C -->
+              <div class="micro-row">
+                <div class="flex justify-between items-baseline mb-1 text-sm">
+                  <span class="font-editorial text-zinc-200 text-lg">Vitamin C (Ascorbic Acid)</span>
+                  <span class="font-ui text-xs text-zinc-400">
+                    4.6 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>5% DV</strong>
+                  </span>
+                </div>
+                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
+                  <div class="h-full rounded-full" data-target-width="5%" style={`width: 5%; background-color: ${fruit.theme.primary};`}></div>
+                </div>
+                <p class="text-[11px] font-ui text-zinc-500 mt-1">Antioxidant cofactor supporting bioflavonoid synergy and cellular defense</p>
+              </div>
+
+              <!-- Copper -->
+              <div class="micro-row">
+                <div class="flex justify-between items-baseline mb-1 text-sm">
+                  <span class="font-editorial text-zinc-200 text-lg">Copper</span>
+                  <span class="font-ui text-xs text-zinc-400">
+                    0.027 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>3% DV</strong>
+                  </span>
+                </div>
+                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
+                  <div class="h-full rounded-full" data-target-width="3%" style={`width: 3%; background-color: ${fruit.theme.primary};`}></div>
+                </div>
+                <p class="text-[11px] font-ui text-zinc-500 mt-1">Cofactor for superoxide dismutase assisting cellular oxidative resilience</p>
+              </div>
+
+              <!-- Potassium -->
+              <div class="micro-row">
+                <div class="flex justify-between items-baseline mb-1 text-sm">
+                  <span class="font-editorial text-zinc-200 text-lg">Potassium</span>
+                  <span class="font-ui text-xs text-zinc-400">
+                    107 mg · <strong class="font-medium" style={`color: ${fruit.theme.secondary};`}>2% DV</strong>
+                  </span>
+                </div>
+                <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
+                  <div class="h-full rounded-full" data-target-width="2%" style={`width: 2%; background-color: ${fruit.theme.primary};`}></div>
+                </div>
+                <p class="text-[11px] font-ui text-zinc-500 mt-1">Cellular electrolyte regulating vascular relaxation and fluid pressure balance</p>
+              </div>
+            </>
           ) : (
             <>
-              <!-- Manganese -->
+              <!-- Manganese (Hero for Blueberry) -->
               <div class="micro-row">
                 <div class="flex justify-between items-baseline mb-1 text-sm">
                   <span class="font-editorial text-zinc-200 text-lg">Manganese</span>
@@ -320,7 +412,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 15%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="15%" style={`width: 15%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Essential cofactor for superoxide dismutase (antioxidant enzyme)</p>
               </div>
@@ -334,7 +426,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 16%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="16%" style={`width: 16%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Supports osteocalcin carboxylation and normal coagulation cascades</p>
               </div>
@@ -348,7 +440,7 @@ const nutrients = fruit.nutrition.nutrients;
                   </span>
                 </div>
                 <div class="w-full h-1.5 bg-zinc-900 rounded-full overflow-hidden">
-                  <div class="h-full rounded-full" style={`width: 11%; background-color: ${fruit.theme.primary};`}></div>
+                  <div class="h-full rounded-full" data-target-width="11%" style={`width: 11%; background-color: ${fruit.theme.primary};`}></div>
                 </div>
                 <p class="text-[11px] font-ui text-zinc-500 mt-1">Synergistic free-radical scavenger preserving endothelial elasticity</p>
               </div>
@@ -502,42 +594,83 @@ const nutrients = fruit.nutrition.nutrients;
 <script>
   import { prefersReducedMotion } from "@/utils/motionTokens";
 
+  let nutritionObserver: IntersectionObserver | null = null;
+
   function initNutritionBars() {
     const section = document.getElementById("nutrition");
     if (!section) return;
 
-    const bars = Array.from(section.querySelectorAll<HTMLElement>(".micro-row .h-full, .water-ratio .h-full"));
+    const bars = Array.from(
+      section.querySelectorAll<HTMLElement>(".micro-row .h-full, .water-ratio .h-full")
+    );
     if (bars.length === 0) return;
 
+    // Reduced motion: preserve/reveal full target widths immediately without transition
     if (prefersReducedMotion()) {
+      bars.forEach((bar) => {
+        const target = bar.getAttribute("data-target-width") || bar.style.width || "100%";
+        bar.style.width = target;
+        bar.style.transition = "none";
+      });
       return;
     }
 
-    // Capture target width, initialize at 0, and transition when entering view
+    // Safely capture target width without overwriting if already set or already collapsed
     bars.forEach((bar) => {
-      const targetWidth = bar.style.width || "0%";
-      bar.setAttribute("data-target-width", targetWidth);
+      let targetWidth = bar.getAttribute("data-target-width");
+      if (!targetWidth) {
+        targetWidth = bar.style.width || "0%";
+        if (targetWidth && targetWidth !== "0%") {
+          bar.setAttribute("data-target-width", targetWidth);
+        }
+      }
+
+      // If already revealed on current DOM, preserve target width
+      if (bar.getAttribute("data-revealed") === "true") {
+        if (targetWidth) bar.style.width = targetWidth;
+        return;
+      }
+
+      // Initial collapsed state for animation
       bar.style.width = "0%";
       bar.style.transition = "width 900ms cubic-bezier(0.16, 1, 0.3, 1)";
     });
 
-    const observer = new IntersectionObserver(
+    // Clean up any previous observer from View Transition navigation
+    if (nutritionObserver) {
+      nutritionObserver.disconnect();
+      nutritionObserver = null;
+    }
+
+    const animateBars = () => {
+      bars.forEach((bar, index) => {
+        const targetWidth = bar.getAttribute("data-target-width") || "0%";
+        setTimeout(() => {
+          bar.style.width = targetWidth;
+          bar.setAttribute("data-revealed", "true");
+        }, index * 70);
+      });
+    };
+
+    // Observe the immediate editorial grid container holding the bars rather than the 3000px section
+    const targetContainer =
+      section.querySelector<HTMLElement>(".editorial-nutrition-grid") || section;
+
+    nutritionObserver = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting) {
-          observer.disconnect();
-          bars.forEach((bar, index) => {
-            const targetWidth = bar.getAttribute("data-target-width") || "0%";
-            setTimeout(() => {
-              bar.style.width = targetWidth;
-            }, index * 70);
-          });
+        if (entry && entry.isIntersecting) {
+          if (nutritionObserver) {
+            nutritionObserver.disconnect();
+            nutritionObserver = null;
+          }
+          animateBars();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
 
-    observer.observe(section);
+    nutritionObserver.observe(targetContainer);
   }
 
   if (document.readyState === "loading") {

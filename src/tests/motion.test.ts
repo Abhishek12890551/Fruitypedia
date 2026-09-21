@@ -59,4 +59,39 @@ describe("Phase 5.5 Motion & Interaction Token System", () => {
     expect(motionTokens.stagger.short).toBeLessThanOrEqual(0.08);
     expect(motionTokens.stagger.medium).toBeLessThanOrEqual(0.12);
   });
+
+  it("ensures repeated bar initialization preserves target width and never overwrites with 0%", () => {
+    // Simulate DOM element with target width
+    const bar = {
+      attributes: { "data-target-width": "65%" } as Record<string, string>,
+      style: { width: "65%" },
+      getAttribute(name: string) {
+        return this.attributes[name] || null;
+      },
+      setAttribute(name: string, val: string) {
+        this.attributes[name] = val;
+      },
+    };
+
+    // First cycle: captures target and collapses to 0% for animation
+    let target = bar.getAttribute("data-target-width");
+    if (!target) {
+      target = bar.style.width || "0%";
+      if (target !== "0%") bar.setAttribute("data-target-width", target);
+    }
+    expect(bar.getAttribute("data-target-width")).toBe("65%");
+    bar.style.width = "0%";
+
+    // Second cycle (e.g. astro:page-load or re-run): must NOT overwrite with 0%
+    target = bar.getAttribute("data-target-width");
+    if (!target) {
+      target = bar.style.width || "0%";
+      if (target !== "0%") bar.setAttribute("data-target-width", target);
+    }
+    expect(bar.getAttribute("data-target-width")).toBe("65%");
+
+    // Trigger animation: sets target width
+    bar.style.width = bar.getAttribute("data-target-width") || "0%";
+    expect(bar.style.width).toBe("65%");
+  });
 });

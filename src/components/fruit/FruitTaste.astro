@@ -182,16 +182,19 @@ const tasteMeta = TASTE_METAS[fruit.id] || {
                   <!-- Luminous tailing line trailing from 0 to current score -->
                   <div
                     class="scale-trail absolute top-0 left-0 h-full rounded-full"
+                    data-target-width={`${scale.score * 10}%`}
                     style={`width: ${scale.score * 10}%; background: linear-gradient(90deg, ${fruit.theme.primary}33 0%, ${fruit.theme.primary}99 60%, ${fruit.theme.secondary} 100%);`}
                   ></div>
                   <!-- Soft bloom glow behind the tailing line -->
                   <div
                     class="scale-glow absolute top-0 left-0 h-full rounded-full blur-[3px]"
+                    data-target-width={`${scale.score * 10}%`}
                     style={`width: ${scale.score * 10}%; background: ${fruit.theme.primary}44;`}
                   ></div>
                   <!-- Bead Indicator at the tip of the tailing line -->
                   <div
                     class="scale-indicator absolute top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white transition-transform duration-300 shadow-md"
+                    data-target-left={`calc(${scale.score * 10}% - 7px)`}
                     style={`left: calc(${scale.score * 10}% - 7px); border: 2px solid ${fruit.theme.secondary}; box-shadow: 0 0 12px ${fruit.theme.primary}cc;`}
                   ></div>
                 </div>
@@ -257,6 +260,8 @@ const tasteMeta = TASTE_METAS[fruit.id] || {
 <script>
   import { prefersReducedMotion } from "@/utils/motionTokens";
 
+  let tasteObserver: IntersectionObserver | null = null;
+
   function initTasteScales() {
     const section = document.getElementById("taste");
     if (!section) return;
@@ -264,20 +269,58 @@ const tasteMeta = TASTE_METAS[fruit.id] || {
     const scaleTracks = Array.from(section.querySelectorAll<HTMLElement>(".scale-track"));
     if (scaleTracks.length === 0) return;
 
-    if (prefersReducedMotion()) return;
+    if (prefersReducedMotion()) {
+      scaleTracks.forEach((track) => {
+        const trail = track.querySelector<HTMLElement>(".scale-trail");
+        const glow = track.querySelector<HTMLElement>(".scale-glow");
+        const indicator = track.querySelector<HTMLElement>(".scale-indicator");
+        if (trail && indicator) {
+          const targetWidth = trail.getAttribute("data-target-width") || trail.style.width || "50%";
+          const targetLeft = indicator.getAttribute("data-target-left") || indicator.style.left || "50%";
+          trail.style.width = targetWidth;
+          trail.style.transition = "none";
+          if (glow) {
+            glow.style.width = targetWidth;
+            glow.style.transition = "none";
+          }
+          indicator.style.left = targetLeft;
+          indicator.style.opacity = "1";
+          indicator.style.transition = "none";
+        }
+      });
+      return;
+    }
 
-    // Capture target percentages and initialize at 0
+    // Capture target percentages and initialize at 0 without overwriting if already set
     scaleTracks.forEach((track) => {
       const trail = track.querySelector<HTMLElement>(".scale-trail");
       const glow = track.querySelector<HTMLElement>(".scale-glow");
       const indicator = track.querySelector<HTMLElement>(".scale-indicator");
 
       if (trail && indicator) {
-        const targetWidth = trail.style.width || "50%";
-        const targetLeft = indicator.style.left || "50%";
+        let targetWidth = trail.getAttribute("data-target-width");
+        if (!targetWidth) {
+          targetWidth = trail.style.width || "50%";
+          if (targetWidth && targetWidth !== "0%") {
+            trail.setAttribute("data-target-width", targetWidth);
+          }
+        }
 
-        trail.setAttribute("data-target-width", targetWidth);
-        indicator.setAttribute("data-target-left", targetLeft);
+        let targetLeft = indicator.getAttribute("data-target-left");
+        if (!targetLeft) {
+          targetLeft = indicator.style.left || "50%";
+          if (targetLeft && targetLeft !== "-7px") {
+            indicator.setAttribute("data-target-left", targetLeft);
+          }
+        }
+
+        if (track.getAttribute("data-revealed") === "true") {
+          if (targetWidth) trail.style.width = targetWidth;
+          if (glow && targetWidth) glow.style.width = targetWidth;
+          if (targetLeft) indicator.style.left = targetLeft;
+          indicator.style.opacity = "1";
+          return;
+        }
 
         trail.style.width = "0%";
         if (glow) glow.style.width = "0%";
@@ -290,35 +333,49 @@ const tasteMeta = TASTE_METAS[fruit.id] || {
       }
     });
 
-    const observer = new IntersectionObserver(
+    if (tasteObserver) {
+      tasteObserver.disconnect();
+      tasteObserver = null;
+    }
+
+    const animateScales = () => {
+      scaleTracks.forEach((track, idx) => {
+        const trail = track.querySelector<HTMLElement>(".scale-trail");
+        const glow = track.querySelector<HTMLElement>(".scale-glow");
+        const indicator = track.querySelector<HTMLElement>(".scale-indicator");
+
+        if (trail && indicator) {
+          const targetWidth = trail.getAttribute("data-target-width") || "50%";
+          const targetLeft = indicator.getAttribute("data-target-left") || "50%";
+
+          setTimeout(() => {
+            trail.style.width = targetWidth;
+            if (glow) glow.style.width = targetWidth;
+            indicator.style.left = targetLeft;
+            indicator.style.opacity = "1";
+            track.setAttribute("data-revealed", "true");
+          }, idx * 100);
+        }
+      });
+    };
+
+    const targetContainer = section.querySelector<HTMLElement>(".space-y-7") || section;
+
+    tasteObserver = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting) {
-          observer.disconnect();
-
-          scaleTracks.forEach((track, idx) => {
-            const trail = track.querySelector<HTMLElement>(".scale-trail");
-            const glow = track.querySelector<HTMLElement>(".scale-glow");
-            const indicator = track.querySelector<HTMLElement>(".scale-indicator");
-
-            if (trail && indicator) {
-              const targetWidth = trail.getAttribute("data-target-width") || "50%";
-              const targetLeft = indicator.getAttribute("data-target-left") || "50%";
-
-              setTimeout(() => {
-                trail.style.width = targetWidth;
-                if (glow) glow.style.width = targetWidth;
-                indicator.style.left = targetLeft;
-                indicator.style.opacity = "1";
-              }, idx * 100);
-            }
-          });
+        if (entry && entry.isIntersecting) {
+          if (tasteObserver) {
+            tasteObserver.disconnect();
+            tasteObserver = null;
+          }
+          animateScales();
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
     );
 
-    observer.observe(section);
+    tasteObserver.observe(targetContainer);
   }
 
   if (document.readyState === "loading") {
