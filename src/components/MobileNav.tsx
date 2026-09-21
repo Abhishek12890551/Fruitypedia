@@ -49,7 +49,7 @@ export const MobileNav: React.FC = () => {
   };
 
   return (
-    <div className="mobile-nav-root md:hidden shrink-0">
+    <div className="mobile-nav-root lg:hidden shrink-0">
       {/* High-Visibility Menu Trigger Button */}
       <button
         type="button"
@@ -80,10 +80,10 @@ export const MobileNav: React.FC = () => {
           <div className="space-y-5" onClick={(e) => e.stopPropagation()}>
             {/* Top Drawer Header with Brand & Close Button */}
             <div className="flex items-center justify-between pb-4 border-b border-zinc-800/80">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-indigo-500 shadow-[0_0_8px_rgba(99,102,241,0.6)]" />
-                <span className="font-display font-bold text-white text-base tracking-tight">Fruitypedia</span>
-              </div>
+              <a href="/" onClick={() => setIsOpen(false)} className="flex items-baseline gap-0.5 hover:opacity-90 transition-opacity" aria-label="Fruitypedia Home">
+                <span className="font-script text-2xl text-white tracking-normal font-normal lowercase select-none leading-none">fruitypedia</span>
+                <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.9)] transform translate-y-[-1px]"></span>
+              </a>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}

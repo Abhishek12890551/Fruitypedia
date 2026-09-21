@@ -38,8 +38,8 @@ export const banana: Fruit = {
 
   theme: {
     primary: "#EAB308",
-    secondary: "#FEF08A",
-    glow: "#EAB30833",
+    secondary: "#FDE047",
+    glow: "#EAB30845",
     gradient: ["#EAB308", "#A16207"],
     textOnPrimary: "#000000",
   },

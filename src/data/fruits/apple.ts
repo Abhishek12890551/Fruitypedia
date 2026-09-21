@@ -38,8 +38,8 @@ export const apple: Fruit = {
 
   theme: {
     primary: "#DC2626",
-    secondary: "#FCA5A5",
-    glow: "#DC262633",
+    secondary: "#F87171",
+    glow: "#DC262645",
     gradient: ["#DC2626", "#991B1B"],
     textOnPrimary: "#FFFFFF",
   },

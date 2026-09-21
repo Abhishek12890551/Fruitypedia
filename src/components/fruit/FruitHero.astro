@@ -35,16 +35,16 @@ const { fruit, scientificName } = Astro.props;
         <p class="fruit-nickname font-script">{fruit.editorial.nickname}</p>
       )}
 
-      <!-- Fruit Name — Urbanist display (§6.2.1) -->
-      <h1 id="fruit-name" class="fruit-name font-display">
+      <!-- Fruit Name — Cormorant Garamond editorial serif (Image 2 style) -->
+      <h1 id="fruit-name" class="fruit-name font-editorial">
         {fruit.name}
       </h1>
 
-      <!-- Scientific Identity — Cormorant Garamond Italic (§6.2.4) -->
+      <!-- Scientific Identity — Cormorant Garamond Italic in vibrant accent with bullet separator (Image 2 style) -->
       <p class="fruit-scientific font-editorial">
         <em>{scientificName}</em>
         {fruit.taxonomy.family && (
-          <span class="fruit-family"> · {fruit.taxonomy.family}</span>
+          <span class="fruit-family"> • {fruit.taxonomy.family}</span>
         )}
       </p>
 
@@ -143,32 +143,38 @@ const { fruit, scientificName } = Astro.props;
     font-size: var(--type-nickname);
     color: var(--fruit-secondary);
     line-height: 1.15;
-    margin-bottom: 0.5rem;
-    opacity: 0.95;
+    margin-bottom: 0.35rem;
+    opacity: 1;
+    text-shadow: 0 0 25px color-mix(in srgb, var(--fruit-secondary) 50%, transparent);
   }
 
   .fruit-name {
-    font-family: var(--font-display);
+    font-family: var(--font-editorial);
     font-size: var(--type-fruit-name);
     font-weight: 300;
-    line-height: 0.9;
-    letter-spacing: -0.045em;
-    color: var(--color-text-primary);
-    margin-bottom: 1.25rem;
+    line-height: 0.92;
+    letter-spacing: -0.015em;
+    color: #ffffff;
+    margin-bottom: 0.85rem;
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
   }
 
   .fruit-scientific {
     font-family: var(--font-editorial);
     font-size: var(--type-scientific);
     font-style: italic;
-    color: var(--color-text-secondary);
+    color: var(--fruit-secondary);
     margin-bottom: 1.5rem;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    opacity: 1;
+    text-shadow: 0 0 20px color-mix(in srgb, var(--fruit-secondary) 40%, transparent);
   }
 
   .fruit-family {
-    font-style: normal;
-    color: var(--color-text-muted);
+    font-style: italic;
+    color: var(--fruit-secondary);
+    font-weight: 400;
   }
 
   .fruit-description {
@@ -190,13 +196,14 @@ const { fruit, scientificName } = Astro.props;
   .fruit-badge {
     font-family: var(--font-ui);
     font-size: 0.6875rem;
-    font-weight: 600;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--fruit-secondary);
-    background: color-mix(in srgb, var(--fruit-primary) 14%, transparent);
-    border: 1px solid color-mix(in srgb, var(--fruit-primary) 28%, transparent);
-    padding: 0.35rem 0.85rem;
+    background: color-mix(in srgb, var(--fruit-primary) 22%, transparent);
+    border: 1px solid color-mix(in srgb, var(--fruit-secondary) 55%, transparent);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--fruit-primary) 28%, transparent);
+    padding: 0.4rem 0.95rem;
     border-radius: var(--radius-xl);
   }
 

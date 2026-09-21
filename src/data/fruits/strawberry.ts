@@ -39,7 +39,7 @@ export const strawberry: Fruit = {
   theme: {
     primary: "#E11D48",
     secondary: "#FB7185",
-    glow: "#E11D4833",
+    glow: "#E11D4845",
     gradient: ["#E11D48", "#9F1239"],
     textOnPrimary: "#FFFFFF",
   },

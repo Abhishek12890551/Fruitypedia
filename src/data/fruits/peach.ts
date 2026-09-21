@@ -38,8 +38,8 @@ export const peach: Fruit = {
 
   theme: {
     primary: "#F97316",
-    secondary: "#FED7AA",
-    glow: "#F9731633",
+    secondary: "#FDBA74",
+    glow: "#F9731645",
     gradient: ["#FB923C", "#C2410C"],
     textOnPrimary: "#000000",
   },

@@ -52,7 +52,7 @@
   --color-text-muted: #6b6965;
   --color-border: #242427;
   --color-border-strong: #38383e;
-  --color-accent-global: #c8b88a;
+  --color-accent-global: #e11d48;
 
   /* ── Fruit Theme Tokens ──────────────────────────────────────────── */
   /*
@@ -64,11 +64,11 @@
    * Fruit color NEVER becomes a giant flat background.
    * It controls radial glows, backdrop depth, badges, and active states.
    */
-  --fruit-primary: #c8b88a;
-  --fruit-secondary: #d4c9a8;
-  --fruit-glow: rgba(200, 184, 138, 0.15);
-  --fruit-gradient-start: #c8b88a;
-  --fruit-gradient-end: #a89868;
+  --fruit-primary: #e11d48;
+  --fruit-secondary: #fb7185;
+  --fruit-glow: rgba(225, 29, 72, 0.28);
+  --fruit-gradient-start: #e11d48;
+  --fruit-gradient-end: #9f1239;
 
   /* ── Fluid Layout Primitives (§6.5, §26.1) ──────────────────────── */
   /*
@@ -86,14 +86,14 @@
   /* ── Semantic Fluid Typography Tokens (§6.4) ─────────────────────── */
   /*
    * Fruit-page hierarchy (Golden Master — Blueberry):
-   *   Ballet (nickname) → Urbanist (fruit name) → Cormorant Italic (scientific)
+   *   Ballet (nickname) → Cormorant Garamond (fruit name) → Cormorant Italic (scientific)
    *   → Cormorant (description/editorial) → Inter (stats/badges/UI)
    *
    * All clamp() values tested at 390px (min) through 1920px+ (max).
    */
-  --type-fruit-name:      clamp(4.5rem, 8.5vw, 8.5rem);
-  --type-nickname:        clamp(1.875rem, 3.5vw, 2.75rem);
-  --type-scientific:      clamp(1.0625rem, 1.6vw, 1.35rem);
+  --type-fruit-name:      clamp(5.5rem, 12.5vw, 11rem);
+  --type-nickname:        clamp(2.25rem, 4.2vw, 3.25rem);
+  --type-scientific:      clamp(1.35rem, 2.5vw, 1.95rem);
   --type-section-heading: clamp(1.875rem, 3.5vw, 2.75rem);
   --type-body-editorial:  clamp(1.0625rem, 1.5vw, 1.25rem);
   --type-stat-value:      clamp(1.625rem, 2.5vw, 2.25rem);
@@ -282,7 +282,6 @@
 
   /* Archival Folio Crosshair Marker */
   .folio-crosshair {
-    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;

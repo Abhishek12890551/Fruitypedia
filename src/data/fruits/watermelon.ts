@@ -38,8 +38,8 @@ export const watermelon: Fruit = {
 
   theme: {
     primary: "#10B981",
-    secondary: "#EF4444",
-    glow: "#10B98133",
+    secondary: "#F43F5E",
+    glow: "#10B98145",
     gradient: ["#10B981", "#059669"],
     textOnPrimary: "#000000",
   },

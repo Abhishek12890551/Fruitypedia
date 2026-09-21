@@ -37,10 +37,10 @@ export const blueberry: Fruit = {
   },
 
   theme: {
-    primary: "#4A5FE0",
-    secondary: "#7B8FFF",
-    glow: "#4A5FE033",
-    gradient: ["#4A5FE0", "#2D3A8C"],
+    primary: "#4F65F6",
+    secondary: "#8EA1FF",
+    glow: "#4F65F640",
+    gradient: ["#4F65F6", "#2D3A8C"],
     textOnPrimary: "#FFFFFF",
   },
 

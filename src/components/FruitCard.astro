@@ -38,14 +38,14 @@ const fiber = fruit.nutrition.nutrients.fiber?.amount ?? 0;
           <div class="flex items-center gap-2">
             {category && (
               <span
-                class="px-2.5 py-1 rounded-full text-[11px] font-ui font-medium tracking-wide"
-                style={`background-color: ${primaryColor}22; color: ${primaryColor}; border: 1px solid ${primaryColor}44;`}
+                class="px-2.5 py-1 rounded-full text-[11px] font-ui font-semibold tracking-wide"
+                style={`background-color: ${primaryColor}26; color: ${primaryColor}; border: 1px solid ${primaryColor}55;`}
               >
                 {category.name}
               </span>
             )}
             {fruit.editorial.nickname && (
-              <span class="font-script text-sm text-zinc-300 opacity-80">
+              <span class="font-script text-sm" style={`color: ${fruit.theme.secondary}; opacity: 0.95;`}>
                 {fruit.editorial.nickname}
               </span>
             )}
@@ -56,7 +56,7 @@ const fiber = fruit.nutrition.nutrients.fiber?.amount ?? 0;
               {fruit.name}
             </h3>
             <p class="font-editorial italic text-zinc-400 text-sm sm:text-base mt-1">
-              {fruit.taxonomy.genus} {fruit.taxonomy.species} · {fruit.taxonomy.family}
+              {fruit.taxonomy.genus} {fruit.taxonomy.species} • {fruit.taxonomy.family}
             </p>
           </div>
 
@@ -173,13 +173,13 @@ const fiber = fruit.nutrition.nutrients.fiber?.amount ?? 0;
         {category && (
           <span
             class="px-2 py-0.5 rounded-[var(--radius-sm)] text-[10px] font-ui font-semibold uppercase tracking-wider"
-            style={`background-color: ${primaryColor}22; color: ${primaryColor}; border: 1px solid ${primaryColor}44;`}
+            style={`background-color: ${primaryColor}26; color: ${primaryColor}; border: 1px solid ${primaryColor}55;`}
           >
             {category.name}
           </span>
         )}
         {fruit.editorial.nickname && (
-          <span class="font-script text-xs text-zinc-400">
+          <span class="font-script text-xs" style={`color: ${fruit.theme.secondary}; opacity: 0.95;`}>
             {fruit.editorial.nickname}
           </span>
         )}

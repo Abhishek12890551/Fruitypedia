@@ -38,8 +38,8 @@ export const orange: Fruit = {
 
   theme: {
     primary: "#EA580C",
-    secondary: "#FDBA74",
-    glow: "#EA580C33",
+    secondary: "#FB923C",
+    glow: "#EA580C45",
     gradient: ["#EA580C", "#9A3412"],
     textOnPrimary: "#FFFFFF",
   },

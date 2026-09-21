@@ -38,8 +38,8 @@ export const mango: Fruit = {
 
   theme: {
     primary: "#F59E0B",
-    secondary: "#FCD34D",
-    glow: "#F59E0B33",
+    secondary: "#FBBF24",
+    glow: "#F59E0B45",
     gradient: ["#F59E0B", "#B45309"],
     textOnPrimary: "#000000",
   },
