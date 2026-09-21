@@ -1,0 +1,93 @@
+---
+/**
+ * DataBarReveal.astro
+ *
+ * Proportional bar reveal primitive.
+ * Animates bar width from 0% to the target percentage upon entering viewport.
+ *
+ * @see Fruitypedia_Project_Plan §Phase 5.5
+ */
+interface Props {
+  percentage: number; // 0 to 100
+  color?: string;
+  height?: string;
+  class?: string;
+  barClass?: string;
+}
+
+const {
+  percentage,
+  color,
+  height = "h-2",
+  class: className = "",
+  barClass = "",
+} = Astro.props;
+
+const clampedPercent = Math.min(Math.max(percentage, 0), 100);
+---
+
+<div class={`data-bar-track w-full bg-zinc-800/80 rounded-full overflow-hidden ${height} ${className}`}>
+  <div
+    class={`data-bar-fill h-full rounded-full transition-all ${barClass}`}
+    style={`--target-width: ${clampedPercent}%; ${color ? `background-color: ${color};` : ""}`}
+    role="progressbar"
+    aria-valuenow={clampedPercent}
+    aria-valuemin={0}
+    aria-valuemax={100}
+  ></div>
+</div>
+
+<style>
+  .data-bar-fill {
+    width: 0%;
+    transition-property: width;
+    transition-duration: 900ms;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: width;
+  }
+
+  .data-bar-track.is-revealed .data-bar-fill {
+    width: var(--target-width);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .data-bar-fill {
+      width: var(--target-width) !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  function initDataBars() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll(".data-bar-track").forEach((el) => {
+        el.classList.add("is-revealed");
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-revealed");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    document.querySelectorAll(".data-bar-track:not(.is-revealed)").forEach((el) => {
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initDataBars);
+  } else {
+    initDataBars();
+  }
+  document.addEventListener("astro:page-load", initDataBars);
+</script>

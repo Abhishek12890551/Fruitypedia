@@ -35,6 +35,17 @@ const fruitCount = getProductionFruitCount();
         >
           All Families ({fruitCount})
         </button>
+        <button
+          type="button"
+          data-category-filter="favorites"
+          id="favorites-filter-btn"
+          class="category-btn px-3.5 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-rose-400 hover:border-rose-500/40 transition-all cursor-pointer flex items-center gap-1.5"
+        >
+          <svg class="w-3.5 h-3.5 text-rose-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          <span>Saved (<span id="directory-fav-count">0</span>)</span>
+        </button>
         {categories.map((cat) => (
           <button
             type="button"
@@ -181,6 +192,26 @@ const fruitCount = getProductionFruitCount();
     let currentSearch = "";
     let currentSort = "default";
 
+    function getFavoriteSlugs(): string[] {
+      try {
+        const raw = localStorage.getItem("fruitypedia_favorites");
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed)) return parsed;
+        }
+      } catch {
+        // Ignore
+      }
+      return [];
+    }
+
+    function updateFavCount() {
+      const favCountEl = document.getElementById("directory-fav-count");
+      if (favCountEl) {
+        favCountEl.textContent = String(getFavoriteSlugs().length);
+      }
+    }
+
     // Read initial category from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
     const initialCategory = urlParams.get("category");
@@ -204,10 +235,20 @@ const fruitCount = getProductionFruitCount();
     function applyFiltersAndSort() {
       if (!grid) return;
 
+      const favSlugs = getFavoriteSlugs();
+
       let visibleCards = cards.filter((card) => {
-        // Category check
+        // Category / Favorites check
         const cardCategory = card.getAttribute("data-category");
-        const categoryMatch = currentCategory === "all" || cardCategory === currentCategory;
+        let categoryMatch = false;
+        if (currentCategory === "all") {
+          categoryMatch = true;
+        } else if (currentCategory === "favorites") {
+          const cardSlug = card.getAttribute("data-slug") || "";
+          categoryMatch = favSlugs.includes(cardSlug);
+        } else {
+          categoryMatch = cardCategory === currentCategory;
+        }
 
         // Search check
         const cardName = card.getAttribute("data-name") || "";
@@ -264,6 +305,16 @@ const fruitCount = getProductionFruitCount();
         if (visibleCards.length === 0) {
           emptyState.classList.remove("hidden");
           grid.classList.add("hidden");
+
+          const emptyTitle = emptyState.querySelector("h4");
+          const emptyDesc = emptyState.querySelector("p");
+          if (currentCategory === "favorites") {
+            if (emptyTitle) emptyTitle.textContent = "No saved fruits in your collection";
+            if (emptyDesc) emptyDesc.textContent = "Click the 'Save' button in any fruit monograph's header or toolbar to bookmark it here for fast retrieval.";
+          } else {
+            if (emptyTitle) emptyTitle.textContent = "No fruits match your criteria";
+            if (emptyDesc) emptyDesc.textContent = "No monograph in the catalog currently satisfies this filter combination. Try resetting the family or search query.";
+          }
         } else {
           emptyState.classList.add("hidden");
           grid.classList.remove("hidden");
@@ -353,7 +404,16 @@ const fruitCount = getProductionFruitCount();
 
     // Initialize UI
     updateCategoryUI();
+    updateFavCount();
     applyFiltersAndSort();
+
+    // Listen for external favorites changes
+    window.addEventListener("favorites-updated", () => {
+      updateFavCount();
+      if (currentCategory === "favorites") {
+        applyFiltersAndSort();
+      }
+    });
   }
 
   // Run on initial load and after Astro page transitions

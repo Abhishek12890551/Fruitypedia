@@ -1,0 +1,72 @@
+---
+/**
+ * Parallax.astro
+ *
+ * Restrained depth wrapper.
+ * Provides subtle vertical displacement linked to scroll without distorting layout.
+ * Automatically disabled on mobile (<768px) and in reduced-motion environments.
+ *
+ * @see Fruitypedia_Project_Plan §Phase 5.5
+ */
+interface Props {
+  speed?: number; // Normalized speed factor (-0.1 to 0.1, default 0.05)
+  class?: string;
+}
+
+const { speed = 0.05, class: className = "" } = Astro.props;
+---
+
+<div class={`parallax-container ${className}`} data-parallax-speed={speed}>
+  <div class="parallax-content will-change-transform">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .parallax-container {
+    overflow: visible;
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  function initParallax() {
+    if (
+      typeof window === "undefined" ||
+      window.innerWidth < 768 ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll<HTMLElement>(".parallax-container").forEach((container) => {
+      const content = container.querySelector<HTMLElement>(".parallax-content");
+      if (!content) return;
+
+      const speed = parseFloat(container.getAttribute("data-parallax-speed") || "0.05");
+      const movement = speed * 150; // max displacement ~15-25px
+
+      gsap.to(content, {
+        y: movement,
+        ease: "none",
+        scrollTrigger: {
+          trigger: container,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initParallax);
+  } else {
+    initParallax();
+  }
+  document.addEventListener("astro:page-load", initParallax);
+</script>

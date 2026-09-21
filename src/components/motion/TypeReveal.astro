@@ -1,0 +1,96 @@
+---
+/**
+ * TypeReveal.astro
+ *
+ * Editorial typography reveal wrapper for prominent display headings.
+ * Reveals heading lines using a smooth clip/slide transition while ensuring
+ * 100% of the semantic HTML is present in the server response.
+ *
+ * @see Fruitypedia_Project_Plan §Phase 5.5
+ */
+interface Props {
+  as?: any;
+  class?: string;
+  delay?: number; // ms
+  id?: string;
+}
+
+const {
+  as: Tag = "h2",
+  class: className = "",
+  delay = 0,
+  id,
+} = Astro.props;
+---
+
+<Tag id={id} class={`type-reveal-heading ${className}`} data-type-delay={delay}>
+  <span class="type-reveal-inner">
+    <slot />
+  </span>
+</Tag>
+
+<style>
+  .type-reveal-heading {
+    overflow: hidden;
+    display: block;
+  }
+
+  .type-reveal-inner {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 800ms cubic-bezier(0.16, 1, 0.3, 1), transform 800ms cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+  }
+
+  .type-reveal-heading.is-revealed .type-reveal-inner {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .type-reveal-inner {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  function initTypeReveals() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll(".type-reveal-heading").forEach((el) => {
+        el.classList.add("is-revealed");
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = parseInt(el.getAttribute("data-type-delay") || "0", 10);
+            setTimeout(() => {
+              el.classList.add("is-revealed");
+            }, delay);
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    document.querySelectorAll(".type-reveal-heading:not(.is-revealed)").forEach((el) => {
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initTypeReveals);
+  } else {
+    initTypeReveals();
+  }
+  document.addEventListener("astro:page-load", initTypeReveals);
+</script>

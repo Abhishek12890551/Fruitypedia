@@ -314,3 +314,134 @@ const { fruit, scientificName } = Astro.props;
     }
   }
 </style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { motionTokens, prefersReducedMotion } from "@/utils/motionTokens";
+
+  function initHeroMotion() {
+    const hero = document.getElementById("hero");
+    if (!hero) return;
+
+    if (prefersReducedMotion()) {
+      return;
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const bg = hero.querySelector(".fruit-hero-bg");
+    const nickname = hero.querySelector(".fruit-nickname");
+    const title = hero.querySelector(".fruit-name");
+    const scientific = hero.querySelector(".fruit-scientific");
+    const desc = hero.querySelector(".fruit-description");
+    const badges = hero.querySelectorAll(".fruit-badge");
+    const mobileMoment = hero.querySelector(".mobile-fruit-hero-moment");
+    const stats = hero.querySelectorAll(".hero-stat");
+
+    const tl = gsap.timeline({
+      defaults: { ease: motionTokens.ease.editorial }
+    });
+
+    // Step 1: Atmosphere establishes & background subtle scale settling
+    if (bg) {
+      tl.fromTo(
+        bg,
+        { opacity: 0, scale: 1.05 },
+        { opacity: 1, scale: 1, duration: 1.1, clearProps: "transform" },
+        0
+      );
+    }
+
+    // Step 2: Poetic nickname appears (Ballet script)
+    if (nickname) {
+      tl.fromTo(
+        nickname,
+        { opacity: 0, y: 12 },
+        { opacity: 1, y: 0, duration: 0.7 },
+        0.15
+      );
+    }
+
+    // Step 3: Fruit Name reveals (Urbanist display)
+    if (title) {
+      tl.fromTo(
+        title,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.8 },
+        0.25
+      );
+    }
+
+    // Step 4: Scientific identity appears
+    if (scientific) {
+      tl.fromTo(
+        scientific,
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.6 },
+        0.4
+      );
+    }
+
+    // Step 5: Hero description reveals
+    if (desc) {
+      tl.fromTo(
+        desc,
+        { opacity: 0, y: 14 },
+        { opacity: 1, y: 0, duration: 0.7 },
+        0.5
+      );
+    }
+
+    // Step 6: Benefit badges stagger
+    if (badges.length > 0) {
+      tl.fromTo(
+        badges,
+        { opacity: 0, scale: 0.95 },
+        { opacity: 1, scale: 1, duration: 0.5, stagger: 0.08 },
+        0.6
+      );
+    }
+
+    // Step 7: Mobile visual moment entrance (if mobile)
+    if (mobileMoment && window.innerWidth < 768) {
+      tl.fromTo(
+        mobileMoment,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.7 },
+        0.65
+      );
+    }
+
+    // Step 8: Supporting statistics stagger
+    if (stats.length > 0) {
+      tl.fromTo(
+        stats,
+        { opacity: 0, y: 16 },
+        { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, clearProps: "transform" },
+        0.7
+      );
+    }
+
+    // Step 9: Restrained depth parallax on background (desktop only)
+    if (bg && window.innerWidth >= 768) {
+      gsap.to(bg, {
+        y: 40,
+        ease: "none",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: true,
+        }
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initHeroMotion);
+  } else {
+    initHeroMotion();
+  }
+  document.addEventListener("astro:page-load", initHeroMotion);
+</script>

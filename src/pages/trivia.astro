@@ -1,0 +1,30 @@
+---
+/**
+ * Trivia Page — `/trivia`
+ * Interactive Botanical Trivia & Knowledge Challenge.
+ * Evaluates morphological taxonomy, biochemical nutrition, and provenance erudition.
+ *
+ * @see Fruitypedia_Project_Plan Phase 5
+ */
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SectionHeading from "@/components/SectionHeading.astro";
+import { FruitQuiz } from "@/components/FruitQuiz";
+import { allFruits } from "@/data";
+---
+
+<BaseLayout
+  title="Botanical Trivia & Knowledge Challenge | Fruitypedia"
+  description="Test your pomological acumen with our interactive botanical quiz. Challenge your knowledge of fruit anatomy, nutritional biochemistry, and evolutionary diaspora."
+>
+  <div class="container-page py-12 sm:py-20">
+    <SectionHeading
+      label="POMOLOGICAL ACADEMY"
+      title="Botanical Erudition Challenge"
+      description="Challenge your knowledge of plant morphology, USDA nutritional biochemistry, and geographic diaspora across the botanical kingdom."
+    />
+
+    <div class="mt-8 sm:mt-12">
+      <FruitQuiz client:load allFruits={allFruits} />
+    </div>
+  </div>
+</BaseLayout>

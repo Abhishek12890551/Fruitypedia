@@ -1,0 +1,102 @@
+---
+/**
+ * ScrollReveal.astro
+ *
+ * Viewport-triggered element reveal primitive.
+ * Animates opacity and vertical translation upon entering the viewport.
+ * Uses native IntersectionObserver + CSS transitions for zero-overhead performance,
+ * respecting prefers-reduced-motion.
+ *
+ * @see Fruitypedia_Project_Plan §Phase 5.5
+ */
+interface Props {
+  delay?: number; // ms
+  duration?: number; // ms
+  distance?: number; // px
+  class?: string;
+  as?: any;
+}
+
+const {
+  delay = 0,
+  duration = 800,
+  distance = 28,
+  class: className = "",
+  as: Tag = "div",
+} = Astro.props;
+---
+
+<Tag
+  class={`scroll-reveal-item ${className}`}
+  data-reveal-delay={delay}
+  data-reveal-duration={duration}
+  data-reveal-distance={distance}
+>
+  <slot />
+</Tag>
+
+<style>
+  .scroll-reveal-item {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance, 28px));
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+
+  .scroll-reveal-item.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-reveal-item {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  function initScrollReveals() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll(".scroll-reveal-item").forEach((el) => {
+        el.classList.add("is-revealed");
+      });
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = el.getAttribute("data-reveal-delay") || "0";
+            const duration = el.getAttribute("data-reveal-duration") || "800";
+            const distance = el.getAttribute("data-reveal-distance") || "28";
+
+            el.style.setProperty("--reveal-distance", `${distance}px`);
+            el.style.transitionDuration = `${duration}ms`;
+            el.style.transitionDelay = `${delay}ms`;
+
+            el.classList.add("is-revealed");
+            observer.unobserve(el);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    document.querySelectorAll(".scroll-reveal-item:not(.is-revealed)").forEach((el) => {
+      observer.observe(el);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initScrollReveals);
+  } else {
+    initScrollReveals();
+  }
+  document.addEventListener("astro:page-load", initScrollReveals);
+</script>

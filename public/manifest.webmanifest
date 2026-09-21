@@ -1,0 +1,23 @@
+{
+  "name": "Fruitypedia — The Visual Fruit Encyclopedia",
+  "short_name": "Fruitypedia",
+  "description": "A rigorous botanical and nutritional encyclopedia mapping fruit taxonomy, USDA biochemistry, and evolutionary diaspora.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#09090b",
+  "theme_color": "#09090b",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": [
+    "education",
+    "reference",
+    "food"
+  ]
+}

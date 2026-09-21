@@ -12,6 +12,8 @@ import "../styles/global.css";
 import { SearchDialog } from "@/components/SearchDialog";
 import { MobileNav } from "@/components/MobileNav";
 import { SmoothScrollProvider } from "@/components/motion/SmoothScrollProvider";
+import { FavoritesDrawer, FavoritesNavButton } from "@/components/FavoritesDrawer";
+import { SurpriseFruitButton } from "@/components/SurpriseFruitButton";
 import { allFruits, categories } from "@/data";
 
 interface Props {
@@ -78,8 +80,10 @@ const themeStyle = themeVars
     <link rel="preload" href="/fonts/cormorant-garamond/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
 
-    <!-- Favicon -->
+    <!-- Favicon & PWA Manifest -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#09090b" />
   </head>
   <body style={themeStyle}>
     <!-- Global Lenis smooth scroll (§4.2). client:load = active before first scroll. -->
@@ -107,11 +111,18 @@ const themeStyle = themeVars
           <a href="/nutrition" class={`navbar-link transition-colors ${currentPath.startsWith('/nutrition') ? 'text-white' : 'text-zinc-400 hover:text-white'}`}>Nutrition</a>
           <a href="/benefits" class={`navbar-link transition-colors ${currentPath.startsWith('/benefits') ? 'text-white' : 'text-zinc-400 hover:text-white'}`}>Benefits</a>
           <a href="/seasons" class={`navbar-link transition-colors ${currentPath.startsWith('/seasons') ? 'text-white' : 'text-zinc-400 hover:text-white'}`}>Seasons</a>
+          <a href="/trivia" class={`navbar-link transition-colors ${currentPath.startsWith('/trivia') ? 'text-white' : 'text-zinc-400 hover:text-white'}`}>Trivia</a>
           <a href="/about" class={`navbar-link transition-colors ${currentPath.startsWith('/about') ? 'text-white' : 'text-zinc-400 hover:text-white'}`}>About</a>
         </div>
 
-        <!-- Search & Mobile Nav (Right) -->
-        <div class="navbar-right flex items-center justify-end gap-2 sm:gap-3 w-auto md:w-52">
+        <!-- Search, Surprise, Favorites & Mobile Nav (Right) -->
+        <div class="navbar-right flex items-center justify-end gap-1.5 sm:gap-2.5 w-auto md:w-56">
+          <!-- Surprise Me Random Monograph Action -->
+          <SurpriseFruitButton client:load fruits={allFruits} />
+
+          <!-- Saved Favorites Drawer Trigger -->
+          <FavoritesNavButton client:load />
+
           <!-- Search trigger button -->
           <button
             type="button"
@@ -175,6 +186,7 @@ const themeStyle = themeVars
                 <li><a href="/nutrition" class="hover:text-white transition-colors">Nutrient Observatory</a></li>
                 <li><a href="/benefits" class="hover:text-white transition-colors">Health Benefits Directory</a></li>
                 <li><a href="/seasons" class="hover:text-white transition-colors">Harvest Seasons Calendar</a></li>
+                <li><a href="/trivia" class="hover:text-white transition-colors">Botanical Trivia Challenge</a></li>
                 <li><a href="/fruit/blueberry" class="hover:text-white transition-colors">Blueberry Monograph</a></li>
               </ul>
             </div>
@@ -254,6 +266,7 @@ const themeStyle = themeVars
               <a href="/nutrition" class="hover:text-white transition-colors">Nutrition</a>
               <a href="/benefits" class="hover:text-white transition-colors">Benefits</a>
               <a href="/seasons" class="hover:text-white transition-colors">Seasons</a>
+              <a href="/trivia" class="hover:text-white transition-colors">Trivia</a>
               <a href="/about" class="hover:text-white transition-colors">About & Sources</a>
             </nav>
 
@@ -286,5 +299,8 @@ const themeStyle = themeVars
 
     <!-- Global Command Palette Search Island -->
     <SearchDialog client:idle fruits={allFruits} categories={categories} />
+
+    <!-- Global Favorites Slide-over Drawer Island -->
+    <FavoritesDrawer client:load allFruits={allFruits} />
   </body>
 </html>

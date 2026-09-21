@@ -14,6 +14,7 @@ const NAV_LINKS: NavLink[] = [
   { href: "/nutrition", label: "Nutrition Explorer" },
   { href: "/benefits", label: "Health Benefits" },
   { href: "/seasons", label: "Seasons" },
+  { href: "/trivia", label: "Botanical Trivia", badge: "Quiz" },
   { href: "/about", label: "About & Methodology" },
 ];
 
@@ -63,19 +64,33 @@ export const MobileNav: React.FC = () => {
         >
           {/* Top: Search button & Links */}
           <div className="space-y-6" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              onClick={triggerSearch}
-              className="w-full flex items-center justify-between px-4 py-3 bg-zinc-900 border border-zinc-700/80 rounded-xl text-left text-sm text-zinc-300 font-ui"
-            >
-              <span className="flex items-center gap-2.5">
+            <div className="grid grid-cols-2 gap-2.5">
+              <button
+                type="button"
+                onClick={triggerSearch}
+                className="flex items-center justify-center gap-2 px-3 py-2.5 bg-zinc-900 border border-zinc-700/80 rounded-xl text-left text-xs text-zinc-300 font-ui hover:border-zinc-500 transition-colors"
+              >
                 <svg className="w-4 h-4 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
-                Search encyclopedia...
-              </span>
-              <span className="text-[11px] text-zinc-500 uppercase tracking-widest font-semibold">⌘K</span>
-            </button>
+                <span>Search</span>
+                <kbd className="text-[10px] px-1 bg-zinc-800 rounded border border-zinc-700 font-mono text-zinc-400">⌘K</kbd>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  window.dispatchEvent(new CustomEvent("open-favorites"));
+                }}
+                className="flex items-center justify-center gap-2 px-3 py-2.5 bg-zinc-900 border border-zinc-700/80 rounded-xl text-left text-xs text-rose-300 font-ui hover:border-rose-500/50 transition-colors"
+              >
+                <svg className="w-4 h-4 text-rose-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+                <span>Saved Fruits</span>
+              </button>
+            </div>
 
             <nav className="flex flex-col space-y-3 font-ui" aria-label="Mobile navigation">
               {NAV_LINKS.map((link) => (

@@ -10,6 +10,7 @@
  */
 import type { Fruit } from "@/types";
 import { ServingCalculator } from "@/components/ServingCalculator";
+import { CountUp } from "@/components/motion/CountUp";
 
 interface Props {
   fruit: Fruit;
@@ -45,9 +46,11 @@ const nutrients = fruit.nutrition.nutrients;
       <div class="lg:col-span-4 flex flex-col justify-between">
         <div>
           <div class="calorie-display flex items-baseline gap-3">
-            <span class="calorie-number font-editorial text-white">
-              {fruit.nutrition.calories.amount}
-            </span>
+            <CountUp
+              client:visible
+              end={fruit.nutrition.calories.amount}
+              className="calorie-number font-editorial text-white"
+            />
             <div class="flex flex-col">
               <span class="font-display text-2xl font-light text-zinc-300">kcal</span>
               <span class="font-ui text-[11px] uppercase tracking-widest text-zinc-500">per 100g</span>
@@ -495,3 +498,52 @@ const nutrients = fruit.nutrition.nutrients;
     }
   }
 </style>
+
+<script>
+  import { prefersReducedMotion } from "@/utils/motionTokens";
+
+  function initNutritionBars() {
+    const section = document.getElementById("nutrition");
+    if (!section) return;
+
+    const bars = Array.from(section.querySelectorAll<HTMLElement>(".micro-row .h-full, .water-ratio .h-full"));
+    if (bars.length === 0) return;
+
+    if (prefersReducedMotion()) {
+      return;
+    }
+
+    // Capture target width, initialize at 0, and transition when entering view
+    bars.forEach((bar) => {
+      const targetWidth = bar.style.width || "0%";
+      bar.setAttribute("data-target-width", targetWidth);
+      bar.style.width = "0%";
+      bar.style.transition = "width 900ms cubic-bezier(0.16, 1, 0.3, 1)";
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {
+          observer.disconnect();
+          bars.forEach((bar, index) => {
+            const targetWidth = bar.getAttribute("data-target-width") || "0%";
+            setTimeout(() => {
+              bar.style.width = targetWidth;
+            }, index * 70);
+          });
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    observer.observe(section);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initNutritionBars);
+  } else {
+    initNutritionBars();
+  }
+  document.addEventListener("astro:page-load", initNutritionBars);
+</script>
