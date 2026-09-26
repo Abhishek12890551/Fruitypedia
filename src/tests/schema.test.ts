@@ -54,9 +54,6 @@ describe("Fruitypedia Schema Validation Suite", () => {
     for (const fruit of allFruits) {
       const parseResult = FruitSchema.safeParse(fruit);
       expect(parseResult.success).toBe(true);
-      if (!parseResult.success) {
-        console.error(`Validation failed for ${fruit.name}:`, parseResult.error.format());
-      }
     }
   });
 

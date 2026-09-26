@@ -39,7 +39,8 @@ const {
 } = Astro.props;
 
 const siteTitle = "Fruitypedia — The Visual Fruit Encyclopedia";
-const fullTitle = title === siteTitle ? title : `${title} | Fruitypedia`;
+const cleanTitle = title.replace(/\s*\|\s*Fruitypedia\s*$/, "").trim();
+const fullTitle = cleanTitle === siteTitle ? cleanTitle : `${cleanTitle} | Fruitypedia`;
 const canonical = canonicalUrl || new URL(Astro.url.pathname, Astro.site).href;
 
 const currentPath = Astro.url.pathname;
@@ -107,21 +108,21 @@ const themeStyle = themeVars
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
 
-    <!-- Open Graph -->
+    {/* Open Graph */}
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta property="og:image" content={ogImage || "/images/og-default.jpg"} />
 
-    <!-- Twitter -->
+    {/* Twitter */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage || "/images/og-default.jpg"} />
 
-    <!-- Font Preloads (Self-Hosted) -->
+    <!-- Font Preloads (Self-Hosted - 3 Fonts: Urbanist, Cormorant Garamond, Inter) -->
     <link rel="preload" href="/fonts/urbanist/urbanist-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/ballet/ballet-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/cormorant-garamond/cormorant-garamond-latin-300-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/cormorant-garamond/cormorant-garamond-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/inter/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
@@ -146,16 +147,6 @@ const themeStyle = themeVars
       aria-hidden="true"
     ></div>
 
-    <!-- Archival Folio Registration Markers -->
-    <div class="fixed bottom-3 left-4 hidden lg:flex items-center gap-2 folio-crosshair opacity-30 z-30 pointer-events-none select-none" aria-hidden="true">
-      <span>+</span>
-      <span class="text-[9px] tracking-[0.25em] uppercase">VOL. I // 2026</span>
-    </div>
-    <div class="fixed bottom-3 right-4 hidden lg:flex items-center gap-2 folio-crosshair opacity-30 z-30 pointer-events-none select-none" aria-hidden="true">
-      <span class="text-[9px] tracking-[0.25em] uppercase">BOTANICAL HERBARIUM</span>
-      <span>+</span>
-    </div>
-
     <!-- Global Lenis smooth scroll (§4.2). client:load = active before first scroll. -->
     <!-- Automatically skips initialization when prefers-reduced-motion: reduce is set. -->
     <SmoothScrollProvider client:load transition:persist />
@@ -169,7 +160,7 @@ const themeStyle = themeVars
         <!-- Brand / Logo (Left) -->
         <div class="flex items-center shrink-0">
           <a href="/" class="navbar-brand group flex items-baseline gap-0.5 hover:opacity-90 transition-opacity" aria-label="Fruitypedia Home">
-            <span class="font-script text-2xl sm:text-[30px] text-white tracking-normal font-normal lowercase select-none leading-none">fruitypedia</span>
+            <span class="font-editorial italic text-2xl sm:text-[28px] text-white tracking-normal font-normal lowercase select-none leading-none">fruitypedia</span>
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.9)] transform translate-y-[-1px]"></span>
           </a>
         </div>
@@ -252,7 +243,7 @@ const themeStyle = themeVars
             <!-- Col 1: Brand & Manifesto (2 cols on lg) -->
             <div class="lg:col-span-2 space-y-4">
               <a href="/" class="flex items-baseline gap-0.5 hover:opacity-90 transition-opacity" aria-label="Fruitypedia Home">
-                <span class="font-script text-2xl sm:text-3xl text-white tracking-normal font-normal lowercase select-none leading-none">fruitypedia</span>
+                <span class="font-editorial italic text-2xl sm:text-3xl text-white tracking-normal font-normal lowercase select-none leading-none">fruitypedia</span>
                 <span class="inline-block w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.9)] transform translate-y-[-1px]"></span>
               </a>
               <p class="font-ui text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
@@ -326,11 +317,15 @@ const themeStyle = themeVars
 
           <!-- Colophon Bottom Bar -->
           <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-ui text-xs text-zinc-500">
-            <p>
-              &copy; {new Date().getFullYear()} Fruitypedia · The Visual Fruit Encyclopedia. All rights reserved.
-            </p>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+              <span class="font-mono text-[9px] tracking-[0.2em] text-zinc-600 uppercase select-none">+ VOL. I // 2026 · BOTANICAL HERBARIUM +</span>
+              <span class="text-zinc-700 hidden sm:inline">·</span>
+              <p>
+                &copy; {new Date().getFullYear()} Fruitypedia · The Visual Fruit Encyclopedia. All rights reserved.
+              </p>
+            </div>
             <div class="flex items-center gap-6 text-[11px]">
-              <span>Botanical records via USDA & Kew Science</span>
+              <span>Nutritional data: USDA FoodData Central</span>
               <span>·</span>
               <a href="#top" class="hover:text-zinc-300 transition-colors">Back to top ↑</a>
             </div>
@@ -344,7 +339,7 @@ const themeStyle = themeVars
             <!-- Brand Mark -->
             <div class="flex items-center gap-3">
               <a href="/" class="flex items-baseline gap-0.5 hover:opacity-90 transition-opacity" aria-label="Fruitypedia Home">
-                <span class="font-script text-xl sm:text-2xl text-white tracking-normal font-normal lowercase select-none leading-none">fruitypedia</span>
+                <span class="font-editorial italic text-xl sm:text-2xl text-white tracking-normal font-normal lowercase select-none leading-none">fruitypedia</span>
                 <span class="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.9)] transform translate-y-[-1px]"></span>
               </a>
               <span class="text-zinc-700 hidden sm:inline">·</span>
@@ -382,7 +377,11 @@ const themeStyle = themeVars
 
           <!-- Bottom Micro Bar -->
           <div class="mt-4 pt-4 border-t border-zinc-900/80 flex flex-col sm:flex-row items-center justify-between gap-2 font-ui text-[11px] text-zinc-500">
-            <p>&copy; {new Date().getFullYear()} Fruitypedia. Botanical records via USDA & Kew Science.</p>
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+              <span class="font-mono text-[9px] tracking-[0.2em] text-zinc-600 uppercase select-none">+ VOL. I // 2026 · BOTANICAL HERBARIUM +</span>
+              <span class="text-zinc-700 hidden sm:inline">·</span>
+              <p>&copy; {new Date().getFullYear()} Fruitypedia. Nutritional data: USDA FoodData Central.</p>
+            </div>
             <div class="flex items-center gap-2">
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-500/80"></span>
               <span class="text-zinc-400">USDA FoodData Central Verified</span>

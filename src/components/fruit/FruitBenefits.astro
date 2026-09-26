@@ -30,7 +30,7 @@ const hasBenefits = Boolean(fruit.benefitTags && fruit.benefitTags.length > 0);
               What makes it notable.
             </h2>
             <p class="font-editorial text-zinc-400 text-lg sm:text-xl font-light mt-3 max-w-xl">
-              Classified according to replicated, peer-reviewed nutritional literature.
+              Classified by biological system and substantiated by nutritional research.
             </p>
           </div>
           <span class="font-ui text-xs text-zinc-500">
@@ -72,7 +72,7 @@ const hasBenefits = Boolean(fruit.benefitTags && fruit.benefitTags.length > 0);
               <div class="benefit-compound-metric pt-3 flex items-center gap-3 text-xs font-ui">
                 <span class="text-zinc-500 uppercase tracking-wider">Primary Biomarker:</span>
                 <span class="font-medium" style={`color: ${fruit.theme.secondary};`}>
-                  {fruit.id === "peach"
+                  {tag.metric || (fruit.id === "peach"
                     ? (index === 0 ? "Chlorogenic Acid & Epicatechin (14–28 mg / 100g)" : index === 1 ? "Beta-Carotene & Cryptoxanthin (16 µg RAE · 2% DV)" : "Soluble Pectin & Cell Water (88.9% hydration)")
                     : fruit.id === "banana"
                     ? (index === 0 ? "Pyridoxal Phosphate / B6 (0.367 mg / 100g · 22% DV)" : index === 1 ? "Ionic Potassium K⁺ (358 mg / 100g · 8% DV)" : "Soluble Pectin & Resistant Starch (2.6g / 100g)")
@@ -82,7 +82,9 @@ const hasBenefits = Boolean(fruit.benefitTags && fruit.benefitTags.length > 0);
                     ? (index === 0 ? "Ascorbic Acid (53.2 mg / 100g · 59% DV)" : index === 1 ? "Hesperidin (30–65 mg / 100g albedo)" : "Soluble Pectin & Protopectin (2.4g / 100g)")
                     : fruit.id === "strawberry"
                     ? (index === 0 ? "Ascorbic Acid (58.8 mg / 100g · 65% DV)" : index === 1 ? "Manganese (0.386 mg / 100g · 17% DV)" : "Pelargonidin-3-glucoside & Ellagic Acid")
-                    : (index === 0 ? "Anthocyanins (163 mg / 100g fresh weight)" : index === 1 ? "Phylloquinone (19.3 µg / 100g)" : "Soluble Pectin & Insoluble Cellulose (2.4g / 100g)")}
+                    : fruit.id === "blueberry"
+                    ? (index === 0 ? "Anthocyanins (163 mg / 100g fresh weight)" : index === 1 ? "Phylloquinone (19.3 µg / 100g)" : "Soluble Pectin & Insoluble Cellulose (2.4g / 100g)")
+                    : tag.phenomenon)}
                 </span>
               </div>
             </div>

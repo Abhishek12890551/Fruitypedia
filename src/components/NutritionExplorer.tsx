@@ -79,7 +79,7 @@ export const NUTRIENT_DEFINITIONS: NutrientDefinition[] = [
     unit: "%",
     category: "hydration",
     description: "Intrinsic biological water content contributing to cellular hydration and satiety.",
-    getValue: (f) => f.nutrition.nutrients.water?.amount ?? (100 - (f.nutrition.nutrients.carbohydrates?.amount ?? 15) - 1.5),
+    getValue: (f) => f.nutrition.waterContentPercent ?? f.nutrition.nutrients.water?.amount ?? (100 - (f.nutrition.nutrients.carbohydrates?.amount ?? 15) - 1.5),
   },
   {
     id: "carbs",

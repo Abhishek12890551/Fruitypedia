@@ -24,19 +24,18 @@ describe("Phase 4B — Nutrition Explorer Analytics & Daily Values", () => {
     expect(ids).toContain("vitaminK");
   });
 
-  it("calculates nutrient values safely for all 8 catalog fruits without NaN or exceptions", () => {
-    expect(allFruits.length).toBe(8);
+  it("calculates nutrient values safely for all 50 catalog fruits without NaN or exceptions", () => {
+    expect(allFruits.length).toBe(50);
     for (const fruit of allFruits) {
       for (const nutrient of NUTRIENT_DEFINITIONS) {
         const val = nutrient.getValue(fruit);
-        expect(typeof val).toBe("number");
-        expect(isNaN(val)).toBe(false);
+        expect(Number.isNaN(val)).toBe(false);
         expect(val).toBeGreaterThanOrEqual(0);
       }
     }
   });
 
-  it("correctly ranks Vitamin C champions (Strawberry & Orange)", () => {
+  it("correctly ranks Vitamin C champions (Amla, Guava & Kiwi)", () => {
     const vitCDef = NUTRIENT_DEFINITIONS.find((d) => d.id === "vitaminC");
     expect(vitCDef).toBeDefined();
     if (!vitCDef) return;
@@ -45,11 +44,13 @@ describe("Phase 4B — Nutrition Explorer Analytics & Daily Values", () => {
       .map((f) => ({ slug: f.slug, val: vitCDef.getValue(f) }))
       .sort((a, b) => b.val - a.val);
 
-    // Strawberry has 58.8mg and Orange has 53.2mg
-    expect(ranked[0].slug).toBe("strawberry");
-    expect(ranked[0].val).toBe(58.8);
-    expect(ranked[1].slug).toBe("orange");
-    expect(ranked[1].val).toBe(53.2);
+    // Amla has 478.0mg, Guava has 228.3mg and Kiwi has 92.7mg
+    expect(ranked[0].slug).toBe("amla");
+    expect(ranked[0].val).toBe(478.0);
+    expect(ranked[1].slug).toBe("guava");
+    expect(ranked[1].val).toBe(228.3);
+    expect(ranked[2].slug).toBe("kiwi");
+    expect(ranked[2].val).toBe(92.7);
   });
 
   it("correctly ranks Hydration percentage (Watermelon highest)", () => {

@@ -33,9 +33,9 @@ function generateFruitFixtures(count: number): Fruit[] {
 }
 
 describe("Phase 3 Catalog & Search Scale Benchmark", () => {
-  it("strictly preserves 8 verified production fruits in public catalog", () => {
-    expect(getProductionFruitCount()).toBe(8);
-    expect(allFruits.length).toBe(8);
+  it("strictly preserves 50 verified production fruits in public catalog", () => {
+    expect(getProductionFruitCount()).toBe(50);
+    expect(allFruits.length).toBe(50);
   });
 
   it("indexes and executes search on 20 fixture fruits in under 5ms", () => {

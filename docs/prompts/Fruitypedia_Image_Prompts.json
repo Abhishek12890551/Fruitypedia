@@ -1,0 +1,2171 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Fruitypedia Master Image Generation Prompts",
+  "version": "1.0.0",
+  "metadata": {
+    "totalFruits": 50,
+    "readyCount": 10,
+    "pendingCount": 40,
+    "generatedAt": "2026-09-22T03:04:27.995Z",
+    "globalStyleGuide": {
+      "composition": "Right-weighted rule of thirds (fruit grouped on right 35-40%, left 60% clean matte dark negative space for typography)",
+      "surface": "Wet rustic dark charcoal slate slab in lower foreground with specular water beads",
+      "lighting": "Cinematic chiaroscuro studio lighting with rim light and directional top-left key",
+      "background": "Deep black (#09090b) with subtle primary color ambient glow",
+      "aspectRatio": "16:9",
+      "cameraLens": "Hasselblad H6D-100c, 85mm f/4.0 for Hero; 100mm macro f/2.8 for MacroBreak"
+    }
+  },
+  "fruits": [
+    {
+      "id": "amla",
+      "slug": "amla",
+      "name": "Amla",
+      "scientificName": "Phyllanthus emblica",
+      "category": "berry",
+      "primaryColor": "#65A30D",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/amla/hero.jpg",
+          "status": "pending",
+          "alt": "Cluster of translucent pale green ribbed amla berries with delicate feathery leaves on dark slate",
+          "prompt": "Commercial editorial food photography of fresh green Amla (Indian gooseberry), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Arrangement shows translucent pale-green spherical berries with six subtle vertical segment lines and delicate feathery leaves, one halved showing pale crisp interior and stone, resting on wet dark slate. Clean chiaroscuro lighting, green backlight, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh green Amla (Indian gooseberry), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Arrangement shows translucent pale-green spherical berries with six subtle vertical segment lines and delicate feathery leaves, one halved showing pale crisp interior and stone, resting on wet dark slate. Clean chiaroscuro lighting, green backlight, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/amla/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of sliced amla berry showing jade translucent segments and ascorbic tannin vesicles",
+          "prompt": "Extreme macro photography of sliced amla fruit, focusing on translucent lime-green cellular pulp illuminated from behind, micro-droplets of vitamin-C rich juice, fine crystalline texture, dark slate, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced amla fruit, focusing on translucent lime-green cellular pulp illuminated from behind, micro-droplets of vitamin-C rich juice, fine crystalline texture, dark slate, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "apple",
+      "slug": "apple",
+      "name": "Apple",
+      "scientificName": "Malus domestica",
+      "category": "pome",
+      "primaryColor": "#DC2626",
+      "overallStatus": "complete",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/apple/hero.jpg",
+          "status": "ready",
+          "alt": "Crisp heirloom red apples on dark charcoal slate with one sliced cleanly in half displaying starry seed cavity and ivory flesh",
+          "prompt": "Commercial editorial food photography of Crisp heirloom red apples on dark charcoal slate with one sliced cleanly in half displaying starry seed cavity and ivory flesh, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Crisp heirloom red apples on dark charcoal slate with one sliced cleanly in half displaying starry seed cavity and ivory flesh, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/apple/macro-break.jpg",
+          "status": "ready",
+          "alt": "Extreme macro of sliced apple showing crisp parenchymal cells and anthocyanin-flushed peel",
+          "prompt": "Extreme macro food science photography of Extreme macro of sliced apple showing crisp parenchymal cells and anthocyanin-flushed peel, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food science photography of Extreme macro of sliced apple showing crisp parenchymal cells and anthocyanin-flushed peel, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "apricot",
+      "slug": "apricot",
+      "name": "Apricot",
+      "scientificName": "Prunus armeniaca",
+      "category": "stone-fruit",
+      "primaryColor": "#F97316",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/apricot/hero.jpg",
+          "status": "pending",
+          "alt": "Ripe golden-orange velvety apricots with one sliced open showing stone pit on dark slate",
+          "prompt": "Commercial editorial food photography of fresh ripe apricots, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Arrangement shows one whole velvet golden-orange apricot with red blush alongside one split half showing warm saffron-orange interior flesh and smooth almond-like pit, resting on dark textured slate. Warm directional chiaroscuro lighting, 85mm lens, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh ripe apricots, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Arrangement shows one whole velvet golden-orange apricot with red blush alongside one split half showing warm saffron-orange interior flesh and smooth almond-like pit, resting on dark textured slate. Warm directional chiaroscuro lighting, 85mm lens, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/apricot/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of velvety golden apricot skin fine pubescence and succulent orange pulp",
+          "prompt": "Extreme macro photography of apricot skin and flesh, focusing on delicate velvety pubescent fuzz along the golden-orange skin edge, soft melting carotenoid parenchymal cells beneath, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of apricot skin and flesh, focusing on delicate velvety pubescent fuzz along the golden-orange skin edge, soft melting carotenoid parenchymal cells beneath, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "asian-pear",
+      "slug": "asian-pear",
+      "name": "Asian Pear",
+      "scientificName": "Pyrus pyrifolia",
+      "category": "pome",
+      "primaryColor": "#D97706",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/asian-pear/hero.jpg",
+          "status": "pending",
+          "alt": "asian-pear botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of Asian Pear (Nashi), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Arrangement shows one whole spherical apple-shaped russet-tan pear with pale lenticel speckles and leaf alongside a clean cross-section half showing crystalline, water-saturated snow-white flesh and starry core, resting on wet dark slate. Chiaroscuro lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Asian Pear (Nashi), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Arrangement shows one whole spherical apple-shaped russet-tan pear with pale lenticel speckles and leaf alongside a clean cross-section half showing crystalline, water-saturated snow-white flesh and starry core, resting on wet dark slate. Chiaroscuro lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/asian-pear/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of asian-pear",
+          "prompt": "Extreme macro photography of Asian pear cross-section, focusing on crystalline cellular fracture overflowing with clear juice, translucent white cell matrix, reflective moisture, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of Asian pear cross-section, focusing on crystalline cellular fracture overflowing with clear juice, translucent white cell matrix, reflective moisture, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "avocado",
+      "slug": "avocado",
+      "name": "Avocado",
+      "scientificName": "Persea americana",
+      "category": "tropical",
+      "primaryColor": "#10B981",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/avocado/hero.jpg",
+          "status": "pending",
+          "alt": "A ripe Hass avocado sliced in half with the rich round pit visible in one half on dark slate",
+          "prompt": "Commercial editorial food photography of fresh ripe Hass avocado, right-weighted composition with the fruit positioned on the right third of the frame, leaving clean deep matte dark negative space on the left. Arrangement shows one whole avocado with dark pebbled leathery skin alongside one half sliced lengthwise revealing buttery pale green-yellow flesh, smooth circular brown pit, and fresh green laurel leaf, resting on a wet dark charcoal slate slab. Dramatic chiaroscuro studio lighting, warm rim highlights on the buttery contours, deep black background, Hasselblad H6D-100c, 85mm, f/4.0, ultra-photorealistic. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh ripe Hass avocado, right-weighted composition with the fruit positioned on the right third of the frame, leaving clean deep matte dark negative space on the left. Arrangement shows one whole avocado with dark pebbled leathery skin alongside one half sliced lengthwise revealing buttery pale green-yellow flesh, smooth circular brown pit, and fresh green laurel leaf, resting on a wet dark charcoal slate slab. Dramatic chiaroscuro studio lighting, warm rim highlights on the buttery contours, deep black background, Hasselblad H6D-100c, 85mm, f/4.0, ultra-photorealistic. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/avocado/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro close up photography of smooth creamy buttery avocado flesh texture",
+          "prompt": "Extreme macro photography of sliced ripe avocado, focusing on the velvety buttery oleic lipid matrix, smooth gradient from silky lime-green flesh near the rind to rich creamy ivory butter, delicate natural oil sheen, wet dark slate backdrop, 100mm macro lens, f/2.8, hyper-detailed lipid emulsion texture. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced ripe avocado, focusing on the velvety buttery oleic lipid matrix, smooth gradient from silky lime-green flesh near the rind to rich creamy ivory butter, delicate natural oil sheen, wet dark slate backdrop, 100mm macro lens, f/2.8, hyper-detailed lipid emulsion texture. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "bael",
+      "slug": "bael",
+      "name": "Bael",
+      "scientificName": "Aegle marmelos",
+      "category": "tropical",
+      "primaryColor": "#D97706",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/bael/hero.jpg",
+          "status": "pending",
+          "alt": "Cracked open sacred Bael wood apple showing aromatic golden amber sticky pulp on dark stone with fresh green bael leaves",
+          "prompt": "Commercial editorial food photography of Indian Bael fruit (Wood Apple), right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows one whole smooth hard grey-green shell alongside one cracked open shell revealing dense golden-amber aromatic resinous pulp studded with hairy seeds, resting on dark slate with dew drops. Chiaroscuro studio lighting, warm golden glow, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Indian Bael fruit (Wood Apple), right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows one whole smooth hard grey-green shell alongside one cracked open shell revealing dense golden-amber aromatic resinous pulp studded with hairy seeds, resting on dark slate with dew drops. Chiaroscuro studio lighting, warm golden glow, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/bael/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of translucent golden bael mucilage pockets and glandular essential oil cavities",
+          "prompt": "Extreme macro photography of bael fruit interior, focusing on viscous sticky golden-orange mucilage fibers, translucent resin pockets, aromatic botanical texture, dark slate, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of bael fruit interior, focusing on viscous sticky golden-orange mucilage fibers, translucent resin pockets, aromatic botanical texture, dark slate, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "banana",
+      "slug": "banana",
+      "name": "Banana",
+      "scientificName": "Musa acuminata",
+      "category": "tropical",
+      "primaryColor": "#EAB308",
+      "overallStatus": "complete",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/banana/hero.jpg",
+          "status": "ready",
+          "alt": "A hand of vibrant golden ripe bananas with delicate sugar freckles alongside a sliced cross-section revealing its creamy ivory core on dark slate",
+          "prompt": "Commercial editorial food photography of A hand of vibrant golden ripe bananas with delicate sugar freckles alongside a sliced cross-section revealing its creamy ivory core on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of A hand of vibrant golden ripe bananas with delicate sugar freckles alongside a sliced cross-section revealing its creamy ivory core on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/banana/macro-break.jpg",
+          "status": "ready",
+          "alt": "Extreme macro of sliced ripe banana cross-section displaying glistening starch parenchyma and tri-radial locule ovules",
+          "prompt": "Extreme macro food science photography of Extreme macro of sliced ripe banana cross-section displaying glistening starch parenchyma and tri-radial locule ovules, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food science photography of Extreme macro of sliced ripe banana cross-section displaying glistening starch parenchyma and tri-radial locule ovules, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "ber",
+      "slug": "ber",
+      "name": "Ber",
+      "scientificName": "Ziziphus mauritiana",
+      "category": "stone-fruit",
+      "primaryColor": "#65A30D",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/ber/hero.jpg",
+          "status": "pending",
+          "alt": "Freshly harvested crisp green and golden Indian Ber jujube fruits piled on earthenware pottery with spiny foliage",
+          "prompt": "Commercial editorial food photography of fresh Indian Ber (Jujube), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Displays a cluster of glossy golden-green and bronze-mottled oval fruits with green leaves, one sliced open showing crisp apple-like ivory flesh and pointed central stone, resting on wet dark slate. Chiaroscuro lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh Indian Ber (Jujube), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Displays a cluster of glossy golden-green and bronze-mottled oval fruits with green leaves, one sliced open showing crisp apple-like ivory flesh and pointed central stone, resting on wet dark slate. Chiaroscuro lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/ber/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of crisp white Ber flesh texture showing cellular water turgor and glossy thin skin",
+          "prompt": "Extreme macro photography of sliced ber fruit, focusing on crisp porous white parenchymal cell fracture, fine glistening surface moisture, glossy yellow-green skin edge, dark slate, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced ber fruit, focusing on crisp porous white parenchymal cell fracture, fine glistening surface moisture, glossy yellow-green skin edge, dark slate, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "blackberry",
+      "slug": "blackberry",
+      "name": "Blackberry",
+      "scientificName": "Rubus fruticosus",
+      "category": "berry",
+      "primaryColor": "#4C1D95",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/blackberry/hero.jpg",
+          "status": "pending",
+          "alt": "Freshly harvested plump glossy black blackberries in rustic wooden basket on dark slate",
+          "prompt": "Commercial editorial food photography of wild blackberries, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. A cluster of glossy jet-black aggregate drupelets with deep crimson undertones and a serrated green bramble leaf, one drupelet cluster sliced showing juice, resting on wet dark slate with dew drops. Chiaroscuro studio lighting, specular glints on each drupelet, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of wild blackberries, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. A cluster of glossy jet-black aggregate drupelets with deep crimson undertones and a serrated green bramble leaf, one drupelet cluster sliced showing juice, resting on wet dark slate with dew drops. Chiaroscuro studio lighting, specular glints on each drupelet, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/blackberry/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of ripe glossy blackberry drupelets showing cell structure and deep anthocyanin pigmentation",
+          "prompt": "Extreme macro photography of blackberry aggregate fruit, focusing on individual plump spherical black drupelets, microscopic pistil hairs (styles), glistening liquid meniscus between drupelets, dark slate, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of blackberry aggregate fruit, focusing on individual plump spherical black drupelets, microscopic pistil hairs (styles), glistening liquid meniscus between drupelets, dark slate, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "blueberry",
+      "slug": "blueberry",
+      "name": "Blueberry",
+      "scientificName": "Vaccinium corymbosum",
+      "category": "berry",
+      "primaryColor": "#4F65F6",
+      "overallStatus": "complete",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/blueberry/hero.jpg",
+          "status": "ready",
+          "alt": "A cluster of fresh ripe blueberries with dramatic studio lighting against a dark slate background, showing their characteristic dusty blue bloom and dew drops",
+          "prompt": "Commercial editorial food photography of A cluster of fresh ripe blueberries with dramatic studio lighting against a dark slate background, showing their characteristic dusty blue bloom and dew drops, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of A cluster of fresh ripe blueberries with dramatic studio lighting against a dark slate background, showing their characteristic dusty blue bloom and dew drops, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/blueberry/macro-break.jpg",
+          "status": "ready",
+          "alt": "Macro close-up of fresh blueberries with waxy bloom",
+          "prompt": "Extreme macro food science photography of Macro close-up of fresh blueberries with waxy bloom, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food science photography of Macro close-up of fresh blueberries with waxy bloom, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "cantaloupe",
+      "slug": "cantaloupe",
+      "name": "Cantaloupe",
+      "scientificName": "Cucumis melo",
+      "category": "melon",
+      "primaryColor": "#EA580C",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/cantaloupe/hero.jpg",
+          "status": "pending",
+          "alt": "cantaloupe botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of ripe cantaloupe (muskmelon), right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Arrangement shows a round melon with textured tan corky netting alongside a thick sliced crescent wedge showing rich salmon-orange juicy meat and seed cavity, resting on dark slate with water droplets. Warm chiaroscuro lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe cantaloupe (muskmelon), right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Arrangement shows a round melon with textured tan corky netting alongside a thick sliced crescent wedge showing rich salmon-orange juicy meat and seed cavity, resting on dark slate with water droplets. Warm chiaroscuro lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/cantaloupe/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of cantaloupe",
+          "prompt": "Extreme macro photography of sliced cantaloupe, focusing on glistening salmon-orange melon flesh, delicate cellular fiber grain, pooling droplets of sweet hydration water, dark slate, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced cantaloupe, focusing on glistening salmon-orange melon flesh, delicate cellular fiber grain, pooling droplets of sweet hydration water, dark slate, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "cherry",
+      "slug": "cherry",
+      "name": "Cherry",
+      "scientificName": "Prunus avium",
+      "category": "stone-fruit",
+      "primaryColor": "#BE123C",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/cherry/hero.jpg",
+          "status": "pending",
+          "alt": "Pair of glossy deep-red sweet cherries with vibrant green stems against dark textured slate",
+          "prompt": "Commercial editorial food photography of ripe dark red cherries, right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. A pair of deep mahogany-red cherries with fresh green stems, one sliced cleanly in half showing dark ruby meat and tan stone, resting on wet dark slate with glistening water beads. Dramatic chiaroscuro studio lighting, mirror-like skin reflections, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe dark red cherries, right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. A pair of deep mahogany-red cherries with fresh green stems, one sliced cleanly in half showing dark ruby meat and tan stone, resting on wet dark slate with glistening water beads. Dramatic chiaroscuro studio lighting, mirror-like skin reflections, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/cherry/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of sliced dark cherry showing glistening wine-red flesh texture and central pit",
+          "prompt": "Extreme macro photography of sliced dark red cherry, focusing on glistening ruby-crimson anthocyanin pulp fibers, natural juice droplets clinging to the cut edge, dark slate, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced dark red cherry, focusing on glistening ruby-crimson anthocyanin pulp fibers, natural juice droplets clinging to the cut edge, dark slate, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "coconut",
+      "slug": "coconut",
+      "name": "Coconut",
+      "scientificName": "Cocos nucifera",
+      "category": "tropical",
+      "primaryColor": "#0D9488",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/coconut/hero.jpg",
+          "status": "pending",
+          "alt": "Cracked fresh coconut showing thick pure white meat and brown shell on dark textured slate",
+          "prompt": "Commercial editorial food photography of fresh mature coconut, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Displays a fibrous brown textured shell cracked open into clean halves revealing thick, pure snow-white solid endosperm meat with subtle splashes of fresh coconut water, resting on dark charcoal slate. Chiaroscuro lighting, crisp white contrast, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh mature coconut, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Displays a fibrous brown textured shell cracked open into clean halves revealing thick, pure snow-white solid endosperm meat with subtle splashes of fresh coconut water, resting on dark charcoal slate. Chiaroscuro lighting, crisp white contrast, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/coconut/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of crisp white coconut endosperm meat texture and natural oil sheen",
+          "prompt": "Extreme macro photography of fresh white coconut meat, focusing on the dense fibrous cellular lattice of pure white endosperm, microscopic droplets of natural lauric oil on the surface, dark slate, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of fresh white coconut meat, focusing on the dense fibrous cellular lattice of pure white endosperm, microscopic droplets of natural lauric oil on the surface, dark slate, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "custard-apple",
+      "slug": "custard-apple",
+      "name": "Custard Apple",
+      "scientificName": "Annona squamosa",
+      "category": "tropical",
+      "primaryColor": "#84CC16",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/custard-apple/hero.jpg",
+          "status": "pending",
+          "alt": "Ripe green knobby custard apple pulled open displaying velvety white segments and dark seeds on dark slate",
+          "prompt": "Commercial editorial food photography of ripe Custard Apple (Sugar Apple / Sitaphal), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Shows one whole knobby pale-green segmented fruit alongside one broken open naturally revealing rich creamy ivory-white custard pulp segments surrounding glossy black seeds, resting on dark charcoal slate with dew drops. Chiaroscuro studio lighting, 85mm lens, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe Custard Apple (Sugar Apple / Sitaphal), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Shows one whole knobby pale-green segmented fruit alongside one broken open naturally revealing rich creamy ivory-white custard pulp segments surrounding glossy black seeds, resting on dark charcoal slate with dew drops. Chiaroscuro studio lighting, 85mm lens, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/custard-apple/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of velvety white custard apple pulp texture and glossy dark seed",
+          "prompt": "Extreme macro photography of custard apple interior, focusing on velvety granular ivory-white custard pulp glistening with natural sugars, soft melting texture, jet-black seed contrast, dark slate, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of custard apple interior, focusing on velvety granular ivory-white custard pulp glistening with natural sugars, soft melting texture, jet-black seed contrast, dark slate, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "date",
+      "slug": "date",
+      "name": "Date",
+      "scientificName": "Phoenix dactylifera",
+      "category": "tropical",
+      "primaryColor": "#B45309",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/date/hero.jpg",
+          "status": "pending",
+          "alt": "Lustrous amber-brown Medjool dates arranged on rustic clay pottery with one split open showing caramel flesh",
+          "prompt": "Commercial editorial food photography of plump Medjool dates, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows a cluster of glossy wrinkled amber-brown dates on a palm twig, one torn open revealing soft caramel-textured fibrous interior and slender pointed pit, resting on dark slate. Warm chiaroscuro lighting, rich caramel highlights, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of plump Medjool dates, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows a cluster of glossy wrinkled amber-brown dates on a palm twig, one torn open revealing soft caramel-textured fibrous interior and slender pointed pit, resting on dark slate. Warm chiaroscuro lighting, rich caramel highlights, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/date/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of translucent caramelized date flesh and delicate crystalline sugar blooming under skin",
+          "prompt": "Extreme macro photography of torn Medjool date, focusing on soft fibrous translucent caramel flesh, delicate sugar crystal micro-bloom, rich golden-amber tones, dark slate background, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of torn Medjool date, focusing on soft fibrous translucent caramel flesh, delicate sugar crystal micro-bloom, rich golden-amber tones, dark slate background, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "dragonfruit",
+      "slug": "dragonfruit",
+      "name": "Dragon Fruit",
+      "scientificName": "Selenicereus undatus",
+      "category": "tropical",
+      "primaryColor": "#EC4899",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/dragonfruit/hero.jpg",
+          "status": "pending",
+          "alt": "Vibrant sliced dragon fruit showing bright pink rind and white seeded interior on dark slate",
+          "prompt": "Commercial editorial food photography of vibrant red dragonfruit (pitaya), right-weighted composition positioned on the right third of the frame, leaving clean deep black negative space on the left. Featuring one whole fruit with fiery magenta skin and yellow-green tipped bracts, alongside a cleanly sliced half displaying crystalline snow-white pulp speckled with thousands of tiny edible black seeds, resting on a dark rustic slate slab with water droplets. Cinematic studio chiaroscuro lighting, neon-vivid natural contrast, deep black backdrop, 85mm lens, f/4.0, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of vibrant red dragonfruit (pitaya), right-weighted composition positioned on the right third of the frame, leaving clean deep black negative space on the left. Featuring one whole fruit with fiery magenta skin and yellow-green tipped bracts, alongside a cleanly sliced half displaying crystalline snow-white pulp speckled with thousands of tiny edible black seeds, resting on a dark rustic slate slab with water droplets. Cinematic studio chiaroscuro lighting, neon-vivid natural contrast, deep black backdrop, 85mm lens, f/4.0, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/dragonfruit/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of sliced dragon fruit interior showing crisp cellular parenchyma and black seeds",
+          "prompt": "Extreme macro food photography of white dragonfruit flesh, ultra close-up of translucent mucilaginous cellular pulp studded with jet-black teardrop seeds, liquid light refraction, glistening micro-droplets of juice, dark slate background, shallow depth of field, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food photography of white dragonfruit flesh, ultra close-up of translucent mucilaginous cellular pulp studded with jet-black teardrop seeds, liquid light refraction, glistening micro-droplets of juice, dark slate background, shallow depth of field, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "durian",
+      "slug": "durian",
+      "name": "Durian",
+      "scientificName": "Durio zibethinus",
+      "category": "tropical",
+      "primaryColor": "#A16207",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/durian/hero.jpg",
+          "status": "pending",
+          "alt": "Pried open spiky green durian displaying creamy golden custard aril lobes resting on rustic wood",
+          "prompt": "Commercial editorial food photography of King Durian (Musang King), right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. A cracked open section of spiky thorn-covered husk displaying two plump, pillowy golden custard-yellow aril pods resting in natural carpel chambers, on a dark slate slab. Dramatic chiaroscuro studio lighting, warm buttery rim light, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of King Durian (Musang King), right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. A cracked open section of spiky thorn-covered husk displaying two plump, pillowy golden custard-yellow aril pods resting in natural carpel chambers, on a dark slate slab. Dramatic chiaroscuro studio lighting, warm buttery rim light, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/durian/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of velvety golden durian pulp aril showing micro-lipid droplets and silken custard fold",
+          "prompt": "Extreme macro photography of ripe durian custard aril, focusing on the velvety wrinkled golden-yellow skin membrane, dense creamy butter-like lipid texture, subtle glistening fatty sheen, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of ripe durian custard aril, focusing on the velvety wrinkled golden-yellow skin membrane, dense creamy butter-like lipid texture, subtle glistening fatty sheen, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "fig",
+      "slug": "fig",
+      "name": "Fig",
+      "scientificName": "Ficus carica",
+      "category": "stone-fruit",
+      "primaryColor": "#8B5CF6",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/fig/hero.jpg",
+          "status": "pending",
+          "alt": "Ripe fresh figs split open showing jammy ruby floral interior on dark slate",
+          "prompt": "Commercial editorial food photography of ripe Black Mission figs, right-weighted composition with the figs on the right third of the frame, leaving clean matte dark negative space on the left. Arrangement displays one whole purple-black fig with subtle dusty bloom alongside one gently torn fig revealing a lush crimson-red honeyed interior glistening with natural syrupy nectar and seeds, resting on a dark textured slate slab with a fresh fig leaf. Moody chiaroscuro studio lighting, warm specular highlights, deep dark background, 85mm lens, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe Black Mission figs, right-weighted composition with the figs on the right third of the frame, leaving clean matte dark negative space on the left. Arrangement displays one whole purple-black fig with subtle dusty bloom alongside one gently torn fig revealing a lush crimson-red honeyed interior glistening with natural syrupy nectar and seeds, resting on a dark textured slate slab with a fresh fig leaf. Moody chiaroscuro studio lighting, warm specular highlights, deep dark background, 85mm lens, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/fig/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of sliced fresh fig interior showing hundreds of glistening seed drupelets",
+          "prompt": "Extreme macro photography of an opened ripe fig, focusing on the intricate syconium interior showing hundreds of glistening crimson-red internal florets, dripping droplet of golden natural honey nectar, tiny crunchy seeds, dark slate background, 100mm macro lens, f/2.8, crystalline botanical detail. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of an opened ripe fig, focusing on the intricate syconium interior showing hundreds of glistening crimson-red internal florets, dripping droplet of golden natural honey nectar, tiny crunchy seeds, dark slate background, 100mm macro lens, f/2.8, crystalline botanical detail. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "galia",
+      "slug": "galia",
+      "name": "Galia Melon",
+      "scientificName": "Cucumis melo",
+      "category": "melon",
+      "primaryColor": "#EAB308",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/galia/hero.jpg",
+          "status": "pending",
+          "alt": "galia botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of Galia melon, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Displays one whole golden-yellow melon with intricate fine white net webbing alongside a sliced wedge revealing pale green-white melting interior flesh, resting on dark charcoal slate with dew drops. Chiaroscuro studio lighting, 85mm lens, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Galia melon, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Displays one whole golden-yellow melon with intricate fine white net webbing alongside a sliced wedge revealing pale green-white melting interior flesh, resting on dark charcoal slate with dew drops. Chiaroscuro studio lighting, 85mm lens, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/galia/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of galia",
+          "prompt": "Extreme macro photography of Galia melon, focusing on the intricate corky lace netting of the golden rind transitioning into melting pale-green translucent sweet flesh, micro juice droplets, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of Galia melon, focusing on the intricate corky lace netting of the golden rind transitioning into melting pale-green translucent sweet flesh, micro juice droplets, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "grape",
+      "slug": "grape",
+      "name": "Grape",
+      "scientificName": "Vitis vinifera",
+      "category": "berry",
+      "primaryColor": "#7C3AED",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/grape/hero.jpg",
+          "status": "pending",
+          "alt": "Lustrous cluster of deep purple grapes with natural frosty bloom on dark textured slate",
+          "prompt": "Commercial editorial food photography of dark Concord grapes, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. A luscious cluster of frosted midnight-blue grapes with dusty silvery waxy bloom and curly vine tendril, one grape sliced in half revealing translucent emerald pulp and tiny seeds, resting on dark charcoal slate with dew drops. Chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of dark Concord grapes, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. A luscious cluster of frosted midnight-blue grapes with dusty silvery waxy bloom and curly vine tendril, one grape sliced in half revealing translucent emerald pulp and tiny seeds, resting on dark charcoal slate with dew drops. Chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/grape/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of grape skin waxy pruinescence bloom and translucent illuminated pulp",
+          "prompt": "Extreme macro photography of a single deep purple grape, focusing on microscopic frosted wax platelets (pruinescence) on taut skin, glistening spherical water droplet refracting light, dark slate, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of a single deep purple grape, focusing on microscopic frosted wax platelets (pruinescence) on taut skin, glistening spherical water droplet refracting light, dark slate, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "grapefruit",
+      "slug": "grapefruit",
+      "name": "Grapefruit",
+      "scientificName": "Citrus paradisi",
+      "category": "citrus",
+      "primaryColor": "#F43F5E",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/grapefruit/hero.jpg",
+          "status": "pending",
+          "alt": "grapefruit botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of Ruby Red grapefruit, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Shows one whole yellow-orange globe with pink blush alongside a cleanly halved fruit showing vibrant crimson-pink pinwheel segments packed with juicy vesicles, resting on wet dark charcoal slate. Dramatic chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Ruby Red grapefruit, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Shows one whole yellow-orange globe with pink blush alongside a cleanly halved fruit showing vibrant crimson-pink pinwheel segments packed with juicy vesicles, resting on wet dark charcoal slate. Dramatic chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/grapefruit/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of grapefruit",
+          "prompt": "Extreme macro photography of halved ruby red grapefruit, focusing on glistening ruby-crimson juice vesicles bursting with liquid, white segmental membranes, fine water beads, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of halved ruby red grapefruit, focusing on glistening ruby-crimson juice vesicles bursting with liquid, white segmental membranes, fine water beads, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "guava",
+      "slug": "guava",
+      "name": "Guava",
+      "scientificName": "Psidium guajava",
+      "category": "tropical",
+      "primaryColor": "#10B981",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/guava/hero.jpg",
+          "status": "pending",
+          "alt": "Fresh ripe guava sliced in half revealing coral-pink flesh with small seeds against dark slate",
+          "prompt": "Commercial editorial food photography of fresh tropical pink guava, right-weighted composition positioned on the right third of the frame, leaving clean deep black negative space on the left. Displays one whole pale green-yellow guava with a fresh leaf alongside one cross-section halved guava displaying vibrant salmon-pink seeded pulp, resting on a dark textured slate slab with subtle water droplets. Dramatic directional chiaroscuro lighting, soft rim light, deep dark backdrop, 85mm lens, f/4.0, ultra-photorealistic. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh tropical pink guava, right-weighted composition positioned on the right third of the frame, leaving clean deep black negative space on the left. Displays one whole pale green-yellow guava with a fresh leaf alongside one cross-section halved guava displaying vibrant salmon-pink seeded pulp, resting on a dark textured slate slab with subtle water droplets. Dramatic directional chiaroscuro lighting, soft rim light, deep dark backdrop, 85mm lens, f/4.0, ultra-photorealistic. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/guava/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of sliced pink guava showing velvety cellular pericarp and embedded seeds",
+          "prompt": "Extreme macro photography of sliced pink guava, focusing on the vibrant salmon-pink pericarp cells and seed core, glistening droplets of ascorbic-acid-rich juice, translucent flesh texture, dark slate background, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced pink guava, focusing on the vibrant salmon-pink pericarp cells and seed core, glistening droplets of ascorbic-acid-rich juice, translucent flesh texture, dark slate background, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "honeydew",
+      "slug": "honeydew",
+      "name": "Honeydew",
+      "scientificName": "Cucumis melo",
+      "category": "melon",
+      "primaryColor": "#10B981",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/honeydew/hero.jpg",
+          "status": "pending",
+          "alt": "honeydew botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of ripe Honeydew melon, right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. Shows one whole smooth pale yellow-cream melon alongside a sliced half displaying cool shimmering pale lime-green succulent flesh and central seed cavity, resting on wet dark slate. Soft chiaroscuro studio lighting, cool emerald glow, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe Honeydew melon, right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. Shows one whole smooth pale yellow-cream melon alongside a sliced half displaying cool shimmering pale lime-green succulent flesh and central seed cavity, resting on wet dark slate. Soft chiaroscuro studio lighting, cool emerald glow, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/honeydew/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of honeydew",
+          "prompt": "Extreme macro photography of honeydew flesh, focusing on succulent translucent pale-green cellular meat saturated with 90 percent biological water, fine crystalline light scattering, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of honeydew flesh, focusing on succulent translucent pale-green cellular meat saturated with 90 percent biological water, fine crystalline light scattering, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "jackfruit",
+      "slug": "jackfruit",
+      "name": "Jackfruit",
+      "scientificName": "Artocarpus heterophyllus",
+      "category": "tropical",
+      "primaryColor": "#EAB308",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/jackfruit/hero.jpg",
+          "status": "pending",
+          "alt": "Large ripe jackfruit cut open showing golden yellow bulbs surrounding central core on dark slate",
+          "prompt": "Commercial editorial food photography of mature jackfruit, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Arrangement shows a section of green spiky hexagonal rind alongside several plump, golden-yellow succulent edible pods (arils) separated from white rag fibers, resting on a dark textured charcoal slate slab with dew drops. Chiaroscuro studio lighting, warm amber glow, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of mature jackfruit, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Arrangement shows a section of green spiky hexagonal rind alongside several plump, golden-yellow succulent edible pods (arils) separated from white rag fibers, resting on a dark textured charcoal slate slab with dew drops. Chiaroscuro studio lighting, warm amber glow, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/jackfruit/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of golden jackfruit bulb fibrous texture and glistening sweet pulp",
+          "prompt": "Extreme macro photography of a ripe jackfruit bulb, focusing on the dense fibrous golden-yellow carotenoid meat, glistening droplets of sweet tropical nectar, delicate cellular fiber strands, dark slate, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of a ripe jackfruit bulb, focusing on the dense fibrous golden-yellow carotenoid meat, glistening droplets of sweet tropical nectar, delicate cellular fiber strands, dark slate, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "jamun",
+      "slug": "jamun",
+      "name": "Jamun",
+      "scientificName": "Syzygium cumini",
+      "category": "berry",
+      "primaryColor": "#581C87",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/jamun/hero.jpg",
+          "status": "pending",
+          "alt": "Cluster of glistening dark purple-black jamun berries with one sliced showing violet flesh on dark slate",
+          "prompt": "Commercial editorial food photography of fresh Indian Jamun (black plum), right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. Displays a cluster of glossy deep midnight-purple oblong berries with slender leaves, one sliced open showing vibrant magenta-violet flesh and pale seed, resting on a dark slate slab with glistening water beads. Dramatic chiaroscuro studio lighting, purple rim highlights, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh Indian Jamun (black plum), right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. Displays a cluster of glossy deep midnight-purple oblong berries with slender leaves, one sliced open showing vibrant magenta-violet flesh and pale seed, resting on a dark slate slab with glistening water beads. Dramatic chiaroscuro studio lighting, purple rim highlights, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/jamun/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of ripe jamun berry skin showing deep violet anthocyanin pigments and dew drops",
+          "prompt": "Extreme macro photography of sliced jamun berry, focusing on the deep anthocyanin purple-violet stained flesh, glistening astringent juice meniscus, taut reflective skin edge, dark slate background, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced jamun berry, focusing on the deep anthocyanin purple-violet stained flesh, glistening astringent juice meniscus, taut reflective skin edge, dark slate background, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "kiwi",
+      "slug": "kiwi",
+      "name": "Kiwi",
+      "scientificName": "Actinidia deliciosa",
+      "category": "berry",
+      "primaryColor": "#84CC16",
+      "overallStatus": "partial",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/kiwi/hero.jpg",
+          "status": "ready",
+          "alt": "Cross-section of ripe kiwi showing vibrant green flesh and radial black seeds on dark slate",
+          "prompt": "Commercial editorial food photography of Cross-section of ripe kiwi showing vibrant green flesh and radial black seeds on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Cross-section of ripe kiwi showing vibrant green flesh and radial black seeds on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/kiwi/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of sliced green kiwi showing emerald cells, black seeds, and white core",
+          "prompt": "Extreme macro food science photography of sliced green kiwi fruit, ultra close-up focusing on translucent emerald parenchymal cells, tiny jet-black seeds embedded in radiating pale rays, fine water droplets glistening on fruit pulp, dark textured slate foreground, shot on 100mm macro lens, f/2.8, shallow depth of field, hyper-detailed crystalline cellular texture. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food science photography of sliced green kiwi fruit, ultra close-up focusing on translucent emerald parenchymal cells, tiny jet-black seeds embedded in radiating pale rays, fine water droplets glistening on fruit pulp, dark textured slate foreground, shot on 100mm macro lens, f/2.8, shallow depth of field, hyper-detailed crystalline cellular texture. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "lemon",
+      "slug": "lemon",
+      "name": "Lemon",
+      "scientificName": "Citrus limon",
+      "category": "citrus",
+      "primaryColor": "#FACC15",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/lemon/hero.jpg",
+          "status": "pending",
+          "alt": "Vibrant yellow lemon sliced in half displaying crystalline segmented juice vesicles on dark textured slate",
+          "prompt": "Commercial editorial food photography of fresh lemons, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Arrangement shows one whole glossy bright yellow lemon with dark green citrus leaf alongside a clean cross-section halve displaying radiant radiating juice vesicles and pale pith, resting on wet dark slate. Chiaroscuro lighting, specular highlights, 85mm lens, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh lemons, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Arrangement shows one whole glossy bright yellow lemon with dark green citrus leaf alongside a clean cross-section halve displaying radiant radiating juice vesicles and pale pith, resting on wet dark slate. Chiaroscuro lighting, specular highlights, 85mm lens, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/lemon/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of sliced lemon pulp vesicles glowing with citrus juice droplets and oil glands",
+          "prompt": "Extreme macro photography of sliced lemon, backlit to illuminate hundreds of translucent spindle-shaped juice sacs filled with citric acid, glowing citrus yellow matrix, fine droplets, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced lemon, backlit to illuminate hundreds of translucent spindle-shaped juice sacs filled with citric acid, glowing citrus yellow matrix, fine droplets, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "lime",
+      "slug": "lime",
+      "name": "Lime",
+      "scientificName": "Citrus aurantiifolia",
+      "category": "citrus",
+      "primaryColor": "#84CC16",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/lime/hero.jpg",
+          "status": "pending",
+          "alt": "lime botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of fresh Key limes, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows one whole glossy dark green lime with citrus leaves alongside sliced lime halves and a wedge displaying radiant pale green juice vesicles, resting on wet dark slate with fine spray droplets. High-contrast chiaroscuro lighting, emerald rim highlights, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh Key limes, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows one whole glossy dark green lime with citrus leaves alongside sliced lime halves and a wedge displaying radiant pale green juice vesicles, resting on wet dark slate with fine spray droplets. High-contrast chiaroscuro lighting, emerald rim highlights, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/lime/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of lime",
+          "prompt": "Extreme macro photography of sliced lime wedge, backlit to reveal hundreds of translucent emerald-green spindle-shaped juice sacs glistening with tart citric acid, oil glands along rind, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced lime wedge, backlit to reveal hundreds of translucent emerald-green spindle-shaped juice sacs glistening with tart citric acid, oil glands along rind, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "loquat",
+      "slug": "loquat",
+      "name": "Loquat",
+      "scientificName": "Eriobotrya japonica",
+      "category": "pome",
+      "primaryColor": "#F59E0B",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/loquat/hero.jpg",
+          "status": "pending",
+          "alt": "loquat botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of fresh Loquats, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. A cluster of small golden-apricot oval fruits with serrated leathery leaves, one peeled in half showing juicy golden-amber flesh and two smooth mahogany-brown seeds, resting on dark slate with water beads. Warm chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh Loquats, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. A cluster of small golden-apricot oval fruits with serrated leathery leaves, one peeled in half showing juicy golden-amber flesh and two smooth mahogany-brown seeds, resting on dark slate with water beads. Warm chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/loquat/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of loquat",
+          "prompt": "Extreme macro photography of peeled loquat, focusing on delicate peeled skin edge, radiant amber-gold juicy pulp cells, glossy brown seed facet, dark slate, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of peeled loquat, focusing on delicate peeled skin edge, radiant amber-gold juicy pulp cells, glossy brown seed facet, dark slate, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "lychee",
+      "slug": "lychee",
+      "name": "Lychee",
+      "scientificName": "Litchi chinensis",
+      "category": "tropical",
+      "primaryColor": "#F43F5E",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/lychee/hero.jpg",
+          "status": "pending",
+          "alt": "Cluster of ripe crimson lychees with one peeled displaying glistening translucent white aril on dark slate",
+          "prompt": "Commercial editorial food photography of fresh lychees, right-weighted composition positioned on the right third of the frame, leaving clean deep black negative space on the left. Features a cluster of bumpy rose-red pebbled fruits with dark green leaves, one fruit partially peeled revealing a glistening translucent pearl-white aril and dark seed beneath, resting on wet dark slate. Moody chiaroscuro studio lighting, rim light highlights, 85mm lens, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh lychees, right-weighted composition positioned on the right third of the frame, leaving clean deep black negative space on the left. Features a cluster of bumpy rose-red pebbled fruits with dark green leaves, one fruit partially peeled revealing a glistening translucent pearl-white aril and dark seed beneath, resting on wet dark slate. Moody chiaroscuro studio lighting, rim light highlights, 85mm lens, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/lychee/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of peeled lychee translucent juicy aril vesicles and pearl-white texture",
+          "prompt": "Extreme macro photography of peeled lychee fruit, focusing on the wet glassy translucent pearl-white aril pulp, glistening cellular vesicles brimming with floral juice, dark slate background, shallow depth of field, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of peeled lychee fruit, focusing on the wet glassy translucent pearl-white aril pulp, glistening cellular vesicles brimming with floral juice, dark slate background, shallow depth of field, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mandarin",
+      "slug": "mandarin",
+      "name": "Mandarin",
+      "scientificName": "Citrus reticulata",
+      "category": "citrus",
+      "primaryColor": "#F97316",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/mandarin/hero.jpg",
+          "status": "pending",
+          "alt": "mandarin botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of ripe mandarin orange, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Features one whole bright orange mandarin with green stem and leaves alongside one partially peeled fruit showing loose white albedo webbing and separated crescent segments, resting on dark slate with dew drops. Chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe mandarin orange, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Features one whole bright orange mandarin with green stem and leaves alongside one partially peeled fruit showing loose white albedo webbing and separated crescent segments, resting on dark slate with dew drops. Chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/mandarin/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of mandarin",
+          "prompt": "Extreme macro photography of mandarin orange segment, focusing on translucent delicate membrane displaying individual plump orange juice vesicles within, white pith lacing, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of mandarin orange segment, focusing on translucent delicate membrane displaying individual plump orange juice vesicles within, white pith lacing, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mango",
+      "slug": "mango",
+      "name": "Mango",
+      "scientificName": "Mangifera indica",
+      "category": "tropical",
+      "primaryColor": "#F59E0B",
+      "overallStatus": "complete",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/mango/hero.jpg",
+          "status": "ready",
+          "alt": "Ripe golden Alphonso mangoes with succulent diced hedgehog cut on dark slate",
+          "prompt": "Commercial editorial food photography of Ripe golden Alphonso mangoes with succulent diced hedgehog cut on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Ripe golden Alphonso mangoes with succulent diced hedgehog cut on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/mango/macro-break.jpg",
+          "status": "ready",
+          "alt": "Extreme macro of succulent mango golden pulp showing crystalline nectar drops and parenchymal structure",
+          "prompt": "Extreme macro food science photography of Extreme macro of succulent mango golden pulp showing crystalline nectar drops and parenchymal structure, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food science photography of Extreme macro of succulent mango golden pulp showing crystalline nectar drops and parenchymal structure, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "mangosteen",
+      "slug": "mangosteen",
+      "name": "Mangosteen",
+      "scientificName": "Garcinia mangostana",
+      "category": "tropical",
+      "primaryColor": "#831843",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/mangosteen/hero.jpg",
+          "status": "pending",
+          "alt": "Halved and whole purple mangosteens displaying pristine snowy white segmented flesh inside deep violet rind on dark slate",
+          "prompt": "Commercial editorial food photography of Queen Mangosteen, right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. Shows one whole round deep-purple fruit with thick green calyx alongside one fruit with top rind lifted off revealing immaculate segmented snow-white garlic-shaped arils, resting on dark charcoal slate with dew drops. Chiaroscuro lighting, purple-white contrast, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Queen Mangosteen, right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. Shows one whole round deep-purple fruit with thick green calyx alongside one fruit with top rind lifted off revealing immaculate segmented snow-white garlic-shaped arils, resting on dark charcoal slate with dew drops. Chiaroscuro lighting, purple-white contrast, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/mangosteen/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of snowy white mangosteen segment juice vesicles showing translucent cell walls and pristine turgor",
+          "prompt": "Extreme macro photography of mangosteen segments, focusing on glistening snow-white cellular vesicles brimming with sweet-tart juice, contrasted against thick royal-purple pericarp rim, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of mangosteen segments, focusing on glistening snow-white cellular vesicles brimming with sweet-tart juice, contrasted against thick royal-purple pericarp rim, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "nectarine",
+      "slug": "nectarine",
+      "name": "Nectarine",
+      "scientificName": "Prunus persica var. nucipersica",
+      "category": "stone-fruit",
+      "primaryColor": "#E11D48",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/nectarine/hero.jpg",
+          "status": "pending",
+          "alt": "nectarine botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of ripe yellow nectarine, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Displays one whole ultra-smooth fuzz-free nectarine with scarlet-crimson and gold marbled skin alongside one halved fruit showing dense succulent yellow flesh and grooved central stone, resting on wet dark charcoal slate. Dramatic chiaroscuro studio lighting, mirror sheen, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe yellow nectarine, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Displays one whole ultra-smooth fuzz-free nectarine with scarlet-crimson and gold marbled skin alongside one halved fruit showing dense succulent yellow flesh and grooved central stone, resting on wet dark charcoal slate. Dramatic chiaroscuro studio lighting, mirror sheen, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/nectarine/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of nectarine",
+          "prompt": "Extreme macro photography of sliced nectarine, focusing on taut smooth red-gold skin boundary, dense non-mealy yellow pulp fibers glistening with sweet juice, dark slate, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced nectarine, focusing on taut smooth red-gold skin boundary, dense non-mealy yellow pulp fibers glistening with sweet juice, dark slate, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "orange",
+      "slug": "orange",
+      "name": "Orange",
+      "scientificName": "Citrus × sinensis",
+      "category": "citrus",
+      "primaryColor": "#EA580C",
+      "overallStatus": "complete",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/orange/hero.jpg",
+          "status": "ready",
+          "alt": "Vibrant ripe sweet oranges with textured rind and a glistening cross-section on dark slate",
+          "prompt": "Commercial editorial food photography of Vibrant ripe sweet oranges with textured rind and a glistening cross-section on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Vibrant ripe sweet oranges with textured rind and a glistening cross-section on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/orange/macro-break.jpg",
+          "status": "ready",
+          "alt": "Extreme macro of glistening citrus juice vesicles bursting with liquid amber nectar",
+          "prompt": "Extreme macro food science photography of Extreme macro of glistening citrus juice vesicles bursting with liquid amber nectar, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food science photography of Extreme macro of glistening citrus juice vesicles bursting with liquid amber nectar, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "papaya",
+      "slug": "papaya",
+      "name": "Papaya",
+      "scientificName": "Carica papaya",
+      "category": "tropical",
+      "primaryColor": "#F97316",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/papaya/hero.jpg",
+          "status": "pending",
+          "alt": "Ripe papaya sliced in half lengthwise displaying vivid orange flesh and black seeds on dark slate",
+          "prompt": "Commercial editorial food photography of ripe tropical papaya, right-weighted composition on the right third of the frame, leaving clean matte dark negative space on the left. Shows one whole golden-green papaya alongside one half sliced lengthwise revealing rich salmon-orange flesh and a central cavity filled with glistening caviar-like black gelatinous seeds, resting on dark charcoal slate with fresh droplets. Cinematic chiaroscuro lighting, deep black background, 85mm lens, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe tropical papaya, right-weighted composition on the right third of the frame, leaving clean matte dark negative space on the left. Shows one whole golden-green papaya alongside one half sliced lengthwise revealing rich salmon-orange flesh and a central cavity filled with glistening caviar-like black gelatinous seeds, resting on dark charcoal slate with fresh droplets. Cinematic chiaroscuro lighting, deep black background, 85mm lens, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/papaya/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of ripe papaya flesh texture and glistening black gelatinous seeds",
+          "prompt": "Extreme macro photography of papaya seed cavity, focusing on jet-black gelatinous spherical seeds coated in glistening mucilage resting against succulent carotenoid-orange pulp, glistening liquid light reflections, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of papaya seed cavity, focusing on jet-black gelatinous spherical seeds coated in glistening mucilage resting against succulent carotenoid-orange pulp, glistening liquid light reflections, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "passionfruit",
+      "slug": "passionfruit",
+      "name": "Passion Fruit",
+      "scientificName": "Passiflora edulis",
+      "category": "tropical",
+      "primaryColor": "#7C3AED",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/passionfruit/hero.jpg",
+          "status": "pending",
+          "alt": "Halved ripe purple passion fruits showing glistening golden gelatinous pulp and black seeds on rustic dark stone",
+          "prompt": "Commercial editorial food photography of ripe purple passionfruit, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Shows one whole wrinkled purple globe alongside one cleanly sliced half overflowing with glossy golden-orange gelatinous pulp and crunchy dark seeds, resting on dark charcoal slate with water beads. Chiaroscuro studio lighting, vibrant orange contrast, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe purple passionfruit, right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Shows one whole wrinkled purple globe alongside one cleanly sliced half overflowing with glossy golden-orange gelatinous pulp and crunchy dark seeds, resting on dark charcoal slate with water beads. Chiaroscuro studio lighting, vibrant orange contrast, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/passionfruit/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of translucent orange passion fruit arils suspended with crunchy black edible seeds",
+          "prompt": "Extreme macro photography of passionfruit interior, focusing on translucent golden-yellow gelatinous aril sacs enclosing textured black seeds, glistening liquid viscosity and bubbles, dark slate, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of passionfruit interior, focusing on translucent golden-yellow gelatinous aril sacs enclosing textured black seeds, glistening liquid viscosity and bubbles, dark slate, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "peach",
+      "slug": "peach",
+      "name": "Peach",
+      "scientificName": "Prunus persica",
+      "category": "stone-fruit",
+      "primaryColor": "#F97316",
+      "overallStatus": "complete",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/peach/hero.jpg",
+          "status": "ready",
+          "alt": "Ripe velvety peaches with radiant rose-red blush over golden skin with an angled cross-section showing juicy amber flesh and corrugated pit on dark slate",
+          "prompt": "Commercial editorial food photography of Ripe velvety peaches with radiant rose-red blush over golden skin with an angled cross-section showing juicy amber flesh and corrugated pit on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Ripe velvety peaches with radiant rose-red blush over golden skin with an angled cross-section showing juicy amber flesh and corrugated pit on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/peach/macro-break.jpg",
+          "status": "ready",
+          "alt": "Extreme macro of sliced ripe peach showing fine epidermal trichomes, glistening nectar cells, and corrugated pit",
+          "prompt": "Extreme macro food science photography of Extreme macro of sliced ripe peach showing fine epidermal trichomes, glistening nectar cells, and corrugated pit, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food science photography of Extreme macro of sliced ripe peach showing fine epidermal trichomes, glistening nectar cells, and corrugated pit, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pear",
+      "slug": "pear",
+      "name": "Pear",
+      "scientificName": "Pyrus communis",
+      "category": "pome",
+      "primaryColor": "#65A30D",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/pear/hero.jpg",
+          "status": "pending",
+          "alt": "Elegant golden-green and russet Bartlett and Bosc pears on rustic dark wooden surface with green leaves",
+          "prompt": "Commercial editorial food photography of ripe Bosc / Bartlett pear, right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. Displays one whole golden-russet teardrop pear with stem and leaf alongside one half sliced lengthwise showing melting ivory flesh and starry seed core, resting on dark charcoal slate with moisture droplets. Chiaroscuro lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe Bosc / Bartlett pear, right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. Displays one whole golden-russet teardrop pear with stem and leaf alongside one half sliced lengthwise showing melting ivory flesh and starry seed core, resting on dark charcoal slate with moisture droplets. Chiaroscuro lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/pear/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of sliced pear flesh showing delicate brachysclereid stone cells glistening with clear cell sap",
+          "prompt": "Extreme macro photography of sliced pear, focusing on glistening ivory hypanthium flesh, tiny gritty sclereid stone cells embedded in juicy melting texture, clear juice bead, dark slate, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced pear, focusing on glistening ivory hypanthium flesh, tiny gritty sclereid stone cells embedded in juicy melting texture, clear juice bead, dark slate, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pineapple",
+      "slug": "pineapple",
+      "name": "Pineapple",
+      "scientificName": "Ananas comosus",
+      "category": "tropical",
+      "primaryColor": "#EAB308",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/pineapple/hero.jpg",
+          "status": "pending",
+          "alt": "Fresh golden pineapple with green leafy crown sliced open showing juicy yellow interior on dark slate",
+          "prompt": "Commercial editorial food photography of ripe golden pineapple, right-weighted composition positioned on the right third of the frame, leaving clean matte dark negative space on the left. Shows one whole pineapple with textured diamond rind and spiky crown alongside a thick golden circular slice showing fibrous radial eyes, resting on a dark slate slab with moisture droplets. Dramatic chiaroscuro lighting, golden rim accents, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe golden pineapple, right-weighted composition positioned on the right third of the frame, leaving clean matte dark negative space on the left. Shows one whole pineapple with textured diamond rind and spiky crown alongside a thick golden circular slice showing fibrous radial eyes, resting on a dark slate slab with moisture droplets. Dramatic chiaroscuro lighting, golden rim accents, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/pineapple/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of golden pineapple juicy fruit eyes showing crystalline juice vesicles and fiber",
+          "prompt": "Extreme macro photography of sliced pineapple flesh, focusing on glistening fibrous golden-yellow pulp cells, droplets of bromelain-rich juice, crystalline sugar vacuoles, dark slate, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced pineapple flesh, focusing on glistening fibrous golden-yellow pulp cells, droplets of bromelain-rich juice, crystalline sugar vacuoles, dark slate, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "plum",
+      "slug": "plum",
+      "name": "Plum",
+      "scientificName": "Prunus domestica",
+      "category": "stone-fruit",
+      "primaryColor": "#7E22CE",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/plum/hero.jpg",
+          "status": "pending",
+          "alt": "Fresh ripe purple plums dusted with natural silver bloom sliced open showing golden amber flesh on dark slate",
+          "prompt": "Commercial editorial food photography of ripe Italian plums, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows one whole deep indigo-purple plum with frosted silvery bloom alongside one halved plum revealing sweet golden-amber translucent flesh and central pit, resting on wet dark slate. Moody chiaroscuro studio lighting, warm amber glow, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe Italian plums, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows one whole deep indigo-purple plum with frosted silvery bloom alongside one halved plum revealing sweet golden-amber translucent flesh and central pit, resting on wet dark slate. Moody chiaroscuro studio lighting, warm amber glow, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/plum/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of sliced purple plum showing golden-amber flesh texture and anthocyanin-flushed peel",
+          "prompt": "Extreme macro photography of sliced plum, focusing on the vivid contrast between powdery frosted purple skin and glowing translucent golden-amber flesh fibers, glistening juice droplet, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced plum, focusing on the vivid contrast between powdery frosted purple skin and glowing translucent golden-amber flesh fibers, glistening juice droplet, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pomegranate",
+      "slug": "pomegranate",
+      "name": "Pomegranate",
+      "scientificName": "Punica granatum",
+      "category": "berry",
+      "primaryColor": "#E11D48",
+      "overallStatus": "complete",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/pomegranate/hero.jpg",
+          "status": "ready",
+          "alt": "A ripe, split-open pomegranate showing glistening ruby-red arils spilling out on dark slate",
+          "prompt": "Commercial editorial food photography of A ripe, split-open pomegranate showing glistening ruby-red arils spilling out on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of A ripe, split-open pomegranate showing glistening ruby-red arils spilling out on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/pomegranate/macro-break.jpg",
+          "status": "ready",
+          "alt": "Extreme macro photography of glistening translucent ruby red pomegranate arils",
+          "prompt": "Extreme macro food science photography of Extreme macro photography of glistening translucent ruby red pomegranate arils, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food science photography of Extreme macro photography of glistening translucent ruby red pomegranate arils, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "pomelo",
+      "slug": "pomelo",
+      "name": "Pomelo",
+      "scientificName": "Citrus maxima",
+      "category": "citrus",
+      "primaryColor": "#EAB308",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/pomelo/hero.jpg",
+          "status": "pending",
+          "alt": "pomelo botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of giant pomelo (Citrus maxima), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Displays a pale green-yellow pomelo with thick white spongy pith sliced open, revealing immense crunchy rose-pink juice vesicles separated from the membrane, resting on dark charcoal slate. Chiaroscuro lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of giant pomelo (Citrus maxima), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Displays a pale green-yellow pomelo with thick white spongy pith sliced open, revealing immense crunchy rose-pink juice vesicles separated from the membrane, resting on dark charcoal slate. Chiaroscuro lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/pomelo/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of pomelo",
+          "prompt": "Extreme macro photography of individual pomelo juice sacs, focusing on colossal translucent spindle-shaped pink vesicles, crisp non-leaking texture, glistening surface moisture, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of individual pomelo juice sacs, focusing on colossal translucent spindle-shaped pink vesicles, crisp non-leaking texture, glistening surface moisture, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "quince",
+      "slug": "quince",
+      "name": "Quince",
+      "scientificName": "Cydonia oblonga",
+      "category": "pome",
+      "primaryColor": "#CA8A04",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/quince/hero.jpg",
+          "status": "pending",
+          "alt": "quince botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of ripe golden Quince, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows one whole pear-shaped golden-yellow quince with subtle velvety grey fuzz and dark green leaves alongside one halved fruit revealing dense cream-colored interior and seed core, resting on dark charcoal slate with water drops. Chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe golden Quince, right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows one whole pear-shaped golden-yellow quince with subtle velvety grey fuzz and dark green leaves alongside one halved fruit revealing dense cream-colored interior and seed core, resting on dark charcoal slate with water drops. Chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/quince/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of quince",
+          "prompt": "Extreme macro photography of sliced quince, focusing on dense granular hypanthium flesh with microscopic sclereid stone cells, velvety fuzz on golden skin edge, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced quince, focusing on dense granular hypanthium flesh with microscopic sclereid stone cells, velvety fuzz on golden skin edge, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "raspberry",
+      "slug": "raspberry",
+      "name": "Raspberry",
+      "scientificName": "Rubus idaeus",
+      "category": "berry",
+      "primaryColor": "#BE123C",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/raspberry/hero.jpg",
+          "status": "pending",
+          "alt": "Freshly picked velvety ruby-red raspberries piled in a white ceramic dish against dark slate",
+          "prompt": "Commercial editorial food photography of fresh red raspberries, right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. A cluster of thimble-shaped scarlet-red raspberries with hollow core and green mint-leaf accent, resting on a dark rustic charcoal slate slab with water droplets. Dramatic chiaroscuro studio lighting, bright ruby luminescence, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of fresh red raspberries, right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. A cluster of thimble-shaped scarlet-red raspberries with hollow core and green mint-leaf accent, resting on a dark rustic charcoal slate slab with water droplets. Dramatic chiaroscuro studio lighting, bright ruby luminescence, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/raspberry/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of individual raspberry drupelets showing fine micro-hairs and glistening scarlet juice spheres",
+          "prompt": "Extreme macro photography of red raspberry drupelets, focusing on velvety microscopic hairs on glowing translucent crimson spheres, cellular light scattering, glistening moisture, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of red raspberry drupelets, focusing on velvety microscopic hairs on glowing translucent crimson spheres, cellular light scattering, glistening moisture, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "sapodilla",
+      "slug": "sapodilla",
+      "name": "Sapodilla",
+      "scientificName": "Manilkara zapota",
+      "category": "tropical",
+      "primaryColor": "#92400E",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/sapodilla/hero.jpg",
+          "status": "pending",
+          "alt": "Whole and halved ripe Chikoo sapodilla fruits showing granular caramel flesh and glossy black seeds on rustic wood",
+          "prompt": "Commercial editorial food photography of ripe Sapodilla (Chikoo), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Displays one whole oval fruit with cinnamon-brown scurfy skin and a green leaf alongside one cleanly halved fruit showing granular honey-brown translucent flesh and glossy black seeds, resting on dark charcoal slate. Warm chiaroscuro lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe Sapodilla (Chikoo), right-weighted composition on the right third of the frame, leaving clean deep dark negative space on the left. Displays one whole oval fruit with cinnamon-brown scurfy skin and a green leaf alongside one cleanly halved fruit showing granular honey-brown translucent flesh and glossy black seeds, resting on dark charcoal slate. Warm chiaroscuro lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/sapodilla/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of granular amber-brown sapodilla pulp showing delicate fructose crystals and smooth stone cell texture",
+          "prompt": "Extreme macro photography of sliced sapodilla, focusing on the fine brown sugar crystalline texture of the translucent amber flesh, glistening droplets of malt-sweet juice, dark slate, 100mm macro lens, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced sapodilla, focusing on the fine brown sugar crystalline texture of the translucent amber flesh, glistening droplets of malt-sweet juice, dark slate, 100mm macro lens, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "starfruit",
+      "slug": "starfruit",
+      "name": "Starfruit",
+      "scientificName": "Averrhoa carambola",
+      "category": "tropical",
+      "primaryColor": "#EAB308",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/starfruit/hero.jpg",
+          "status": "pending",
+          "alt": "Whole golden ripe starfruits and sliced star pentagons showing glistening translucent yellow flesh on dark slate",
+          "prompt": "Commercial editorial food photography of ripe yellow starfruit (carambola), right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows one whole five-angled ribbed fruit alongside clean cross-section 5-pointed star slices showing translucent amber-yellow juicy flesh, resting on wet dark slate with water drops. Chiaroscuro studio lighting, backlit translucency, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of ripe yellow starfruit (carambola), right-weighted composition on the right third of the frame, leaving clean deep black negative space on the left. Shows one whole five-angled ribbed fruit alongside clean cross-section 5-pointed star slices showing translucent amber-yellow juicy flesh, resting on wet dark slate with water drops. Chiaroscuro studio lighting, backlit translucency, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/starfruit/macro-break.jpg",
+          "status": "pending",
+          "alt": "Extreme macro photograph of starfruit cross section wing showing crystalline cellular structure and water-filled vacuoles",
+          "prompt": "Extreme macro photography of a star-shaped carambola slice, illuminated from behind to highlight translucent chartreuse parenchymal cells, delicate vascular veins, crystalline edge, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of a star-shaped carambola slice, illuminated from behind to highlight translucent chartreuse parenchymal cells, delicate vascular veins, crystalline edge, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "strawberry",
+      "slug": "strawberry",
+      "name": "Strawberry",
+      "scientificName": "Fragaria × ananassa",
+      "category": "berry",
+      "primaryColor": "#E11D48",
+      "overallStatus": "complete",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/strawberry/hero.jpg",
+          "status": "ready",
+          "alt": "Fresh ripe red strawberries with vibrant green calyxes on dark textured slate",
+          "prompt": "Commercial editorial food photography of Fresh ripe red strawberries with vibrant green calyxes on dark textured slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Fresh ripe red strawberries with vibrant green calyxes on dark textured slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/strawberry/macro-break.jpg",
+          "status": "ready",
+          "alt": "Extreme macro of ripe strawberry skin and golden achenes",
+          "prompt": "Extreme macro food science photography of Extreme macro of ripe strawberry skin and golden achenes, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food science photography of Extreme macro of ripe strawberry skin and golden achenes, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "watermelon",
+      "slug": "watermelon",
+      "name": "Watermelon",
+      "scientificName": "Citrullus lanatus",
+      "category": "melon",
+      "primaryColor": "#10B981",
+      "overallStatus": "complete",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/watermelon/hero.jpg",
+          "status": "ready",
+          "alt": "A generous curved slice of ripe watermelon with glistening crimson pulp, dark seeds, and green striped rind on dark slate",
+          "prompt": "Commercial editorial food photography of A generous curved slice of ripe watermelon with glistening crimson pulp, dark seeds, and green striped rind on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of A generous curved slice of ripe watermelon with glistening crimson pulp, dark seeds, and green striped rind on dark slate, right-weighted composition, dark slate plinth, chiaroscuro lighting, deep black background, 85mm lens, 8k. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/watermelon/macro-break.jpg",
+          "status": "ready",
+          "alt": "Extreme macro of glistening watermelon pulp displaying crystalline sugar vacuoles and cellular moisture",
+          "prompt": "Extreme macro food science photography of Extreme macro of glistening watermelon pulp displaying crystalline sugar vacuoles and cellular moisture, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro food science photography of Extreme macro of glistening watermelon pulp displaying crystalline sugar vacuoles and cellular moisture, 100mm macro lens, f/2.8, shallow depth of field, crystalline cellular detail, dark slate. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "winter-melon",
+      "slug": "winter-melon",
+      "name": "Winter Melon",
+      "scientificName": "Benincasa hispida",
+      "category": "melon",
+      "primaryColor": "#06B6D4",
+      "overallStatus": "pending",
+      "images": {
+        "hero": {
+          "role": "hero",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/winter-melon/hero.jpg",
+          "status": "pending",
+          "alt": "winter-melon botanical still life on dark slate",
+          "prompt": "Commercial editorial food photography of Winter Melon (Ash Gourd), right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. Shows a cylindrical green gourd with characteristic frosty white chalky wax bloom alongside a thick sliced cross-section wheel revealing snowy-white sponge flesh and flat seeds, resting on wet dark slate. Chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9",
+          "parameters": {
+            "midjourney": "Commercial editorial food photography of Winter Melon (Ash Gourd), right-weighted composition on the right third of the frame, leaving clean deep matte dark negative space on the left. Shows a cylindrical green gourd with characteristic frosty white chalky wax bloom alongside a thick sliced cross-section wheel revealing snowy-white sponge flesh and flat seeds, resting on wet dark slate. Chiaroscuro studio lighting, 85mm, f/4.0. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        },
+        "macroBreak": {
+          "role": "macroBreak",
+          "aspectRatio": "16:9",
+          "targetPath": "public/images/fruits/winter-melon/macro-break.jpg",
+          "status": "pending",
+          "alt": "Macro photograph of winter-melon",
+          "prompt": "Extreme macro photography of sliced winter melon, focusing on snowy-white porous spongy parenchymal tissue holding high-purity biological water, delicate glistening cellular cell walls, 100mm macro, f/2.8. --ar 16:9",
+          "parameters": {
+            "midjourney": "Extreme macro photography of sliced winter melon, focusing on snowy-white porous spongy parenchymal tissue holding high-purity biological water, delicate glistening cellular cell walls, 100mm macro, f/2.8. --ar 16:9 --style raw --v 6.1",
+            "dalle3": {
+              "size": "1792x1024",
+              "quality": "hd",
+              "style": "natural"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

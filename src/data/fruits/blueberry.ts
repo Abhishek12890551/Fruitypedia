@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Blueberry — Golden Master fruit record.
  *
  * All nutrition values are derived from USDA FoodData Central SR Legacy
@@ -19,22 +19,22 @@ export const blueberry: Fruit = {
   name: "Blueberry",
 
   editorial: {
-    nickname: "la baie d'or bleu",
+    nickname: "Neelbadari · Blue Jamun",
     tagline: "Tiny fruit. Extraordinary depth.",
     heroDescription:
       "One of nature's most nutrient-dense fruits, the blueberry packs antioxidants, vitamins, and fiber into a pearl-sized package. Native to North America and cultivated for centuries, it remains one of the most studied berries in nutritional science.",
     pullQuotes: [
       {
         quote: "Blueberries are small, but their botanical journey spans continents, ice ages, and millennia of wild selection.",
-        attribution: "Botanical Monograph Archives",
+        attribution: "Editorial",
       },
       {
-        quote: "Nature rarely paints in blue; in the blueberry, it mastered the art through microscopic light scattering.",
-        attribution: "Optical Biochemistry Journal",
+        quote: "Nature rarely paints in blue; in the blueberry, it achieved a remarkable surface effect — the waxy bloom scatters light into an indigo sheen while anthocyanins colour the flesh beneath.",
+        attribution: "Editorial",
       },
     ],
     nutritionDescription:
-      "Over 84% pure structured cellular water, carrying soluble sugars, organic acids, and suspended pectin.",
+      "Over 84% water, carrying soluble sugars, organic acids, and suspended pectin.",
   },
 
   taxonomy: {
@@ -63,6 +63,14 @@ export const blueberry: Fruit = {
       role: "hero",
       generatedBy: "ai",
       provider: "imagen-3",
+      reviewed: true,
+    },
+    card: {
+      src: "/images/fruits/blueberry/card.png",
+      alt: "Blueberry - editorial card image",
+      role: "card",
+      generatedBy: "ai",
+      provider: "imagen-4",
       reviewed: true,
     },
     gallery: [],
@@ -336,11 +344,11 @@ export const blueberry: Fruit = {
 
   benefitTags: [
     {
-      label: "Rich in Antioxidants",
-      phenomenon: "antioxidant activity",
+      label: "Source of Antioxidant Anthocyanins",
+      phenomenon: "anthocyanin antioxidant activity",
       description:
-        "Blueberries contain anthocyanins, a class of flavonoid compounds that contribute to their deep blue-purple color and have been extensively studied for their antioxidant properties.",
-      evidenceLevel: "established",
+        "Blueberries contain anthocyanins, flavonoid compounds that give them their characteristic pigmentation and have been studied for antioxidant properties. Research is ongoing into their cognitive and cardiovascular effects.",
+      evidenceLevel: "emerging",
       sourceIds: ["usda-fdc-blueberry"],
       icon: "shield",
     },
@@ -401,7 +409,7 @@ export const blueberry: Fruit = {
     {
       name: "Lowbush / Wild (Vaccinium angustifolium)",
       description:
-        "Smaller, more intensely flavored berries. Commercially harvested in Maine, Canada, and Nordic regions. Often preferred for processing and baking.",
+        "Smaller, more intensely flavored berries. Commercially harvested primarily in Maine and Quebec, Canada. Often preferred for processing and baking. Nordic wild berries are predominantly bilberry (Vaccinium myrtillus), a distinct species.",
       sourceIds: ["usda-fdc-blueberry"],
     },
     {

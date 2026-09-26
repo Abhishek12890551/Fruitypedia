@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Apple — Production fruit monograph.
  *
  * All nutrition values are derived from USDA FoodData Central SR Legacy
@@ -19,7 +19,7 @@ export const apple: Fruit = {
   name: "Apple",
 
   editorial: {
-    nickname: "la pomme d'or antique",
+    nickname: "Kashmiri Seb · Deva-phala",
     tagline: "Crisp pome architecture. Ancient wild fruit of the Tian Shan.",
     heroDescription:
       "Descending from ancestral wild fruit forests flanking the Tian Shan mountains of Central Asia, the apple is humanity's most storied temperate fruit. Beneath its anthocyanin-blushed skin lies crisp, cellular-dense ivory flesh formed from a specialized botanical floral tube (hypanthium), delivering slow-release dietary pectin fiber, antioxidant quercetin polyphenols, and balanced malic acid sweetness.",
@@ -34,7 +34,7 @@ export const apple: Fruit = {
       },
     ],
     nutritionDescription:
-      "Nearly 86% pure structured cell sap, carrying dissolved malic acid, crisp atmospheric air pockets, and insoluble pectin fibers.",
+      "Nearly 86% water, carrying dissolved malic acid, crisp air pockets, and insoluble pectin fibers.",
   },
 
   taxonomy: {
@@ -63,6 +63,14 @@ export const apple: Fruit = {
       role: "hero",
       generatedBy: "ai",
       provider: "imagen-3",
+      reviewed: true,
+    },
+    card: {
+      src: "/images/fruits/apple/card.png",
+      alt: "Apple - editorial card image",
+      role: "card",
+      generatedBy: "ai",
+      provider: "imagen-4",
       reviewed: true,
     },
     gallery: [],

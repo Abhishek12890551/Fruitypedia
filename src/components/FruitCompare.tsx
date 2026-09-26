@@ -397,7 +397,7 @@ export const FruitCompare: React.FC<FruitCompareProps> = ({
               >
                 Slot A · {fruitA.taxonomy.family}
               </span>
-              <span className="font-script text-sm text-zinc-400">
+              <span className="font-editorial italic text-base text-zinc-300 tracking-wide">
                 {fruitA.editorial.nickname}
               </span>
             </div>
@@ -487,7 +487,7 @@ export const FruitCompare: React.FC<FruitCompareProps> = ({
               >
                 Slot B · {fruitB.taxonomy.family}
               </span>
-              <span className="font-script text-sm text-zinc-400">
+              <span className="font-editorial italic text-base text-zinc-300 tracking-wide">
                 {fruitB.editorial.nickname}
               </span>
             </div>
@@ -553,22 +553,33 @@ export const FruitCompare: React.FC<FruitCompareProps> = ({
             {takeaways.map((item, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl border border-zinc-800/80 bg-zinc-900/40 p-5 backdrop-blur-sm relative overflow-hidden"
+                className="rounded-2xl border border-zinc-800/80 bg-zinc-950/70 p-5 backdrop-blur-md relative overflow-hidden transition-all hover:border-zinc-700 hover:-translate-y-0.5 shadow-lg group"
               >
                 <div
-                  className="absolute top-0 left-0 h-1 w-full"
+                  className="absolute top-0 left-0 h-1.5 w-full"
                   style={{ backgroundColor: item.accent }}
                 />
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="text-lg">{item.icon}</span>
-                  <span className="font-ui text-xs font-semibold uppercase tracking-wider text-zinc-400">
-                    {item.title}
-                  </span>
+                <div
+                  className="absolute -right-8 -top-8 w-24 h-24 rounded-full opacity-10 blur-xl pointer-events-none group-hover:opacity-25 transition-opacity"
+                  style={{ backgroundColor: item.accent }}
+                  aria-hidden="true"
+                />
+                <div className="flex items-center justify-between gap-2 mb-2.5 relative z-10">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xl">{item.icon}</span>
+                    <span className="font-ui text-xs font-semibold uppercase tracking-wider text-zinc-400">
+                      {item.title}
+                    </span>
+                  </div>
+                  <span
+                    className="w-1.5 h-1.5 rounded-full"
+                    style={{ backgroundColor: item.accent, boxShadow: `0 0 8px ${item.accent}` }}
+                  />
                 </div>
-                <h4 className="font-display text-lg font-bold text-white mb-1.5">
+                <h4 className="font-display text-lg font-bold text-white mb-1.5 relative z-10">
                   {item.highlight}
                 </h4>
-                <p className="font-ui text-xs text-zinc-400 leading-relaxed font-light">
+                <p className="font-ui text-xs text-zinc-400 leading-relaxed font-light relative z-10">
                   {item.detail}
                 </p>
               </div>
@@ -746,7 +757,7 @@ export const FruitCompare: React.FC<FruitCompareProps> = ({
           >
             <div className="flex items-center justify-between">
               <h4 className="font-display text-xl font-bold text-white">{fruitA.name} Taste</h4>
-              <span className="font-script text-sm text-zinc-400">{fruitA.editorial.nickname}</span>
+              <span className="font-editorial italic text-sm text-zinc-400">{fruitA.editorial.nickname}</span>
             </div>
 
             <div className="space-y-3 font-ui text-xs">
@@ -796,7 +807,7 @@ export const FruitCompare: React.FC<FruitCompareProps> = ({
           >
             <div className="flex items-center justify-between">
               <h4 className="font-display text-xl font-bold text-white">{fruitB.name} Taste</h4>
-              <span className="font-script text-sm text-zinc-400">{fruitB.editorial.nickname}</span>
+              <span className="font-editorial italic text-sm text-zinc-400">{fruitB.editorial.nickname}</span>
             </div>
 
             <div className="space-y-3 font-ui text-xs">

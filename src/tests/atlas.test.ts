@@ -6,8 +6,8 @@ import {
 } from "../components/WorldAtlasExplorer";
 
 describe("Phase 4E — Botanical World Atlas & Geographic Diaspora Analytics", () => {
-  it("verifies all 8 production fruits have valid cartographic coordinates and origin metadata", () => {
-    expect(allFruits.length).toBe(8);
+  it("verifies all 50 production fruits have valid cartographic coordinates and origin metadata", () => {
+    expect(allFruits.length).toBe(50);
 
     for (const fruit of allFruits) {
       expect(fruit.origin).toBeDefined();
@@ -36,7 +36,7 @@ describe("Phase 4E — Botanical World Atlas & Geographic Diaspora Analytics", (
     expect(CONTINENTAL_BIOMES.length).toBe(8);
     const allBiome = CONTINENTAL_BIOMES.find((b) => b.id === "all");
     expect(allBiome).toBeDefined();
-    expect(allBiome?.fruitSlugs.length).toBe(8);
+    expect(allBiome?.fruitSlugs.length).toBe(50);
 
     // Central Asia -> Apple (Tian Shan)
     const centralAsia = CONTINENTAL_BIOMES.find((b) => b.id === "central-asia");
@@ -61,7 +61,7 @@ describe("Phase 4E — Botanical World Atlas & Geographic Diaspora Analytics", (
     expect(northAmerica?.fruitSlugs).toContain("strawberry");
   });
 
-  it("provides exhaustive historical diaspora dossiers for all 8 catalog fruits", () => {
+  it("provides exhaustive historical diaspora dossiers for all 50 catalog fruits", () => {
     const slugs = allFruits.map((f) => f.slug);
 
     for (const slug of slugs) {

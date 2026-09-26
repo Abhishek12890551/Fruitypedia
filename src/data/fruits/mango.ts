@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Mango — Production fruit monograph.
  *
  * All nutrition values are derived from USDA FoodData Central SR Legacy
@@ -19,22 +19,22 @@ export const mango: Fruit = {
   name: "Mango",
 
   editorial: {
-    nickname: "le roi des fruits",
+    nickname: "Aam · Phalon Ka Raja",
     tagline: "Golden drupe. Ancient tropical majesty.",
     heroDescription:
       "Venerated for over four millennia across South Asia as the sacred sovereign of fruits, the mango is a magnificent botanical drupe. Beneath its smooth, sun-blushed exocarp lies a succulent, saffron-gold mesocarp dripping with aromatic nectar, delivering extraordinary beta-carotene provitamin A and vibrant ascorbic acid.",
     pullQuotes: [
       {
         quote: "In Sanskrit poetry, the mango blossom was the dart of Kama—a fruit whose intoxicating perfumed nectar has anchored Asian culture for four millennia.",
-        attribution: "Classical Sanskrit Horticultural Corpus",
+        attribution: "Editorial",
       },
       {
         quote: "Velvety saffron pulp wrapped around a solitary fibrous heart—a golden distillation of tropical sunshine and ancient pedigree.",
-        attribution: "Indo-Gangetic Pomological Annals",
+        attribution: "Editorial",
       },
     ],
     nutritionDescription:
-      "Over 83% pure structured tropical cell sap, carrying dissolved fruit sugars, beta-carotene, and protective ascorbic acid.",
+      "Over 83% water, carrying dissolved fruit sugars, beta-carotene, and ascorbic acid.",
   },
 
   taxonomy: {
@@ -63,6 +63,14 @@ export const mango: Fruit = {
       role: "hero",
       generatedBy: "ai",
       provider: "imagen-3",
+      reviewed: true,
+    },
+    card: {
+      src: "/images/fruits/mango/card.png",
+      alt: "Mango - editorial card image",
+      role: "card",
+      generatedBy: "ai",
+      provider: "imagen-4",
       reviewed: true,
     },
     gallery: [],
@@ -210,6 +218,20 @@ export const mango: Fruit = {
         sourceIds: ["usda-fdc-mango"],
         sourceReferenceIds: ["312"],
       },
+      calcium: {
+        amount: 11,
+        unit: "mg",
+        dailyValuePercent: 1,
+        sourceIds: ["usda-fdc-mango"],
+        sourceReferenceIds: ["301"],
+      },
+      magnesium: {
+        amount: 10,
+        unit: "mg",
+        dailyValuePercent: 2,
+        sourceIds: ["usda-fdc-mango"],
+        sourceReferenceIds: ["304"],
+      },
     },
     waterContentPercent: 83.5,
     micronutrientSignatures: [
@@ -279,29 +301,29 @@ export const mango: Fruit = {
 
   benefitTags: [
     {
-      label: "Rich in Beta-Carotene",
+      label: "Source of Beta-Carotene (6% DV)",
       phenomenon: "carotenoid provitamin A",
       description:
-        "Dense in beta-carotene and lutein, fat-soluble carotenoids that provide its rich golden pigmentation and support ocular photoreceptor health.",
+        "Contains beta-carotene and lutein, fat-soluble carotenoids that give mango its golden pigmentation. At 54 µg RAE per 100g (6% DV), this is a modest contribution; adequate fat intake aids absorption.",
       evidenceLevel: "established",
       sourceIds: ["usda-fdc-mango", "fda-daily-values"],
       icon: "shield",
     },
     {
-      label: "High Ascorbic Acid Content",
+      label: "High Vitamin C Content",
       phenomenon: "vitamin C density",
       description:
-        "Providing 36.4 mg per 100g (40% DV), mango supplies concentrated antioxidant protection against reactive oxygen species while assisting non-heme iron absorption.",
+        "Providing 36.4 mg per 100g (40% DV), mango supplies substantial antioxidant protection while assisting non-heme iron absorption and collagen synthesis.",
       evidenceLevel: "established",
       sourceIds: ["usda-fdc-mango", "fda-daily-values"],
       icon: "leaf",
     },
     {
-      label: "Folate & Bioactive Mangiferin",
-      phenomenon: "xanthinoid antioxidant polyphenol",
+      label: "Folate & Mangiferin",
+      phenomenon: "folate and polyphenol content",
       description:
-        "Contains 43 µg of dietary folate (11% DV) alongside mangiferin, a unique bio-chelated xanthinoid studied extensively for cellular and cardioprotective integrity.",
-      evidenceLevel: "established",
+        "Contains 43 µg of dietary folate (11% DV) and mangiferin, a polyphenol under preliminary study for antioxidant properties. Research on mangiferin's health benefits in humans remains early-stage.",
+      evidenceLevel: "limited",
       sourceIds: ["usda-fdc-mango"],
       icon: "grain",
     },

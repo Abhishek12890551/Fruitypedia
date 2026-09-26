@@ -117,6 +117,39 @@ const peakFruitNames = inSeasonFruits.slice(0, 3).map((f) => f.name).join(", ");
             </span>
             <kbd class="hero-search-kbd font-ui">⌘K</kbd>
           </button>
+
+          <!-- Quick Discovery Prompts -->
+          <div class="hero-search-prompts flex items-center flex-wrap gap-1.5 mt-2.5 px-1 font-ui text-[11px] text-zinc-400">
+            <span class="text-[10px] uppercase font-mono tracking-wider text-zinc-500 mr-0.5">Quick:</span>
+            <button
+              type="button"
+              onclick="window.dispatchEvent(new CustomEvent('open-search', { detail: { query: 'Mango' } }))"
+              class="px-2 py-0.5 rounded-full bg-zinc-900/60 hover:bg-zinc-800/80 border border-zinc-800/80 text-amber-300/90 hover:text-amber-200 transition-colors cursor-pointer"
+            >
+              🥭 Aam · Mango
+            </button>
+            <button
+              type="button"
+              onclick="window.dispatchEvent(new CustomEvent('open-search', { detail: { query: 'vitamin c' } }))"
+              class="px-2 py-0.5 rounded-full bg-zinc-900/60 hover:bg-zinc-800/80 border border-zinc-800/80 text-zinc-300 hover:text-white transition-colors cursor-pointer"
+            >
+              High Vitamin C
+            </button>
+            <button
+              type="button"
+              onclick="window.dispatchEvent(new CustomEvent('open-search', { detail: { query: 'anthocyanin' } }))"
+              class="px-2 py-0.5 rounded-full bg-zinc-900/60 hover:bg-zinc-800/80 border border-zinc-800/80 text-zinc-300 hover:text-white transition-colors cursor-pointer"
+            >
+              Anthocyanins
+            </button>
+            <button
+              type="button"
+              onclick="window.dispatchEvent(new CustomEvent('open-search', { detail: { query: 'calor' } }))"
+              class="hidden sm:inline-flex px-2 py-0.5 rounded-full bg-zinc-900/60 hover:bg-zinc-800/80 border border-zinc-800/80 text-zinc-300 hover:text-white transition-colors cursor-pointer"
+            >
+              Low Calorie
+            </button>
+          </div>
         </div>
 
         <!-- Action Buttons -->
@@ -130,21 +163,20 @@ const peakFruitNames = inSeasonFruits.slice(0, 3).map((f) => f.name).join(", ");
           </a>
         </div>
 
-        <!-- Credibility & Foundation Metric Strip -->
         <div class="hero-meta">
           <div class="hero-meta-item">
-            <span class="hero-meta-val font-display">100%</span>
-            <span class="hero-meta-lbl font-ui">USDA Lab Provenance</span>
+            <span class="hero-meta-val font-display">{allFruits.length}</span>
+            <span class="hero-meta-lbl font-ui">Fruit Monographs</span>
           </div>
           <div class="hero-meta-sep" aria-hidden="true"></div>
           <div class="hero-meta-item">
             <span class="hero-meta-val font-display">{familyCount}</span>
-            <span class="hero-meta-lbl font-ui">Botanical Families</span>
+            <span class="hero-meta-lbl font-ui">Categories</span>
           </div>
           <div class="hero-meta-sep" aria-hidden="true"></div>
           <div class="hero-meta-item">
-            <span class="hero-meta-val font-display">360°</span>
-            <span class="hero-meta-lbl font-ui">Sensory Radar</span>
+            <span class="hero-meta-val font-display">22+</span>
+            <span class="hero-meta-lbl font-ui">Nutrients per Fruit</span>
           </div>
         </div>
       </div>
@@ -154,7 +186,7 @@ const peakFruitNames = inSeasonFruits.slice(0, 3).map((f) => f.name).join(", ");
     <div class="hero-credit font-ui" aria-hidden="true">
       <span class="hero-credit-tag">PLATE 01</span>
       <span class="hero-credit-sep">·</span>
-      <span>FICUS CARICA & VACCINIUM</span>
+      <span>VACCINIUM CORYMBOSUM &amp; FRAGARIA × ANANASSA</span>
     </div>
   </section>
 
@@ -178,12 +210,12 @@ const peakFruitNames = inSeasonFruits.slice(0, 3).map((f) => f.name).join(", ");
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
         <SectionHeading
           label="BOTANICAL DISCOVERY"
-          title="Six families of fruit"
-          description="Navigate the encyclopedia through evolutionary fruit families, from temperate berries to exotic equatorial drupes."
+          title="Six categories of fruit"
+          description="Navigate the encyclopedia through culinary fruit categories, from temperate berries to exotic equatorial drupes."
           id="families-heading"
         />
         <a href="/directory" class="text-xs font-ui uppercase tracking-widest text-zinc-400 hover:text-white pb-2 md:pb-12 flex items-center gap-1.5 transition-colors group">
-          <span>Explore all families in directory</span>
+          <span>Explore all categories in directory</span>
           <span class="group-hover:translate-x-1 transition-transform" aria-hidden="true">→</span>
         </a>
       </div>
@@ -215,7 +247,7 @@ const peakFruitNames = inSeasonFruits.slice(0, 3).map((f) => f.name).join(", ");
         <SectionHeading
           label="CURATED SPOTLIGHT"
           title="Monograph of distinction"
-          description="Examine our peer-reviewed botanical monograph featuring complete USDA nutritional provenance, sensory metrics, and origin diaspora."
+          description="Explore our botanical monographs with complete USDA nutritional data, sensory metrics, and origin diaspora."
           id="featured-heading"
         />
         <a href={`/fruit/${featuredFruit.slug}`} class="text-xs font-ui uppercase tracking-widest text-zinc-400 hover:text-white pb-2 md:pb-12 flex items-center gap-1.5 transition-colors group">
@@ -249,7 +281,7 @@ const peakFruitNames = inSeasonFruits.slice(0, 3).map((f) => f.name).join(", ");
                   class="text-[10px] font-ui px-2.5 py-0.5 rounded-full bg-zinc-800 border border-zinc-700 font-medium"
                   style={`color: ${fruit.theme.secondary};`}
                 >
-                  USDA Verified
+                  Data: USDA FDC
                 </span>
                 <a href={`/fruit/${fruit.slug}`} class="text-xs font-ui text-indigo-400 hover:text-indigo-300 transition-colors">
                   Explore →
@@ -279,8 +311,8 @@ const peakFruitNames = inSeasonFruits.slice(0, 3).map((f) => f.name).join(", ");
           category="LABORATORY DATA"
           title="Nutrition Observatory"
           description="Every vitamin, mineral, and macronutrient metric is normalized from USDA FoodData Central and benchmarked against FDA Reference Daily Intakes."
-          href="/about#methodology"
-          badge="USDA Verified"
+          href="/nutrition"
+          badge="Data: USDA FDC"
           accentColor="#4A5FE0"
         />
 
@@ -355,8 +387,8 @@ const peakFruitNames = inSeasonFruits.slice(0, 3).map((f) => f.name).join(", ");
   <!-- ═══ 8. EDITORIAL CLOSING ════════════════════════════════════════ -->
   <section class="py-28 text-center border-t border-zinc-800/60 bg-zinc-950/40" aria-labelledby="closing-heading">
     <div class="container-page max-w-2xl mx-auto space-y-6">
-      <p class="font-script text-2xl sm:text-3xl text-zinc-400">
-        la curiosité végétale
+      <p class="font-editorial italic text-2xl sm:text-3xl text-zinc-400">
+        Prakriti Vigyan · The Living Wonder of Fruit
       </p>
       <h2 id="closing-heading" class="font-editorial text-4xl sm:text-5xl font-normal text-white tracking-tight">
         There is more to every fruit.

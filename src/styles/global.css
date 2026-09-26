@@ -27,9 +27,8 @@
 
 /* ─── Tailwind v4 Theme Configuration ─────────────────────────────── */
 @theme {
-  /* Font Families */
+  /* Font Families (Strict 3-Font System) */
   --font-display: "Urbanist", system-ui, sans-serif;
-  --font-script: "Ballet", cursive;
   --font-editorial: "Cormorant Garamond", "Georgia", serif;
   --font-ui: "Inter", system-ui, sans-serif;
 
@@ -87,7 +86,7 @@
   /* ── Semantic Fluid Typography Tokens (§6.4) ─────────────────────── */
   /*
    * Fruit-page hierarchy (Golden Master — Blueberry):
-   *   Ballet (nickname) → Cormorant Garamond (fruit name) → Cormorant Italic (scientific)
+   *   Cormorant Garamond Italic (nickname) → Cormorant Garamond (fruit name) → Cormorant Italic (scientific)
    *   → Cormorant (description/editorial) → Inter (stats/badges/UI)
    *
    * All clamp() values tested at 390px (min) through 1920px+ (max).
@@ -220,8 +219,10 @@
     font-family: var(--font-display);
   }
 
+  /* Legacy alias mapped to editorial italic for graceful fallback */
   .font-script {
-    font-family: var(--font-script);
+    font-family: var(--font-editorial);
+    font-style: italic;
   }
 
   .font-editorial {
@@ -334,6 +335,55 @@
   }
 }
 
+/* ─── Shared Element Hero Image & Title Morph Timing ─────────────── */
+::view-transition-group(fruit-image-apple),
+::view-transition-group(fruit-image-banana),
+::view-transition-group(fruit-image-blueberry),
+::view-transition-group(fruit-image-mango),
+::view-transition-group(fruit-image-orange),
+::view-transition-group(fruit-image-peach),
+::view-transition-group(fruit-image-strawberry),
+::view-transition-group(fruit-image-watermelon),
+::view-transition-group(fruit-image-pomegranate),
+::view-transition-group(fruit-image-avocado),
+::view-transition-group(fruit-image-fig),
+::view-transition-group(fruit-image-kiwi),
+::view-transition-group(fruit-image-dragonfruit),
+::view-transition-group(fruit-title-apple),
+::view-transition-group(fruit-title-banana),
+::view-transition-group(fruit-title-blueberry),
+::view-transition-group(fruit-title-mango),
+::view-transition-group(fruit-title-orange),
+::view-transition-group(fruit-title-peach),
+::view-transition-group(fruit-title-strawberry),
+::view-transition-group(fruit-title-watermelon),
+::view-transition-group(fruit-title-pomegranate),
+::view-transition-group(fruit-title-avocado),
+::view-transition-group(fruit-title-fig),
+::view-transition-group(fruit-title-kiwi),
+::view-transition-group(fruit-title-dragonfruit) {
+  animation-duration: 480ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ─── Seasonal Horizon Card Transition ────────────────────────────── */
+@keyframes seasonFade {
+  0% {
+    opacity: 0;
+    transform: translateY(8px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+}
+
+.animate-season-fade {
+  animation: seasonFade 380ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* ─── Tactile Botanical Wax Seal Stamp Recoil ─────────────────────── */
 @keyframes waxSealStamp {
   0% {
@@ -376,6 +426,34 @@
 .animate-dialog-in {
   animation: dialogScaleIn 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
   will-change: transform, opacity;
+}
+
+/* ─── Custom Dark Scrollbars ──────────────────────────────────────── */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.38);
+}
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
 }
 
 /* ─── Reduced Motion ──────────────────────────────────────────────── */

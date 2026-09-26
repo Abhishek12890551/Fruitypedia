@@ -11,6 +11,48 @@ import { banana } from "./fruits/banana";
 import { peach } from "./fruits/peach";
 import { watermelon } from "./fruits/watermelon";
 import { apple } from "./fruits/apple";
+import { pomegranate } from "./fruits/pomegranate";
+import { avocado } from "./fruits/avocado";
+import { fig } from "./fruits/fig";
+import { kiwi } from "./fruits/kiwi";
+import { dragonfruit } from "./fruits/dragonfruit";
+import { guava } from "./fruits/guava";
+import { papaya } from "./fruits/papaya";
+import { lychee } from "./fruits/lychee";
+import { jackfruit } from "./fruits/jackfruit";
+import { jamun } from "./fruits/jamun";
+import { custardApple } from "./fruits/custard-apple";
+import { amla } from "./fruits/amla";
+import { pineapple } from "./fruits/pineapple";
+import { grape } from "./fruits/grape";
+import { lemon } from "./fruits/lemon";
+import { cherry } from "./fruits/cherry";
+import { coconut } from "./fruits/coconut";
+import { plum } from "./fruits/plum";
+import { apricot } from "./fruits/apricot";
+import { passionfruit } from "./fruits/passionfruit";
+import { date } from "./fruits/date";
+import { blackberry } from "./fruits/blackberry";
+import { raspberry } from "./fruits/raspberry";
+import { sapodilla } from "./fruits/sapodilla";
+import { bael } from "./fruits/bael";
+import { ber } from "./fruits/ber";
+import { durian } from "./fruits/durian";
+import { mangosteen } from "./fruits/mangosteen";
+import { starfruit } from "./fruits/starfruit";
+import { pear } from "./fruits/pear";
+import { lime } from "./fruits/lime";
+import { grapefruit } from "./fruits/grapefruit";
+import { mandarin } from "./fruits/mandarin";
+import { pomelo } from "./fruits/pomelo";
+import { cantaloupe } from "./fruits/cantaloupe";
+import { honeydew } from "./fruits/honeydew";
+import { galia } from "./fruits/galia";
+import { winterMelon } from "./fruits/winter-melon";
+import { quince } from "./fruits/quince";
+import { asianPear } from "./fruits/asian-pear";
+import { loquat } from "./fruits/loquat";
+import { nectarine } from "./fruits/nectarine";
 import { categories } from "./categories";
 import { sources, getSourceById, getSourcesByIds, validateSourceIds } from "./sources";
 import type { Fruit, Category, Source } from "@/types";
@@ -25,6 +67,48 @@ export const allFruits: Fruit[] = [
   peach,
   watermelon,
   apple,
+  pomegranate,
+  avocado,
+  fig,
+  kiwi,
+  dragonfruit,
+  guava,
+  papaya,
+  lychee,
+  jackfruit,
+  jamun,
+  custardApple,
+  amla,
+  pineapple,
+  grape,
+  lemon,
+  cherry,
+  coconut,
+  plum,
+  apricot,
+  passionfruit,
+  date,
+  blackberry,
+  raspberry,
+  sapodilla,
+  bael,
+  ber,
+  durian,
+  mangosteen,
+  starfruit,
+  pear,
+  lime,
+  grapefruit,
+  mandarin,
+  pomelo,
+  cantaloupe,
+  honeydew,
+  galia,
+  winterMelon,
+  quince,
+  asianPear,
+  loquat,
+  nectarine,
 ];
 
 /** Get a fruit by its slug. */

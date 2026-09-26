@@ -6,14 +6,14 @@ import {
 } from "../components/BenefitsExplorer";
 
 describe("Phase 4C — Health Benefits & Functional Profile Analytics", () => {
-  it("verifies all 8 production fruits have structured, non-empty benefitTags", () => {
-    expect(allFruits.length).toBe(8);
-    let totalTags = 0;
+  it("verifies all 50 production fruits have structured, non-empty benefitTags", () => {
+    expect(allFruits.length).toBe(50);
 
+    let totalTags = 0;
     for (const fruit of allFruits) {
       expect(fruit.benefitTags).toBeDefined();
+      expect(Array.isArray(fruit.benefitTags)).toBe(true);
       expect(fruit.benefitTags.length).toBeGreaterThanOrEqual(3);
-      totalTags += fruit.benefitTags.length;
 
       for (const tag of fruit.benefitTags) {
         expect(tag.label.trim().length).toBeGreaterThan(0);
@@ -23,10 +23,11 @@ describe("Phase 4C — Health Benefits & Functional Profile Analytics", () => {
         expect(tag.sourceIds.length).toBeGreaterThan(0);
         expect(tag.icon.trim().length).toBeGreaterThan(0);
       }
+      totalTags += fruit.benefitTags.length;
     }
 
-    // 8 fruits * 3 tags each = 24 total tags
-    expect(totalTags).toBe(24);
+    // 50 fruits * 3 tags each = 150 total tags
+    expect(totalTags).toBe(150);
   });
 
   it("enforces strict anti-hype compliance with zero unverified medical claims", () => {

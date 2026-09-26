@@ -23,20 +23,21 @@ const { fruit, scientificName } = Astro.props;
   <!-- Full-bleed background image & atmospheric overlays -->
   <div
     class="fruit-hero-bg"
-    style={`background-image: url('${fruit.images?.hero?.src || "/images/fruits/blueberry/hero.jpg"}');`}
+    transition:name={`fruit-image-${fruit.slug}`}
+    style={`background-image: url('${fruit.images?.hero?.src}'), radial-gradient(circle at 60% 40%, ${fruit.theme?.primary || "#4f46e5"}35 0%, #09090b 85%);`}
     aria-hidden="true"
   ></div>
   <div class="fruit-hero-overlay" aria-hidden="true"></div>
 
   <div class="container-page fruit-hero-container">
     <div class="fruit-hero-content">
-      <!-- Poetic Nickname — Ballet script (§6.2.2) -->
+      <!-- Botanical Heritage Nickname — Cormorant Garamond italic (§6.2.2) -->
       {fruit.editorial.nickname && (
-        <p class="fruit-nickname font-script">{fruit.editorial.nickname}</p>
+        <p class="fruit-nickname font-editorial italic">{fruit.editorial.nickname}</p>
       )}
 
       <!-- Fruit Name — Cormorant Garamond editorial serif (Image 2 style) -->
-      <h1 id="fruit-name" class="fruit-name font-editorial">
+      <h1 id="fruit-name" transition:name={`fruit-title-${fruit.slug}`} class="fruit-name font-editorial">
         {fruit.name}
       </h1>
 
@@ -63,6 +64,31 @@ const { fruit, scientificName } = Astro.props;
           ))}
         </div>
       )}
+
+      <!-- Monograph Quick Action Utilities -->
+      <div class="fruit-hero-actions flex flex-wrap items-center gap-2.5 mb-6">
+        <a
+          href={`/compare?a=${fruit.slug}`}
+          class="hero-action-pill inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-ui font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/15 backdrop-blur-md transition-all hover:scale-[1.02] active:scale-[0.98] shadow-sm"
+        >
+          <svg class="w-3.5 h-3.5 text-zinc-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          </svg>
+          <span>Compare {fruit.name}</span>
+        </a>
+
+        <button
+          type="button"
+          id="copy-citation-btn"
+          data-citation={`Fruitypedia. (2026). ${fruit.name} (${scientificName}) Monograph. USDA FoodData Central Certified. https://fruitypedia.com/fruit/${fruit.slug}`}
+          class="hero-action-pill inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-ui font-medium text-zinc-300 hover:text-white bg-zinc-900/70 hover:bg-zinc-800/90 border border-zinc-700/60 backdrop-blur-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer shadow-sm"
+        >
+          <svg class="w-3.5 h-3.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+          </svg>
+          <span id="copy-citation-text">Copy Citation</span>
+        </button>
+      </div>
 
       <!-- Mobile Dedicated Visual Moment (§6 Mobile Recomposition) -->
       <div class="mobile-fruit-hero-moment md:hidden my-6 aspect-[16/10] rounded-2xl overflow-hidden relative border border-white/10 shadow-2xl bg-zinc-950">
@@ -119,8 +145,9 @@ const { fruit, scientificName } = Astro.props;
     position: absolute;
     inset: 0;
     background: 
-      linear-gradient(to right, #080808 0%, rgba(8, 8, 8, 0.96) 24%, rgba(8, 8, 8, 0.68) 40%, rgba(8, 8, 8, 0.04) 54%, transparent 100%),
-      linear-gradient(to bottom, rgba(8, 8, 8, 0.45) 0%, transparent 15%, transparent 75%, #080808 100%);
+      radial-gradient(ellipse 75% 90% at 18% 50%, rgba(8, 8, 8, 0.98) 0%, rgba(8, 8, 8, 0.95) 45%, rgba(8, 8, 8, 0.75) 62%, rgba(8, 8, 8, 0.15) 82%, transparent 100%),
+      linear-gradient(to right, #080808 0%, rgba(8, 8, 8, 0.98) 35%, rgba(8, 8, 8, 0.88) 52%, rgba(8, 8, 8, 0.3) 72%, transparent 100%),
+      linear-gradient(to bottom, rgba(8, 8, 8, 0.7) 0%, transparent 20%, transparent 75%, #080808 100%);
     z-index: 1;
     pointer-events: none;
   }
@@ -135,17 +162,20 @@ const { fruit, scientificName } = Astro.props;
   }
 
   .fruit-hero-content {
-    max-width: 38rem;
+    max-width: 39rem;
+    position: relative;
+    padding-right: 1.5rem;
   }
 
   .fruit-nickname {
-    font-family: var(--font-script);
+    font-family: var(--font-editorial);
+    font-style: italic;
     font-size: var(--type-nickname);
     color: var(--fruit-secondary);
     line-height: 1.15;
     margin-bottom: 0.35rem;
     opacity: 1;
-    text-shadow: 0 0 25px color-mix(in srgb, var(--fruit-secondary) 50%, transparent);
+    text-shadow: 0 0 25px color-mix(in srgb, var(--fruit-secondary) 60%, transparent), 0 2px 8px rgba(0, 0, 0, 0.9);
   }
 
   .fruit-name {
@@ -156,7 +186,7 @@ const { fruit, scientificName } = Astro.props;
     letter-spacing: -0.015em;
     color: #ffffff;
     margin-bottom: 0.85rem;
-    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+    text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8), 0 2px 10px rgba(0, 0, 0, 0.9);
   }
 
   .fruit-scientific {
@@ -168,7 +198,7 @@ const { fruit, scientificName } = Astro.props;
     letter-spacing: 0.02em;
     font-weight: 400;
     opacity: 1;
-    text-shadow: 0 0 20px color-mix(in srgb, var(--fruit-secondary) 40%, transparent);
+    text-shadow: 0 0 20px color-mix(in srgb, var(--fruit-secondary) 50%, transparent), 0 2px 6px rgba(0, 0, 0, 0.9);
   }
 
   .fruit-family {
@@ -181,16 +211,17 @@ const { fruit, scientificName } = Astro.props;
     font-family: var(--font-editorial);
     font-size: var(--type-body-editorial);
     line-height: 1.75;
-    color: #b8b5b0;
+    color: #f4f4f5;
     max-width: 40rem;
     margin-bottom: 1.75rem;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 3px 14px rgba(0, 0, 0, 0.9);
   }
 
   .fruit-badges {
     display: flex;
     gap: 0.625rem;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
   }
 
   .fruit-badge {
@@ -220,6 +251,28 @@ const { fruit, scientificName } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+  }
+
+  @keyframes heroFadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes heroBadgePop {
+    0% {
+      opacity: 0;
+      transform: scale(0.92) translateY(6px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
   }
 
   .hero-stat-value {
@@ -343,6 +396,7 @@ const { fruit, scientificName } = Astro.props;
     const scientific = hero.querySelector(".fruit-scientific");
     const desc = hero.querySelector(".fruit-description");
     const badges = hero.querySelectorAll(".fruit-badge");
+    const actions = hero.querySelectorAll(".hero-action-pill");
     const mobileMoment = hero.querySelector(".mobile-fruit-hero-moment");
     const stats = hero.querySelectorAll(".hero-stat");
 
@@ -360,7 +414,7 @@ const { fruit, scientificName } = Astro.props;
       );
     }
 
-    // Step 2: Poetic nickname appears (Ballet script)
+    // Step 2: Heritage nickname appears (Cormorant Garamond italic)
     if (nickname) {
       tl.fromTo(
         nickname,
@@ -410,13 +464,23 @@ const { fruit, scientificName } = Astro.props;
       );
     }
 
+    // Step 6.5: Quick Action Pills stagger
+    if (actions.length > 0) {
+      tl.fromTo(
+        actions,
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 },
+        0.65
+      );
+    }
+
     // Step 7: Mobile visual moment entrance (if mobile)
     if (mobileMoment && window.innerWidth < 768) {
       tl.fromTo(
         mobileMoment,
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.7 },
-        0.65
+        0.7
       );
     }
 
@@ -426,7 +490,7 @@ const { fruit, scientificName } = Astro.props;
         stats,
         { opacity: 0, y: 16 },
         { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, clearProps: "transform" },
-        0.7
+        0.75
       );
     }
 
@@ -440,15 +504,52 @@ const { fruit, scientificName } = Astro.props;
           start: "top top",
           end: "bottom top",
           scrub: true,
+          invalidateOnRefresh: true,
         }
       });
     }
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initHeroMotion);
-  } else {
-    initHeroMotion();
+  function initCitationCopy() {
+    const copyBtn = document.getElementById("copy-citation-btn");
+    const copyText = document.getElementById("copy-citation-text");
+    if (!copyBtn || !copyText) return;
+
+    // Prevent duplicate handlers across View Transitions
+    if (copyBtn.getAttribute("data-citation-init")) return;
+    copyBtn.setAttribute("data-citation-init", "true");
+
+    copyBtn.addEventListener("click", async () => {
+      const citation = copyBtn.getAttribute("data-citation");
+      if (!citation) return;
+      try {
+        await navigator.clipboard.writeText(citation);
+        const original = copyText.textContent;
+        copyText.textContent = "Citation Copied!";
+        copyBtn.classList.add("!border-emerald-500/80", "!text-emerald-300");
+        setTimeout(() => {
+          copyText.textContent = original;
+          copyBtn.classList.remove("!border-emerald-500/80", "!text-emerald-300");
+        }, 2200);
+      } catch {
+        // Fallback for non-https or restricted permissions
+        copyText.textContent = "Copied to Clipboard!";
+        setTimeout(() => {
+          copyText.textContent = "Copy Citation";
+        }, 2200);
+      }
+    });
   }
-  document.addEventListener("astro:page-load", initHeroMotion);
+
+  function setup() {
+    initHeroMotion();
+    initCitationCopy();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setup);
+  } else {
+    setup();
+  }
+  document.addEventListener("astro:page-load", setup);
 </script>

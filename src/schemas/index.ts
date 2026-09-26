@@ -128,6 +128,7 @@ export const FruitImageSchema = z.object({
 
 export const FruitImagesSchema = z.object({
   hero: FruitImageSchema,
+  card: FruitImageSchema.optional(),
   gallery: z.array(FruitImageSchema),
   crossSection: FruitImageSchema.optional(),
   macroBreak: FruitImageSchema.extend({

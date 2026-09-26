@@ -26,6 +26,22 @@ export const MONTHS: MonthInfo[] = [
   { num: 12, short: "Dec", full: "December" },
 ];
 
+export interface BotanicalSeason {
+  id: "spring" | "summer" | "autumn" | "winter";
+  label: string;
+  glyph: string;
+  astronomical: string;
+  months: number[];
+  color: string;
+}
+
+export const BOTANICAL_SEASONS: BotanicalSeason[] = [
+  { id: "spring", label: "Spring", glyph: "🌱", astronomical: "Vernal Equinox", months: [3, 4, 5], color: "#10b981" },
+  { id: "summer", label: "Summer", glyph: "☀️", astronomical: "Summer Solstice", months: [6, 7, 8], color: "#f59e0b" },
+  { id: "autumn", label: "Autumn", glyph: "🍂", astronomical: "Autumnal Equinox", months: [9, 10, 11], color: "#f43f5e" },
+  { id: "winter", label: "Winter", glyph: "❄️", astronomical: "Winter Solstice", months: [12, 1, 2], color: "#06b6d4" },
+];
+
 export interface SeasonStatus {
   isPeak: boolean;
   isSeason: boolean;
@@ -100,6 +116,14 @@ export const SeasonsCalendar: React.FC<SeasonsCalendarProps> = ({ allFruits }) =
     () => MONTHS.find((m) => m.num === selectedMonth) || MONTHS[currentMonthNum - 1],
     [selectedMonth, currentMonthNum]
   );
+
+  const currentSeason = useMemo(() => {
+    let lookupMonth = selectedMonth;
+    if (hemisphere === "south") {
+      lookupMonth = ((selectedMonth + 5) % 12) + 1;
+    }
+    return BOTANICAL_SEASONS.find((s) => s.months.includes(lookupMonth)) || BOTANICAL_SEASONS[0];
+  }, [selectedMonth, hemisphere]);
 
   // Filtered fruit set
   const filteredFruits = useMemo(() => {
@@ -193,6 +217,76 @@ export const SeasonsCalendar: React.FC<SeasonsCalendarProps> = ({ allFruits }) =
                 <span>↻</span>
               </button>
             )}
+          </div>
+        </div>
+
+        {/* ─── Seasonal Horizon Orbital Dial Strip ─── */}
+        <div className="p-4 sm:p-5 rounded-2xl bg-zinc-950/70 border border-zinc-800/80 backdrop-blur-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3.5">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full" style={{ backgroundColor: currentSeason.color }} />
+              <span className="font-ui text-xs font-semibold uppercase tracking-wider text-zinc-300">
+                Seasonal Horizon
+              </span>
+              <span className="text-zinc-500 text-xs font-editorial italic">
+                · {currentSeason.astronomical}
+              </span>
+            </div>
+            <span className="font-mono text-[11px] text-zinc-400">
+              Phenological Phase: <strong className="text-white font-medium">{currentSeason.label}</strong>
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+            {BOTANICAL_SEASONS.map((season) => {
+              const isSeasonActive = currentSeason.id === season.id;
+              const targetMonth = season.months[1] || season.months[0];
+              const seasonMonthNums = season.months;
+
+              return (
+                <button
+                  key={season.id}
+                  type="button"
+                  onClick={() => {
+                    let adjustedMonth = targetMonth;
+                    if (hemisphere === "south") {
+                      adjustedMonth = ((targetMonth + 5) % 12) + 1;
+                    }
+                    setSelectedMonth(adjustedMonth);
+                  }}
+                  className={`p-3 rounded-xl border text-left transition-all cursor-pointer relative overflow-hidden group ${
+                    isSeasonActive
+                      ? "bg-zinc-900 border-zinc-700 shadow-md ring-1 ring-white/10"
+                      : "bg-zinc-950/50 border-zinc-800/60 hover:bg-zinc-900/40 hover:border-zinc-700"
+                  }`}
+                  style={{
+                    borderColor: isSeasonActive ? season.color : undefined,
+                  }}
+                >
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-base">{season.glyph}</span>
+                    <span
+                      className="font-mono text-[10px] px-1.5 py-0.5 rounded"
+                      style={{
+                        backgroundColor: isSeasonActive ? `${season.color}22` : "rgba(255,255,255,0.05)",
+                        color: isSeasonActive ? season.color : "#a1a1aa",
+                      }}
+                    >
+                      {seasonMonthNums.map((m) => MONTHS[m - 1].short).join("·")}
+                    </span>
+                  </div>
+                  <div className="font-display font-bold text-sm text-white flex items-center gap-1.5">
+                    <span>{season.label}</span>
+                    {isSeasonActive && (
+                      <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ backgroundColor: season.color }} />
+                    )}
+                  </div>
+                  <span className="text-[11px] font-editorial italic text-zinc-400 block truncate">
+                    {season.astronomical}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -298,7 +392,10 @@ export const SeasonsCalendar: React.FC<SeasonsCalendarProps> = ({ allFruits }) =
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            key={`${selectedMonth}-${hemisphere}-${selectedCategory}-${onlyInSeasonFilter}`}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-season-fade"
+          >
             {monthlyInSeasonFruits.map(({ fruit, status }) => {
               const isPeak = status.isPeak;
 

@@ -6,47 +6,87 @@ interface Props {
 }
 
 const { className = "" } = Astro.props;
+
+const CATEGORY_ICONS: Record<string, string> = {
+  berry: "🫐",
+  citrus: "🍋",
+  tropical: "🥭",
+  pome: "🍏",
+  "stone-fruit": "🍑",
+  melon: "🍉",
+};
 ---
 
 <div class={`category-dock-container ${className}`}>
   <!-- Responsive Dock: Horizontal snap-scroll on touch, clean grid on desktop -->
-  <div class="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-4 overflow-x-auto sm:overflow-x-visible pb-4 sm:pb-0 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none">
+  <div class="flex sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-5 overflow-x-auto sm:overflow-x-visible pb-4 sm:pb-0 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory scrollbar-none">
     {categories.map((cat) => {
-      const fruitCount = allFruits.filter((f) => f.taxonomy.categoryId === cat.id).length;
+      const catFruits = allFruits.filter((f) => f.taxonomy.categoryId === cat.id);
+      const fruitCount = catFruits.length;
+      const previewFruits = catFruits.slice(0, 3);
+      const icon = CATEGORY_ICONS[cat.id] || "🌿";
+
       return (
         <a
           href={`/category/${cat.id}`}
-          class="group relative flex-shrink-0 w-[260px] sm:w-auto snap-start block overflow-hidden rounded-2xl border border-zinc-800 bg-zinc-900/40 p-6 backdrop-blur-sm transition-all duration-300 hover:border-zinc-700 hover:bg-zinc-900/70 hover:-translate-y-1 hover:shadow-xl"
+          class="group relative flex-shrink-0 w-[280px] sm:w-auto snap-start flex flex-col justify-between overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/60 p-6 backdrop-blur-md transition-all duration-300 hover:border-zinc-700 hover:bg-zinc-900/80 hover:-translate-y-1 hover:shadow-2xl"
           style={`--cat-primary: ${cat.theme.primary}; --cat-glow: ${cat.theme.glow};`}
         >
           <!-- Atmospheric ambient category glow on hover -->
           <div
-            class="absolute -right-8 -top-8 h-32 w-32 rounded-full opacity-10 blur-2xl transition-all duration-500 group-hover:opacity-30 group-hover:scale-125 pointer-events-none"
+            class="absolute -right-10 -top-10 h-40 w-40 rounded-full opacity-15 blur-3xl transition-all duration-500 group-hover:opacity-35 group-hover:scale-125 pointer-events-none"
             style={`background-color: ${cat.theme.primary};`}
             aria-hidden="true"
           />
 
-          <div class="flex items-center justify-between mb-3 relative z-10">
-            <span
-              class="w-3 h-3 rounded-full transition-transform duration-300 group-hover:scale-125"
-              style={`background-color: ${cat.theme.primary}; box-shadow: 0 0 14px ${cat.theme.primary};`}
-            />
-            <span class="text-[11px] font-ui font-semibold uppercase tracking-widest text-zinc-500 group-hover:text-zinc-300 transition-colors">
-              {fruitCount > 0 ? `${fruitCount} curated fruit${fruitCount === 1 ? "" : "s"}` : "Botanical family"}
-            </span>
+          <!-- Top Meta Row: Botanical Icon Badge + Specimen Avatars + Count -->
+          <div class="relative z-10">
+            <div class="flex items-center justify-between gap-2 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="w-8 h-8 rounded-xl flex items-center justify-center text-lg bg-zinc-900/90 border border-zinc-800 shadow-inner group-hover:scale-110 transition-transform">
+                  {icon}
+                </span>
+                <span
+                  class="w-2 h-2 rounded-full"
+                  style={`background-color: ${cat.theme.primary}; box-shadow: 0 0 10px ${cat.theme.primary};`}
+                />
+              </div>
+
+              <!-- Overlapping fruit preview thumbnails -->
+              <div class="flex items-center -space-x-2 overflow-hidden py-0.5">
+                {previewFruits.map((pf) => (
+                  <div class="w-7 h-7 rounded-full border-2 border-zinc-950 overflow-hidden bg-zinc-900 shadow-sm shrink-0">
+                    <img
+                      src={pf.images.hero.src}
+                      alt={pf.name}
+                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="flex items-baseline justify-between gap-2">
+              <h3 class="font-display text-2xl font-bold text-white group-hover:text-zinc-100 transition-colors">
+                {cat.name}
+              </h3>
+              <span class="text-[10px] font-mono tracking-wider uppercase text-zinc-500 group-hover:text-zinc-400">
+                {fruitCount} specimens
+              </span>
+            </div>
+
+            <p class="font-ui text-xs text-zinc-400 mt-2 line-clamp-2 leading-relaxed">
+              {cat.description}
+            </p>
           </div>
 
-          <h3 class="font-display text-2xl font-bold text-white group-hover:text-zinc-100 transition-colors relative z-10">
-            {cat.name}
-          </h3>
-
-          <p class="font-ui text-xs text-zinc-400 mt-2 line-clamp-2 leading-relaxed relative z-10">
-            {cat.description}
-          </p>
-
-          <div class="mt-5 flex items-center gap-1.5 font-ui text-xs font-medium text-zinc-400 group-hover:text-white transition-colors relative z-10">
-            <span>Explore family collection</span>
-            <span class="group-hover:translate-x-1.5 transition-transform" aria-hidden="true">→</span>
+          <!-- Bottom Action Row -->
+          <div class="mt-6 pt-4 border-t border-zinc-900/80 flex items-center justify-between font-ui text-xs font-medium text-zinc-400 group-hover:text-white transition-colors relative z-10">
+            <span>Explore collection</span>
+            <span class="w-6 h-6 rounded-full bg-zinc-900/80 border border-zinc-800/80 flex items-center justify-center text-zinc-300 group-hover:bg-zinc-800 group-hover:text-white group-hover:translate-x-1 transition-all" aria-hidden="true">
+              →
+            </span>
           </div>
         </a>
       );

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Watermelon — Production fruit monograph.
  *
  * All nutrition values are derived from USDA FoodData Central SR Legacy
@@ -19,22 +19,22 @@ export const watermelon: Fruit = {
   name: "Watermelon",
 
   editorial: {
-    nickname: "le rubis d'eau douce",
+    nickname: "Tarbooz · Tarambuja",
     tagline: "Crystalline hydration. Ancient African pepo of desert survival.",
     heroDescription:
       "Cultivated across North and Northeast Africa for over four thousand years as nature's ultimate living reservoir, the watermelon is a botanical marvel of the gourd family. Enclosed within a durable emerald-striped rind, its crisp, sugar-dusted crimson pulp contains over ninety-one percent structured water, abundant antioxidant lycopene, and the unique cardiovascular amino acid L-citrulline.",
     pullQuotes: [
       {
-        quote: "Born of ancient arid riverbeds, the watermelon is humanity's living amphora—a crystalline pepo whose emerald shell seals ninety-one percent structured cellular dew.",
-        attribution: "Pharaonic Botanical Chronicles",
+        quote: "Born of ancient arid riverbeds, the watermelon is humanity's living amphora—a crystalline pepo whose emerald shell seals over ninety-one percent water.",
+        attribution: "Editorial",
       },
       {
         quote: "A desert miracle: nature's sweetest water captured inside an armored jade rind, offering cool salvation under the fiercest sun.",
-        attribution: "Sudano-Sahelian Ethnobotanical Annals",
+        attribution: "Editorial",
       },
     ],
     nutritionDescription:
-      "Over 91% pure structured cellular water, carrying dissolved lycopene, l-citrulline, and hydrating electrolytes.",
+      "Over 91% water, carrying lycopene, l-citrulline, and hydrating electrolytes.",
   },
 
   taxonomy: {
@@ -63,6 +63,14 @@ export const watermelon: Fruit = {
       role: "hero",
       generatedBy: "ai",
       provider: "imagen-3",
+      reviewed: true,
+    },
+    card: {
+      src: "/images/fruits/watermelon/card.png",
+      alt: "Watermelon - editorial card image",
+      role: "card",
+      generatedBy: "ai",
+      provider: "imagen-4",
       reviewed: true,
     },
     gallery: [],
@@ -365,29 +373,29 @@ export const watermelon: Fruit = {
 
   benefitTags: [
     {
-      label: "Cellular Hydration",
-      phenomenon: "structured water and electrolyte equilibrium",
+      label: "Natural Hydration & Electrolytes",
+      phenomenon: "water content and electrolyte balance",
       description:
-        "Composed of 91.4% water combined with bioavailable potassium and magnesium electrolytes, providing exceptionally bioavailable biological hydration.",
+        "Composed of over 91% water combined with potassium (112 mg per 100g), providing effective natural hydration support alongside light natural sugars.",
       evidenceLevel: "established",
       sourceIds: ["usda-fdc-watermelon", "fda-daily-values"],
       icon: "droplet",
     },
     {
-      label: "Lycopene Density",
-      phenomenon: "carotenoid antioxidant protection",
+      label: "Lycopene Content",
+      phenomenon: "carotenoid antioxidant concentration",
       description:
-        "Contains 4,532 µg of lycopene per 100g — up to 40% higher than raw tomatoes — delivering potent fat-soluble carotenoids that protect cellular lipids from oxidative stress.",
-      evidenceLevel: "established",
+        "Contains approximately 4,532 µg of lycopene per 100g — roughly 75% more than raw tomatoes by USDA data — a fat-soluble carotenoid under study for cardiovascular and antioxidant effects.",
+      evidenceLevel: "emerging",
       sourceIds: ["usda-fdc-watermelon"],
       icon: "shield",
     },
     {
-      label: "L-Citrulline Bioavailability",
-      phenomenon: "nitric oxide synthesis precursor",
+      label: "L-Citrulline Amino Acid",
+      phenomenon: "L-citrulline content",
       description:
-        "Naturally enriched in the non-essential amino acid L-citrulline, which the vascular endothelial system converts to L-arginine to stimulate nitric oxide production and vasodilation.",
-      evidenceLevel: "established",
+        "A natural source of L-citrulline, a non-essential amino acid that the body can convert to L-arginine. Preliminary studies suggest potential links to nitric oxide production and vascular function; results in humans are still emerging.",
+      evidenceLevel: "emerging",
       sourceIds: ["usda-fdc-watermelon"],
       icon: "heart",
     },

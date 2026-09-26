@@ -21,7 +21,7 @@ export const CONTINENTAL_BIOMES: ContinentalBiome[] = [
     name: "All Continental Biomes",
     shortLabel: "All Continents",
     icon: "🌍",
-    description: "Global geographic provenance and evolutionary birthplaces across all 8 production monographs.",
+    description: "Global geographic provenance and evolutionary birthplaces across all production monographs.",
     fruitSlugs: [
       "apple",
       "banana",
@@ -31,6 +31,48 @@ export const CONTINENTAL_BIOMES: ContinentalBiome[] = [
       "peach",
       "strawberry",
       "watermelon",
+      "pomegranate",
+      "avocado",
+      "fig",
+      "kiwi",
+      "dragonfruit",
+      "guava",
+      "papaya",
+      "lychee",
+      "jackfruit",
+      "jamun",
+      "custard-apple",
+      "amla",
+      "pineapple",
+      "grape",
+      "lemon",
+      "cherry",
+      "coconut",
+      "plum",
+      "apricot",
+      "passionfruit",
+      "date",
+      "blackberry",
+      "raspberry",
+      "sapodilla",
+      "bael",
+      "ber",
+      "durian",
+      "mangosteen",
+      "starfruit",
+      "pear",
+      "lime",
+      "grapefruit",
+      "mandarin",
+      "pomelo",
+      "cantaloupe",
+      "honeydew",
+      "galia",
+      "winter-melon",
+      "quince",
+      "asian-pear",
+      "loquat",
+      "nectarine",
     ],
   },
   {
@@ -38,16 +80,16 @@ export const CONTINENTAL_BIOMES: ContinentalBiome[] = [
     name: "Central Asia & The Tian Shan Corridor",
     shortLabel: "Central Asia",
     icon: "🏔️",
-    description: "Wild mountain apple forests (Malus sieversii) along ancient Silk Road passes in modern Kazakhstan.",
-    fruitSlugs: ["apple"],
+    description: "Wild mountain apple forests (Malus sieversii) and ancient pomegranate oases along Silk Road passes.",
+    fruitSlugs: ["apple", "pomegranate", "apricot", "pear", "plum", "quince"],
   },
   {
     id: "east-asia",
     name: "East Asia & The Yangtze River Valley",
     shortLabel: "East Asia",
     icon: "🎋",
-    description: "Neolithic Chinese river basins where stone fruits were domesticated over 4,000 years ago.",
-    fruitSlugs: ["peach", "orange"],
+    description: "Neolithic Chinese river basins where stone fruits and wild kiwifruit vines were cultivated.",
+    fruitSlugs: ["peach", "orange", "kiwi", "plum", "mandarin", "asian-pear", "loquat", "nectarine"],
   },
   {
     id: "south-asia",
@@ -55,15 +97,40 @@ export const CONTINENTAL_BIOMES: ContinentalBiome[] = [
     shortLabel: "South Asia",
     icon: "🛕",
     description: "Vedic river floodplains and dense subtropical rainforest canopies of the Indian subcontinent.",
-    fruitSlugs: ["mango"],
+    fruitSlugs: [
+      "mango",
+      "guava",
+      "papaya",
+      "lychee",
+      "jackfruit",
+      "jamun",
+      "custard-apple",
+      "amla",
+      "lemon",
+      "sapodilla",
+      "bael",
+      "ber",
+      "starfruit",
+      "winter-melon",
+    ],
   },
   {
     id: "southeast-asia",
     name: "Southeast Asia & Indo-Malayan Archipelago",
     shortLabel: "Southeast Asia",
     icon: "🌴",
-    description: "Equatorial rainforest canopies and volcanic islands, birthplace of wild diploid seeded bananas and ancestral citrus.",
-    fruitSlugs: ["banana", "orange"],
+    description: "Equatorial rainforest canopies and volcanic islands, home to wild seeded bananas, citrus, coconuts, and tropical pitayas.",
+    fruitSlugs: [
+      "banana",
+      "orange",
+      "dragonfruit",
+      "coconut",
+      "durian",
+      "mangosteen",
+      "starfruit",
+      "lime",
+      "pomelo",
+    ],
   },
   {
     id: "north-america",
@@ -71,23 +138,23 @@ export const CONTINENTAL_BIOMES: ContinentalBiome[] = [
     shortLabel: "North America",
     icon: "🌲",
     description: "Acidic, glaciated peatlands, pine barrens, and native Algonquian foraging territories.",
-    fruitSlugs: ["blueberry", "strawberry"],
+    fruitSlugs: ["blueberry", "strawberry", "avocado", "blackberry", "raspberry"],
   },
   {
     id: "south-america",
     name: "South America & The Pacific Coastal Valleys",
     shortLabel: "South America",
     icon: "🌋",
-    description: "Chilean coastal sands and Andean slopes where large-fruited Fragaria chiloensis was cultivated by the Mapuche people.",
-    fruitSlugs: ["strawberry"],
+    description: "Chilean coastal sands, Mesoamerican volcanic highlands, and Parana river basins of ancestral cultivation.",
+    fruitSlugs: ["strawberry", "avocado", "pineapple", "passionfruit", "sapodilla", "grapefruit"],
   },
   {
     id: "northeast-africa",
-    name: "Northeast Africa & The Nile River Basin",
-    shortLabel: "Northeast Africa",
+    name: "Northeast Africa & The Mediterranean Basin",
+    shortLabel: "Northeast Africa & Levant",
     icon: "🏛️",
-    description: "The Sudanese Sahel and ancient Egyptian Pharaonic tomb sites where non-bitter Kordofan watermelons were selected.",
-    fruitSlugs: ["watermelon"],
+    description: "The Sudanese Sahel, Nile Valley, and Fertile Crescent where wild watermelons, grapes, cherries, and Neolithic figs were selected.",
+    fruitSlugs: ["watermelon", "fig", "pomegranate", "grape", "cherry", "date", "plum", "cantaloupe", "honeydew", "galia"],
   },
 ];
 
@@ -155,6 +222,300 @@ export const HISTORICAL_DIASPORA_DOSSIERS: Record<
     tradeCorridor: "Nile Basin Caravans & Trans-Saharan Oasis Networks",
     diasporaNarrative:
       "Depicted in ancient Egyptian tomb frescoes as large oblong fruit served at royal funerary feasts, watermelons served as living natural canteens for trans-Saharan desert caravans. Genetic sequencing has confirmed modern watermelons descend from non-bitter white-fleshed wild melons in Kordofan, Sudan, which were traded into the Roman and Byzantine empires.",
+  },
+  pomegranate: {
+    ancestralTaxon: "Punica granatum L.",
+    archaeologicalEpoch: "c. 3,000 BCE (Early Bronze Age Jericho & Nimrud)",
+    tradeCorridor: "Phoenician Maritime Routes & Royal Persian Paradises",
+    diasporaNarrative:
+      "Cultivated across the Fertile Crescent and Iranian plateau since the 3rd millennium BCE, carbonized pomegranate remains have been excavated at Bronze Age Jericho and Nimrud. Phoenician maritime traders introduced cultivation across North Africa to Carthage, where Moorish horticulturists later planted vast orchards in Andalusia, giving Granada its botanical name.",
+  },
+  avocado: {
+    ancestralTaxon: "Persea americana var. drymifolia",
+    archaeologicalEpoch: "c. 8,000–5,000 BCE (Coxcatlán Cave, Tehuacán Valley)",
+    tradeCorridor: "Mesoamerican Indigenous Trade & Spanish Galleon Routes",
+    diasporaNarrative:
+      "Archaeological evidence from Mexico's Tehuacán Valley shows continuous selective foraging and cultivation of avocados stretching back nearly 10,000 years. Aztec culinary treatises documented in the 16th-century Florentine Codex recorded ahuacatl preparations, which Spanish explorers dispersed through Central and South America prior to 20th-century commercial grafting in California.",
+  },
+  fig: {
+    ancestralTaxon: "Ficus carica L.",
+    archaeologicalEpoch: "c. 9,400–9,200 BCE (Gilgal I, Jordan Valley)",
+    tradeCorridor: "Fertile Crescent Neolithic Dispersal & Greco-Roman Maritime Routes",
+    diasporaNarrative:
+      "Parthenocarpic fig remains unearthed at the Neolithic site of Gilgal I in the lower Jordan Valley represent the earliest recorded plant domestication in human history, predating domesticated wheat by roughly a thousand years. Figs served as indispensable sweet staple rations for travelers, soldiers, and sea crews across the ancient Mediterranean basin.",
+  },
+  kiwi: {
+    ancestralTaxon: "Actinidia deliciosa",
+    archaeologicalEpoch: "c. 12th Century CE (Song Dynasty); 1904 CE Commercial Introduction",
+    tradeCorridor: "Yangtze River Valley & Trans-Pacific Agronomic Exchange",
+    diasporaNarrative:
+      "Documented in Song Dynasty herbal pharmacopeias as mǐhóutáo along the upper Yangtze River valley, wild kiwi vines were prized for medicinal infusion and foraging. In 1904, educator Isabel Fraser transported seeds to New Zealand, where horticulturalist Hayward Wright bred the world-standard green cultivar that was famously rebranded as 'Kiwifruit' in 1959.",
+  },
+  dragonfruit: {
+    ancestralTaxon: "Selenicereus undatus (formerly Hylocereus undatus)",
+    archaeologicalEpoch: "Pre-Columbian Mesoamerican Foraging; 19th Century French Indochina",
+    tradeCorridor: "Trans-Pacific French Maritime Routes & Mekong Delta Agronomy",
+    diasporaNarrative:
+      "Native to the tropical dry forests and coastal scrublands of southern Mexico and Central America, pitaya was harvested by indigenous civilizations for cooling hydration. In the late 19th century, French traders brought cactus cuttings to Vietnam, where the crop thrived in the Mekong Delta and Binh Thuan province, becoming Southeast Asia's leading export fruit.",
+  },
+  guava: {
+    ancestralTaxon: "Psidium guajava L.",
+    archaeologicalEpoch: "c. 800 BCE (Coastal Peru & Mesoamerica)",
+    tradeCorridor: "Spanish Maritime Galleons & Mughal Indian Agronomy",
+    diasporaNarrative:
+      "Indigenous to tropical America from Mexico to Peru, where archaeological deposits show early domestic foraging. Transported across the Pacific and Indian oceans by 16th-century Portuguese trade fleets, guava adapted flawlessly to the Indian subcontinent, giving rise to celebrated cultivars in Allahabad and Maharashtra.",
+  },
+  papaya: {
+    ancestralTaxon: "Carica papaya L.",
+    archaeologicalEpoch: "Pre-Columbian Maya & Olmec Domestication",
+    tradeCorridor: "Spanish Manila Galleons & Tropical Asian Naturalization",
+    diasporaNarrative:
+      "Domesticated in southern Mexico and Central America by ancestral Indigenous cultures. Spanish voyagers introduced seeds to the Caribbean and the Philippines in the 1500s, from where it diffused swiftly throughout India and tropical Asia, becoming the premier source of natural culinary papain.",
+  },
+  lychee: {
+    ancestralTaxon: "Litchi chinensis Sonn.",
+    archaeologicalEpoch: "c. 111 BCE (Han Dynasty, South China)",
+    tradeCorridor: "Chinese Imperial Relays & East India Company Plantations",
+    diasporaNarrative:
+      "Prized as an imperial delicacy in Guangdong and Fujian for over two millennia, lychees were rushed to northern capitals by imperial pony express. In the late 18th century, English and French botanists transported trees to Bengal and the fertile floodplains of Bihar, establishing India's prestigious Shahi lychee heartland.",
+  },
+  jackfruit: {
+    ancestralTaxon: "Artocarpus heterophyllus Lam.",
+    archaeologicalEpoch: "c. 4,000–3,000 BCE (Western Ghats, India)",
+    tradeCorridor: "Indian Ocean Monsoon Spice Routes & Tamil Sangam Eras",
+    diasporaNarrative:
+      "Indigenous to the ancient evergreen rain forests of India's Western Ghats, jackfruit is documented extensively in ancient Tamil Sangam poetry as one of the three royal fruits. Carried by early Indian Ocean maritime traders to Southeast Asia, it became a cornerstone agroforestry crop across the tropics.",
+  },
+  jamun: {
+    ancestralTaxon: "Syzygium cumini (L.) Skeels",
+    archaeologicalEpoch: "Vedic Era (c. 1,500 BCE, Jambudvipa)",
+    tradeCorridor: "Ancient Silk Road South Branch & Indian Ocean Diaspora",
+    diasporaNarrative:
+      "Sacred to Vedic cosmology, the Indian subcontinent was historically referred to as Jambudvipa ('land of the Jamun trees'). Subsisted on by travelers and praised in the Ramayana, it spread throughout tropical Asia and the Indian Ocean rim as an indispensable seasonal berry and Ayurvedic metabolic remedy.",
+  },
+  "custard-apple": {
+    ancestralTaxon: "Annona squamosa L.",
+    archaeologicalEpoch: "Pre-Columbian Mesoamerica; 16th Century Deccan Dispersal",
+    tradeCorridor: "Portuguese Goa Maritime Routes & Deccan Plateau Orchards",
+    diasporaNarrative:
+      "Originating in the tropical lowlands of the West Indies and Central America, the sugar apple was introduced to western India via Portuguese traders in Goa. Thriving in the arid, limestone-rich soils of the Deccan plateau, it became deeply woven into regional Indian heritage under the devotional name Sitaphal.",
+  },
+  amla: {
+    ancestralTaxon: "Phyllanthus emblica L.",
+    archaeologicalEpoch: "c. 1,000 BCE (Charaka & Sushruta Samhitas)",
+    tradeCorridor: "Ancient Indian Ayurvedic Trade & Buddhist Herbal Networks",
+    diasporaNarrative:
+      "Native throughout the dry deciduous and subtropical forests of the Indian subcontinent. Central to the foundation of ancient Indian medicine and the 3,000-year-old Chyawanprash formulation, amla was planted in monastery courtyards and temple groves throughout South and Southeast Asia.",
+  },
+  pineapple: {
+    ancestralTaxon: "Ananas comosus var. comosus",
+    archaeologicalEpoch: "c. 2,000 BCE (Parana-Paraguay River Basin)",
+    tradeCorridor: "Tupi-Guarani Trade Routes & Trans-Atlantic European Navigations",
+    diasporaNarrative:
+      "Domesticated by Indigenous Tupi-Guarani peoples in the Parana-Paraguay basin, who transported crowns across tropical South America and the Antilles. Encountered by Columbus in 1493, pineapples became the ultimate aristocratic status symbol across European glasshouses before 19th-century commercial canning in Hawaii.",
+  },
+  grape: {
+    ancestralTaxon: "Vitis vinifera subsp. sylvestris",
+    archaeologicalEpoch: "c. 6,000 BCE (Shulaveri-Shomu & Areni-1, South Caucasus)",
+    tradeCorridor: "Phoenician Mediterranean Trade & Roman Imperial Viticulture",
+    diasporaNarrative:
+      "First domesticated in the South Caucasus and northern Fertile Crescent, where ancient clay kvevri amphorae preserve the earliest traces of viticulture. Phoenician and Greek maritime traders dispersed table and wine grape cultivars across the Mediterranean basin, which Roman agronomists perfected and planted throughout Europe.",
+  },
+  lemon: {
+    ancestralTaxon: "Citrus medica × Citrus × aurantium",
+    archaeologicalEpoch: "c. 1st Century CE (Assam & Roman Trade)",
+    tradeCorridor: "Arab Agricultural Revolution & Mediterranean Maritime Fleets",
+    diasporaNarrative:
+      "Originating from natural hybridization in the foothills of Assam and northern Burma. Introduced to southern Italy during the late Roman empire and systematically cultivated throughout Islamic Spain and Sicily by 1000 CE, lemons subsequently protected world navigators from scurvy during the Age of Sail.",
+  },
+  cherry: {
+    ancestralTaxon: "Prunus avium L.",
+    archaeologicalEpoch: "c. 300 BCE (Pontus, Black Sea) & 74 BCE Roman Introduction",
+    tradeCorridor: "Roman Military Highways & European Temperate Orchards",
+    diasporaNarrative:
+      "Native to the temperate woodlands flanking the Black Sea in ancient Pontus. Roman general Lucullus introduced cultivated trees from Cerasus (Giresun, Turkey) to Rome in 74 BCE, where legionary engineers planted cherry orchards along Roman roads across France, Britain, and Germany.",
+  },
+  coconut: {
+    ancestralTaxon: "Cocos nucifera L.",
+    archaeologicalEpoch: "c. 3,000 BCE (Austronesian & Indian Ocean Expansions)",
+    tradeCorridor: "Trans-Pacific Ocean Currents & Indo-Malayan Maritime Spice Routes",
+    diasporaNarrative:
+      "With buoyant husks evolved to survive months adrift on ocean currents, coconuts colonized equatorial coasts naturally before human domestication in Southeast Asia and the Indian subcontinent. Austronesian sailors transported domestic coconuts to Pacific atolls, while Indian and Arab dhows spread them across the African coast.",
+  },
+  plum: {
+    ancestralTaxon: "Prunus domestica L.",
+    archaeologicalEpoch: "c. 4,000–2,000 BCE (Caspian & Caucasus Basin)",
+    tradeCorridor: "Ancient Greek & Roman Trans-Continental Orchards",
+    diasporaNarrative:
+      "Hexaploid hybrid between cherry plum and blackthorn originating near the Caspian Sea. Introduced into ancient Greece and Rome by classical agronomists, plums diversified into dessert varieties and durable prunes prized along medieval European trade routes.",
+  },
+  apricot: {
+    ancestralTaxon: "Prunus armeniaca L.",
+    archaeologicalEpoch: "c. 3,000 BCE (Garni, Armenian Highlands & Central Asia)",
+    tradeCorridor: "The Ancient Silk Road & High Himalayan Caravan Trails",
+    diasporaNarrative:
+      "Domesticated across the Armenian highlands and Central Asia, archaeological pits dating to 3000 BCE exist at Garni. Dispersed by Silk Road traders and high-altitude Himalayan merchants into Ladakh, Persia, and the Mediterranean via Alexander the Great's campaigns.",
+  },
+  passionfruit: {
+    ancestralTaxon: "Passiflora edulis Sims",
+    archaeologicalEpoch: "Pre-Columbian South America; 1569 CE Spanish Botanical Records",
+    tradeCorridor: "Trans-Pacific Spanish Galleons & 19th-Century Tropical Stations",
+    diasporaNarrative:
+      "Native to the Paraná basin of Brazil, Paraguay, and northern Argentina. Spanish doctor Nicolás Monardes described the flower in 1569. Transported to Hawaii in 1880, New Zealand, and Indian botanical research stations in Coorg and the Nilgiris, becoming a beloved high-altitude tropical crop.",
+  },
+  date: {
+    ancestralTaxon: "Phoenix dactylifera L.",
+    archaeologicalEpoch: "c. 4,000–3,000 BCE (Mesopotamia & Ancient Egypt)",
+    tradeCorridor: "Trans-Saharan Caravan Oases & Arabian Maritime Incense Routes",
+    diasporaNarrative:
+      "Humanity's ancient desert sustenance domesticated along the Tigris, Euphrates, and Nile river valleys. Cultivated on desert oases across North Africa and the Levant, Islamic trade carried date cultivation into the Thar desert of Rajasthan and Gujarat's coastal Kutch.",
+  },
+  blackberry: {
+    ancestralTaxon: "Rubus fruticosus L. sensu lato",
+    archaeologicalEpoch: "Neolithic Foraging; 19th–20th Century Pomology",
+    tradeCorridor: "Celtic Woodland Gatherings & Pacific Northwest Berry Breeding",
+    diasporaNarrative:
+      "Foraged across temperate European and North American bramble thickets since prehistoric times, seeds have been discovered in the stomachs of Neolithic bog bodies like Tollund Man. Cultivated intentionally from the 19th century in the UK and Oregon to create thornless commercial varieties.",
+  },
+  raspberry: {
+    ancestralTaxon: "Rubus idaeus L.",
+    archaeologicalEpoch: "c. 4th Century CE (Mount Ida, Crete) & Medieval France",
+    tradeCorridor: "Medieval Monastery Gardens & Modern High-Tunnel Horticulture",
+    diasporaNarrative:
+      "Gathered from wild brambles on Crete's Mount Ida by ancient Greeks and Romans, raspberries were domesticated across medieval French and English monastery infirmaries. European cultivars later cross-bred with native North American wild red raspberries to create vigorous primocane varieties.",
+  },
+  sapodilla: {
+    ancestralTaxon: "Manilkara zapota (L.) P. Royen",
+    archaeologicalEpoch: "c. 2,000 BCE (Mesoamerica & Maya Civilization)",
+    tradeCorridor: "Manila-Acapulco Galleon Trade & 1898 Gholvad Indian Introduction",
+    diasporaNarrative:
+      "Cherished by the ancient Maya for both sweet fruit and chicle tree resin. Spanish galleons carried sapodilla seeds from Mexico to the Philippines, from where it entered Southeast Asia. Introduced to Gholvad, Maharashtra in 1898 by Sir Dinshaw Petit, western India became the world's greatest Chikoo haven.",
+  },
+  bael: {
+    ancestralTaxon: "Aegle marmelos (L.) Corrêa",
+    archaeologicalEpoch: "c. 2,000–1,500 BCE (Vedic Period, Rigveda)",
+    tradeCorridor: "Ancient Gangetic Pilgrimage Routes & Sacred Temple Agro-Ecology",
+    diasporaNarrative:
+      "Sacred to Lord Shiva in Hindu cosmology, bael trees have been planted across Indian temple sanctuaries and dry deciduous forests for millennia. Valued as an irreplaceable gastroprotective rasayana in Charaka Samhita, its cultivation spread across Sri Lanka, Nepal, and Indochina.",
+  },
+  ber: {
+    ancestralTaxon: "Ziziphus mauritiana Lam.",
+    archaeologicalEpoch: "c. 2,500 BCE (Indus Valley Civilization, Harappa)",
+    tradeCorridor: "Ancient Thar Desert Caravans & Indian Ocean Dhow Routes",
+    diasporaNarrative:
+      "Carbonized jujube stones from Harappan archaeological digs prove Ber was an essential staple of Bronze Age Indus Valley inhabitants. Thriving in saline, drought-prone soils, Indian merchants and Arab navigators transported it across the Red Sea, the Sahel, and tropical northern Australia.",
+  },
+  durian: {
+    ancestralTaxon: "Durio zibethinus L.",
+    archaeologicalEpoch: "Ancient Sundaland Rainforests; 15th Century Maritime Trade",
+    tradeCorridor: "Indo-Malayan Maritime Spice Corridors & Bat Pollination Habitats",
+    diasporaNarrative:
+      "Indigenous to the ancient dipterocarp rainforests of Borneo and Sumatra, durian co-evolved with nocturnal nectar bats. Immortalized by Alfred Russel Wallace in 1856, durian migrated across Siamese and Malay kingdoms to become Southeast Asia's celebrated, high-value King of Fruits.",
+  },
+  mangosteen: {
+    ancestralTaxon: "Garcinia mangostana L.",
+    archaeologicalEpoch: "Pleistocene Sunda Shelf; 18th Century Colonial Botanical Exchanges",
+    tradeCorridor: "Spice Island Royal Navigations & British Royal Botanical Gardens",
+    diasporaNarrative:
+      "An ancient apomictic triploid native to the humid forests of Malaysia and Indonesia. Legend says Queen Victoria offered a 100-pound reward to anyone who could deliver an unblemished fruit. Introduced to Ceylon and the Courtallam hills of Tamil Nadu in the late 1700s, it remains the elusive Queen of Fruits.",
+  },
+  starfruit: {
+    ancestralTaxon: "Averrhoa carambola L.",
+    archaeologicalEpoch: "c. 1,000 BCE (Sri Lanka & Indo-Malayan Archipelago)",
+    tradeCorridor: "Portuguese Malabar Corridors & Trans-Atlantic Tropical Diffusion",
+    diasporaNarrative:
+      "Native to the tropical river basins of Sri Lanka, Indonesia, and South India. Portuguese travelers in 16th-century Goa documented carambola under its Malayalam name and carried seeds to Brazil, the West Indies, and later Florida, where modern sweet cultivars were bred.",
+  },
+  pear: {
+    ancestralTaxon: "Pyrus communis L.",
+    archaeologicalEpoch: "c. 3,000–1,000 BCE (Caucasus & Ancient Greece)",
+    tradeCorridor: "Homeric Aegean Orchards & French Enlightenment Pomology",
+    diasporaNarrative:
+      "Praised by Homer in the Odyssey as a 'gift of the gods', wild pears originated in the Caucasus and Anatolia. Ancient Romans bred dozens of named cultivars, which French and Belgian monks and master pomologists in the 17th and 18th centuries refined into the buttery, melting dessert pears enjoyed worldwide today.",
+  },
+  lime: {
+    ancestralTaxon: "Citrus aurantiifolia (Christm.) Swingle",
+    archaeologicalEpoch: "c. 1,000 BCE (Indo-Malayan Foothills)",
+    tradeCorridor: "Arabian Indian Ocean Dhows & Spanish Galleon Navigation",
+    diasporaNarrative:
+      "Native to the tropical woodlands of Southeast Asia and eastern India, the Key lime was carried across the Indian Ocean by Arabian maritime merchants to the Levant and North Africa. During the 15th-century Age of Discovery, Spanish explorers transported it to the West Indies, where it adapted vigorously and prevented shipboard scurvy.",
+  },
+  grapefruit: {
+    ancestralTaxon: "Citrus × aurantium f. aurantium (Citrus paradisi Macfad.)",
+    archaeologicalEpoch: "c. 1750 CE (Bridgetown, Barbados)",
+    tradeCorridor: "Trans-Atlantic Caribbean Plantations & Florida Citrus Expansion",
+    diasporaNarrative:
+      "A relatively modern botanical hybrid arising spontaneously in 18th-century Barbados when sweet orange pollen crossed with Indonesian pomelo seeds brought by Captain Shaddock. Originally dubbed 'The Forbidden Fruit', it was renamed grapefruit for its cluster-fruiting habit and became a hallmark of Floridian and Mediterranean citrus groves.",
+  },
+  mandarin: {
+    ancestralTaxon: "Citrus reticulata Blanco",
+    archaeologicalEpoch: "c. 2,000 BCE (Yangtze River Basin, China)",
+    tradeCorridor: "Imperial Chinese Tribute Routes & Silk Maritime Corridors",
+    diasporaNarrative:
+      "One of the foundational true wild ancestral species of the citrus genus, native to south-central China and Vietnam. Cherished in imperial Chinese court ceremonies as emblems of auspicious prosperity, mandarins spread slowly along ancient Asian trading paths before being introduced to England and the Mediterranean in 1805.",
+  },
+  pomelo: {
+    ancestralTaxon: "Citrus maxima (Burm.) Merr.",
+    archaeologicalEpoch: "c. 1,500 BCE (Indo-Malayan Archipelago)",
+    tradeCorridor: "Austronesian Island Canoes & Dutch East India Shipping",
+    diasporaNarrative:
+      "The colossal patriarch of the citrus family, indigenous to Malaysia and Indonesia. Austronesian navigators carried its hearty, thick-rinded fruit on trans-oceanic sea voyages. In the 17th century, English sea captain Shaddock transported seeds from Polynesia to the Caribbean, pioneering modern pummelo and hybrid citrus culture.",
+  },
+  cantaloupe: {
+    ancestralTaxon: "Cucumis melo var. cantalupensis",
+    archaeologicalEpoch: "c. 2,000 BCE (Nile Valley & Ancient Persia)",
+    tradeCorridor: "Papal Estates of Cantalupo & Roman Agronomic Treatises",
+    diasporaNarrative:
+      "Diverging from wild African and Indian muskmelon ancestors, true warty cantaloupes were cultivated in ancient Persia and Egypt before being imported by Armenian monks to the papal gardens at Cantalupo near Rome in the 15th century, subsequently captivating French and European Renaissance gastronomy.",
+  },
+  honeydew: {
+    ancestralTaxon: "Cucumis melo var. inodorus",
+    archaeologicalEpoch: "c. 2,400 BCE (Ancient Egypt & Middle East)",
+    tradeCorridor: "Nile Royal Funerary Offerings & French Charentais Breeding",
+    diasporaNarrative:
+      "Smooth-skinned winter melons were depicted in ancient Egyptian tomb wall paintings as sacred hydrating offerings. Prized by Ottoman and European royalty for their extended winter cellar storage longevity, they were introduced to France as 'White Antibes' before American agronomists established them in arid Californian valleys.",
+  },
+  galia: {
+    ancestralTaxon: "Cucumis melo L. (Ha-Ogen × Honey Dew F1 Hybrid)",
+    archaeologicalEpoch: "1973 CE (Neve Yaar Research Center, Israel)",
+    tradeCorridor: "Modern Levantine Agronomic Innovation & Global Cold Chains",
+    diasporaNarrative:
+      "Bred in the 1970s by renowned Israeli plant breeder Dr. Zvi Karchi at the Agricultural Research Organization, the Galia melon ingeniously combined the intense musky aroma of Israeli Ha-Ogen netted melons with the dense, sugary sweetness of honeydew, revolutionizing contemporary Mediterranean greenhouse horticulture.",
+  },
+  "winter-melon": {
+    ancestralTaxon: "Benincasa hispida (Thunb.) Cogn.",
+    archaeologicalEpoch: "c. 3,000 BCE (Indo-China & Eastern India)",
+    tradeCorridor: "Sino-Indian Ayurvedic Trade & Song Dynasty Agronomic Compendiums",
+    diasporaNarrative:
+      "Native to the warm subtropical forests of Southeast Asia and the eastern Himalayas, winter melon was documented in ancient Ayurvedic pharmacopeias as 'Kushmanda'. Its naturally secreted protective white wax coat enabled fruits to survive undamaged in storehouses for over twelve months without spoiling, providing vital famine nutrition.",
+  },
+  quince: {
+    ancestralTaxon: "Cydonia oblonga Mill.",
+    archaeologicalEpoch: "c. 4,000 BCE (Caucasus & Northern Iran)",
+    tradeCorridor: "Aphrodite Sacred Groves & Medieval Monastic Confectionery",
+    diasporaNarrative:
+      "Predating the domestic dessert apple, the fragrant golden quince flourished in the rocky valleys of the Caucasus and ancient Persia. Associated with the goddess Aphrodite in ancient Crete and Rome as the mythical golden apple of love, medieval European apothecaries and monks prized it as the supreme foundation for pectin jellies and marmalades.",
+  },
+  "asian-pear": {
+    ancestralTaxon: "Pyrus pyrifolia (Burm.f.) Nakai",
+    archaeologicalEpoch: "c. 1,000 BCE (Yangtze River Basin, China)",
+    tradeCorridor: "Edo Period Orchardists & Trans-Pacific Agronomic Migration",
+    diasporaNarrative:
+      "Cultivated across China, Japan, and Korea for over two millennia, Pyrus pyrifolia was selected specifically for extreme juiciness, spherical apple-like contours, and crisp, crystalline cell structures rather than soft melting flesh. Chinese immigrants and pioneer pomologists transported treasured grafted scions to California during the Gold Rush.",
+  },
+  loquat: {
+    ancestralTaxon: "Rhaphiolepis bibas (Lour.) Galasso & Banfi (Eriobotrya japonica)",
+    archaeologicalEpoch: "c. 1,500 BCE (Southeastern China)",
+    tradeCorridor: "Tang Dynasty Silk Road & European Enlightenment Arboretums",
+    diasporaNarrative:
+      "Originating in the rugged hill country of south-central China where it was celebrated in Tang dynasty poetry for blossoming in winter and fruiting in spring. Introduced to Japan in antiquity where exceptional large-fruited cultivars were selected, the loquat arrived at the Royal Botanic Gardens at Kew in 1787 and swiftly graced the Riviera coast.",
+  },
+  nectarine: {
+    ancestralTaxon: "Prunus persica var. nucipersica",
+    archaeologicalEpoch: "c. 2,000 BCE (Central & Northern China)",
+    tradeCorridor: "Persian Silk Routes & Renaissance English Pomology",
+    diasporaNarrative:
+      "Arising as a natural recessive genetic mutation of the fuzzy peach that eliminates fuzz trichomes, smooth-skinned nectarines were cultivated alongside peaches in ancient China. Mentioned in English herbals by 1616 as a delicacy of rare nectar-like sweetness, they were naturalized in Spanish California missions in the late 1700s.",
   },
 };
 
@@ -283,7 +644,7 @@ export const WorldAtlasExplorer: React.FC<WorldAtlasExplorerProps> = ({
                   key={fruit.id}
                   type="button"
                   onClick={() => setSelectedSlug(fruit.slug)}
-                  className={`p-2.5 rounded-2xl border transition-all cursor-pointer flex flex-col items-center text-center gap-2 ${
+                  className={`p-2.5 rounded-2xl border transition-all cursor-pointer flex flex-col items-center text-center gap-2 w-full min-w-0 overflow-hidden ${
                     isSelected
                       ? "bg-zinc-900 border-indigo-500 ring-2 ring-indigo-500/30 shadow-lg"
                       : "bg-zinc-950/70 border-zinc-800/80 hover:bg-zinc-900 hover:border-zinc-700"
@@ -297,15 +658,19 @@ export const WorldAtlasExplorer: React.FC<WorldAtlasExplorerProps> = ({
                       style={{ objectPosition: "72% center" }}
                     />
                   </div>
-                  <div className="min-w-0">
+                  <div className="w-full min-w-0 overflow-hidden px-0.5">
                     <span
                       className={`block font-display text-xs font-bold truncate ${
                         isSelected ? "text-white" : "text-zinc-300"
                       }`}
+                      title={fruit.name}
                     >
                       {fruit.name}
                     </span>
-                    <span className="block font-editorial italic text-[10px] text-zinc-500 truncate">
+                    <span
+                      className="block font-editorial italic text-[10px] text-zinc-500 truncate"
+                      title={fruit.origin.region}
+                    >
                       {fruit.origin.region.split("(")[0]}
                     </span>
                   </div>
@@ -333,8 +698,10 @@ export const WorldAtlasExplorer: React.FC<WorldAtlasExplorerProps> = ({
           <div className="flex items-center gap-2 font-ui text-xs text-zinc-400">
             <span>Coordinates:</span>
             <span className="font-mono text-zinc-200 bg-zinc-900 px-2 py-0.5 rounded border border-zinc-800">
-              {currentFruit.origin.coordinates[0]}° N,{" "}
-              {currentFruit.origin.coordinates[1]}° E
+              {Math.abs(currentFruit.origin.coordinates[0])}°{" "}
+              {currentFruit.origin.coordinates[0] >= 0 ? "N" : "S"},{" "}
+              {Math.abs(currentFruit.origin.coordinates[1])}°{" "}
+              {currentFruit.origin.coordinates[1] >= 0 ? "E" : "W"}
             </span>
           </div>
         </div>
@@ -529,8 +896,10 @@ export const WorldAtlasExplorer: React.FC<WorldAtlasExplorerProps> = ({
                         {fruit.origin.region}
                       </td>
                       <td className="py-3 px-6 font-mono text-[11px] text-zinc-400">
-                        {fruit.origin.coordinates[0]}° N,{" "}
-                        {fruit.origin.coordinates[1]}° E
+                        {Math.abs(fruit.origin.coordinates[0])}°{" "}
+                        {fruit.origin.coordinates[0] >= 0 ? "N" : "S"},{" "}
+                        {Math.abs(fruit.origin.coordinates[1])}°{" "}
+                        {fruit.origin.coordinates[1] >= 0 ? "E" : "W"}
                       </td>
                       <td className="py-3 px-6 text-zinc-400">
                         {fruit.origin.grownTodayRegions?.slice(0, 3).join(", ")}

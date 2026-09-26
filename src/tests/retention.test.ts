@@ -44,7 +44,7 @@ describe("Phase 5 Retention Suite: Favorites & Discovery Engine", () => {
       const slugs = allFruits.map((f) => f.slug);
       const uniqueSlugs = new Set(slugs);
       expect(uniqueSlugs.size).toBe(allFruits.length);
-      expect(allFruits.length).toBe(8);
+      expect(allFruits.length).toBe(50);
 
       for (const fruit of allFruits) {
         expect(fruit.slug).toMatch(/^[a-z0-9-]+$/);

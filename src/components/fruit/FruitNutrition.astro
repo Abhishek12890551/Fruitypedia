@@ -64,17 +64,35 @@ const nutrients = fruit.nutrition.nutrients;
         </div>
 
         {fruit.nutrition.waterContentPercent !== undefined && (
-          <div class="water-ratio mt-6 pt-5 border-t border-zinc-900">
-            <div class="flex justify-between text-xs font-ui mb-1.5">
-              <span class="text-zinc-400">Cellular Hydration Ratio</span>
-              <span class="text-white font-medium">{fruit.nutrition.waterContentPercent}%</span>
+          <div class="water-ratio mt-6 pt-5 border-t border-zinc-900 group/hydration">
+            <div class="flex justify-between items-baseline text-xs font-ui mb-2">
+              <span class="text-zinc-400 flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-cyan-400 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+                Cellular Hydration Ratio
+              </span>
+              <span class="text-white font-mono text-sm font-semibold">{fruit.nutrition.waterContentPercent}% <span class="text-[10px] text-zinc-500 font-normal font-ui">H₂O</span></span>
             </div>
-            <div class="w-full h-1 bg-zinc-900 rounded-full overflow-hidden">
+
+            <!-- Interactive Hydration Fluid Vessel -->
+            <div class="relative w-full h-3 bg-zinc-950 rounded-full border border-zinc-800/80 overflow-hidden p-0.5 shadow-inner">
               <div
-                class="h-full rounded-full"
+                class="liquid-fill h-full rounded-full relative overflow-hidden"
                 data-target-width={`${fruit.nutrition.waterContentPercent}%`}
-                style={`width: ${fruit.nutrition.waterContentPercent}%; background-color: ${fruit.theme.primary}; opacity: 0.85;`}
-              ></div>
+                style={`width: ${fruit.nutrition.waterContentPercent}%; background: linear-gradient(90deg, ${fruit.theme.primary} 0%, ${fruit.theme.secondary} 100%);`}
+              >
+                <!-- Liquid Wave Flow Gradient -->
+                <div class="liquid-shimmer absolute inset-0"></div>
+              </div>
+            </div>
+
+            <div class="hydration-particles flex justify-between items-center px-1 pt-1.5 text-[10px] font-mono text-zinc-500">
+              <span class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse inline-block"></span>
+                Living Botanical Water
+              </span>
+              <span>Cellular Cytoplasm</span>
             </div>
           </div>
         )}
@@ -109,36 +127,46 @@ const nutrients = fruit.nutrition.nutrients;
       </div>
     </div>
 
-    <!-- Editorial Macronutrient Strip (Border-separated typographic measure, no boxes) -->
-    <div class="macronutrient-strip grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-6 py-6 mb-12 border-b border-zinc-900">
-      <div class="macro-stat">
-        <span class="font-ui text-[11px] uppercase tracking-wider text-zinc-500 block mb-1">Carbohydrates</span>
-        <span class="font-display text-2xl lg:text-3xl text-white">{nutrients.carbohydrates?.amount ?? 14.5}</span>
-        <span class="text-xs font-ui text-zinc-400 ml-1">g</span>
+    <!-- Editorial Macronutrient Strip (Refined Archival Measure) -->
+    <div class="macronutrient-strip grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 p-4 sm:p-5 mb-12 rounded-2xl bg-zinc-950/80 border border-zinc-800/80 backdrop-blur-md">
+      <div class="macro-stat p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/50">
+        <span class="font-ui text-[11px] uppercase tracking-wider text-zinc-400 font-semibold block mb-1">Carbohydrates</span>
+        <div class="flex items-baseline gap-1">
+          <span class="font-display text-2xl lg:text-3xl font-bold text-white">{nutrients.carbohydrates?.amount ?? 14.5}</span>
+          <span class="text-xs font-mono text-zinc-400">g</span>
+        </div>
       </div>
 
-      <div class="macro-stat">
-        <span class="font-ui text-[11px] uppercase tracking-wider text-zinc-500 block mb-1">Dietary Fiber</span>
-        <span class="font-display text-2xl lg:text-3xl" style={`color: ${fruit.theme.secondary};`}>{nutrients.fiber?.amount ?? 2.4}</span>
-        <span class="text-xs font-ui text-zinc-400 ml-1">g</span>
+      <div class="macro-stat p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/50">
+        <span class="font-ui text-[11px] uppercase tracking-wider text-zinc-400 font-semibold block mb-1">Dietary Fiber</span>
+        <div class="flex items-baseline gap-1">
+          <span class="font-display text-2xl lg:text-3xl font-bold" style={`color: ${fruit.theme.secondary};`}>{nutrients.fiber?.amount ?? 2.4}</span>
+          <span class="text-xs font-mono text-zinc-400">g</span>
+        </div>
       </div>
 
-      <div class="macro-stat">
-        <span class="font-ui text-[11px] uppercase tracking-wider text-zinc-500 block mb-1">Natural Sugars</span>
-        <span class="font-display text-2xl lg:text-3xl text-white">{nutrients.sugars?.amount ?? nutrients.totalSugars?.amount ?? 9.9}</span>
-        <span class="text-xs font-ui text-zinc-400 ml-1">g</span>
+      <div class="macro-stat p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/50">
+        <span class="font-ui text-[11px] uppercase tracking-wider text-zinc-400 font-semibold block mb-1">Natural Sugars</span>
+        <div class="flex items-baseline gap-1">
+          <span class="font-display text-2xl lg:text-3xl font-bold text-white">{nutrients.sugars?.amount ?? nutrients.totalSugars?.amount ?? 9.9}</span>
+          <span class="text-xs font-mono text-zinc-400">g</span>
+        </div>
       </div>
 
-      <div class="macro-stat">
-        <span class="font-ui text-[11px] uppercase tracking-wider text-zinc-500 block mb-1">Protein</span>
-        <span class="font-display text-2xl lg:text-3xl text-white">{nutrients.protein?.amount ?? 0.7}</span>
-        <span class="text-xs font-ui text-zinc-400 ml-1">g</span>
+      <div class="macro-stat p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/50">
+        <span class="font-ui text-[11px] uppercase tracking-wider text-zinc-400 font-semibold block mb-1">Protein</span>
+        <div class="flex items-baseline gap-1">
+          <span class="font-display text-2xl lg:text-3xl font-bold text-white">{nutrients.protein?.amount ?? 0.7}</span>
+          <span class="text-xs font-mono text-zinc-400">g</span>
+        </div>
       </div>
 
-      <div class="macro-stat">
-        <span class="font-ui text-[11px] uppercase tracking-wider text-zinc-500 block mb-1">Lipids (Fat)</span>
-        <span class="font-display text-2xl lg:text-3xl text-white">{nutrients.totalFat?.amount ?? 0.3}</span>
-        <span class="text-xs font-ui text-zinc-400 ml-1">g</span>
+      <div class="macro-stat p-3 rounded-xl bg-zinc-900/40 border border-zinc-800/50 col-span-2 sm:col-span-1">
+        <span class="font-ui text-[11px] uppercase tracking-wider text-zinc-400 font-semibold block mb-1">Lipids (Fat)</span>
+        <div class="flex items-baseline gap-1">
+          <span class="font-display text-2xl lg:text-3xl font-bold text-white">{nutrients.totalFat?.amount ?? 0.3}</span>
+          <span class="text-xs font-mono text-zinc-400">g</span>
+        </div>
       </div>
     </div>
 
@@ -248,6 +276,55 @@ const nutrients = fruit.nutrition.nutrients;
       background: rgba(255, 255, 255, 0.08);
     }
   }
+
+  /* ═══ LIQUID SHIMMER & SPRING WAVE EFFECT ═══ */
+  .liquid-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.35) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: liquidFlow 3s ease-in-out infinite;
+  }
+
+  @keyframes liquidFlow {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .micro-row .h-full {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .micro-row .h-full::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent
+    );
+    transform: translateX(-100%);
+    animation: barShimmer 4s ease-in-out infinite;
+  }
+
+  @keyframes barShimmer {
+    0%, 30% {
+      transform: translateX(-100%);
+    }
+    60%, 100% {
+      transform: translateX(100%);
+    }
+  }
 </style>
 
 <script>
@@ -290,9 +367,9 @@ const nutrients = fruit.nutrition.nutrients;
         return;
       }
 
-      // Initial collapsed state for animation
+      // Initial collapsed state for animation with spring bezier curve
       bar.style.width = "0%";
-      bar.style.transition = "width 900ms cubic-bezier(0.16, 1, 0.3, 1)";
+      bar.style.transition = "width 950ms cubic-bezier(0.34, 1.25, 0.64, 1)";
     });
 
     // Clean up any previous observer from View Transition navigation

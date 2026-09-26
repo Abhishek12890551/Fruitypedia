@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Banana — Production fruit monograph.
  *
  * All nutrition values are derived from USDA FoodData Central SR Legacy
@@ -19,7 +19,7 @@ export const banana: Fruit = {
   name: "Banana",
 
   editorial: {
-    nickname: "l'or des tropiques",
+    nickname: "Kela · Kadali",
     tagline: "Parthenocarpic berry. High-potassium tropical staple.",
     heroDescription:
       "Venerated across tropical civilizations for over seven millennia, the banana is botanically an elongated, seedless berry born from the world's largest flowering perennial herb. Encased within an easily peeled golden exocarp lies a dense, creamy mesocarp exceptionally rich in bioavailable potassium, vitamin B6, and prebiotic pectin.",
@@ -34,7 +34,7 @@ export const banana: Fruit = {
       },
     ],
     nutritionDescription:
-      "Close to 75% pure structured cellular water, cradling dense reserves of soluble starch, prebiotic pectin, and bioavailable potassium.",
+      "Close to 75% water, carrying soluble starch, prebiotic pectin, and potassium.",
   },
 
   taxonomy: {
@@ -63,6 +63,14 @@ export const banana: Fruit = {
       role: "hero",
       generatedBy: "ai",
       provider: "imagen-3",
+      reviewed: true,
+    },
+    card: {
+      src: "/images/fruits/banana/card.png",
+      alt: "Banana - editorial card image",
+      role: "card",
+      generatedBy: "ai",
+      provider: "imagen-4",
       reviewed: true,
     },
     gallery: [],

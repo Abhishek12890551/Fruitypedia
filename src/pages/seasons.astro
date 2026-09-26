@@ -26,33 +26,53 @@ import { allFruits } from "@/data";
         label="BOTANICAL CALENDAR & PHENOLOGY"
         folio="PHENOLOGY // 06"
         title="The Rhythms of Seasonality"
-        description="Interactive 12-month agricultural harvest cycles, peak flavor windows, and global hemispheric inversions across all 8 production monographs."
+        description="Interactive 12-month agricultural harvest cycles, peak flavor windows, and global hemispheric inversions across our complete 50-fruit botanical directory."
       />
 
       <!-- Astronomical Solstice & Equinox Phenology Strip -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 font-ui text-xs">
-        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
-          <span class="font-mono text-[10px] tracking-widest text-emerald-400 uppercase">MAR ~20</span>
-          <h4 class="font-display font-semibold text-white text-sm">Vernal Equinox</h4>
-          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Dormancy break, flower bud swelling, and initial pollination flights.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10 font-ui text-xs">
+        <div class="p-4 rounded-xl border border-emerald-500/25 bg-gradient-to-br from-emerald-950/30 via-zinc-900/70 to-zinc-950/90 hover:border-emerald-400/50 hover:shadow-[0_8px_24px_-6px_rgba(16,185,129,0.2)] transition-all space-y-2 group">
+          <div class="flex items-center justify-between">
+            <span class="text-base" aria-hidden="true">🌱</span>
+            <span class="font-mono text-[9px] tracking-widest text-emerald-400 font-semibold uppercase px-2 py-0.5 rounded-full bg-emerald-950/50 border border-emerald-800/40">MAR ~20 · SPRING</span>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-white text-sm group-hover:text-emerald-200 transition-colors">Vernal Equinox</h4>
+            <p class="text-[11px] text-zinc-400 font-editorial leading-relaxed mt-1">Dormancy break, flower bud swelling, and initial pollination flights.</p>
+          </div>
         </div>
 
-        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
-          <span class="font-mono text-[10px] tracking-widest text-amber-400 uppercase">JUN ~21</span>
-          <h4 class="font-display font-semibold text-white text-sm">Summer Solstice</h4>
-          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Maximum solar photon flux; rapid cellular division and Brix accumulation.</p>
+        <div class="p-4 rounded-xl border border-amber-500/25 bg-gradient-to-br from-amber-950/30 via-zinc-900/70 to-zinc-950/90 hover:border-amber-400/50 hover:shadow-[0_8px_24px_-6px_rgba(245,158,11,0.2)] transition-all space-y-2 group">
+          <div class="flex items-center justify-between">
+            <span class="text-base" aria-hidden="true">☀️</span>
+            <span class="font-mono text-[9px] tracking-widest text-amber-400 font-semibold uppercase px-2 py-0.5 rounded-full bg-amber-950/50 border border-amber-800/40">JUN ~21 · SUMMER</span>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-white text-sm group-hover:text-amber-200 transition-colors">Summer Solstice</h4>
+            <p class="text-[11px] text-zinc-400 font-editorial leading-relaxed mt-1">Maximum solar photon flux; rapid cellular division and Brix accumulation.</p>
+          </div>
         </div>
 
-        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
-          <span class="font-mono text-[10px] tracking-widest text-rose-400 uppercase">SEP ~22</span>
-          <h4 class="font-display font-semibold text-white text-sm">Autumnal Equinox</h4>
-          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Peak harvest equilibrium, anthocyanin synthesis, and tissue senescence.</p>
+        <div class="p-4 rounded-xl border border-rose-500/25 bg-gradient-to-br from-rose-950/30 via-zinc-900/70 to-zinc-950/90 hover:border-rose-400/50 hover:shadow-[0_8px_24px_-6px_rgba(244,63,94,0.2)] transition-all space-y-2 group">
+          <div class="flex items-center justify-between">
+            <span class="text-base" aria-hidden="true">🍂</span>
+            <span class="font-mono text-[9px] tracking-widest text-rose-400 font-semibold uppercase px-2 py-0.5 rounded-full bg-rose-950/50 border border-rose-800/40">SEP ~22 · AUTUMN</span>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-white text-sm group-hover:text-rose-200 transition-colors">Autumnal Equinox</h4>
+            <p class="text-[11px] text-zinc-400 font-editorial leading-relaxed mt-1">Peak harvest equilibrium, anthocyanin synthesis, and tissue senescence.</p>
+          </div>
         </div>
 
-        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
-          <span class="font-mono text-[10px] tracking-widest text-cyan-400 uppercase">DEC ~21</span>
-          <h4 class="font-display font-semibold text-white text-sm">Winter Solstice</h4>
-          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Chilling requirement accumulation (hours &lt;7°C) for spring floral vigor.</p>
+        <div class="p-4 rounded-xl border border-cyan-500/25 bg-gradient-to-br from-cyan-950/30 via-zinc-900/70 to-zinc-950/90 hover:border-cyan-400/50 hover:shadow-[0_8px_24px_-6px_rgba(6,182,212,0.2)] transition-all space-y-2 group">
+          <div class="flex items-center justify-between">
+            <span class="text-base" aria-hidden="true">❄️</span>
+            <span class="font-mono text-[9px] tracking-widest text-cyan-400 font-semibold uppercase px-2 py-0.5 rounded-full bg-cyan-950/50 border border-cyan-800/40">DEC ~21 · WINTER</span>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-white text-sm group-hover:text-cyan-200 transition-colors">Winter Solstice</h4>
+            <p class="text-[11px] text-zinc-400 font-editorial leading-relaxed mt-1">Chilling requirement accumulation (hours &lt;7°C) for spring floral vigor.</p>
+          </div>
         </div>
       </div>
 

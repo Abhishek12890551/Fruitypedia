@@ -81,7 +81,7 @@ export const MobileNav: React.FC = () => {
             {/* Top Drawer Header with Brand & Close Button */}
             <div className="flex items-center justify-between pb-4 border-b border-zinc-800/80">
               <a href="/" onClick={() => setIsOpen(false)} className="flex items-baseline gap-0.5 hover:opacity-90 transition-opacity" aria-label="Fruitypedia Home">
-                <span className="font-script text-2xl text-white tracking-normal font-normal lowercase select-none leading-none">fruitypedia</span>
+                <span className="font-editorial italic text-2xl text-white tracking-normal font-normal lowercase select-none leading-none">fruitypedia</span>
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.9)] transform translate-y-[-1px]"></span>
               </a>
               <button
@@ -148,7 +148,7 @@ export const MobileNav: React.FC = () => {
             <span className="font-display font-semibold text-zinc-300 text-sm block mb-1">
               Fruitypedia
             </span>
-            The Visual Fruit Encyclopedia · USDA Verified Records
+            The Visual Fruit Encyclopedia · Data: USDA FoodData Central
           </div>
         </div>,
         document.body

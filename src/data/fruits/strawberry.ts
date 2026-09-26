@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Strawberry — Production fruit monograph.
  *
  * All nutrition values are derived from USDA FoodData Central SR Legacy
@@ -19,7 +19,7 @@ export const strawberry: Fruit = {
   name: "Strawberry",
 
   editorial: {
-    nickname: "la reine des baies",
+    nickname: "Pahari Strawberry · Rasbhari",
     tagline: "Fragrant ruby. Intricate botanical architecture.",
     heroDescription:
       "Botanically unique as an aggregate accessory fruit, the strawberry carries its true botanical fruits—hundreds of delicate achenes—on its glossy scarlet receptacle. Celebrated for its explosive aromatic esters and potent vitamin C concentration, it is one of the world's most beloved temperate fruits.",
@@ -34,7 +34,7 @@ export const strawberry: Fruit = {
       },
     ],
     nutritionDescription:
-      "Over 90% pure structured cellular water, carrying soluble sugars, ascorbic acid, and suspended anthocyanin pigments.",
+      "Over 90% water, carrying soluble sugars, ascorbic acid, and anthocyanin pigments.",
   },
 
   taxonomy: {
@@ -65,6 +65,14 @@ export const strawberry: Fruit = {
       provider: "imagen-3",
       reviewed: true,
     },
+    card: {
+      src: "/images/fruits/strawberry/card.png",
+      alt: "Strawberry - editorial card image",
+      role: "card",
+      generatedBy: "ai",
+      provider: "imagen-4",
+      reviewed: true,
+    },
     gallery: [],
     macroBreak: {
       src: "/images/fruits/strawberry/macro-break.jpg",
@@ -82,7 +90,7 @@ export const strawberry: Fruit = {
     region: "The Americas",
     coordinates: [-35.6, -71.5],
     description:
-      "The modern garden strawberry arose in Brittany, France, in the 1750s through an accidental hybridization of Fragaria virginiana from eastern North America and Fragaria chiloensis from coastal Chile. Both parent species had been treasured by indigenous peoples for millennia.",
+      "The cultivated garden strawberry (Fragaria \u00d7 ananassa) arose in Brittany, France, in the 1750s through an accidental cross between Fragaria virginiana from eastern North America and Fragaria chiloensis from coastal Chile — two parent species long cultivated by indigenous peoples. The Chilean coordinates mark the native range of the chiloensis parent.",
     grownTodayRegions: [
       "United States",
       "Spain",

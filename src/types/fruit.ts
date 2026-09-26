@@ -113,6 +113,8 @@ export interface FruitImage {
 
 export interface FruitImages {
   hero: FruitImage;
+  /** Dedicated square/card image used in directory, category, and search cards. Falls back to hero if absent. */
+  card?: FruitImage;
   gallery: FruitImage[];
   crossSection?: FruitImage;
   /** Full-bleed macro photography break image. */
@@ -236,7 +238,7 @@ export interface Fruit {
   name: string;
 
   editorial: {
-    /** Poetic nickname displayed in script typography (e.g., "la baie d'or bleu"). */
+    /** Poetic nickname displayed in script typography (e.g., "Aam · Phalon Ka Raja"). */
     nickname?: string;
     /** Short tagline for cards and previews. */
     tagline?: string;

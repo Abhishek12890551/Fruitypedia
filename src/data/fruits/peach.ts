@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Peach — Production fruit monograph.
  *
  * All nutrition values are derived from USDA FoodData Central SR Legacy
@@ -19,7 +19,7 @@ export const peach: Fruit = {
   name: "Peach",
 
   editorial: {
-    nickname: "la reine des vergers",
+    nickname: "Aadoo · Rekhlu",
     tagline: "Velvet drupe. Ancient symbol of vitality and longevity.",
     heroDescription:
       "Celebrated across East Asian philosophy and global horticulture for over four millennia as an emblem of vitality, the peach is a quintessential botanical drupe. Beneath its velvety, sun-blushed pubescent exocarp lies a succulent, nectar-dense mesocarp wrapped around a deeply corrugated woody stone, delivering delicate carotenoids, natural polyphenols, and balanced organic acids.",
@@ -34,7 +34,7 @@ export const peach: Fruit = {
       },
     ],
     nutritionDescription:
-      "Nearly 89% pure structured stone-fruit cell water, delivering dissolved summer nectar, bioavailable carotenoids, and soothing soluble pectin.",
+      "Nearly 89% water, delivering summer nectar, bioavailable carotenoids, and soluble pectin.",
   },
 
   taxonomy: {
@@ -65,6 +65,14 @@ export const peach: Fruit = {
       provider: "imagen-3",
       reviewed: true,
     },
+    card: {
+      src: "/images/fruits/peach/card.png",
+      alt: "Peach - editorial card image",
+      role: "card",
+      generatedBy: "ai",
+      provider: "imagen-4",
+      reviewed: true,
+    },
     gallery: [],
     macroBreak: {
       src: "/images/fruits/peach/macro-break.jpg",
@@ -74,7 +82,7 @@ export const peach: Fruit = {
       reviewed: true,
       captionTitle: "Pubescent Epidermis · The Corrugated Endocarp",
       captionText:
-        "Unicellular epidermal trichomes form a protective velvet canopy over tensioned parenchymal cells laden with aromatic gamma-decalactones and structured cell sap.",
+        "Unicellular epidermal trichomes form a protective velvet canopy over tensioned parenchymal cells laden with aromatic gamma-decalactones.",
     },
   },
 
@@ -362,25 +370,25 @@ export const peach: Fruit = {
       label: "Polyphenolic Antioxidants",
       phenomenon: "chlorogenic acid and flavan-3-ols",
       description:
-        "Contains dense concentrations of chlorogenic acid, catechin, and epicatechin within the peel and outer flesh, offering free-radical neutralization and cellular protection.",
+        "Contains chlorogenic acid, catechin, and epicatechin in the peel and outer flesh, offering free-radical neutralization. Concentrations are meaningful but lower than anthocyanin-rich berries.",
       evidenceLevel: "established",
       sourceIds: ["usda-fdc-peach", "fda-daily-values"],
       icon: "shield",
     },
     {
-      label: "Carotenoid Provitamin A",
-      phenomenon: "beta-carotene and lutein density",
+      label: "Source of Beta-Carotene (2% DV)",
+      phenomenon: "carotenoid provitamin A content",
       description:
-        "Golden-yellow flesh supplies bioavailable beta-carotene and cryptoxanthin, supporting retinal rod function and epithelial tissue integrity.",
-      evidenceLevel: "established",
+        "Golden-yellow flesh supplies modest beta-carotene and cryptoxanthin at 16 µg RAE per 100g (2% DV). A worthwhile contributor as part of a varied diet, though not a high-density source.",
+      evidenceLevel: "limited",
       sourceIds: ["usda-fdc-peach", "fda-daily-values"],
       icon: "leaf",
     },
     {
       label: "Hydration & Dietary Pectin",
-      phenomenon: "structured cellular water matrix",
+      phenomenon: "water content and soluble fiber",
       description:
-        "Featuring nearly 89% structured cell water alongside soluble pectin, assisting digestive motility and healthy mucosal hydration.",
+        "Containing nearly 89% water alongside 1.5g soluble pectin per 100g, peaches support fluid intake and contribute to digestive regularity as part of a balanced diet.",
       evidenceLevel: "established",
       sourceIds: ["usda-fdc-peach", "fda-daily-values"],
       icon: "grain",

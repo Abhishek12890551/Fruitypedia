@@ -7,8 +7,8 @@ import {
 } from "../components/SeasonsCalendar";
 
 describe("Phase 4D — Interactive Harvest Seasons & Phenology Calendar", () => {
-  it("verifies all 8 production fruits contain structured season records with 1-12 month integers", () => {
-    expect(allFruits.length).toBe(8);
+  it("verifies all 50 production fruits contain structured season records with 1-12 month integers", () => {
+    expect(allFruits.length).toBe(50);
 
     for (const fruit of allFruits) {
       expect(fruit.season).toBeDefined();

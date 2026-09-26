@@ -11,33 +11,54 @@
  */
 interface Props {
   fruitName?: string;
+  fruitSlug?: string;
 }
 
-const { fruitName = "Blueberry" } = Astro.props;
+const { fruitName = "Blueberry", fruitSlug = "blueberry" } = Astro.props;
 ---
 
-<section class="explore-transition-section" aria-label="Explore more monographs">
-  <div class="container-page">
+<section class="explore-transition-section relative overflow-hidden" aria-label="Explore more monographs">
+  <!-- Subtle ambient glow matching fruit theme if present -->
+  <div 
+    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blur-[140px] opacity-15 pointer-events-none"
+    style="background: var(--fruit-primary, #6366f1);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-page relative z-10">
     <div class="transition-inner py-20 sm:py-28 border-t border-zinc-900 text-center max-w-3xl mx-auto">
-      <span class="font-ui text-[11px] font-bold tracking-[0.3em] uppercase text-zinc-500 block mb-4">
-        THE LIVING ENCYCLOPEDIA
-      </span>
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/60 backdrop-blur-sm mb-6 text-zinc-400">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="font-ui text-[11px] font-semibold tracking-[0.25em] uppercase text-zinc-300">
+          50 COMPREHENSIVE LIVING MONOGRAPHS
+        </span>
+      </div>
 
       <h2 class="font-editorial text-4xl sm:text-5xl md:text-6xl text-white font-light tracking-tight leading-[1.1] mb-6">
-        There is more to every fruit.
+        There is deeper science to every fruit.
       </h2>
 
       <p class="font-editorial text-lg sm:text-xl text-zinc-400 leading-relaxed mb-10 max-w-2xl mx-auto">
-        Beyond {fruitName}, hundreds of botanical lineages, wild heirloom varieties, and biochemical stories remain to be discovered.
+        Every cultivar in our repository is indexed with USDA FoodData Central chemical analyses, heritage Indian nomenclature, biogeographical origins, and sensory architecture.
       </p>
 
-      <a
-        href="/directory"
-        class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full border border-zinc-700/80 bg-zinc-900/80 hover:bg-zinc-800 hover:border-zinc-500 text-sm font-ui font-medium text-white transition-all shadow-lg hover:shadow-white/5"
-      >
-        <span>Explore the Directory</span>
-        <span class="text-zinc-400 font-mono text-sm">→</span>
-      </a>
+      <div class="flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/directory"
+          class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-white hover:bg-zinc-200 text-zinc-950 font-ui font-semibold text-sm transition-all shadow-lg hover:shadow-white/10 hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <span>Explore All 50 Fruits</span>
+          <span class="font-mono text-sm">→</span>
+        </a>
+
+        <a
+          href={`/compare?a=${fruitSlug}`}
+          class="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-zinc-700/80 bg-zinc-900/80 hover:bg-zinc-800 hover:border-zinc-500 text-sm font-ui font-medium text-white transition-all shadow-md hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <span>Compare {fruitName}</span>
+          <span class="text-zinc-400 font-mono text-sm">⇄</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>

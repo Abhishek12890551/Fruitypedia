@@ -108,7 +108,7 @@ export function searchCatalog(
       }
     }
 
-    // 3. Poetic epithet / French nickname
+    // 3. Poetic epithet / Indian heritage nickname
     if (bestScore < 68 && nicknameLower.includes(clean)) {
       bestScore = 68;
       matchType = "nickname";

@@ -55,7 +55,7 @@ export const FruitOfTheDayCard: React.FC<FruitOfTheDayCardProps> = ({ fruits }) 
 
             <div>
               {todayFruit.editorial.nickname && (
-                <p className="font-script text-xl text-zinc-300 mb-1" style={{ color: todayFruit.theme.secondary }}>
+                <p className="font-editorial italic text-lg sm:text-xl text-zinc-300 mb-1" style={{ color: todayFruit.theme.secondary }}>
                   {todayFruit.editorial.nickname}
                 </p>
               )}

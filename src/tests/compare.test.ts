@@ -7,8 +7,8 @@ describe("Fruit Comparison Analytical Logic", () => {
   const watermelon = allFruits.find((f) => f.slug === "watermelon");
   const orange = allFruits.find((f) => f.slug === "orange");
 
-  it("ensures all 8 production fruits have valid comparison data", () => {
-    expect(allFruits.length).toBe(8);
+  it("ensures all 50 production fruits have valid comparison data", () => {
+    expect(allFruits.length).toBe(50);
     for (const fruit of allFruits) {
       expect(fruit.nutrition.calories.amount).toBeGreaterThan(0);
       expect(fruit.tasteProfile.sweetness.value).toBeGreaterThanOrEqual(0);

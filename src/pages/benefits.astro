@@ -14,7 +14,7 @@ import { allFruits } from "@/data";
 
 <BaseLayout
   title="Health Benefits & Functional Profiles | Fruitypedia"
-  description="Explore peer-reviewed wellness phenomena, bioactive phytochemical biomarkers, and evidence-tiered systemic cohorts across all 8 production fruits."
+  description="Explore wellness benefits, bioactive phytochemical profiles, and evidence-tiered systemic cohorts across our comprehensive botanical library."
 >
   <!-- Ambient Atmospheric Biochemical Glow -->
   <div class="relative overflow-hidden">
@@ -26,43 +26,54 @@ import { allFruits } from "@/data";
         label="FUNCTIONAL BIOLOGY & EVIDENCE TIERS"
         folio="BIOCHEMISTRY // 05"
         title="Health Benefits Directory"
-        description="Peer-reviewed physiological phenomena, bioactive plant biomarkers, and clinical consensus tiers categorized across major biological systems with zero unverified medical claims."
+        description="Nutritional benefits and bioactive plant compounds, categorized across major biological systems. Not medical advice; fruits are not treatments."
       />
 
       <!-- Phytochemical Spotlight Cards -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mb-10 font-ui text-xs">
-        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
-          <span class="font-mono text-[10px] tracking-widest text-indigo-400 uppercase">PHYTO // C15H11O6+</span>
-          <h4 class="font-display font-semibold text-white text-sm">Anthocyanins</h4>
-          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Vascular endothelial integrity & blood-brain barrier permeability support.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-10 font-ui text-xs">
+        <div class="p-4 rounded-xl border border-indigo-500/25 bg-gradient-to-br from-indigo-950/30 via-zinc-900/70 to-zinc-950/90 hover:border-indigo-400/50 hover:shadow-[0_8px_24px_-6px_rgba(99,102,241,0.2)] transition-all space-y-2 group">
+          <div class="flex items-center justify-between">
+            <span class="text-base" aria-hidden="true">🧬</span>
+            <span class="font-mono text-[9px] tracking-widest text-indigo-400 font-semibold uppercase px-2 py-0.5 rounded-full bg-indigo-950/50 border border-indigo-800/40">C15H11O6+</span>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-white text-sm group-hover:text-indigo-200 transition-colors">Anthocyanins</h4>
+            <p class="text-[11px] text-zinc-400 font-editorial leading-relaxed mt-1">Vascular endothelial integrity & blood-brain barrier permeability support.</p>
+          </div>
         </div>
 
-        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
-          <span class="font-mono text-[10px] tracking-widest text-rose-400 uppercase">POLYPHENOL</span>
-          <h4 class="font-display font-semibold text-white text-sm">Ellagitannins</h4>
-          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Microbiome metabolized urolithins driving cellular mitochondrial mitophagy.</p>
+        <div class="p-4 rounded-xl border border-rose-500/25 bg-gradient-to-br from-rose-950/30 via-zinc-900/70 to-zinc-950/90 hover:border-rose-400/50 hover:shadow-[0_8px_24px_-6px_rgba(244,63,94,0.2)] transition-all space-y-2 group">
+          <div class="flex items-center justify-between">
+            <span class="text-base" aria-hidden="true">🛡️</span>
+            <span class="font-mono text-[9px] tracking-widest text-rose-400 font-semibold uppercase px-2 py-0.5 rounded-full bg-rose-950/50 border border-rose-800/40">POLYPHENOL</span>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-white text-sm group-hover:text-rose-200 transition-colors">Ellagitannins</h4>
+            <p class="text-[11px] text-zinc-400 font-editorial leading-relaxed mt-1">Microbiome metabolized urolithins driving cellular mitochondrial mitophagy.</p>
+          </div>
         </div>
 
-        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
-          <span class="font-mono text-[10px] tracking-widest text-amber-400 uppercase">FLAVANONE</span>
-          <h4 class="font-display font-semibold text-white text-sm">Hesperidin</h4>
-          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Microvascular tone regulation and systemic capillary fragility attenuation.</p>
+        <div class="p-4 rounded-xl border border-amber-500/25 bg-gradient-to-br from-amber-950/30 via-zinc-900/70 to-zinc-950/90 hover:border-amber-400/50 hover:shadow-[0_8px_24px_-6px_rgba(245,158,11,0.2)] transition-all space-y-2 group">
+          <div class="flex items-center justify-between">
+            <span class="text-base" aria-hidden="true">🫀</span>
+            <span class="font-mono text-[9px] tracking-widest text-amber-400 font-semibold uppercase px-2 py-0.5 rounded-full bg-amber-950/50 border border-amber-800/40">FLAVANONE</span>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-white text-sm group-hover:text-amber-200 transition-colors">Hesperidin</h4>
+            <p class="text-[11px] text-zinc-400 font-editorial leading-relaxed mt-1">Microvascular tone regulation and systemic capillary fragility attenuation.</p>
+          </div>
         </div>
 
-        <div class="p-4 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-900/40 debossed-plate space-y-1">
-          <span class="font-mono text-[10px] tracking-widest text-emerald-400 uppercase">CAROTENOID // C40H56</span>
-          <h4 class="font-display font-semibold text-white text-sm">Lycopene & Lutein</h4>
-          <p class="text-[11px] text-zinc-400 font-editorial leading-snug">Lipophilic antioxidant quenching singlet molecular oxygen in lipid membranes.</p>
+        <div class="p-4 rounded-xl border border-emerald-500/25 bg-gradient-to-br from-emerald-950/30 via-zinc-900/70 to-zinc-950/90 hover:border-emerald-400/50 hover:shadow-[0_8px_24px_-6px_rgba(16,185,129,0.2)] transition-all space-y-2 group">
+          <div class="flex items-center justify-between">
+            <span class="text-base" aria-hidden="true">👁️</span>
+            <span class="font-mono text-[9px] tracking-widest text-emerald-400 font-semibold uppercase px-2 py-0.5 rounded-full bg-emerald-950/50 border border-emerald-800/40">CAROTENOID</span>
+          </div>
+          <div>
+            <h4 class="font-display font-semibold text-white text-sm group-hover:text-emerald-200 transition-colors">Lycopene & Lutein</h4>
+            <p class="text-[11px] text-zinc-400 font-editorial leading-relaxed mt-1">Lipophilic antioxidant quenching singlet molecular oxygen in lipid membranes.</p>
+          </div>
         </div>
-      </div>
-
-      <!-- Evidence Tier Standard Banner -->
-      <div class="p-3.5 mb-8 rounded-[var(--radius-md)] border border-[var(--border-subtle)] bg-zinc-950/60 flex flex-col sm:flex-row sm:items-center justify-between gap-2 font-mono text-[11px] text-zinc-400">
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-          <span>EVIDENCE STANDARD: COCHRANE & PUBMED SYSTEMATIC REVIEWS</span>
-        </div>
-        <span class="text-zinc-500">STRICT NO-UNVERIFIED-SUPPLEMENT PLEDGE</span>
       </div>
 
       <div class="mt-2">

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Orange — Production fruit monograph.
  *
  * All nutrition values are derived from USDA FoodData Central SR Legacy
@@ -19,7 +19,7 @@ export const orange: Fruit = {
   name: "Orange",
 
   editorial: {
-    nickname: "l'oranger doux",
+    nickname: "Santra · Naranga",
     tagline: "Sunlit hesperidium. Liquid aromatic gold.",
     heroDescription:
       "A monumental citrus hybrid of pomelo and mandarin that transformed ancient botanical trade and modern orchards alike. Packed within an aromatic flavedo bursting with essential limonene, its radial carpels house thousands of glistening, sun-drenched juice vesicles delivering vibrant ascorbic acid and balanced citric sweetness.",
@@ -63,6 +63,14 @@ export const orange: Fruit = {
       role: "hero",
       generatedBy: "ai",
       provider: "imagen-3",
+      reviewed: true,
+    },
+    card: {
+      src: "/images/fruits/orange/card.png",
+      alt: "Orange - editorial card image",
+      role: "card",
+      generatedBy: "ai",
+      provider: "imagen-4",
       reviewed: true,
     },
     gallery: [],
@@ -288,7 +296,7 @@ export const orange: Fruit = {
       label: "Classic Vitamin C Density",
       phenomenon: "ascorbic acid content",
       description:
-        "Providing 53.2 mg per 100g (59% DV), a single medium orange comfortably satisfies the complete daily requirement for dietary vitamin C, promoting collagen resilience.",
+        "Providing 53.2 mg per 100g (59% DV), one medium orange (~130g) supplies roughly 75% of the daily vitamin C requirement, supporting collagen synthesis and immune function.",
       evidenceLevel: "established",
       sourceIds: ["usda-fdc-orange", "fda-daily-values"],
       icon: "shield",
@@ -297,8 +305,8 @@ export const orange: Fruit = {
       label: "Rich in Citrus Flavonoids",
       phenomenon: "hesperidin & naringenin content",
       description:
-        "Oranges represent the primary dietary source of hesperidin, a citrus bioflavonoid concentrated in the white inner albedo known for endothelial vascular support.",
-      evidenceLevel: "established",
+        "Oranges are a primary dietary source of hesperidin, a citrus bioflavonoid concentrated in the white inner albedo. Preliminary research suggests vascular support effects; evidence in humans is still emerging.",
+      evidenceLevel: "emerging",
       sourceIds: ["usda-fdc-orange"],
       icon: "leaf",
     },
@@ -306,7 +314,7 @@ export const orange: Fruit = {
       label: "Soluble Pectin Fiber",
       phenomenon: "dietary fiber structure",
       description:
-        "Delivering 2.4g of total fiber per 100g (9% DV), predominantly high-grade soluble pectin that fosters diverse prebiotic microflora in the gut.",
+        "Delivering 2.4g of total fiber per 100g (9% DV), predominantly soluble pectin that supports prebiotic microflora diversity in the gut.",
       evidenceLevel: "established",
       sourceIds: ["usda-fdc-orange", "fda-daily-values"],
       icon: "grain",

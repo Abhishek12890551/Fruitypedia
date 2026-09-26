@@ -20,7 +20,7 @@ export const SYSTEMIC_COHORTS: SystemicCohort[] = [
     name: "All Biological Systems",
     shortLabel: "All Systems",
     icon: "🔬",
-    description: "Exhaustive directory of all 24 peer-reviewed wellness phenomena across the 8 production fruits.",
+    description: "Directory of all wellness benefits across the 13 production fruits.",
     match: () => true,
   },
   {
@@ -160,7 +160,7 @@ export function getPrimaryBiomarker(fruitId: string, index: number): string {
         ? "Beta-Carotene & Lutein (54 µg RAE / 100g · 6% DV)"
         : index === 1
         ? "Ascorbic Acid (36.4 mg / 100g · 40% DV)"
-        : "Mangiferin & Digestive Amylases";
+        : "Polyphenols (Mangiferin) & Folate";
     case "orange":
       return index === 0
         ? "Ascorbic Acid (53.2 mg / 100g · 59% DV)"
@@ -181,10 +181,40 @@ export function getPrimaryBiomarker(fruitId: string, index: number): string {
         : "Low-Glycemic Pectin-Fructose Matrix";
     case "watermelon":
       return index === 0
-        ? "Cell Water (91.4%) & Potassium Electrolytes"
+        ? "Water Content (91.4%) & Potassium"
         : index === 1
         ? "Lycopene (4,532 µg / 100g)"
         : "L-Citrulline Bioavailable Amino Acid";
+    case "pomegranate":
+      return index === 0
+        ? "Punicalagins & Total Polyphenols (180 mg / 100g)"
+        : index === 1
+        ? "Phylloquinone / Vitamin K (16.4 µg · 14% DV)"
+        : "Structured Cell Water (77.9%) & Potassium (236 mg)";
+    case "avocado":
+      return index === 0
+        ? "Monounsaturated Oleic Acid (9.8 g / 100g)"
+        : index === 1
+        ? "Dietary Fiber (6.7 g / 100g · 24% DV)"
+        : "Bioavailable Potassium K⁺ (485 mg / 100g · 10% DV)";
+    case "fig":
+      return index === 0
+        ? "Bioavailable Plant Calcium (35 mg / 100g · 3% DV)"
+        : index === 1
+        ? "Soluble & Insoluble Fiber (2.9 g / 100g · 10% DV)"
+        : "Bioactive Polyphenols & Ficin Phytocompounds";
+    case "kiwi":
+      return index === 0
+        ? "Ascorbic Acid / Vitamin C (92.7 mg / 100g · 103% DV)"
+        : index === 1
+        ? "Phylloquinone / Vitamin K (40.3 µg / 100g · 34% DV)"
+        : "Actinidain Enzyme & Dietary Fiber (3.0 g / 100g)";
+    case "dragonfruit":
+      return index === 0
+        ? "Magnesium (40 mg / 100g · 10% DV)"
+        : index === 1
+        ? "Bioactive Betacyanins & Dietary Polyphenols"
+        : "Natural Hydration Matrix (87.0% structured water)";
     case "blueberry":
     default:
       return index === 0
@@ -264,10 +294,10 @@ export const BenefitsExplorer: React.FC<BenefitsExplorerProps> = ({ allFruits })
               Functional Profile Directory
             </span>
             <h2 id="benefits-heading" className="font-display text-2xl sm:text-3xl font-bold text-white tracking-tight mt-1">
-              Peer-Reviewed Wellness Phenomena
+              Fruit Health Benefits
             </h2>
             <p className="font-editorial text-zinc-400 text-sm mt-1 max-w-2xl">
-              Classified by biological system and substantiated by replicated nutritional research. Never exaggerated; strictly grounded in biochemical evidence.
+              Classified by biological system and substantiated by nutritional research. Evidence tiers reflect the strength of current scientific consensus.
             </p>
           </div>
 
@@ -278,7 +308,7 @@ export const BenefitsExplorer: React.FC<BenefitsExplorerProps> = ({ allFruits })
                 {filteredEntries.length}{" "}
                 <span className="text-zinc-500 font-ui text-xs font-normal">/ {allEntries.length}</span>
               </span>
-              <span className="font-ui text-[11px] text-zinc-400">Documented Phenomena</span>
+              <span className="font-ui text-[11px] text-zinc-400">Benefits Listed</span>
             </div>
           </div>
         </div>
@@ -482,7 +512,7 @@ export const BenefitsExplorer: React.FC<BenefitsExplorerProps> = ({ allFruits })
                 {/* Right: Direct Monograph Action */}
                 <div className="lg:w-36 shrink-0 flex lg:flex-col items-center lg:items-end justify-between gap-3 pt-4 lg:pt-0 border-t lg:border-t-0 border-zinc-800/60">
                   <span className="font-ui text-[11px] text-zinc-500 text-right hidden lg:block">
-                    Peer-Reviewed Monograph
+                    View Monograph
                   </span>
                   <a
                     href={`/fruit/${fruit.slug}#benefits`}
@@ -498,7 +528,6 @@ export const BenefitsExplorer: React.FC<BenefitsExplorerProps> = ({ allFruits })
         </div>
       )}
 
-      {/* Institutional Methodology & Regulatory Disclaimer Callout */}
       <section
         aria-labelledby="compliance-heading"
         className="rounded-3xl border border-zinc-800 bg-zinc-950/60 p-6 sm:p-8 backdrop-blur-md space-y-3"
@@ -506,22 +535,16 @@ export const BenefitsExplorer: React.FC<BenefitsExplorerProps> = ({ allFruits })
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-emerald-400" />
           <h4 id="compliance-heading" className="font-ui text-xs font-bold uppercase tracking-wider text-zinc-300">
-            Institutional Research Standards & Regulatory Transparency
+            Evidence Tiers & Editorial Standards
           </h4>
         </div>
         <p className="font-editorial text-zinc-400 text-sm leading-relaxed">
-          The wellness insights compiled in Fruitypedia represent educational syntheses derived from peer-reviewed botanical, nutritional, and pharmacological literature (including USDA FoodData Central and biochemical meta-analyses). Fruitypedia does not publish unverified health claims or advocate fruits as therapeutic cures or medical treatments.
+          Fruitypedia wellness profiles are educational summaries drawing from USDA FoodData Central nutritional data and published nutritional literature. These are not medical claims; fruits are not treatments.
         </p>
         <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-ui text-zinc-500">
-          <a
-            href="/about#academic-registry"
-            className="text-indigo-400 hover:text-indigo-300 transition-colors font-medium flex items-center gap-1"
-          >
-            <span>Institutional Sources & Botanical Citations Registry</span>
-            <span>→</span>
-          </a>
-          <span>·</span>
-          <span>FDA 21 CFR 101.14 Educational Compliance</span>
+          <span><span className="text-emerald-400 font-semibold">● Established</span> — consistently supported by nutritional data</span>
+          <span><span className="text-amber-400 font-semibold">● Emerging</span> — promising research, not yet conclusive</span>
+          <span><span className="text-zinc-400 font-semibold">● Preliminary</span> — early or limited human evidence</span>
         </div>
       </section>
     </div>

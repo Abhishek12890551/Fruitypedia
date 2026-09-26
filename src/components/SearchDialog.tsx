@@ -40,7 +40,11 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({ fruits, categories }
       }
     };
 
-    const handleCustomOpen = () => {
+    const handleCustomOpen = (e: Event) => {
+      const customEvent = e as CustomEvent<{ query?: string }>;
+      if (customEvent.detail?.query) {
+        setQuery(customEvent.detail.query);
+      }
       setIsOpen(true);
     };
 
@@ -240,6 +244,11 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({ fruits, categories }
                               <span className="font-editorial italic text-xs text-zinc-400 truncate">
                                 {fruit.taxonomy.genus} {fruit.taxonomy.species}
                               </span>
+                              {fruit.editorial?.nickname && (
+                                <span className="hidden sm:inline-block text-[11px] font-editorial text-amber-300/80 truncate">
+                                  · {fruit.editorial.nickname}
+                                </span>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -297,6 +306,11 @@ export const SearchDialog: React.FC<SearchDialogProps> = ({ fruits, categories }
                                 <span className="font-editorial italic text-xs text-zinc-400 truncate">
                                   {fruit.taxonomy.genus} {fruit.taxonomy.species}
                                 </span>
+                                {fruit.editorial?.nickname && (
+                                  <span className="hidden sm:inline-block text-[11px] font-editorial text-amber-300/80 truncate">
+                                    · {fruit.editorial.nickname}
+                                  </span>
+                                )}
                               </div>
                               {item.matchReason && item.matchType !== "name" && (
                                 <p className="text-[11px] text-indigo-300 font-ui truncate mt-0.5">
